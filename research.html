@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연구사업 안내 · 한반도 주변 상세 해양기후 정보 서비스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-target"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-globe"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-arrow-r"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"   stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-list"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
+  <symbol id="i-database"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+  <symbol id="i-chart-bar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/><line x1="2" y1="20" x2="22" y2="20"/></symbol>
+  <symbol id="i-award"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></symbol>
+  <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></symbol>
+  <symbol id="i-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-message"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-pin"       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-chevron-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"   stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-external"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-cpu"       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></symbol>
+</svg>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #f0f4f8; color: #334155; font-size: 14.5px; line-height: 1.65; min-width: 320px; }
+a { text-decoration: none; color: inherit; }
+svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 36px; }
+
+/* ── 상단바 ── */
+.topbar { background: #0a2540; padding: 8px 0; font-size: 12px; color: rgba(255,255,255,.45); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+.topbar-links { display: flex; gap: 18px; }
+.topbar a { color: rgba(255,255,255,.6); } .topbar a:hover { color: #7dd3fc; }
+
+/* ── 네비게이션 ── */
+.navbar { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+.navbar .wrap { display: flex; align-items: center; height: 62px; }
+.logo { display: flex; align-items: center; gap: 12px; margin-right: 44px; flex-shrink: 0; }
+.logo-globe { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg,#0ea5e9,#0369a1); display: flex; align-items: center; justify-content: center; }
+.logo-name { font-size: 14.5px; font-weight: 700; color: #0a2540; line-height: 1.25; }
+.logo-sub  { font-size: 11px; color: #64748b; }
+.nav-links { display: flex; align-items: stretch; height: 62px; flex: 1; }
+.nav-a { padding: 0 18px; display: flex; align-items: center; font-size: 14px; color: #334155; white-space: nowrap; border-bottom: 2.5px solid transparent; transition: color .15s, border-color .15s; }
+.nav-a:hover { color: #0284c7; border-bottom-color: #bae6fd; }
+.nav-a.on    { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.btn-nav { padding: 6px 14px; border-radius: 8px; font-size: 13px; border: 1px solid #e2e8f0; background: #fff; color: #64748b; cursor: pointer; }
+.btn-nav:hover { background: #f8fafc; }
+.btn-nav.primary { background: #0284c7; color: #fff; border-color: #0284c7; font-weight: 500; }
+.btn-nav.primary:hover { background: #0369a1; }
+
+/* ── 페이지 히어로 ── */
+.page-hero { background: linear-gradient(160deg,#0a2540 0%,#0c4a6e 55%,#075985 100%); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; opacity: .06; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+.page-hero .wrap { position: relative; z-index: 1; padding-top: 36px; }
+.breadcrumb { display: flex; align-items: center; gap: 7px; font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,.65); } .breadcrumb a:hover { color: #fff; }
+.breadcrumb .sep { color: rgba(255,255,255,.3); }
+.page-hero h1 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 9px; }
+.page-hero p  { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.75; max-width: 580px; }
+.page-tabs { display: flex; margin-top: 26px; border-bottom: 1px solid rgba(255,255,255,.15); }
+.page-tab { padding: 10px 22px; font-size: 14px; color: rgba(255,255,255,.5); border-bottom: 2.5px solid transparent; margin-bottom: -1px; cursor: pointer; transition: color .15s; user-select: none; }
+.page-tab:hover { color: rgba(255,255,255,.85); }
+.page-tab.on { color: #fff; border-bottom-color: #38bdf8; font-weight: 500; }
+
+/* ── 탭 콘텐츠 ── */
+.tab-panel { display: none; }
+.tab-panel.on { display: block; }
+
+/* ── 본문 공통 ── */
+.main { padding: 40px 0 52px; background: #f0f4f8; }
+.main .wrap { display: flex; flex-direction: column; gap: 36px; }
+.sec-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.sec-hd h2 { font-size: 16px; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 10px; }
+.sec-bar { width: 3px; height: 20px; background: #0284c7; border-radius: 2px; flex-shrink: 0; }
+
+/* 카드 공통 */
+.card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; }
+.divider { border: none; border-top: 1px solid #e2e8f0; }
+
+/* ── 탭1: 사업목표 ── */
+.goal-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 26px 30px; display: flex; align-items: flex-start; gap: 20px; }
+.goal-icon { width: 52px; height: 52px; border-radius: 13px; background: #e0f2fe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.goal-box h3 { font-size: 15.5px; font-weight: 700; color: #0a2540; margin-bottom: 8px; }
+.goal-box p  { font-size: 14px; color: #334155; line-height: 1.75; }
+.img-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; }
+.img-card-inner { padding: 24px 28px; }
+.img-card h3  { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 5px; }
+.img-card .sub { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+.img-actual  { width: 100%; display: block; }
+.img-caption { font-size: 12.5px; color: #6b7280; text-align: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid #f1f5f9; }
+.task-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.task-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 24px; }
+.task-hd { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.tnum { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.t1{background:#eff6ff;color:#1d4ed8} .t2{background:#f0fdf4;color:#15803d} .t3{background:#faf5ff;color:#7c3aed} .t4{background:#fff7ed;color:#c2410c}
+.task-title { font-size: 14px; font-weight: 700; color: #0a2540; line-height: 1.4; }
+.task-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.task-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13.5px; color: #334155; line-height: 1.55; }
+.task-list li::before { content:''; width:6px; height:6px; border-radius:50%; background:#94a3b8; flex-shrink:0; margin-top:6px; }
+.need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.need-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:20px 22px; display:flex; gap:14px; }
+.need-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.ni1{background:#fff1f2} .ni2{background:#fef9c3} .ni3{background:#ecfdf5} .ni4{background:#f0f9ff}
+.need-card h4 { font-size:14px; font-weight:700; color:#0a2540; margin-bottom:5px; }
+.need-card p  { font-size:13px; color:#64748b; line-height:1.65; }
+.dtable { width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden; border:1px solid #e2e8f0; }
+.dtable th { background:#f8fafc; padding:12px 18px; text-align:left; font-size:13px; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0; }
+.dtable td { padding:12px 18px; font-size:13.5px; color:#334155; border-bottom:1px solid #f1f5f9; vertical-align:middle; }
+.dtable tr:last-child td { border-bottom:none; }
+.dtable tr:hover td { background:#f8fafc; }
+.tag { display:inline-block; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:500; }
+.tag-b{background:#dbeafe;color:#1d4ed8} .tag-g{background:#dcfce7;color:#15803d} .tag-p{background:#ede9fe;color:#6d28d9}
+
+/* ── 탭2: 핵심 모형 소개 ── */
+.model-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:24px 28px; }
+.model-card h3  { font-size:15px; font-weight:700; color:#0f172a; margin-bottom:5px; }
+.model-card .sub { font-size:13px; color:#64748b; margin-bottom:24px; }
+.model-flow { display:flex; align-items:stretch; }
+.mbox { flex:1; border-radius:12px; padding:18px; text-align:center; }
+.mbox.global  { background:#eff6ff; border:1px solid #bfdbfe; }
+.mbox.pacific { background:#f0fdf4; border:1px solid #bbf7d0; }
+.mbox.korea   { background:#faf5ff; border:1px solid #ddd6fe; }
+.marr { width:48px; flex-shrink:0; display:flex; align-items:center; justify-content:center; color:#94a3b8; }
+.mlabel { font-size:10.5px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; margin-bottom:5px; }
+.mbox.global .mlabel{color:#1d4ed8} .mbox.pacific .mlabel{color:#15803d} .mbox.korea .mlabel{color:#7c3aed}
+.mtitle { font-size:14px; font-weight:700; color:#111827; margin-bottom:5px; }
+.msub   { font-size:12px; color:#6b7280; line-height:1.6; }
+
+.spec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.spec-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:22px 24px; }
+.spec-card-hd { display:flex; align-items:center; gap:10px; margin-bottom:16px; padding-bottom:14px; border-bottom:1px solid #f1f5f9; }
+.spec-badge { font-size:10.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:3px 10px; border-radius:20px; }
+.sb-global  { background:#eff6ff; color:#1d4ed8; }
+.sb-pacific { background:#f0fdf4; color:#15803d; }
+.sb-korea   { background:#faf5ff; color:#7c3aed; }
+.spec-card h3 { font-size:14.5px; font-weight:700; color:#0f172a; }
+.spec-row { display:flex; gap:8px; font-size:13px; padding:5px 0; border-bottom:1px solid #f8fafc; }
+.spec-row:last-child { border-bottom:none; }
+.spec-label { color:#64748b; min-width:72px; flex-shrink:0; }
+.spec-val   { color:#0f172a; font-weight:500; }
+
+.period-row { display:flex; gap:0; margin-top:6px; }
+.period-item { flex:1; text-align:center; padding:8px 4px; background:#f8fafc; border-radius:6px; font-size:11.5px; }
+.period-item + .period-item { margin-left:6px; }
+.period-item .pv { font-size:12px; font-weight:600; color:#0284c7; }
+.period-item .pl { color:#64748b; margin-top:2px; }
+
+/* ── 탭3: 연구 성과 ── */
+.outcome-intro { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:24px 28px; }
+.outcome-intro p { font-size:14px; color:#334155; line-height:1.75; margin-bottom:18px; }
+
+.paper-target { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:4px; }
+.pt-card { background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:14px; text-align:center; }
+.pt-year { font-size:12px; font-weight:700; color:#0369a1; margin-bottom:6px; }
+.pt-num  { font-size:22px; font-weight:700; color:#0284c7; }
+.pt-unit { font-size:11px; color:#64748b; margin-top:3px; }
+.pt-total { background:#0a2540; border:none; color:#fff; }
+.pt-total .pt-year { color:#7dd3fc; }
+.pt-total .pt-num  { color:#fff; font-size:26px; }
+.pt-total .pt-unit { color:rgba(255,255,255,.6); }
+
+.outcome-section { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:24px 28px; }
+.outcome-section h3 { font-size:15px; font-weight:700; color:#0f172a; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.outcome-section h3 svg { color:#0284c7; }
+
+.paper-list { display:flex; flex-direction:column; gap:12px; }
+.paper-item { display:flex; gap:14px; padding:14px 16px; border-radius:10px; border:1px solid #f1f5f9; background:#fafbfd; }
+.paper-num  { font-size:12px; font-weight:700; color:#0284c7; background:#e0f2fe; border-radius:6px; padding:3px 10px; height:fit-content; flex-shrink:0; margin-top:1px; white-space:nowrap; }
+.paper-body {}
+.paper-title { font-size:13.5px; font-weight:600; color:#0f172a; margin-bottom:4px; line-height:1.45; }
+.paper-meta  { font-size:12px; color:#64748b; }
+.paper-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:32px; background:#f8fafc; border-radius:10px; border:1.5px dashed #cbd5e1; color:#94a3b8; font-size:13px; text-align:center; }
+
+.milestone-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.ms-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px 18px; display:flex; gap:12px; align-items:flex-start; }
+.ms-icon { width:38px; height:38px; border-radius:9px; background:#e0f2fe; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#0284c7; }
+.ms-year { font-size:11px; font-weight:600; color:#0284c7; margin-bottom:3px; }
+.ms-text { font-size:13px; color:#334155; font-weight:500; }
+
+/* ── 탭4: 게시판 ── */
+.board-toolbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.board-cat { display:flex; gap:6px; }
+.bcat { padding:5px 14px; border-radius:20px; font-size:13px; cursor:pointer; border:1px solid #e2e8f0; background:#fff; color:#64748b; transition:all .15s; }
+.bcat:hover { border-color:#0284c7; color:#0284c7; }
+.bcat.on { background:#0284c7; color:#fff; border-color:#0284c7; }
+
+.board-table { width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden; border:1px solid #e2e8f0; }
+.board-table th { background:#f8fafc; padding:11px 16px; text-align:left; font-size:13px; font-weight:700; color:#475569; border-bottom:1px solid #e2e8f0; }
+.board-table td { padding:13px 16px; font-size:13.5px; color:#334155; border-bottom:1px solid #f1f5f9; vertical-align:middle; }
+.board-table tr:last-child td { border-bottom:none; }
+.board-table tr:hover td { background:#f8fafc; cursor:pointer; }
+.board-table .title-cell { color:#0f172a; font-weight:500; display:flex; align-items:center; gap:7px; }
+.badge-notice { background:#fef3c7; color:#92400e; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; flex-shrink:0; white-space:nowrap; }
+.badge-new    { background:#dcfce7; color:#15803d; font-size:11px; font-weight:600; padding:2px 7px; border-radius:4px; flex-shrink:0; white-space:nowrap; }
+.badge-cat    { background:#e0f2fe; color:#0369a1; font-size:11px; font-weight:500; padding:2px 7px; border-radius:4px; flex-shrink:0; white-space:nowrap; }
+
+/* 출처 표기 */
+.source-tag { display:inline-flex; align-items:center; gap:5px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:3px 10px; font-size:12px; color:#475569; }
+.source-tag strong { color:#0369a1; font-weight:600; }
+.board-empty  { text-align:center; padding:40px; color:#94a3b8; font-size:13.5px; }
+
+.board-pagination { display:flex; justify-content:center; gap:6px; margin-top:16px; }
+.pg-btn { width:34px; height:34px; border-radius:8px; border:1px solid #e2e8f0; background:#fff; color:#334155; font-size:13px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
+.pg-btn.on { background:#0284c7; color:#fff; border-color:#0284c7; }
+.pg-btn:hover:not(.on) { background:#f8fafc; }
+
+/* ── 푸터 ── */
+footer { background:#0a2540; padding:30px 0 22px; margin-top:16px; }
+footer .wrap { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; }
+.f-logo { font-size:14px; font-weight:600; color:#fff; margin-bottom:5px; }
+.f-sub  { font-size:12.5px; color:rgba(255,255,255,.4); line-height:1.7; }
+.f-links { display:flex; gap:20px; }
+.f-links a { font-size:12.5px; color:rgba(255,255,255,.45); } .f-links a:hover { color:#7dd3fc; }
+.f-copy { font-size:12px; color:rgba(255,255,255,.25); margin-top:18px; padding-top:14px; border-top:1px solid rgba(255,255,255,.08); }
+
+/* ── 반응형 ── */
+@media (max-width:860px) {
+  .task-grid, .need-grid, .spec-grid, .milestone-grid { grid-template-columns:1fr; }
+  .paper-target { grid-template-columns:repeat(3,1fr); }
+  .model-flow { flex-direction:column; gap:6px; }
+  .marr { transform:rotate(90deg); width:100%; height:32px; }
+  .topbar-links { display:none; }
+}
+@media (max-width:600px) {
+  .wrap { padding:0 18px; }
+  .page-hero h1 { font-size:20px; }
+  .nav-links { display:none; }
+  .paper-target { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- 상단바 -->
+<div class="topbar">
+  <div class="wrap">
+    <span>한국해양과학기술원 (KIOST) · 해양기후예측센터</span>
+    <div class="topbar-links">
+      <a href="#">KIOST 메인</a>
+      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+      <a href="#">인트라넷</a>
+    </div>
+  </div>
+</div>
+
+<!-- 네비게이션 -->
+<nav class="navbar">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <div class="logo-globe">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+          <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.2"/>
+          <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="white" stroke-width="1.2"/>
+          <line x1="2" y1="10" x2="18" y2="10" stroke="white" stroke-width="1.2"/>
+          <line x1="3.5" y1="6" x2="16.5" y2="6" stroke="white" stroke-width=".8"/>
+          <line x1="3.5" y1="14" x2="16.5" y2="14" stroke="white" stroke-width=".8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">한반도 해양기후 정보 서비스</div>
+        <div class="logo-sub">koceanclimate.kr</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-a" href="index.html#sec-climate">해양기후 변화</a>
+      <a class="nav-a" href="index.html#sec-future">미래 전망</a>
+      <a class="nav-a" href="index.html#sec-edu">교양 정보</a>
+      <a class="nav-a" href="index.html#sec-expert">전문가 서비스</a>
+      <a class="nav-a on" href="research.html">연구사업 안내</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가 데이터 ↗</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 페이지 히어로 -->
+<div class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">홈</a><span class="sep">›</span>
+      <span style="color:rgba(255,255,255,.9)">연구사업 안내</span>
+    </div>
+    <h1>연구사업 안내</h1>
+    <p>한반도 주변 해역 특화 해양기후변화 진단·전망 사업의 목표, 핵심 모형 구성, 단계별 연구 내용을 소개합니다.</p>
+    <div class="page-tabs">
+      <div class="page-tab on"  data-tab="tab1">사업목표 및 내용</div>
+      <div class="page-tab"     data-tab="tab2">핵심 모형 소개</div>
+      <div class="page-tab"     data-tab="tab3">연구 성과</div>
+      <div class="page-tab"     data-tab="tab4">게시판</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     탭 1: 사업목표 및 내용
+════════════════════════════════════════════════ -->
+<div class="main tab-panel on" id="tab1">
+  <div class="wrap">
+
+    <!-- 최종 목표 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>
+          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-target"/></svg>
+          최종 목표
+        </h2>
+      </div>
+      <div class="goal-box">
+        <div class="goal-icon"><svg class="ic" width="26" height="26" style="color:#0369a1"><use href="#i-target"/></svg></div>
+        <div>
+          <h3>해양기후변화 진단 및 전망을 위한 한반도 주변 해역 특화 통합 정보 제공</h3>
+          <p>한반도 주변 해역에 특화된 통합 관측·위성·모형 자료와 상세 해양기후변화 시나리오를 생산하고, 정책·산업·교육 현장에서 활용할 수 있는 맞춤형 기후정보 서비스 플랫폼으로 제공합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사업 구성 체계 이미지 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>
+          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-chart-bar"/></svg>
+          사업 목표 및 단계별 추진 체계 (2022–2026)
+        </h2>
+      </div>
+      <div class="img-card">
+        <div class="img-card-inner">
+          <h3>연구사업 전체 구성 체계</h3>
+          <p class="sub">관측·모형·시나리오·서비스의 4개 과제로 구성된 통합 연구 체계 및 연도별 추진 일정</p>
+          <img class="img-actual" src="연구목표.png" alt="연구사업 목표 및 단계별 추진 체계 다이어그램" style="border:1px solid #e2e8f0;border-radius:8px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- 1단계 연구과제 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>
+          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-list"/></svg>
+          1단계 연구과제 내용
+        </h2>
+      </div>
+      <div class="task-grid">
+        <div class="task-card">
+          <div class="task-hd"><div class="tnum t1">1</div><div class="task-title">관측 기간별 기후자료 통합 분석 및 활용</div></div>
+          <ul class="task-list">
+            <li>장기 관측자료 수집 및 분석</li>
+            <li>기후변수별 격자자료 생산 및 고도화</li>
+            <li>통합 DB 구축 및 운영</li>
+          </ul>
+        </div>
+        <div class="task-card">
+          <div class="task-hd"><div class="tnum t2">2</div><div class="task-title">전지구 해양기후 모델 고도화</div></div>
+          <ul class="task-list">
+            <li>CMIP6 해양-대기 변수 자료 수집 및 평가</li>
+            <li>CMIP6 전지구 해양기후모델 평가</li>
+            <li>전지구 해양기후모델 구축 및 검증·개선</li>
+            <li>전구 해양모델 오차 분석 및 과거 해양기후 재현</li>
+          </ul>
+        </div>
+        <div class="task-card">
+          <div class="task-hd"><div class="tnum t3">3</div><div class="task-title">한반도 주변해역 CMIP6 기반 상세 시나리오 생산</div></div>
+          <ul class="task-list">
+            <li>북태평양 모델 미래 전망 및 시나리오 결과 분석</li>
+            <li>한반도 주변해양 상세 모델 미래 전망 및 시나리오 결과 분석</li>
+            <li>해양-대기 결합 기후모형 기후변화 영향 결과 비교 평가</li>
+          </ul>
+        </div>
+        <div class="task-card">
+          <div class="task-hd"><div class="tnum t4">4</div><div class="task-title">통합분석 및 예측 결과 맞춤형 기후정보 생산</div></div>
+          <ul class="task-list">
+            <li>해양기후 지표 개발 및 정책활용 콘텐츠 개발</li>
+            <li>해양기후 정책활용 가이드라인 발간</li>
+            <li>해양기후변화 백서 발간</li>
+            <li>해양기후 상세 전망 정보 웹서비스 플랫폼 개발 및 운영</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 연구 필요성 -->
+    <div>
+      <div class="sec-hd"><h2><span class="sec-bar"></span>연구 필요성</h2></div>
+      <div class="need-grid">
+        <div class="need-card">
+          <div class="need-icon ni1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#be123c" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+          <div><h4>다양한 관측 기후자료 통합 분석 필요</h4><p>수온·염분·용존산소·엽록소·해양탄소·영양염 등 다종 자료의 통합 체계 부재</p></div>
+        </div>
+        <div class="need-card">
+          <div class="need-icon ni2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a16207" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><h4>해양수요 특화 전지구 모델 고도화 필요</h4><p>기존 기후 모델은 대기 중심으로 개발되어 한반도 주변 해양 변수 재현에 한계</p></div>
+        </div>
+        <div class="need-card">
+          <div class="need-icon ni3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+          <div><h4>저해상도 전지구 모델의 한반도 활용 한계</h4><p>낮은 공간 해상도로 황해·동해·동중국해 복잡한 해저지형 재현 시 신뢰도 저하</p></div>
+        </div>
+        <div class="need-card">
+          <div class="need-icon ni4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0369a1" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><h4>맞춤형 기후정보 생산·서비스 체계 필요</h4><p>어업·연안관리·환경 정책 등 수요자 맞춤형 기후정보 및 웹서비스 플랫폼 필요</p></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 주요 활용 자료 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>
+          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-database"/></svg>
+          주요 활용 자료
+        </h2>
+      </div>
+      <table class="dtable">
+        <thead><tr><th>변수</th><th>자료명</th><th>유형</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td><strong>수온</strong></td><td>WOA2018, EN4, OISST, OSTIA</td><td><span class="tag tag-b">관측·위성</span></td><td>표층~심층 수온 분포</td></tr>
+          <tr><td><strong>염분</strong></td><td>OISSS</td><td><span class="tag tag-b">위성</span></td><td>해양 표층 염분</td></tr>
+          <tr><td><strong>용존산소</strong></td><td>WOA2018 (DO)</td><td><span class="tag tag-g">관측</span></td><td>수층별 용존산소 농도</td></tr>
+          <tr><td><strong>엽록소a</strong></td><td>OC-CCI (Chl-a)</td><td><span class="tag tag-b">위성</span></td><td>해양 일차생산력 지표</td></tr>
+          <tr><td><strong>해양 탄소</strong></td><td>pCO₂ SOCAT v2020</td><td><span class="tag tag-g">관측</span></td><td>해양-대기 CO₂ 교환</td></tr>
+          <tr><td><strong>영양염</strong></td><td>WOA2018 (Nuts)</td><td><span class="tag tag-g">관측</span></td><td>질산염·인산염·규산염</td></tr>
+          <tr><td><strong>기후 시나리오</strong></td><td>CMIP6</td><td><span class="tag tag-p">모형</span></td><td>SSP 시나리오 기반 미래 전망</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     탭 2: 핵심 모형 소개
+════════════════════════════════════════════════ -->
+<div class="main tab-panel" id="tab2">
+  <div class="wrap">
+
+    <!-- 3단 중첩 모형 체계 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>
+          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-globe"/></svg>
+          3단 중첩 모형 체계
+        </h2>
+      </div>
+      <div class="model-card">
+        <h3>전구 → 북태평양 → 한반도 주변해 다운스케일링 체계</h3>
+        <p class="sub">해상도를 단계적으로 높여가며 한반도 주변 해역에 특화된 고해상도 기후 시나리오를 생산합니다.</p>
+        <div class="model-flow">
+          <div class="mbox global">
+            <div class="mlabel">GLOBAL</div>
+            <div class="mtitle">전구 모델</div>
+            <div class="msub">CMIP6 전지구<br>해양-대기 결합 모형<br>저해상도</div>
+          </div>
+          <div class="marr"><svg class="ic" width="22" height="22"><use href="#i-arrow-r"/></svg></div>
+          <div class="mbox pacific">
+            <div class="mlabel">REGIONAL</div>
+            <div class="mtitle">북태평양 모델</div>
+            <div class="msub">1/8도 해상도<br>북태평양 상세 모형<br>경계값 제공</div>
+          </div>
+          <div class="marr"><svg class="ic" width="22" height="22"><use href="#i-arrow-r"/></svg></div>
+          <div class="mbox korea">
+            <div class="mlabel">LOCAL</div>
+            <div class="mtitle">한반도 주변해 모델</div>
+            <div class="msub">1/20도 해상도<br>북서태평양 상세 모형<br>9개 세부해역</div>
+          </div>
+        </div>
+        <!-- 모형 영역 구분도 -->
+        <div style="margin-top:20px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;">
+          <div style="font-size:13px;font-weight:600;color:#475569;margin-bottom:14px;">모형 영역 구분 및 자료 흐름</div>
+          <img src="전구모델_활용.png" alt="전구·북태평양·한반도 주변해 모델 영역 구분 및 DB 구축 체계" style="width:100%;display:block;">
+          <div class="img-caption">전구 모델(CMIP6) → 북태평양 모델(1/8도) → 북서태평양 상세 모델(1/20도) 영역 구분 및 DB 구축·제공 체계</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모형별 상세 스펙 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>
+          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-cpu"/></svg>
+          모형별 상세 사양
+        </h2>
+      </div>
+      <div class="spec-grid">
+
+        <div class="spec-card">
+          <div class="spec-card-hd">
+            <span class="spec-badge sb-global">GLOBAL</span>
+            <h3>전구 모델</h3>
+          </div>
+          <div class="spec-row"><span class="spec-label">기반</span><span class="spec-val">CMIP6 전지구 해양기후 모형</span></div>
+          <div class="spec-row"><span class="spec-label">목적</span><span class="spec-val">전지구 해양-대기 결합 기후 재현</span></div>
+          <div class="spec-row"><span class="spec-label">주요 입력</span><span class="spec-val">CMIP6 해양·대기 변수</span></div>
+          <div class="spec-row"><span class="spec-label">산출</span><span class="spec-val">북태평양 모델 경계값 제공</span></div>
+          <div class="spec-row">
+            <span class="spec-label">출처</span>
+            <span class="source-tag"><strong>부경대학교</strong></span>
+          </div>
+          <div class="period-row" style="margin-top:14px">
+            <div class="period-item"><div class="pv">과거 재현</div><div class="pl">1983–2014</div></div>
+            <div class="period-item"><div class="pv">미래 전망</div><div class="pl">2015–2100</div></div>
+          </div>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-card-hd">
+            <span class="spec-badge sb-pacific">REGIONAL</span>
+            <h3>북태평양 모델</h3>
+          </div>
+          <div class="spec-row"><span class="spec-label">해상도</span><span class="spec-val">1/8도 (~14 km)</span></div>
+          <div class="spec-row"><span class="spec-label">영역</span><span class="spec-val">북태평양 광역</span></div>
+          <div class="spec-row"><span class="spec-label">역할</span><span class="spec-val">광역 다운스케일링, 북서태평양 경계값 제공</span></div>
+          <div class="spec-row"><span class="spec-label">시나리오</span><span class="spec-val">SSP 시나리오 기반</span></div>
+          <div class="spec-row">
+            <span class="spec-label">출처</span>
+            <span class="source-tag"><strong>서울대학교</strong></span>
+          </div>
+          <div class="period-row" style="margin-top:14px">
+            <div class="period-item"><div class="pv">재현</div><div class="pl">1983–2014</div></div>
+            <div class="period-item"><div class="pv">전망 1</div><div class="pl">2015–2050</div></div>
+            <div class="period-item"><div class="pv">전망 2</div><div class="pl">~2100</div></div>
+          </div>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-card-hd">
+            <span class="spec-badge sb-korea">LOCAL</span>
+            <h3>한반도 주변해 모델</h3>
+          </div>
+          <div class="spec-row"><span class="spec-label">해상도</span><span class="spec-val">1/20도 (~5.5 km)</span></div>
+          <div class="spec-row"><span class="spec-label">영역</span><span class="spec-val">북서태평양 (황해·동해·동중국해)</span></div>
+          <div class="spec-row"><span class="spec-label">해역 구분</span><span class="spec-val">한반도 주변 9개 세부해역</span></div>
+          <div class="spec-row"><span class="spec-label">시나리오</span><span class="spec-val">지역 상세 시나리오 생산</span></div>
+          <div class="spec-row">
+            <span class="spec-label">출처</span>
+            <span class="source-tag"><strong>전남대학교</strong></span>
+          </div>
+          <div class="period-row" style="margin-top:14px">
+            <div class="period-item"><div class="pv">재현</div><div class="pl">1983–2014</div></div>
+            <div class="period-item"><div class="pv">전망 1</div><div class="pl">2015–2050</div></div>
+            <div class="period-item"><div class="pv">전망 2</div><div class="pl">~2100</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     탭 3: 연구 성과
+════════════════════════════════════════════════ -->
+<div class="main tab-panel" id="tab3">
+  <div class="wrap">
+
+    <!-- 논문 목표 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>
+          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-award"/></svg>
+          논문 성과 목표
+        </h2>
+      </div>
+      <div class="outcome-intro">
+        <p>연구사업 기간(2022–2026) 동안 SCIE급 논문 <strong>20편 이상</strong> 발표를 목표로 합니다. 해양기후변화 진단·전망·활용 전 분야에 걸친 연구 결과를 국제 학술지에 게재합니다.</p>
+        <div class="paper-target">
+          <div class="pt-card"><div class="pt-year">2022년</div><div class="pt-num">2</div><div class="pt-unit">SCIE 논문</div></div>
+          <div class="pt-card"><div class="pt-year">2023년</div><div class="pt-num">3</div><div class="pt-unit">SCIE 논문</div></div>
+          <div class="pt-card"><div class="pt-year">2024년</div><div class="pt-num">5</div><div class="pt-unit">SCIE 논문</div></div>
+          <div class="pt-card"><div class="pt-year">2025년</div><div class="pt-num">5</div><div class="pt-unit">SCIE 논문</div></div>
+          <div class="pt-card pt-total"><div class="pt-year">최종 목표</div><div class="pt-num">20+</div><div class="pt-unit">편 이상</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 주요 성과 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>
+          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-book-open"/></svg>
+          발표 논문
+        </h2>
+      </div>
+      <div class="outcome-section">
+        <h3><svg class="ic" width="16" height="16"><use href="#i-file-text"/></svg> SCIE 게재 논문</h3>
+        <div class="paper-list">
+          <div class="paper-placeholder">
+            <svg class="ic" width="30" height="30"><use href="#i-file-text"/></svg>
+            논문 목록을 제공해 주시면 여기에 표시됩니다.<br>
+            <span style="font-size:12px">(제목·저자·저널명·연도·DOI)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 단계별 주요 성과 마일스톤 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar"></span>연구 마일스톤</h2>
+      </div>
+      <div class="milestone-grid">
+        <div class="ms-card">
+          <div class="ms-icon"><svg class="ic" width="18" height="18"><use href="#i-database"/></svg></div>
+          <div>
+            <div class="ms-year">Phase 1 · 기반구축 (2022–2024)</div>
+            <div class="ms-text">장기 관측자료 통합 DB 구축</div>
+          </div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-icon"><svg class="ic" width="18" height="18"><use href="#i-globe"/></svg></div>
+          <div>
+            <div class="ms-year">Phase 1 · 기반구축 (2022–2024)</div>
+            <div class="ms-text">전지구 해양기후모델 구축 및 과거 기후 재현</div>
+          </div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-icon" style="background:#f0fdf4;color:#15803d"><svg class="ic" width="18" height="18"><use href="#i-cpu"/></svg></div>
+          <div>
+            <div class="ms-year" style="color:#15803d">Phase 2 · 시나리오 생산 (2024–2026)</div>
+            <div class="ms-text">북태평양·한반도 주변해 모델 미래 시나리오 생산</div>
+          </div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-icon" style="background:#faf5ff;color:#7c3aed"><svg class="ic" width="18" height="18"><use href="#i-chart-bar"/></svg></div>
+          <div>
+            <div class="ms-year" style="color:#7c3aed">Phase 2 · 시나리오 생산 (2024–2026)</div>
+            <div class="ms-text">해양기후 평가보고서 및 정책활용 가이드라인 발간</div>
+          </div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-icon" style="background:#fff7ed;color:#c2410c"><svg class="ic" width="18" height="18"><use href="#i-award"/></svg></div>
+          <div>
+            <div class="ms-year" style="color:#c2410c">최종 성과 (2026)</div>
+            <div class="ms-text">CMIP7 참여 전략 수립 · 지구시스템 모형 개발</div>
+          </div>
+        </div>
+        <div class="ms-card">
+          <div class="ms-icon" style="background:#fff7ed;color:#c2410c"><svg class="ic" width="18" height="18"><use href="#i-file-text"/></svg></div>
+          <div>
+            <div class="ms-year" style="color:#c2410c">최종 성과 (2026)</div>
+            <div class="ms-text">5개 주제 가이드라인 및 국민 맞춤형 인포그래픽 발간</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     탭 4: 게시판
+════════════════════════════════════════════════ -->
+<div class="main tab-panel" id="tab4">
+  <div class="wrap">
+
+    <div>
+      <div class="board-toolbar">
+        <div class="board-cat">
+          <div class="bcat on" data-bcat="all">전체</div>
+          <div class="bcat" data-bcat="notice">공지사항</div>
+          <div class="bcat" data-bcat="news">연구소식</div>
+          <div class="bcat" data-bcat="data">자료실</div>
+        </div>
+      </div>
+
+      <table class="board-table">
+        <thead>
+          <tr>
+            <th style="width:52px">번호</th>
+            <th>제목</th>
+            <th style="width:80px">분류</th>
+            <th style="width:100px">작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center;color:#94a3b8">—</td>
+            <td><div class="title-cell"><span class="badge-notice">공지</span> 한반도 주변 상세 해양기후 정보 서비스 시험 운영 안내</div></td>
+            <td><span class="badge-cat">공지사항</span></td>
+            <td style="color:#64748b;font-size:13px">2024.01.15</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;color:#94a3b8">—</td>
+            <td><div class="title-cell"><span class="badge-notice">공지</span> 북서태평양 해양기후 자료 서비스(nwpoclimate.kr) 오픈 안내</div></td>
+            <td><span class="badge-cat">공지사항</span></td>
+            <td style="color:#64748b;font-size:13px">2023.11.01</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;color:#64748b;font-size:13px">3</td>
+            <td><div class="title-cell"><span class="badge-new">NEW</span> 해양기후예측센터 2024년 연구 성과 발표회 개최</div></td>
+            <td><span class="badge-cat" style="background:#dcfce7;color:#15803d">연구소식</span></td>
+            <td style="color:#64748b;font-size:13px">2025.01.08</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;color:#64748b;font-size:13px">2</td>
+            <td><div class="title-cell">2023년 해양기후변화 통합 DB 1차 구축 완료</div></td>
+            <td><span class="badge-cat" style="background:#dcfce7;color:#15803d">연구소식</span></td>
+            <td style="color:#64748b;font-size:13px">2024.02.20</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;color:#64748b;font-size:13px">1</td>
+            <td><div class="title-cell">해양기후 웹서비스 플랫폼 1차 배포 자료 <svg class="ic" width="13" height="13" style="color:#0284c7"><use href="#i-external"/></svg></div></td>
+            <td><span class="badge-cat" style="background:#ede9fe;color:#6d28d9">자료실</span></td>
+            <td style="color:#64748b;font-size:13px">2023.12.01</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="board-pagination">
+        <div class="pg-btn on">1</div>
+        <div class="pg-btn">2</div>
+        <div class="pg-btn">3</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 푸터 -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
+      <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
+    </div>
+    <div class="f-links">
+      <a href="#">이용안내</a>
+      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+      <a href="research.html">연구사업 소개</a>
+      <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+    </div>
+  </div>
+  <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
+</footer>
+
+<script>
+/* ── 페이지 탭 전환 ── */
+const pageTabs    = document.querySelectorAll('.page-tab');
+const tabPanels   = document.querySelectorAll('.tab-panel');
+
+pageTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    pageTabs.forEach(t  => t.classList.remove('on'));
+    tabPanels.forEach(p => p.classList.remove('on'));
+    tab.classList.add('on');
+    document.getElementById(target).classList.add('on');
+    // 탭 전환 시 스크롤을 히어로 하단으로 부드럽게 이동
+    document.querySelector('.page-hero').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* ── 게시판 카테고리 필터 ── */
+document.querySelectorAll('.bcat').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.bcat').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  });
+});
+</script>
+
+</body>
+</html>
