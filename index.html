@@ -206,6 +206,7 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
   transition: border-color .15s, box-shadow .15s; cursor: default;
 }
 .card:hover { border-color: #0284c7; box-shadow: 0 2px 14px rgba(2,132,199,.1); }
+a.card { text-decoration: none; color: inherit; }
 .card-icon {
   width: 46px; height: 46px; border-radius: 11px;
   display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
@@ -474,7 +475,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
           <h3>CMIP6 참여 전구모델 평가</h3>
           <p>CMIP6 전구기후모델의 해양열함량(OHC) 평가 및 ENSO 특성 분석, 지역모델 경계값 산정 결과</p>
           <div class="card-links">
-            <a class="card-link" href="https://www.koceanclimate.kr/2bca8aed-798f-81ab-8c1c-c33b4237d54f" target="_blank">
+            <a class="card-link" href="https://www.notion.so/ocpc/CMIP6-2bca8aed798f81ab8c1cc33b4237d54f?source=copy_link" target="_blank">
               <svg class="ic" width="13" height="13"><use href="#i-external"/></svg> 전구모델 평가 결과 보기
             </a>
           </div>
@@ -484,7 +485,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
           <h3>KIOST-ESM 기반 전망</h3>
           <p>KIOST 지구시스템모델(KIOST-ESM)을 기반으로 한 미래 해양기후 전망 분석 결과</p>
           <div class="card-links">
-            <a class="card-link" href="https://www.koceanclimate.kr/2bca8aed-798f-81d0-acf4-f5a43fe9b7a0" target="_blank">
+            <a class="card-link" href="kiost-esm-slideshow-4k.html" target="_blank">
               <svg class="ic" width="13" height="13"><use href="#i-external"/></svg> KIOST-ESM 전망 결과 보기
             </a>
           </div>
@@ -514,26 +515,33 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
           <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-book"/></svg>
           해양기후 교양 정보
         </div>
+        <a class="sec-more" href="education.html">전체보기 <svg class="ic" width="14" height="14"><use href="#i-chevron-r"/></svg></a>
       </div>
       <div class="g3">
-        <div class="card">
+        <a class="card" href="education.html#policy" style="display:block;cursor:pointer">
           <div class="card-icon ci-green"><svg class="ic" width="22" height="22"><use href="#i-file"/></svg></div>
           <h3>정책 가이드라인</h3>
           <p>해양기후변화 영향 관련 정책활용 콘텐츠 및 가이드라인. 해양기후변화 백서 발간 내용을 포함합니다.</p>
           <div class="card-links">
-            <a class="card-link" href="#"><svg class="ic" width="13" height="13"><use href="#i-download"/></svg> 가이드라인 PDF 다운로드</a>
+            <span class="card-link"><svg class="ic" width="13" height="13"><use href="#i-chevron-r"/></svg> 가이드라인 목록 보기</span>
           </div>
-        </div>
-        <div class="card">
+        </a>
+        <a class="card" href="education.html#custom" style="display:block;cursor:pointer">
           <div class="card-icon ci-blue"><svg class="ic" width="22" height="22"><use href="#i-users"/></svg></div>
           <h3>수요자 맞춤형 정보</h3>
           <p>어업·연안관리·환경 등 분야별 수요자를 위한 맞춤형 해양기후변화 정보 및 활용 사례 제공</p>
-        </div>
-        <div class="card">
+          <div class="card-links">
+            <span class="card-link"><svg class="ic" width="13" height="13"><use href="#i-chevron-r"/></svg> 맞춤형 정보 보기</span>
+          </div>
+        </a>
+        <a class="card" href="education.html#topics" style="display:block;cursor:pointer">
           <div class="card-icon ci-teal"><svg class="ic" width="22" height="22"><use href="#i-bulb"/></svg></div>
           <h3>주제별 교양 정보</h3>
           <p>해양기후변화의 원인·현황·영향에 관한 주제별 교양 콘텐츠. 비전문가도 이해할 수 있도록 구성</p>
-        </div>
+          <div class="card-links">
+            <span class="card-link"><svg class="ic" width="13" height="13"><use href="#i-chevron-r"/></svg> 주제별 콘텐츠 보기</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -627,6 +635,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     </div>
     <div class="f-links">
       <a href="#">이용안내</a>
+      <a href="education.html">교양 정보</a>
       <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
       <a href="research.html">연구사업 소개</a>
       <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>

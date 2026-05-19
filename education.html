@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>해양기후 교양 정보 – 한반도 주변 상세 해양기후 정보 서비스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- SVG 아이콘 스프라이트 -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-chart"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+  <symbol id="i-globe"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-book"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+  <symbol id="i-users"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-bulb"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></symbol>
+  <symbol id="i-file"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-chevron-r"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-chevron-l"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-mail"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-info"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+  <symbol id="i-clock"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-shield"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></symbol>
+  <symbol id="i-droplet"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></symbol>
+</svg>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.65;
+  min-width: 320px;
+}
+a { text-decoration: none; color: inherit; }
+svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+/* ── 공통 래퍼 ── */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 36px; }
+
+/* ── 상단바 ── */
+.topbar { background: #0a2540; padding: 8px 0; font-size: 12px; color: rgba(255,255,255,.45); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+.topbar-links { display: flex; gap: 18px; }
+.topbar a { color: rgba(255,255,255,.6); }
+.topbar a:hover { color: #7dd3fc; }
+
+/* ── 네비게이션 ── */
+.navbar { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+.navbar .wrap { display: flex; align-items: center; height: 62px; }
+.logo { display: flex; align-items: center; gap: 12px; margin-right: 44px; flex-shrink: 0; }
+.logo-globe {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #0369a1);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-name { font-size: 14.5px; font-weight: 700; color: #0a2540; line-height: 1.25; }
+.logo-sub  { font-size: 11px; color: #64748b; }
+
+.nav-links { display: flex; align-items: stretch; height: 62px; flex: 1; }
+.nav-a {
+  padding: 0 18px; display: flex; align-items: center;
+  font-size: 14px; color: #334155; white-space: nowrap;
+  border-bottom: 2.5px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.nav-a:hover { color: #0284c7; border-bottom-color: #bae6fd; }
+.nav-a.on   { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.btn-nav {
+  padding: 6px 14px; border-radius: 8px; font-size: 13px;
+  border: 1px solid #e2e8f0; background: #fff; color: #64748b; cursor: pointer;
+}
+.btn-nav:hover { background: #f8fafc; }
+.btn-nav.primary { background: #0284c7; color: #fff; border-color: #0284c7; font-weight: 500; }
+.btn-nav.primary:hover { background: #0369a1; }
+
+/* 햄버거 (모바일) */
+.hamburger {
+  display: none; flex-direction: column; justify-content: center; align-items: center;
+  width: 42px; height: 42px; border-radius: 8px;
+  border: 1px solid #e2e8f0; background: #fff; cursor: pointer; gap: 5px; margin-left: 8px;
+}
+.hamburger span { display: block; width: 18px; height: 2px; background: #334155; border-radius: 2px; transition: all .25s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none; flex-direction: column;
+  background: #fff; border-bottom: 1px solid #e2e8f0;
+  padding: 6px 0 14px; animation: slideDown .2s ease;
+}
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 13px 24px; font-size: 15px; color: #334155;
+  border-left: 3px solid transparent; transition: all .15s;
+}
+.mobile-menu a:hover, .mobile-menu a.on { color: #0284c7; border-left-color: #0284c7; background: #f0f9ff; }
+
+/* ── 페이지 히어로 ── */
+.page-hero {
+  background: #0a2540; padding: 40px 0 44px;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, #0c4a6e 0%, transparent 65%);
+}
+.page-hero::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23f0f4f8' d='M0,20 C360,40 720,0 1080,20 C1260,30 1380,25 1440,23 L1440,40 L0,40 Z'/%3E%3C/svg%3E") no-repeat bottom/cover;
+}
+.page-hero .wrap { position: relative; z-index: 1; }
+.page-hero .breadcrumb {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12.5px; color: rgba(255,255,255,.45); margin-bottom: 16px;
+}
+.page-hero .breadcrumb a { color: rgba(255,255,255,.6); }
+.page-hero .breadcrumb a:hover { color: #7dd3fc; }
+.page-hero h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.page-hero p { font-size: 14.5px; color: #94a3b8; line-height: 1.7; max-width: 600px; }
+
+/* ── 탭 내비게이션 ── */
+.tab-nav {
+  background: #fff; border-bottom: 1px solid #e2e8f0;
+  position: sticky; top: 62px; z-index: 90;
+}
+.tab-nav .wrap { display: flex; gap: 0; }
+.tab-a {
+  padding: 14px 22px; font-size: 14px; color: #64748b;
+  border-bottom: 2.5px solid transparent;
+  transition: all .15s; cursor: pointer; white-space: nowrap;
+  display: flex; align-items: center; gap: 7px;
+}
+.tab-a:hover { color: #0284c7; }
+.tab-a.on { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+
+/* ── 본문 공통 ── */
+.page-bg { background: #f0f4f8; }
+.sec { padding: 36px 0 32px; }
+
+.sec-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.sec-title {
+  font-size: 16px; font-weight: 700; color: #0f172a;
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-bar { width: 3px; height: 20px; background: #0284c7; border-radius: 2px; }
+.sec-sub { font-size: 13px; color: #64748b; margin-top: 6px; }
+
+.divider { height: 1px; background: #e2e8f0; }
+
+/* ── 앵커 스크롤 오프셋 ── */
+#policy, #custom, #topics {
+  scroll-margin-top: 130px;
+}
+
+/* ── 가이드라인 카드 ── */
+.gl-card {
+  background: #fff; border-radius: 14px; border: 1px solid #e2e8f0;
+  padding: 28px; transition: border-color .15s, box-shadow .15s;
+  display: flex; gap: 22px; align-items: flex-start;
+}
+.gl-card:hover { border-color: #0284c7; box-shadow: 0 4px 20px rgba(2,132,199,.08); }
+.gl-card + .gl-card { margin-top: 14px; }
+
+.gl-icon {
+  width: 54px; height: 54px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.gl-icon.green  { background: #dcfce7; color: #15803d; }
+.gl-icon.blue   { background: #e0f2fe; color: #0284c7; }
+.gl-icon.purple { background: #ede9fe; color: #7c3aed; }
+.gl-icon.amber  { background: #fef3c7; color: #d97706; }
+.gl-icon.teal   { background: #ccfbf1; color: #0d9488; }
+
+.gl-body { flex: 1; min-width: 0; }
+.gl-label {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;
+}
+.gl-label.pilot  { background: #e0f2fe; color: #0369a1; }
+.gl-label.prep   { background: #fef3c7; color: #92400e; }
+.gl-label.done   { background: #dcfce7; color: #166534; }
+
+.gl-title { font-size: 15.5px; font-weight: 700; color: #0f172a; margin-bottom: 6px; line-height: 1.45; }
+.gl-desc { font-size: 13.5px; color: #64748b; line-height: 1.65; margin-bottom: 16px; }
+
+.gl-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.gl-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  transition: all .15s; cursor: pointer; border: none;
+}
+.gl-btn.primary {
+  background: #0284c7; color: #fff;
+}
+.gl-btn.primary:hover { background: #0369a1; }
+.gl-btn.outline {
+  background: #fff; color: #0284c7; border: 1px solid #bae6fd;
+}
+.gl-btn.outline:hover { background: #f0f9ff; border-color: #0284c7; }
+.gl-btn.disabled {
+  background: #f1f5f9; color: #94a3b8; cursor: default; pointer-events: none;
+}
+
+/* ── 수요자 / 주제별 플레이스홀더 ── */
+.placeholder-sec {
+  background: #fff; border-radius: 14px; border: 1px solid #e2e8f0;
+  padding: 40px 28px; text-align: center; color: #94a3b8;
+}
+.placeholder-sec .ph-icon { margin-bottom: 12px; }
+.placeholder-sec .ph-title { font-size: 15px; font-weight: 600; color: #64748b; margin-bottom: 6px; }
+.placeholder-sec .ph-desc { font-size: 13px; line-height: 1.6; }
+
+/* ── PDF 미리보기 정보 ── */
+.pdf-meta {
+  display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;
+}
+.pdf-meta-item {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: #94a3b8;
+}
+
+/* ── 푸터 ── */
+footer { background: #0a2540; padding: 28px 0 22px; margin-top: 16px; }
+footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.f-logo { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; }
+.f-sub  { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.7; }
+.f-links { display: flex; gap: 20px; }
+.f-links a { font-size: 12px; color: rgba(255,255,255,.45); }
+.f-links a:hover { color: #7dd3fc; }
+.f-copy { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+
+/* ── 반응형 ── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .topbar-links { display: none; }
+  .tab-nav { top: 62px; }
+  .tab-a { padding: 12px 16px; font-size: 13px; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px; }
+  .page-hero h1 { font-size: 22px; }
+  .gl-card { flex-direction: column; gap: 14px; }
+  .gl-actions { flex-direction: column; }
+  .gl-btn { justify-content: center; }
+  footer .wrap { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- 상단바 -->
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.ocpc.kr/" target="_blank">한국해양과학기술원 (KIOST) · 해양기후예측센터</a>
+    <div class="topbar-links">
+      <a href="https://www.kiost.ac.kr/kor.do" target="_blank">KIOST 메인</a>
+      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+    </div>
+  </div>
+</div>
+
+<!-- 네비게이션 -->
+<nav class="navbar" id="navbar">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <div class="logo-globe">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+          <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.2"/>
+          <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="white" stroke-width="1.2"/>
+          <line x1="2" y1="10" x2="18" y2="10" stroke="white" stroke-width="1.2"/>
+          <line x1="3.5" y1="6" x2="16.5" y2="6" stroke="white" stroke-width=".8"/>
+          <line x1="3.5" y1="14" x2="16.5" y2="14" stroke="white" stroke-width=".8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">한반도 해양기후 정보 서비스</div>
+        <div class="logo-sub">koceanclimate.kr</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a class="nav-a" href="index.html#sec-climate">해양기후 변화</a>
+      <a class="nav-a" href="index.html#sec-future">미래 전망</a>
+      <a class="nav-a on" href="education.html">교양 정보</a>
+      <a class="nav-a" href="index.html#sec-expert">전문가 서비스</a>
+      <a class="nav-a" href="research.html">연구사업 안내</a>
+    </div>
+
+    <div class="nav-right">
+      <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가 데이터 ↗</a>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- 모바일 메뉴 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#sec-climate">해양기후 변화</a>
+  <a href="index.html#sec-future">미래 전망</a>
+  <a href="education.html" class="on">교양 정보</a>
+  <a href="index.html#sec-expert">전문가 서비스</a>
+  <a href="research.html">연구사업 안내</a>
+</div>
+
+<!-- 페이지 히어로 -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">홈</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <span>해양기후 교양 정보</span>
+    </div>
+    <h1>해양기후 교양 정보</h1>
+    <p>해양기후변화 영향 관련 정책 가이드라인, 수요자 맞춤형 정보, 주제별 교양 콘텐츠를 제공합니다.</p>
+  </div>
+</section>
+
+<!-- 탭 내비게이션 -->
+<div class="tab-nav" id="tabNav">
+  <div class="wrap">
+    <a class="tab-a on" href="#policy" data-tab="policy">
+      <svg class="ic" width="15" height="15"><use href="#i-file"/></svg>
+      정책 가이드라인
+    </a>
+    <a class="tab-a" href="#custom" data-tab="custom">
+      <svg class="ic" width="15" height="15"><use href="#i-users"/></svg>
+      수요자 맞춤형 정보
+    </a>
+    <a class="tab-a" href="#topics" data-tab="topics">
+      <svg class="ic" width="15" height="15"><use href="#i-bulb"/></svg>
+      주제별 교양 정보
+    </a>
+  </div>
+</div>
+
+<!-- 본문 -->
+<div class="page-bg">
+
+  <!-- ① 정책 가이드라인 -->
+  <section class="sec" id="policy">
+    <div class="wrap">
+      <div class="sec-hd">
+        <div>
+          <div class="sec-title">
+            <span class="sec-bar"></span>
+            <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-file"/></svg>
+            해양기후변화(영향) 정책 가이드라인
+          </div>
+          <div class="sec-sub">해양기후변화 영향 관련 정책활용 콘텐츠 및 시범 가이드라인</div>
+        </div>
+      </div>
+
+      <!-- 카드 1: 해양 아열대화와 외래 생물종 -->
+      <div class="gl-card">
+        <div class="gl-icon green">
+          <svg class="ic" width="26" height="26"><use href="#i-globe"/></svg>
+        </div>
+        <div class="gl-body">
+          <span class="gl-label pilot">
+            <svg class="ic" width="10" height="10"><use href="#i-info"/></svg>
+            시범 가이드라인
+          </span>
+          <div class="gl-title">해양 아열대화와 외래 생물종</div>
+          <div class="gl-desc">
+            기후변화에 따른 한반도 주변해역의 아열대화 현상과 외래 해양생물종 유입·확산에 대한 정책활용 시범 가이드라인입니다.
+            큰갈파래, 해호말, 맹그로브, 거품돌산호, 유령멍게 등 주요 아열대 종의 서식 현황과 2050·2100년 전망, 적응 방향을 포함합니다.
+          </div>
+          <div class="pdf-meta">
+            <span class="pdf-meta-item">
+              <svg class="ic" width="12" height="12"><use href="#i-file"/></svg>
+              PDF · 75페이지
+            </span>
+            <span class="pdf-meta-item">
+              <svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>
+              2023년 12월 발간
+            </span>
+            <span class="pdf-meta-item">
+              해양수산부 · 해양기후예측센터
+            </span>
+          </div>
+          <div class="gl-actions">
+            <a class="gl-btn primary" href="정책활용_시범_가이드라인_해양_아열대화와_외래생물종__최종.pdf" download>
+              <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
+              PDF 다운로드
+            </a>
+            <a class="gl-btn outline" href="https://www.notion.so/ocpc/2bca8aed798f81798793dadedb05e7fb" target="_blank">
+              <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
+              웹 페이지에서 보기
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카드 2: 해양산성화 적응 방안 -->
+      <div class="gl-card">
+        <div class="gl-icon blue">
+          <svg class="ic" width="26" height="26"><use href="#i-droplet"/></svg>
+        </div>
+        <div class="gl-body">
+          <span class="gl-label pilot">
+            <svg class="ic" width="10" height="10"><use href="#i-info"/></svg>
+            시범 가이드라인
+          </span>
+          <span class="gl-label prep" style="margin-left:6px">
+            <svg class="ic" width="10" height="10"><use href="#i-clock"/></svg>
+            PDF 준비중
+          </span>
+          <div class="gl-title">해양산성화 적응 방안</div>
+          <div class="gl-desc">
+            해양산성화(pH 저하)가 해양생태계에 미치는 영향과 이에 대한 적응 방안을 다루는 시범 가이드라인입니다.
+            산호생태계를 비롯한 해양생물종의 생리·성장 영향 및 대응 전략을 포함합니다.
+          </div>
+          <div class="gl-actions">
+            <span class="gl-btn disabled">
+              <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
+              PDF 준비중
+            </span>
+            <a class="gl-btn outline" href="https://www.notion.so/ocpc/2bca8aed798f8110bf67ef6255de2208" target="_blank">
+              <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
+              웹 페이지에서 보기
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 카드 3: 장기 예측자료 정책활용 가이드라인 콘텐츠 수요 분석 -->
+      <div class="gl-card">
+        <div class="gl-icon purple">
+          <svg class="ic" width="26" height="26"><use href="#i-bar-chart"/></svg>
+        </div>
+        <div class="gl-body">
+          <span class="gl-label done">
+            <svg class="ic" width="10" height="10"><use href="#i-info"/></svg>
+            수요 분석
+          </span>
+          <div class="gl-title">장기 예측자료 정책활용 가이드라인 콘텐츠 수요 분석</div>
+          <div class="gl-desc">
+            장기 해양기후 예측자료의 정책 활용을 위한 가이드라인 콘텐츠 수요를 분석한 자료입니다.
+            정책입안자와 관련 분야 전문가를 대상으로 한 수요 조사 결과 및 향후 콘텐츠 개발 방향을 제시합니다.
+          </div>
+          <div class="gl-actions">
+            <a class="gl-btn outline" href="https://www.notion.so/ocpc/2bca8aed798f812487b5cbf182e9226c" target="_blank">
+              <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
+              웹 페이지에서 보기
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ② 수요자 맞춤형 정보 -->
+  <section class="sec" id="custom">
+    <div class="wrap">
+      <div class="sec-hd">
+        <div>
+          <div class="sec-title">
+            <span class="sec-bar"></span>
+            <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-users"/></svg>
+            수요자 맞춤형 정보
+          </div>
+          <div class="sec-sub">어업·연안관리·환경 등 분야별 수요자를 위한 맞춤형 해양기후변화 정보</div>
+        </div>
+      </div>
+      <div class="placeholder-sec">
+        <div class="ph-icon"><svg class="ic" width="36" height="36" style="color:#cbd5e1"><use href="#i-users"/></svg></div>
+        <div class="ph-title">콘텐츠 준비중입니다</div>
+        <div class="ph-desc">초중고 학생용, 교사용 지도서, 대학/일반용, 수산·어업·항만·해운 종사자용 콘텐츠가 순차적으로 추가될 예정입니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ③ 주제별 교양 정보 -->
+  <section class="sec" id="topics">
+    <div class="wrap">
+      <div class="sec-hd">
+        <div>
+          <div class="sec-title">
+            <span class="sec-bar"></span>
+            <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-bulb"/></svg>
+            주제별 교양 정보
+          </div>
+          <div class="sec-sub">해양기후변화의 원인·현황·영향에 관한 주제별 교양 콘텐츠</div>
+        </div>
+      </div>
+      <div class="placeholder-sec">
+        <div class="ph-icon"><svg class="ic" width="36" height="36" style="color:#cbd5e1"><use href="#i-bulb"/></svg></div>
+        <div class="ph-title">콘텐츠 준비중입니다</div>
+        <div class="ph-desc">해양열파/한파 감시 정보, 생물 서식 한계선 변화 전망, 해류 수송량 정보 등이 순차적으로 추가될 예정입니다.</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-bg -->
+
+<!-- 푸터 -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
+      <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
+    </div>
+    <div class="f-links">
+      <a href="index.html">메인</a>
+      <a href="education.html">교양 정보</a>
+      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+      <a href="research.html">연구사업 소개</a>
+      <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+    </div>
+  </div>
+  <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
+</footer>
+
+<script>
+/* ── 햄버거 ── */
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => {
+  const open = mob.classList.toggle('open');
+  ham.classList.toggle('open', open);
+  ham.setAttribute('aria-expanded', String(open));
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 960) {
+    mob.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+  }
+});
+
+/* ── 탭 스크롤 스파이 ── */
+const TAB_IDS = ['policy', 'custom', 'topics'];
+const tabLinks = () => document.querySelectorAll('[data-tab]');
+
+function getActiveTab() {
+  const navH = document.getElementById('navbar').offsetHeight;
+  const tabH = document.getElementById('tabNav').offsetHeight;
+  const threshold = navH + tabH + 40;
+  let active = null;
+  for (const id of TAB_IDS) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    if (el.getBoundingClientRect().top <= threshold) {
+      active = id;
+    }
+  }
+  return active;
+}
+
+function updateTabs() {
+  const activeId = getActiveTab();
+  tabLinks().forEach(a => {
+    a.classList.toggle('on', a.dataset.tab === activeId);
+  });
+}
+
+window.addEventListener('scroll', updateTabs, { passive: true });
+updateTabs();
+
+/* ── 탭 클릭 스무스 스크롤 ── */
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute('href').slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+  e.preventDefault();
+  mob.classList.remove('open');
+  ham.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
+  const navH = document.getElementById('navbar').offsetHeight;
+  const tabH = document.getElementById('tabNav').offsetHeight;
+  const top = target.getBoundingClientRect().top + window.scrollY - navH - tabH - 12;
+  window.scrollTo({ top, behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>
