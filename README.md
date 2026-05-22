@@ -17,17 +17,27 @@
 index.html
 
 Review (과거 변화)
-- Observations
-- Satellites
-- Models
+
+  /Review/Observations/...
+  
+  /Review/Satellites/...
+  
+  /Models/...
 
 Projection (미래 전망)
+
   /Projection/CMIP6/cmip6.html
+  
   /Projection/KIOSTESM/koostesm.html
+  
   /Projection/SNUMHW/snumhw.html
+  
 
 Contents (맞춤 정보)
+
   /Contents/PGL/subtropicalization.html    (해양 아열대화와 외래 생물종)
+  
   /Contents/PGL/acidification.html         (해양 산성화 적응 방안)
+  
   /Contents/PGL/...   
   
