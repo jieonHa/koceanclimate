@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>초등학교 교실에서의 기후 리터러시 – 펭귄과 북극곰 너머</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-chevron-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-chevron-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-menu"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-users"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-book"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+</svg>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:#f5f7fa;color:#1e293b;font-size:15px;line-height:1.8}
+a{text-decoration:none;color:inherit}
+svg.ic{display:inline-block;vertical-align:middle;flex-shrink:0}
+
+/* ── 상단 네비바 ── */
+.top-nav{background:#1e1b4b;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.06)}
+.top-nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:54px;gap:16px}
+.tn-back{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.5);padding:6px 12px;border-radius:6px;transition:all .15s}
+.tn-back:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
+.tn-title{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tn-actions{margin-left:auto;display:flex;gap:8px}
+.tn-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:7px;font-size:12.5px;font-weight:500;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);cursor:pointer;transition:all .15s}
+.tn-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+.toc-toggle{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);cursor:pointer;flex-shrink:0}
+
+/* ── 레이아웃 ── */
+.layout{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:270px 1fr;gap:0;min-height:calc(100vh - 54px)}
+
+/* ── 사이드바 ── */
+.sidebar{border-right:1px solid #e2e8f0;background:#fff;position:sticky;top:54px;height:calc(100vh - 54px);overflow-y:auto;padding:20px 0;scrollbar-width:thin}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+.toc-header{padding:0 20px 14px;border-bottom:1px solid #e2e8f0;margin-bottom:10px}
+.toc-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:#6366f1;background:#e0e7ff;padding:3px 9px;border-radius:20px;margin-bottom:8px;letter-spacing:.3px}
+.toc-doc-title{font-size:14px;font-weight:700;color:#0f172a;line-height:1.45}
+.toc-group{padding:4px 0}
+.toc-ch{display:block;padding:8px 20px;font-size:12.5px;font-weight:700;color:#64748b;letter-spacing:.3px;border-left:2.5px solid transparent;transition:all .12s;cursor:pointer}
+.toc-ch:hover{color:#0f172a;background:#f8fafc}
+.toc-ch.active{color:#6366f1;border-left-color:#6366f1;background:#eef2ff}
+.toc-link{display:block;padding:5px 20px 5px 30px;font-size:13px;color:#64748b;line-height:1.5;border-left:2.5px solid transparent;transition:all .12s;cursor:pointer}
+.toc-link:hover{color:#6366f1;background:#eef2ff}
+.toc-link.active{color:#6366f1;font-weight:600;border-left-color:#6366f1;background:#eef2ff}
+
+/* ── 본문 ── */
+.main{padding:36px 48px 80px;max-width:860px}
+
+/* 문서 헤더 */
+.doc-header{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid #e2e8f0}
+.doc-sup{font-size:12.5px;font-weight:600;color:#6366f1;letter-spacing:.5px;margin-bottom:8px}
+.doc-h1{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:700;color:#0f172a;line-height:1.4;margin-bottom:12px}
+.doc-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:#94a3b8;margin-bottom:14px}
+.doc-meta span{display:flex;align-items:center;gap:4px}
+.doc-abstract{background:#eef2ff;border-left:4px solid #6366f1;border-radius:0 10px 10px 0;padding:16px 20px;font-size:14px;color:#312e81;line-height:1.75}
+
+/* 챕터 헤더 */
+.ch-header{margin:48px 0 24px;padding:20px 24px;background:linear-gradient(135deg,#312e81,#1e1b4b);border-radius:12px;color:#fff;scroll-margin-top:70px}
+.ch-num{font-size:12px;font-weight:600;color:#a5b4fc;letter-spacing:1px;margin-bottom:4px}
+.ch-title{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700}
+
+/* 섹션 헤더 */
+.sec-head{margin:32px 0 16px;padding-bottom:10px;border-bottom:2px solid #6366f1;scroll-margin-top:70px}
+.sec-head h3{font-size:17px;font-weight:700;color:#0f172a;display:flex;align-items:center;gap:8px}
+.sec-head h3::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}
+
+/* 서브섹션 */
+.subsec{margin:24px 0 16px;scroll-margin-top:70px}
+.subsec h4{font-size:15px;font-weight:700;color:#1e293b;padding-left:14px;border-left:3px solid #818cf8;margin-bottom:12px}
+
+/* 전략 카드 */
+.strategy-card{margin:12px 0;border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+.strategy-card-hd{display:flex;align-items:center;gap:12px;padding:14px 18px;background:#f8fafc;border-bottom:1px solid #e2e8f0}
+.strategy-num{width:28px;height:28px;border-radius:8px;background:#6366f1;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.strategy-title{font-size:14.5px;font-weight:700;color:#0f172a}
+.strategy-body{padding:14px 18px;font-size:13.5px;color:#475569;line-height:1.75}
+.strategy-body p{margin-bottom:10px}
+.strategy-body p:last-child{margin-bottom:0}
+
+/* 핵심원리 카드 */
+.principle-card{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;margin-bottom:8px;transition:border-color .15s}
+.principle-card:hover{border-color:#818cf8}
+.principle-n{width:30px;height:30px;border-radius:8px;background:#6366f1;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.principle-body{}
+.principle-title{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:4px}
+.principle-desc{font-size:13px;color:#64748b;line-height:1.65}
+
+/* 산문 */
+.prose{margin-bottom:20px}
+.prose p{margin-bottom:14px;color:#334155}
+.prose strong{color:#0f172a;font-weight:600}
+
+/* 하이라이트 박스 */
+.highlight-box{margin:20px 0;padding:18px 22px;background:#eef2ff;border-left:4px solid #6366f1;border-radius:0 10px 10px 0;font-size:14px;color:#312e81;line-height:1.7}
+
+/* 인용 */
+.blockquote{margin:20px 0;padding:16px 20px;background:#f8fafc;border-left:4px solid #cbd5e1;border-radius:0 10px 10px 0;font-size:14px;color:#475569;font-style:italic;line-height:1.7}
+
+/* 원문 링크 배너 */
+.source-banner{margin:28px 0;padding:16px 20px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;display:flex;align-items:center;gap:14px}
+.source-banner-icon{width:40px;height:40px;border-radius:10px;background:#eef2ff;color:#6366f1;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.source-banner-body{flex:1;min-width:0}
+.source-banner-label{font-size:11.5px;font-weight:600;color:#6366f1;margin-bottom:3px}
+.source-banner-title{font-size:13.5px;font-weight:600;color:#0f172a;margin-bottom:2px}
+.source-banner-sub{font-size:12px;color:#94a3b8}
+.source-banner-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:8px;background:#6366f1;color:#fff;font-size:12.5px;font-weight:500;white-space:nowrap;transition:background .15s;flex-shrink:0}
+.source-banner-btn:hover{background:#4f46e5}
+
+/* 맨 위로 */
+.scroll-top{position:fixed;bottom:24px;right:24px;z-index:150;width:44px;height:44px;border-radius:50%;background:#6366f1;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(99,102,241,.35);opacity:0;transform:translateY(10px);transition:all .2s;pointer-events:none}
+.scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.scroll-top:hover{background:#4f46e5}
+
+/* 푸터 */
+.doc-footer{background:#0a2540;padding:24px 0;text-align:center;font-size:12px;color:rgba(255,255,255,.3)}
+
+/* 반응형 */
+@media(max-width:1024px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none;position:fixed;left:0;top:54px;width:300px;height:calc(100vh - 54px);z-index:180;box-shadow:6px 0 30px rgba(0,0,0,.15)}
+  .sidebar.open{display:block}
+  .sidebar-overlay{display:none;position:fixed;inset:0;top:54px;background:rgba(0,0,0,.3);z-index:170}
+  .sidebar-overlay.open{display:block}
+  .toc-toggle{display:flex}
+  .main{padding:24px 20px 60px}
+}
+@media(max-width:600px){
+  .doc-h1{font-size:22px}
+  .ch-header{padding:16px 18px}
+  .ch-title{font-size:18px}
+  .tn-title{display:none}
+  .source-banner{flex-direction:column;align-items:flex-start;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- 상단 네비바 -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <button class="toc-toggle" id="tocToggle" aria-label="목차 열기">
+      <svg class="ic" width="20" height="20"><use href="#i-menu"/></svg>
+    </button>
+    <a class="tn-back" href="teachers.html">
+      <svg class="ic" width="16" height="16"><use href="#i-chevron-l"/></svg>
+      교사용 지도서
+    </a>
+    <span class="tn-title">초등학교 교실에서의 기후 리터러시 – 펭귄과 북극곰 너머</span>
+    <div class="tn-actions">
+      <a class="tn-btn" href="https://beyondpenguins.ehe.osu.edu/issue/climate-change-and-the-polar-regions/climate-literacy-in-the-elementary-classroom" target="_blank">
+        <svg class="ic" width="13" height="13"><use href="#i-external"/></svg>
+        원문 보기
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="layout">
+
+<!-- 사이드바 목차 -->
+<aside class="sidebar" id="sidebar">
+  <div class="toc-header">
+    <div class="toc-badge">번역 아티클</div>
+    <div class="toc-doc-title">초등학교 교실에서의<br>기후 리터러시</div>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#intro">서론</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch1">전략 1. 핵심 원리 이해</a>
+    <a class="toc-link" href="#p1">핵심원리 1 — 태양</a>
+    <a class="toc-link" href="#p2">핵심원리 2 — 지구시스템</a>
+    <a class="toc-link" href="#p3">핵심원리 3 — 생물과 기후</a>
+    <a class="toc-link" href="#p4">핵심원리 4 — 자연·인공 변동</a>
+    <a class="toc-link" href="#p5">핵심원리 5 — 관측과 모델링</a>
+    <a class="toc-link" href="#p6">핵심원리 6 — 인간활동</a>
+    <a class="toc-link" href="#p7">핵심원리 7 — 기후변화의 영향</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch2">전략 2. 교육과정 연계</a>
+    <a class="toc-link" href="#s2-k4">K-4 과학</a>
+    <a class="toc-link" href="#s2-k8">K-8 과학</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch3">전략 3. 과학의 본성</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch4">전략 4. 자연과의 교감</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch5">전략 5. 변화를 이룰 수 있다는 믿음</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-link" href="#source" style="font-weight:600">원문 출처</a>
+  </div>
+</aside>
+
+<!-- 본문 -->
+<main class="main">
+
+<div class="doc-header">
+  <div class="doc-sup">초등교사를 위한 기후교육 아티클 · KIOST 강현우 책임연구원 번역</div>
+  <h1 class="doc-h1">초등학교 교실에서의 기후 리터러시<br>— 펭귄과 북극곰 너머</h1>
+  <div class="doc-meta">
+    <span><svg class="ic" width="13" height="13"><use href="#i-users"/></svg> 번역: 한국해양과학기술원 강현우 책임연구원</span>
+    <span><svg class="ic" width="13" height="13"><use href="#i-book"/></svg> 원문: Beyond Penguins and Polar Bears, OSU</span>
+  </div>
+  <div class="doc-abstract">
+    기후변화 정보는 도처에 있지만, 초등학생에게 효과적으로 가르치는 방법은 무엇일까요? 이 아티클은 교사가 기후 리터러시를 갖추고 학생들을 이끌기 위한 <strong>5가지 핵심 전략</strong>을 제시합니다. 기후과학의 핵심 원리를 이해하고, 교육과정과 연계하며, 과학의 본성을 가르치고, 자연과의 교감을 촉진하고, 아이들이 스스로 변화를 만들 수 있다는 믿음을 심어주는 것이 핵심입니다.
+  </div>
+</div>
+
+<!-- 서론 -->
+<div class="ch-header" id="intro">
+  <div class="ch-num">INTRODUCTION</div>
+  <div class="ch-title">서론</div>
+</div>
+
+<div class="prose">
+  <p>기후변화 정보는 도처에 있다. 학생들은 지구온난화라는 용어를 쉽게 접할 수 있다. 북극곰과 빙하 사진을 자주 볼 수 있고, 그 중요성에 대해 친구나 가족들로부터 많은 얘기를 듣는 세상이 되었다. 이런 연유로 많은 학생들이 기후변화와 그 의미에 대해서 종종 질문하곤 한다. <strong>초등학교에서 기후변화에 대해 알려 줄 수 있는 적절한 방법은 무엇일까?</strong></p>
+  <p>학생들이 이 주제에 관심을 갖는 반면에, 많은 기후변화 개념들은 복잡한 상호작용, 지질학적 시간, 전지구적 프로세스에 대한 시각 등을 포함하고 있어 어린 학생들에게는 수준이 너무 높을 수 있다. 게다가 기후변화를 겪으면서 보게 되는 친숙한 풍경의 파괴, 생물종들의 위험에 대한 정서적 불안이 있을 수도 있다.</p>
+  <p>이런 어려움에도 불구하고, <strong>기후 리터러시와 의사 결정에 미치는 기후 정보에 대한 기초 교양을 습득하기에는 초등학생 시기가 적절하다.</strong></p>
+</div>
+
+<div class="highlight-box">
+  <strong>기후변화에 교양 있는 사람이란?</strong><br>
+  · 지구 기후시스템의 핵심 원리 이해<br>
+  · 기후 과학 정보 평가 방법 습득<br>
+  · 기후와 기후변화에 대한 소통 능력 배양<br>
+  · 기후에 영향을 미치는 행동에 대한 이해와 책임 있는 결정
+</div>
+
+<div class="prose">
+  <p>초등교사들이 학생들에게 기후 교양의 기초를 제공하기 위해서는 선생님들 스스로 기후 교양을 지녀야 한다. 이를 위해서는 초등과학이 기후 개념과 어떻게 연결되어 있는지 이해해야 하며, 학생들이 과학의 본성을 이해하고, 자연과의 연결고리를 찾아낼 수 있도록 도와줘야 한다. 또한 학생들에게 그들을 둘러싼 세상을 변화시킬 수 있는 기회를 제공해야 한다.</p>
+</div>
+
+<!-- 전략 1 -->
+<div class="ch-header" id="ch1">
+  <div class="ch-num">전략 1</div>
+  <div class="ch-title">교사가 먼저 기후과학 핵심 원리 이해하기</div>
+</div>
+
+<div class="prose">
+  <p>'기후과학의 핵심원리'는 기후 교양을 구성하는 원리와 개념의 프레임워크이다. 미국 교과과정(K-12) 커뮤니티를 위해 2008년 봄에 처음 발간되었으며, 2009년 봄에 개인과 커뮤니티를 위한 가이드로서 개정되었다. 기후 과학의 핵심 원리는 다음과 같은 지침으로 시작한다.</p>
+</div>
+
+<div class="highlight-box">
+  인간은 기후변화와 그 영향을 줄일 수 있는 행동을 할 수 있다.
+</div>
+
+<!-- 핵심원리 1 -->
+<div class="subsec" id="p1">
+  <h4>핵심원리 1 — 태양은 지구 기후시스템의 핵심 에너지원이다</h4>
+</div>
+<div class="prose">
+  <p>핵심원리 1은 지구의 에너지 균형과 태양-지구 연결고리 간의 물리학 및 역학적 특성과 관련이 있다. 태양으로부터 복사되는 에너지는 지구 대기를 통과하면서 일부는 차단되고 일부는 들어오며, 대기를 통과한 에너지는 지면에 닿아 육상과 수면에서 흡수된다. 이 열은 다시 열적외선으로 바뀌어 지구 표면으로부터 우주로 복사된다. 이 때 대기 중의 특별한 기체들은 우주로 방출되는 열적외선을 포획하여 지구 밖으로 나가지 못하게 함으로써 결과적으로 대기를 데우는데, 이것이 <strong>'온실효과'</strong>이다.</p>
+  <p>어떤 학생들은 기후변화에 대해서 들은 것들로 인해 '온실효과는 나쁜 것이다'라고 생각할 수 있다. 사실 온실효과로 인해 지구는 생물이 살아가기에 충분한 온도를 유지할 수 있는 것이다. 하지만 증가된 이산화탄소 배출과 다른 온실기체들이 이런 자연적인 온실효과를 증폭함으로써 지구 밖으로 나가는 열적외선을 더 많이 붙잡는 바람에 기온이 올라가는 것이다.</p>
+</div>
+
+<!-- 핵심원리 2 -->
+<div class="subsec" id="p2">
+  <h4>핵심원리 2 — 기후는 지구시스템을 구성하는 요소들 간의 복잡한 상호작용에 의해서 조율된다</h4>
+</div>
+<div class="prose">
+  <p>핵심원리 2는 기후 과정을 구동하는 복잡한 상호작용에 관한 것이다. 육지, 눈, 얼음, 생물, 해양, 대기 간의 상호작용은 온실효과뿐만 아니라 다른 기후 과정을 발생시킨다. 이런 상호작용에는 복잡성과 다학제성이 내재되어 있다.</p>
+  <p>초등학생 수준의 과학 교육은 통합적이고 다학제적이기 때문에, 교사들은 학생들에게 생명과학, 물리학, 지구과학이 서로 연결되어 있다는 것을 이해하는 데 도움을 줄 수 있다. 진정한 의미에서의 '시스템적 사고'는 발달단계에 있는 어린 학생들의 지적 수준을 넘어서는 것이지만, 지구 전체에 걸쳐 연결되고 상호작용하는 과정들에 대한 씨앗 심기는 장차 더욱 복잡한 사고를 할 수 있는 기초를 제공할 수 있다.</p>
+</div>
+
+<!-- 핵심원리 3 -->
+<div class="subsec" id="p3">
+  <h4>핵심원리 3 — 지구상의 모든 생물은 기후에 의존하고, 기후에 적응하며, 기후에 영향을 미친다</h4>
+</div>
+<div class="prose">
+  <p>수십억 년 동안 유기체(생명체)들은 기후에 영향을 받아 왔고 또 영향을 끼쳐 왔다. 그때부터 쭉 미생물들은 대기의 조성(구성물질)을 바꿔 왔다. 생명체에 기후가 미치는 영향은 직접적일 수도 있고 또는 간접적일 수도 있다.</p>
+  <p>지구 규모에서의 변화는 관측 가능하지만, 인간을 포함한 생명체들은 대체로 온도, 강수량, 습도, 그리고 일조량의 특정 범위 내에서 생존한다. 자신들의 정상적인 활동 범위를 벗어나 기후 조건에 노출된 생명체들은 적응하거나, 이동(이주)해야 하고, 그렇지 못하면 죽는다. <strong>우리가 이해하는 오늘날의 인류 문명은 상대적으로 따뜻한 간빙기에 해당하는 지난 12,000년 이내의 홀로세 기간 중에 발달하였다.</strong></p>
+</div>
+
+<!-- 핵심원리 4 -->
+<div class="subsec" id="p4">
+  <h4>핵심원리 4 — 자연적인 변동 원인과 인공적인 프로세스에 의해 기후는 시공간에 따라 달라진다</h4>
+</div>
+<div class="prose">
+  <p>핵심원리 4는 날씨와 기후의 차이, 자연적인 기후변동성에 영향을 주는 엘니뇨/남방진동과 같은 기후 과정, 그리고 자연적으로 발생하는 역학에 의해 시동될 수 있는 갑작스러운 기후 변화 등과 연관된 것이다.</p>
+  <p>지구의 장기 기후 변동을 유발하는 자연적인 과정은 최근 수십 년에 걸쳐 나타나는 급격한 기후 변화를 설명할 수 없다. 사용 가능한 모든 증거들과 더불어 이를 설명할 수 있는 유일한 설명은 <strong>최근 기후변화에 대한 인간활동의 책임이 점점 더 커졌다</strong>는 것이다.</p>
+  <div class="blockquote">'과학적 불확실성'은 일상의 불확실성과 다르다. 더 많이 알수록 불확실성의 범위는 더 작아지고 우리의 주장에 대한 확신은 커진다. IPCC 제6차 평가보고서는 인간활동에 의한 온실기체 증가가 기후변화의 원인임을 확정하였다.</div>
+</div>
+
+<!-- 핵심원리 5 -->
+<div class="subsec" id="p5">
+  <h4>핵심원리 5 — 관측과 이론 연구, 모델링을 통해 지구 기후 체계에 대한 이해를 높일 수 있다</h4>
+</div>
+<div class="prose">
+  <p>기후를 얘기할 때, 어떻게 과학자들은 그들이 안다는 것을 알까? 연구에 따르면 논문을 열심히 출간하는 기후 연구자들은 인간활동이 기후시스템을 바꾼다는 것에 동의하는 반면, 일반 대중은 과학자들이 여전히 기후변화의 원인에 대해 토론하는 것처럼 느끼는 경우가 많다.</p>
+  <p>지구시스템에 대한 우리의 이해는 위성, 개선된 모형, 그리고 새로운 관측 자료들의 유입을 통해 모아지는 전지구 자료의 사용가능성에 달려있다. 과학자들이 새로운 발견을 논문으로 출간할 때는 그 원고를 전문 분야의 다른 연구자들이 검토한다. <strong>이런 동료 평가체계는 과학적 과정의 핵심적인 조각이다.</strong></p>
+</div>
+
+<!-- 핵심원리 6 -->
+<div class="subsec" id="p6">
+  <h4>핵심원리 6 — 인간활동은 기후체계에 영향을 미친다</h4>
+</div>
+<div class="prose">
+  <p>여섯 번째 핵심원리는 인간활동에 의해 만들어진 기후변화의 원인과 결과에 결부된다. 150여 년에 걸쳐 온실효과에 대한 이야기가 대두되었고, 지난 100여 년 동안 인간활동으로 인한 온실기체 방출을 통해서 잠재적으로 지구 온도를 증가시켜 왔다.</p>
+  <p>기후에 대한 과학적 연구를 망라하는 총체적인 합의사항은 <strong>20세기 후반부터 관측되고 있는 전지구 평균 온도의 상승 원인이 인간활동 때문일 가능성이 매우 높다</strong>는 것이며, 특히 화석연료를 태움에 따라 발생한 온실기체의 증가 때문이다. 만약 다음 세기 온도 상승이 2~3℃를 넘는다면 긍정적인 영향보다는 부정적인 영향의 결과가 훨씬 크게 나타날 것으로 예상된다.</p>
+</div>
+
+<!-- 핵심원리 7 -->
+<div class="subsec" id="p7">
+  <h4>핵심원리 7 — 기후변화는 지구시스템과 인간의 생존에 심각한 영향을 미친다</h4>
+</div>
+<div class="prose">
+  <p>일곱 번째 핵심원리는 기후변화의 현재와 미래에 관한 이야기이다. 기후변화가 인간과 환경에 미치는 영향은 이제 자원 관리자, 의료 전문가, 응급 관리자, 보험회사, 국방기획 담당자 등의 관심 영역이 되었다.</p>
+  <p>바닷물은 저지대를 채우기 시작했고 연안의 담수원을 오염시킨다. 해수면 상승은 폭풍 해일이 집과 건물에 손해를 끼칠 위험을 증가시킨다. 강수 양상과 온도 조건의 변화는 담수 자원의 분포와 활용성을 바꿔버릴 것이다. <strong>동물, 식물, 박테리아 그리고 바이러스 등이 성장하기 좋은 기후 조건을 찾아 이동할 것이다.</strong></p>
+</div>
+
+<!-- 전략 2 -->
+<div class="ch-header" id="ch2">
+  <div class="ch-num">전략 2</div>
+  <div class="ch-title">교육과정이 기후 교양(리터러시)과 어떻게 연계되는지 파악하기</div>
+</div>
+
+<div class="prose">
+  <p>초등학생들에게 있어 과학적 표준과 과학적 소양이란 개념은 기후변화의 복잡성에 대한 이해를 위한 무대를 설치한다. K-2 학생들에게는 "태양은 땅과 공기와 물을 데운다"는 과학적 교양이 '태양은 지구 기후 체계의 주된 에너지원이다'라는 핵심 원리 1을 이해하는 기초 개념이다.</p>
+  <p>수업에서 다루는 기초 과학이 기후변화와 연계되는 방법을 이해하는 선생님은 적절한 때가 되었을 때 학생들이 그 연결고리를 터득할 수 있도록 도와줄 수 있다.</p>
+</div>
+
+<div class="sec-head" id="s2-k4"><h3>K-4 과학 교육과정과의 연계</h3></div>
+<div class="prose">
+  <p><strong>K-4 물리 — 빛, 열, 전기와 자기</strong></p>
+  <p>빛은 물체에 부딪히기 전까지 직진한다. 빛은 거울에 반사될 수 있으며 렌즈에 의해 굴절될 수 있고, 또 물체에 의해 흡수될 수 있다. → 온실효과의 물리적 기반과 연결됩니다.</p>
+  <p><strong>K-4 지구와 우주 과학 — 하늘의 물체</strong></p>
+  <p>태양은 지구의 온도를 유지할 수 있는 빛과 열을 제공한다. → 핵심원리 1과 직결됩니다.</p>
+  <p><strong>K-4 개인과 사회적 관점에서의 과학 — 환경 변화</strong></p>
+  <p>환경 변화의 원인은 자연적일 수도 있고 인위적일 수도 있다. 오염이란 사람을 포함한 생물의 건강, 생존, 활동에 영향을 미치는 환경 변화를 일컫는다. → 핵심원리 6과 연결됩니다.</p>
+</div>
+
+<div class="sec-head" id="s2-k8"><h3>K-8 과학 교육과정과의 연계</h3></div>
+<div class="prose">
+  <p><strong>K-8 물리</strong></p>
+  <p>에너지는 다양한 방법으로 전달된다. 태양의 에너지는 가시광선, 적외선, 자외선 등을 포함한 다양한 파장을 지닌 빛의 형태로 지구에 도달한다. 태양은 지구 표면의 변화를 야기하는 주요 에너지원이다.</p>
+  <p><strong>K-8 지구와 우주 과학 — 태양계 일원으로서의 지구</strong></p>
+  <p>태양은 식물의 성장, 바람, 해류 그리고 물의 순환 등 지구 표면에 나타나는 다양한 현상들의 핵심 에너지원이다. 계절은 지구 표면에 닿는 태양에너지가 지구 자전축의 기울기와 낮의 길이에 따라 달라지기 때문에 나타나는 결과이다.</p>
+</div>
+
+<!-- 전략 3 -->
+<div class="ch-header" id="ch3">
+  <div class="ch-num">전략 3</div>
+  <div class="ch-title">되도록 빨리, 되도록 자주 과학의 본성에 대해서 가르치기</div>
+</div>
+
+<div class="prose">
+  <p>기후변화에 대한 일반 사람들의 대화는 종종 과학적 과정들에 대한 이해가 부족함을 드러낸다. 과학자들은 그들이 알고 있는 것을 어떻게 알까? 무슨 방법으로 얻었든지 간에 제시된 또는 얻어낸 증거와 관련해서 어떻게 논증할 수 있을까?</p>
+  <p><strong>초등학생들은 과학자가 되는 방식을 배울 수 있고 또 과학적 사고를 하는 생각의 습관 등을 연습할 수 있다.</strong> 증거 기반의 주장, 동료 평가, 불확실성의 범위에 대한 개념을 일찍부터 익히는 것은 기후 리터러시의 탄탄한 토대가 된다.</p>
+</div>
+
+<!-- 전략 4 -->
+<div class="ch-header" id="ch4">
+  <div class="ch-num">전략 4</div>
+  <div class="ch-title">자연과의 교감 촉진</div>
+</div>
+
+<div class="prose">
+  <p>리차드 루브(Richard Louv)는 '숲속의 마지막 아이'라는 그의 책에서 야외에서의 경험을 통해 아이들로 하여금 자연과의 교감을 형성하고 발달시키는 법을 강조했다.</p>
+  <p><strong>자연 일기 쓰기, 산책, 캠핑 또는 낚시, 학교 텃밭 가꾸기, 야생동물 서식지 만들기</strong> 등의 경험은 학생들이 자연세계에 대해서 배우고 돌볼 수 있는 능력을 키우는 데 도움이 된다. 직접 경험을 통한 자연과의 연결감은 기후변화가 추상적인 문제가 아니라 내 주변의 문제임을 느끼게 해준다.</p>
+</div>
+
+<!-- 전략 5 -->
+<div class="ch-header" id="ch5">
+  <div class="ch-num">전략 5</div>
+  <div class="ch-title">아이들이 변화를 이룰 수 있다는 믿음 갖기</div>
+</div>
+
+<div class="prose">
+  <p>아이들이 세상에서 변화를 만들어낼 수 있게 가르친다는 것은 그들이 커서 무슨 일을 하든지 간에 도움이 될 것이다. 재활용, 전구 교환, 학교로 하여금 보전을 하도록 요구하는 것 등이 <strong>학생들로 하여금 스스로를 행동하거나 주도적인 사람이라고 여길 수 있게 도와준다.</strong></p>
+  <p>이것은 아이들이 환경에 대해서 듣게 되는 혼란스러운 메시지를 처리하거나 단지 문제로서가 아닌 해결책과 기회를 배운다는 측면에서 매우 중요하다.</p>
+</div>
+
+<div class="highlight-box">
+  여기서 거론된 많은 이야기들은 이미 여러분들이 교실에서 하고 있는 것들일 것이다. 교사들이 이미 하고 있는 일들이 기후 그림에 어떻게 걸맞아 들어가는 지를 안다면 학생들이 그 길에서 다음 단계를 준비하는 데 도움을 줄 수 있을 것이다.
+</div>
+
+<!-- 원문 출처 -->
+<div class="source-banner" id="source">
+  <div class="source-banner-icon">
+    <svg class="ic" width="22" height="22"><use href="#i-external"/></svg>
+  </div>
+  <div class="source-banner-body">
+    <div class="source-banner-label">원문 출처</div>
+    <div class="source-banner-title">Beyond Penguins and Polar Bears — Teaching Climate Literacy in the Elementary Classroom</div>
+    <div class="source-banner-sub">The Ohio State University · College of Education and Human Ecology</div>
+  </div>
+  <a class="source-banner-btn" href="https://beyondpenguins.ehe.osu.edu/issue/climate-change-and-the-polar-regions/climate-literacy-in-the-elementary-classroom" target="_blank">
+    <svg class="ic" width="13" height="13"><use href="#i-external"/></svg>
+    원문 보기
+  </a>
+</div>
+
+</main>
+</div><!-- /layout -->
+
+<button class="scroll-top" id="scrollTop" aria-label="맨 위로">
+  <svg class="ic" width="20" height="20"><use href="#i-arrow-up"/></svg>
+</button>
+
+<footer class="doc-footer">© KIOST 해양기후예측센터 · 번역: 강현우 책임연구원</footer>
+
+<script>
+/* 목차 스크롤 스파이 */
+const allLinks = document.querySelectorAll('.toc-link[href^="#"], .toc-ch[href^="#"]');
+const targets = [];
+allLinks.forEach(link => {
+  const id = link.getAttribute('href').slice(1);
+  const el = document.getElementById(id);
+  if (el) targets.push({ link, el });
+});
+function updateToc() {
+  let active = null;
+  for (const { link, el } of targets) {
+    if (el.getBoundingClientRect().top <= 80) active = link;
+  }
+  allLinks.forEach(l => l.classList.remove('active'));
+  if (active) active.classList.add('active');
+}
+window.addEventListener('scroll', updateToc, { passive: true });
+updateToc();
+
+/* 모바일 사이드바 */
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const toggle  = document.getElementById('tocToggle');
+const openSidebar  = () => { sidebar.classList.add('open');  overlay.classList.add('open');  };
+const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+toggle.addEventListener('click', () => sidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+overlay.addEventListener('click', closeSidebar);
+sidebar.addEventListener('click', e => { if (e.target.closest('.toc-link') || e.target.closest('.toc-ch')) closeSidebar(); });
+
+/* 맨 위로 버튼 */
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 400); }, { passive: true });
+scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
