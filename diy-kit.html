@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만들기 키트 번역본 – 해양기후 맞춤 정보</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-chart"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+  <symbol id="i-globe"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-book"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+  <symbol id="i-users"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-file"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-chevron-r"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-chevron-l"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-star"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-translate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></symbol>
+  <symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></symbol>
+  <symbol id="i-info"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+  <symbol id="i-clock"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+</svg>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.65;
+  min-width: 320px;
+}
+a { text-decoration: none; color: inherit; }
+svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 36px; }
+
+/* ── 상단바 ── */
+.topbar { background: #0a2540; padding: 8px 0; font-size: 12px; color: rgba(255,255,255,.45); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+.topbar-links { display: flex; gap: 18px; }
+.topbar a { color: rgba(255,255,255,.6); }
+.topbar a:hover { color: #7dd3fc; }
+
+/* ── 네비게이션 ── */
+.navbar { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+.navbar .wrap { display: flex; align-items: center; height: 62px; }
+.logo { display: flex; align-items: center; gap: 12px; margin-right: 44px; flex-shrink: 0; }
+.logo-globe { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #0ea5e9, #0369a1); display: flex; align-items: center; justify-content: center; }
+.logo-name { font-size: 14.5px; font-weight: 700; color: #0a2540; line-height: 1.25; }
+.logo-sub  { font-size: 11px; color: #64748b; }
+.nav-links { display: flex; align-items: stretch; height: 62px; flex: 1; }
+.nav-a { padding: 0 18px; display: flex; align-items: center; font-size: 14px; color: #334155; white-space: nowrap; border-bottom: 2.5px solid transparent; transition: color .15s, border-color .15s; }
+.nav-a:hover { color: #0284c7; border-bottom-color: #bae6fd; }
+.nav-a.on   { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.btn-nav { padding: 6px 14px; border-radius: 8px; font-size: 13px; border: 1px solid #e2e8f0; background: #fff; color: #64748b; cursor: pointer; }
+.btn-nav:hover { background: #f8fafc; }
+.btn-nav.primary { background: #0284c7; color: #fff; border-color: #0284c7; font-weight: 500; }
+.btn-nav.primary:hover { background: #0369a1; }
+.hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; width: 42px; height: 42px; border-radius: 8px; border: 1px solid #e2e8f0; background: #fff; cursor: pointer; gap: 5px; margin-left: 8px; }
+.hamburger span { display: block; width: 18px; height: 2px; background: #334155; border-radius: 2px; transition: all .25s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; flex-direction: column; background: #fff; border-bottom: 1px solid #e2e8f0; padding: 6px 0 14px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { padding: 13px 24px; font-size: 15px; color: #334155; border-left: 3px solid transparent; transition: all .15s; }
+.mobile-menu a:hover, .mobile-menu a.on { color: #0284c7; border-left-color: #0284c7; background: #f0f9ff; }
+
+/* ── 히어로 ── */
+.page-hero { background: #0a2540; padding: 40px 0 44px; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, #0c4a6e 0%, transparent 65%); }
+.page-hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 40px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23f0f4f8' d='M0,20 C360,40 720,0 1080,20 C1260,30 1380,25 1440,23 L1440,40 L0,40 Z'/%3E%3C/svg%3E") no-repeat bottom/cover; }
+.page-hero .wrap { position: relative; z-index: 1; }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: rgba(255,255,255,.45); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,.6); }
+.breadcrumb a:hover { color: #7dd3fc; }
+.page-hero h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.page-hero p { font-size: 14.5px; color: #94a3b8; line-height: 1.7; max-width: 620px; }
+
+/* ── 탭 ── */
+.tab-nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 62px; z-index: 90; overflow-x: auto; }
+.tab-nav .wrap { display: flex; }
+.tab-a { padding: 14px 20px; font-size: 13.5px; color: #64748b; border-bottom: 2.5px solid transparent; transition: all .15s; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 7px; }
+.tab-a:hover { color: #0284c7; }
+.tab-a.on { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+
+/* ── 본문 ── */
+.page-bg { background: #f0f4f8; }
+.sec { padding: 44px 0 36px; }
+.divider { height: 1px; background: #e2e8f0; }
+
+#enso, #hurricane, #salinity, #ssp5 { scroll-margin-top: 130px; }
+
+.sec-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.sec-title { font-size: 16px; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 10px; }
+.sec-bar { width: 3px; height: 20px; background: #0284c7; border-radius: 2px; }
+.sec-sub { font-size: 13px; color: #64748b; margin-top: 6px; }
+
+/* ── 키트 상세 카드 ── */
+.kit-detail-card {
+  background: #fff; border-radius: 16px; border: 1px solid #e2e8f0;
+  overflow: hidden; transition: box-shadow .2s;
+}
+.kit-detail-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.07); }
+
+.kit-detail-header {
+  padding: 28px 30px 22px;
+  display: flex; align-items: flex-start; gap: 20px;
+}
+.kit-detail-icon {
+  width: 60px; height: 60px; border-radius: 16px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.kit-detail-meta { flex: 1; }
+.kit-detail-type { font-size: 11.5px; padding: 3px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; margin-bottom: 8px; }
+.kit-detail-title { font-size: 18px; font-weight: 700; color: #0f172a; line-height: 1.35; margin-bottom: 4px; }
+.kit-detail-subtitle { font-size: 13px; color: #64748b; }
+
+.kit-detail-body { padding: 0 30px 28px; }
+
+/* 설명 + 미리보기 2단 */
+.kit-detail-cols { display: flex; gap: 28px; margin-bottom: 22px; }
+.kit-detail-desc-col { flex: 1; min-width: 0; }
+.kit-detail-preview { width: 200px; flex-shrink: 0; }
+.kit-preview-box {
+  width: 200px; height: 200px; border-radius: 12px; border: 1px solid #e2e8f0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: #94a3b8; text-align: center;
+  background: #f8fafc; line-height: 1.6;
+}
+
+.kit-desc { font-size: 13.5px; color: #64748b; line-height: 1.7; margin-bottom: 16px; }
+
+/* 만드는 법 스텝 */
+.kit-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.kit-step { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #475569; }
+.kit-step-num {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+}
+
+/* 태그 */
+.kit-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.kit-tag { font-size: 12px; padding: 3px 10px; border-radius: 20px; background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+
+/* 메타 */
+.kit-meta { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; }
+.kit-meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #94a3b8; }
+
+/* 구분선 */
+.kit-divider { height: 1px; background: #f1f5f9; margin-bottom: 20px; }
+
+/* 액션 버튼 */
+.kit-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.gl-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 18px; border-radius: 9px; font-size: 13px; font-weight: 500;
+  transition: all .15s; cursor: pointer; border: none;
+}
+.gl-btn.primary { background: #0284c7; color: #fff; }
+.gl-btn.primary:hover { background: #0369a1; }
+.gl-btn.outline { background: #fff; color: #0284c7; border: 1px solid #bae6fd; }
+.gl-btn.outline:hover { background: #f0f9ff; border-color: #0284c7; }
+.gl-btn.secondary { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+.gl-btn.secondary:hover { background: #e2e8f0; }
+
+/* 출처 배지 */
+.source-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; color: #0369a1; background: #e0f2fe; padding: 4px 10px; border-radius: 8px;
+}
+
+/* ── 상단 요약 배너 ── */
+.summary-banner {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+  padding: 24px 28px; margin-bottom: 32px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+}
+.summary-item {
+  text-align: center; padding: 8px 12px;
+  border-right: 1px solid #f1f5f9;
+}
+.summary-item:last-child { border-right: none; }
+.summary-num { font-size: 26px; font-weight: 700; color: #0284c7; line-height: 1.2; }
+.summary-label { font-size: 12px; color: #64748b; margin-top: 3px; }
+
+/* ── 푸터 ── */
+footer { background: #0a2540; padding: 28px 0 22px; margin-top: 16px; }
+footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.f-logo { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; }
+.f-sub  { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.7; }
+.f-links { display: flex; gap: 20px; }
+.f-links a { font-size: 12px; color: rgba(255,255,255,.45); }
+.f-links a:hover { color: #7dd3fc; }
+.f-copy { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+
+/* ── 반응형 ── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .topbar-links { display: none; }
+  .summary-banner { grid-template-columns: repeat(2,1fr); }
+  .summary-item:nth-child(2) { border-right: none; }
+}
+@media (max-width: 700px) {
+  .kit-detail-cols { flex-direction: column; }
+  .kit-detail-preview { width: 100%; }
+  .kit-preview-box { width: 100%; height: 160px; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px; }
+  .page-hero h1 { font-size: 22px; }
+  .kit-detail-header { flex-direction: column; gap: 14px; }
+  .kit-actions { flex-direction: column; }
+  .gl-btn { justify-content: center; }
+  footer .wrap { flex-direction: column; }
+  .summary-banner { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- 상단바 -->
+<div class="topbar">
+  <div class="wrap">
+    <a href="https://www.ocpc.kr/" target="_blank">한국해양과학기술원 (KIOST) · 해양기후예측센터</a>
+    <div class="topbar-links">
+      <a href="https://www.kiost.ac.kr/kor.do" target="_blank">KIOST 메인</a>
+      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+    </div>
+  </div>
+</div>
+
+<!-- 네비게이션 -->
+<nav class="navbar" id="navbar">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <div class="logo-globe">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+          <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.2"/>
+          <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="white" stroke-width="1.2"/>
+          <line x1="2" y1="10" x2="18" y2="10" stroke="white" stroke-width="1.2"/>
+          <line x1="3.5" y1="6" x2="16.5" y2="6" stroke="white" stroke-width=".8"/>
+          <line x1="3.5" y1="14" x2="16.5" y2="14" stroke="white" stroke-width=".8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">한반도 해양기후 정보 서비스</div>
+        <div class="logo-sub">koceanclimate.kr</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-a" href="index.html#sec-climate">해양기후 변화</a>
+      <a class="nav-a" href="index.html#sec-future">미래 전망</a>
+      <a class="nav-a on" href="education.html">맞춤 정보</a>
+      <a class="nav-a" href="index.html#sec-expert">전문가 서비스</a>
+      <a class="nav-a" href="research.html">연구사업 안내</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가 데이터 ↗</a>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- 모바일 메뉴 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#sec-climate">해양기후 변화</a>
+  <a href="index.html#sec-future">미래 전망</a>
+  <a href="education.html" class="on">맞춤 정보</a>
+  <a href="index.html#sec-expert">전문가 서비스</a>
+  <a href="research.html">연구사업 안내</a>
+</div>
+
+<!-- 히어로 -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">홈</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <a href="education.html">맞춤 정보</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <a href="students.html">초중고 학생용</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <span>만들기 키트 번역본</span>
+    </div>
+    <h1>만들기 키트 번역본</h1>
+    <p>NOAA·NWS에서 개발한 해양기후 교육 키트를 KIOST 해양기후예측센터가 한국어로 번역했습니다.<br>
+    오리고, 붙이고, 돌리며 — 지구의 기후를 손으로 직접 느껴보세요.</p>
+  </div>
+</section>
+
+<!-- 탭 -->
+<div class="tab-nav" id="tabNav">
+  <div class="wrap">
+    <a class="tab-a on" href="#enso" data-tab="enso">🌊 엘니뇨–라니냐</a>
+    <a class="tab-a" href="#hurricane" data-tab="hurricane">🌀 열대 저기압 경로</a>
+    <a class="tab-a" href="#salinity" data-tab="salinity">🔵 해수면 염분</a>
+    <a class="tab-a" href="#ssp5" data-tab="ssp5">🌡 2050 지표면 온도</a>
+  </div>
+</div>
+
+<!-- 본문 -->
+<div class="page-bg">
+<div class="wrap" style="padding-top:36px; padding-bottom:8px;">
+
+  <!-- 요약 배너 -->
+  <div class="summary-banner">
+    <div class="summary-item">
+      <div class="summary-num">4종</div>
+      <div class="summary-label">번역 키트</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">2종</div>
+      <div class="summary-label">지구본 조립형</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">1종</div>
+      <div class="summary-label">회전 원판형</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">2024</div>
+      <div class="summary-label">번역 발행연도</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ① 엘니뇨-라니냐 -->
+<section class="sec" id="enso">
+  <div class="wrap">
+
+    <div class="kit-detail-card">
+      <div class="kit-detail-header">
+        <div class="kit-detail-icon" style="background:linear-gradient(135deg,#0ea5e9,#0369a1);">
+          <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+            <circle cx="20" cy="20" r="14" stroke="white" stroke-width="1.5" opacity=".5"/>
+            <path d="M8 20 Q14 12 20 20 Q26 28 32 20" stroke="white" stroke-width="2" fill="none"/>
+            <circle cx="20" cy="20" r="4" fill="white" opacity=".85"/>
+          </svg>
+        </div>
+        <div class="kit-detail-meta">
+          <span class="kit-detail-type" style="background:#e0f2fe; color:#0369a1;">
+            <svg class="ic" width="10" height="10"><use href="#i-star"/></svg>
+            회전 원판형 · 한국어 번역
+          </span>
+          <div class="kit-detail-title">엘니뇨 – 라니냐 만들기 키트</div>
+          <div class="kit-detail-subtitle">ENSO(엘니뇨 남방진동)의 원리를 회전 원판으로 체험</div>
+        </div>
+      </div>
+
+      <div class="kit-detail-body">
+        <div class="kit-detail-cols">
+          <div class="kit-detail-desc-col">
+            <p class="kit-desc">
+              열대 태평양 해역의 해양-대기 상호작용인 ENSO를 직접 조작하며 이해하는 회전 원판 키트입니다.
+              원판을 돌리면 <strong>엘니뇨 → 중립 → 라니냐</strong> 상태에 따라 서태평양·동태평양의
+              해면수온, 해면기압, 강수량, 수온약층 깊이 변화를 한눈에 비교할 수 있습니다.
+            </p>
+            <p class="kit-desc">
+              ENSO는 보통 2~7년 간격으로 무작위로 나타나며, 전 세계 기상 패턴에 광범위한 영향을 미치는
+              중요한 해양기후 변수입니다. 키트 뒷면에는 계절별(12–2월 / 6–8월) 전 세계 기상 패턴 지도도 포함되어 있습니다.
+            </p>
+
+            <div class="kit-steps">
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#0284c7;">1</span>
+                1면과 2면을 가위선을 따라 뜯어냅니다.
+              </div>
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#0284c7;">2</span>
+                1면 아래에 2면을 겹쳐놓고 중앙에 고정장치를 설치합니다.
+              </div>
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#0284c7;">3</span>
+                2면의 A 구멍을 통과하도록 고정장치를 설치하면 완성!
+              </div>
+            </div>
+
+            <div class="kit-tags">
+              <span class="kit-tag">초중고 전체</span>
+              <span class="kit-tag">ENSO · 엘니뇨 · 라니냐</span>
+              <span class="kit-tag">해양-대기 상호작용</span>
+              <span class="kit-tag">회전 원판 조립</span>
+              <span class="kit-tag">NOAA · NWS 원본</span>
+            </div>
+          </div>
+          <div class="kit-detail-preview">
+            <!-- TODO: 키트 미리보기 이미지를 넣어주세요. 예) <img src="images/enso_preview.jpg" ...> -->
+            <div class="kit-preview-box">
+              키트 미리보기 이미지<br>
+              <span style="font-size:11px;">(이미지 경로를 지정해 주세요)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kit-divider"></div>
+
+        <div class="kit-meta">
+          <span class="kit-meta-item">
+            <svg class="ic" width="12" height="12"><use href="#i-file"/></svg>
+            PDF · 총 4쪽
+          </span>
+          <span class="kit-meta-item">
+            <svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>
+            2024년 번역 (원본: 2023)
+          </span>
+          <span class="kit-meta-item">
+            KIOST 해양기후예측센터 번역
+          </span>
+          <span class="source-badge">
+            원본: NWS JetStream · www.weather.gov/jetstream
+          </span>
+        </div>
+
+        <div class="kit-actions">
+          <!-- TODO: href에 배포할 PDF 파일 경로를 넣어주세요. 예) href="files/241023_ENSO_만들기키트.pdf" -->
+          <a class="gl-btn primary" href="https://mysharedaddview.s3.ap-northeast-2.amazonaws.com/koceanclimate/ENSO_kit.pdf" download>
+            <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
+            키트 다운로드 (PDF)
+          </a>
+          <a class="gl-btn secondary" href="https://www.weather.gov/jetstream" target="_blank">
+            <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
+            원본 출처 보기
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ② 열대 저기압 경로 -->
+<section class="sec" id="hurricane">
+  <div class="wrap">
+
+    <div class="kit-detail-card">
+      <div class="kit-detail-header">
+        <div class="kit-detail-icon" style="background:linear-gradient(135deg,#f59e0b,#b45309);">
+          <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+            <circle cx="20" cy="20" r="14" stroke="white" stroke-width="1.5" opacity=".5"/>
+            <path d="M20 9 Q28 15 24 20 Q20 25 12 23 Q8 21 14 17 Q18 14 20 20" stroke="white" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+        <div class="kit-detail-meta">
+          <span class="kit-detail-type" style="background:#fef3c7; color:#92400e;">
+            <svg class="ic" width="10" height="10"><use href="#i-globe"/></svg>
+            지구본 조립형 · 한국어 번역
+          </span>
+          <div class="kit-detail-title">전 세계 열대 저기압 경로 만들기 키트</div>
+          <div class="kit-detail-subtitle">1950–2020년 허리케인·태풍·사이클론 경로를 직접 조립하는 지구본</div>
+        </div>
+      </div>
+
+      <div class="kit-detail-body">
+        <div class="kit-detail-cols">
+          <div class="kit-detail-desc-col">
+            <p class="kit-desc">
+              1950년부터 2020년까지 발생한 주요 폭풍의 이동 경로를 지구본 형태로 만드는 키트입니다.
+              각 선은 <strong>열대저기압·열대폭풍(파랑·청록색)</strong> 또는
+              <strong>태풍·허리케인·사이클론(노랑~빨강색)</strong>을 의미하며,
+              범례에는 허리케인 카테고리별(1~5) 최대 지속 풍속이 표시되어 있습니다.
+            </p>
+            <p class="kit-desc">
+              모든 폭풍이 같은 경로를 따르는 것은 아니지만 전반적으로 일정한 패턴과 경향이 나타납니다.
+              과거 폭풍 경로를 추적하는 것은 앞으로의 기상 현상을 더 정확하게 예측하는 데 중요한 자료가 됩니다.
+            </p>
+
+            <div class="kit-steps">
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#d97706;">1</span>
+                점선을 따라 각 조각을 잘라주세요.
+              </div>
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#d97706;">2</span>
+                회색 부분을 풀이나 테이프로 붙여 조각을 이어주세요.
+              </div>
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#d97706;">3</span>
+                고정장치를 사용해 북극 구멍을 통과시켜 지구본을 완성하세요.
+              </div>
+            </div>
+
+            <div class="kit-tags">
+              <span class="kit-tag">초중고 전체</span>
+              <span class="kit-tag">열대 저기압 · 태풍 · 허리케인</span>
+              <span class="kit-tag">1950–2020 경로 데이터</span>
+              <span class="kit-tag">지구본 조립</span>
+              <span class="kit-tag">NOAA SOS 원본</span>
+            </div>
+          </div>
+          <div class="kit-detail-preview">
+            <!-- TODO: 키트 미리보기 이미지를 넣어주세요. 예) <img src="images/hurricane_preview.jpg" ...> -->
+            <div class="kit-preview-box">
+              키트 미리보기 이미지<br>
+              <span style="font-size:11px;">(이미지 경로를 지정해 주세요)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kit-divider"></div>
+
+        <div class="kit-meta">
+          <span class="kit-meta-item">
+            <svg class="ic" width="12" height="12"><use href="#i-file"/></svg>
+            PDF · 총 3쪽
+          </span>
+          <span class="kit-meta-item">
+            <svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>
+            2024년 번역
+          </span>
+          <span class="kit-meta-item">
+            KIOST 해양기후예측센터 번역
+          </span>
+          <span class="source-badge">
+            원본: NOAA SOS · coast.noaa.gov/hurricanes
+          </span>
+        </div>
+
+        <div class="kit-actions">
+          <!-- TODO: href에 배포할 PDF 파일 경로를 넣어주세요. 예) href="files/Hurricane_Tracks.pdf" -->
+          <a class="gl-btn primary" href="https://mysharedaddview.s3.ap-northeast-2.amazonaws.com/koceanclimate/Hurricane_Tracks_kit.pdf" download>
+            <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
+            키트 다운로드 (PDF)
+          </a>
+          <a class="gl-btn secondary" href="https://coast.noaa.gov/hurricanes" target="_blank">
+            <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
+            원본 출처 보기
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ③ 해수면 염분 -->
+<section class="sec" id="salinity">
+  <div class="wrap">
+
+    <div class="kit-detail-card">
+      <div class="kit-detail-header">
+        <div class="kit-detail-icon" style="background:linear-gradient(135deg,#10b981,#065f46);">
+          <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+            <circle cx="20" cy="20" r="14" stroke="white" stroke-width="1.5" opacity=".5"/>
+            <path d="M8 22 Q12 16 16 20 Q20 24 24 18 Q28 12 32 18" stroke="white" stroke-width="2" fill="none"/>
+            <circle cx="20" cy="30" r="3" fill="white" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="kit-detail-meta">
+          <span class="kit-detail-type" style="background:#dcfce7; color:#166534;">
+            <svg class="ic" width="10" height="10"><use href="#i-globe"/></svg>
+            지구본 조립형 · 한국어 번역
+          </span>
+          <div class="kit-detail-title">해수면 염분 만들기 키트</div>
+          <div class="kit-detail-subtitle">전 세계 해수면 염분 분포(20~38 PSU)를 직접 조립하는 지구본</div>
+        </div>
+      </div>
+
+      <div class="kit-detail-body">
+        <div class="kit-detail-cols">
+          <div class="kit-detail-desc-col">
+            <p class="kit-desc">
+              암석의 풍화, 해수의 증발, 해빙의 형성 등으로 인해 바다가 염분화된 원리를 이해하고,
+              전 세계 해수면 염분 분포(20–38 PSU)를 지구본으로 직접 만드는 키트입니다.
+              강에서 유입되는 담수, 강수 및 얼음이 녹는 과정이 염분을 감소시키고,
+              그 결과 해수면의 염분 농도가 달라져 지구의 물 순환과 해양 순환에 큰 영향을 미친다는 것을 시각적으로 확인할 수 있습니다.
+            </p>
+
+            <div class="kit-steps">
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#059669;">1</span>
+                점선을 따라 각 조각을 잘라주세요.
+              </div>
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#059669;">2</span>
+                회색 부분을 풀이나 테이프로 붙여 조각을 이어주세요.
+              </div>
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#059669;">3</span>
+                고정장치를 사용해 북극 구멍을 통과시켜 지구본을 완성하세요.
+              </div>
+            </div>
+
+            <div class="kit-tags">
+              <span class="kit-tag">초중고 전체</span>
+              <span class="kit-tag">해수면 염분 · 염분 분포</span>
+              <span class="kit-tag">해양 순환 · 물 순환</span>
+              <span class="kit-tag">지구본 조립</span>
+              <span class="kit-tag">NOAA SOS 원본</span>
+            </div>
+          </div>
+          <div class="kit-detail-preview">
+            <!-- TODO: 키트 미리보기 이미지를 넣어주세요. 예) <img src="images/salinity_preview.jpg" ...> -->
+            <div class="kit-preview-box">
+              키트 미리보기 이미지<br>
+              <span style="font-size:11px;">(이미지 경로를 지정해 주세요)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kit-divider"></div>
+
+        <div class="kit-meta">
+          <span class="kit-meta-item">
+            <svg class="ic" width="12" height="12"><use href="#i-file"/></svg>
+            PDF · 총 3쪽
+          </span>
+          <span class="kit-meta-item">
+            <svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>
+            2024년 번역
+          </span>
+          <span class="kit-meta-item">
+            KIOST 해양기후예측센터 번역
+          </span>
+          <span class="source-badge">
+            원본: NOAA SOS · oceanservice.noaa.gov/facts/whysalty.html
+          </span>
+        </div>
+
+        <div class="kit-actions">
+          <!-- TODO: href에 배포할 PDF 파일 경로를 넣어주세요. 예) href="files/Sea_Surface_Salinity.pdf" -->
+          <a class="gl-btn primary" href="https://mysharedaddview.s3.ap-northeast-2.amazonaws.com/koceanclimate/Sea_Surface_Salinity_kit.pdf" download>
+            <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
+            키트 다운로드 (PDF)
+          </a>
+          <a class="gl-btn secondary" href="https://oceanservice.noaa.gov/facts/whysalty.html" target="_blank">
+            <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
+            원본 출처 보기
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ④ 2050 SSP5 -->
+<section class="sec" id="ssp5">
+  <div class="wrap">
+
+    <div class="kit-detail-card">
+      <div class="kit-detail-header">
+        <div class="kit-detail-icon" style="background:linear-gradient(135deg,#ef4444,#991b1b);">
+          <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+            <circle cx="20" cy="20" r="14" stroke="white" stroke-width="1.5" opacity=".5"/>
+            <path d="M10 26 L16 18 L22 22 L28 12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="28" cy="12" r="2.5" fill="white"/>
+          </svg>
+        </div>
+        <div class="kit-detail-meta">
+          <span class="kit-detail-type" style="background:#fee2e2; color:#991b1b;">
+            <svg class="ic" width="10" height="10"><use href="#i-globe"/></svg>
+            지구본 조립형 · 한국어 번역
+          </span>
+          <div class="kit-detail-title">2050년 지표면 온도 변화 만들기 키트 (SSP5)</div>
+          <div class="kit-detail-subtitle">화석연료 기반 발전 시나리오(SSP5) 적용 시 2050년 지표면 온도 변화</div>
+        </div>
+      </div>
+
+      <div class="kit-detail-body">
+        <div class="kit-detail-cols">
+          <div class="kit-detail-desc-col">
+            <p class="kit-desc">
+              국제 연구팀이 개발한 '공유 사회경제 시나리오(SSPs)' 중 <strong>SSP5 시나리오</strong>를 적용해
+              2050년의 전 세계 지표면 온도 변화를 지구본으로 만드는 키트입니다.
+              SSP5는 경제·사회 발전이 계속 추진되는 동시에 화석연료를 적극적으로 사용하고
+              전 세계적으로 자원·에너지를 많이 소비하는 생활 방식이 확산되는 상황을 가정합니다.
+            </p>
+            <p class="kit-desc">
+              색상은 20세기 평균 대비 <strong>공기 표면 온도 변화(–6°C ~ +6°C)</strong>를 나타냅니다.
+              빨간색 계열은 기온 상승 지역, 파란색 계열은 기온 하강 지역입니다.
+              NOAA가 SSP를 활용해 개발한 미래 기후 및 지구시스템 모델 결과를 담고 있습니다.
+            </p>
+
+            <div class="kit-steps">
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#dc2626;">1</span>
+                점선을 따라 각 조각을 잘라주세요.
+              </div>
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#dc2626;">2</span>
+                회색 부분을 풀이나 테이프로 붙여 조각을 이어주세요.
+              </div>
+              <div class="kit-step">
+                <span class="kit-step-num" style="background:#dc2626;">3</span>
+                고정장치를 사용해 북극 구멍을 통과시켜 지구본을 완성하세요.
+              </div>
+            </div>
+
+            <div class="kit-tags">
+              <span class="kit-tag">중고등학생 권장</span>
+              <span class="kit-tag">SSP5 · 기후 시나리오</span>
+              <span class="kit-tag">2050 지표면 온도 변화</span>
+              <span class="kit-tag">지구본 조립</span>
+              <span class="kit-tag">NOAA SOS 원본</span>
+            </div>
+          </div>
+          <div class="kit-detail-preview">
+            <!-- TODO: 키트 미리보기 이미지를 넣어주세요. 예) <img src="images/ssp5_preview.jpg" ...> -->
+            <div class="kit-preview-box">
+              키트 미리보기 이미지<br>
+              <span style="font-size:11px;">(이미지 경로를 지정해 주세요)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="kit-divider"></div>
+
+        <div class="kit-meta">
+          <span class="kit-meta-item">
+            <svg class="ic" width="12" height="12"><use href="#i-file"/></svg>
+            PDF · 총 3쪽
+          </span>
+          <span class="kit-meta-item">
+            <svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>
+            2024년 번역
+          </span>
+          <span class="kit-meta-item">
+            KIOST 해양기후예측센터 번역
+          </span>
+          <span class="source-badge">
+            원본: NOAA SOS · sos.noaa.gov/education/resources/paper-globe-cutouts
+          </span>
+        </div>
+
+        <div class="kit-actions">
+          <!-- TODO: href에 배포할 PDF 파일 경로를 넣어주세요. 예) href="files/SSP5_Surface_Temperatures.pdf" -->
+          <a class="gl-btn primary" href="https://mysharedaddview.s3.ap-northeast-2.amazonaws.com/koceanclimate/SSP5_Surface_Temperatures_kit.pdf" download>
+            <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
+            키트 다운로드 (PDF)
+          </a>
+          <a class="gl-btn secondary" href="https://sos.noaa.gov/education/resources/paper-globe-cutouts/" target="_blank">
+            <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
+            원본 출처 보기
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /page-bg -->
+
+<!-- 푸터 -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
+      <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
+    </div>
+    <div class="f-links">
+      <a href="index.html">메인</a>
+      <a href="education.html">맞춤 정보</a>
+      <a href="students.html">초중고 학생용</a>
+      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+      <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+    </div>
+  </div>
+  <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
+</footer>
+
+<script>
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => {
+  const open = mob.classList.toggle('open');
+  ham.classList.toggle('open', open);
+  ham.setAttribute('aria-expanded', String(open));
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 960) {
+    mob.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+  }
+});
+
+const TAB_IDS = ['enso', 'hurricane', 'salinity', 'ssp5'];
+function getActiveTab() {
+  const navH = document.getElementById('navbar').offsetHeight;
+  const tabH = document.getElementById('tabNav').offsetHeight;
+  const threshold = navH + tabH + 40;
+  let active = null;
+  for (const id of TAB_IDS) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    if (el.getBoundingClientRect().top <= threshold) active = id;
+  }
+  return active;
+}
+function updateTabs() {
+  const activeId = getActiveTab();
+  document.querySelectorAll('[data-tab]').forEach(a => {
+    a.classList.toggle('on', a.dataset.tab === activeId);
+  });
+}
+window.addEventListener('scroll', updateTabs, { passive: true });
+updateTabs();
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute('href').slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+  e.preventDefault();
+  mob.classList.remove('open');
+  ham.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
+  const navH = document.getElementById('navbar').offsetHeight;
+  const tabH = document.getElementById('tabNav').offsetHeight;
+  const top = target.getBoundingClientRect().top + window.scrollY - navH - tabH - 12;
+  window.scrollTo({ top, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>

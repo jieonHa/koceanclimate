@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6H1CGKT4R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S6H1CGKT4R');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>한반도 주변 상세 해양기후 정보 서비스</title>
@@ -285,6 +276,49 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
   .hero-stats { gap: 20px; }
   .hs-num { font-size: 20px; }
 }
+
+/* ── 슬라이드쇼 모달 ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,.75); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+  animation: fadeIn .2s ease;
+}
+.modal-overlay.open { display: flex; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-box {
+  position: relative; width: 92vw; height: 88vh; max-width: 1400px;
+  background: #0f172a; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0,0,0,.5);
+  animation: modalSlideUp .25s ease;
+}
+@keyframes modalSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+.modal-header {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, rgba(15,23,42,.95) 0%, transparent 100%);
+}
+.modal-title { font-size: 14px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px; }
+.modal-actions { display: flex; gap: 8px; }
+.modal-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 500;
+  border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08);
+  color: #fff; cursor: pointer; transition: all .15s;
+}
+.modal-btn:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.35); }
+.modal-btn.close-btn {
+  width: 36px; height: 36px; padding: 0; justify-content: center;
+  border-radius: 50%; font-size: 18px;
+}
+.modal-btn.close-btn:hover { background: rgba(239,68,68,.3); border-color: rgba(239,68,68,.5); }
+
+.modal-iframe {
+  width: 100%; height: 100%; border: none;
+}
 </style>
 </head>
 <body>
@@ -320,9 +354,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     </a>
 
     <div class="nav-links">
-      <a class="nav-a" href="#sec-climate"  data-sec="sec-climate">해양기후 변화</a>
+      <a class="nav-a" href="#sec-climate"  data-sec="sec-climate">과거 변화</a>
       <a class="nav-a" href="#sec-future"   data-sec="sec-future">미래 전망</a>
-      <a class="nav-a" href="#sec-edu"      data-sec="sec-edu">교양 정보</a>
+      <a class="nav-a" href="#sec-edu"      data-sec="sec-edu">맞춤 정보</a>
       <a class="nav-a" href="#sec-expert"   data-sec="sec-expert">전문가 서비스</a>
       <a class="nav-a" href="research.html">연구사업 안내</a>
     </div>
@@ -339,9 +373,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 
 <!-- 모바일 메뉴 -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#sec-climate"  data-sec="sec-climate">해양기후 변화</a>
+  <a href="#sec-climate"  data-sec="sec-climate">과거 변화</a>
   <a href="#sec-future"   data-sec="sec-future">미래 전망</a>
-  <a href="#sec-edu"      data-sec="sec-edu">교양 정보</a>
+  <a href="#sec-edu"      data-sec="sec-edu">맞춤 정보</a>
   <a href="#sec-expert"   data-sec="sec-expert">전문가 서비스</a>
   <a href="research.html">연구사업 안내</a>
 </div>
@@ -350,7 +384,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 <div class="notice">
   <div class="wrap">
     <svg class="ic" width="16" height="16"><use href="#i-info"/></svg>
-    연구사업 기반 시험 운영 사이트입니다. 해당 정보 및 콘텐츠는 검증·개선 중으로서 <strong style="margin:0 3px">참고용</strong>으로만 사용하셔야 합니다. &nbsp;문의: ocpc@kiost.ac.kr
+    연구사업 기반 시험 운영 사이트입니다. 해당 정보 및 콘텐츠는 검증·개선 중이며 <strong style="margin:0 3px">참고용으로만</strong> 사용하시길 바랍니다. &nbsp;문의: ocpc@kiost.ac.kr
   </div>
 </div>
 
@@ -485,7 +519,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
           <h3>KIOST-ESM 기반 전망</h3>
           <p>KIOST 지구시스템모델(KIOST-ESM)을 기반으로 한 미래 해양기후 전망 분석 결과</p>
           <div class="card-links">
-            <a class="card-link" href="kiost-esm-slideshow-4k.html" target="_blank">
+            <a class="card-link" href="#" onclick="openSlideModal(); return false;">
               <svg class="ic" width="13" height="13"><use href="#i-external"/></svg> KIOST-ESM 전망 결과 보기
             </a>
           </div>
@@ -506,14 +540,14 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 
   <div class="divider"></div>
 
-  <!-- 교양 정보 -->
+  <!-- 맞춤 정보 -->
   <section class="sec" id="sec-edu">
     <div class="wrap">
       <div class="sec-hd">
         <div class="sec-title">
           <span class="sec-bar"></span>
           <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-book"/></svg>
-          해양기후 교양 정보
+          해양기후 맞춤 정보
         </div>
         <a class="sec-more" href="education.html">전체보기 <svg class="ic" width="14" height="14"><use href="#i-chevron-r"/></svg></a>
       </div>
@@ -536,8 +570,8 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
         </a>
         <a class="card" href="education.html#topics" style="display:block;cursor:pointer">
           <div class="card-icon ci-teal"><svg class="ic" width="22" height="22"><use href="#i-bulb"/></svg></div>
-          <h3>주제별 교양 정보</h3>
-          <p>해양기후변화의 원인·현황·영향에 관한 주제별 교양 콘텐츠. 비전문가도 이해할 수 있도록 구성</p>
+          <h3>주제별 맞춤 정보</h3>
+          <p>해양기후변화의 원인·현황·영향에 관한 주제별 맞춤 콘텐츠. 비전문가도 이해할 수 있도록 구성</p>
           <div class="card-links">
             <span class="card-link"><svg class="ic" width="13" height="13"><use href="#i-chevron-r"/></svg> 주제별 콘텐츠 보기</span>
           </div>
@@ -635,7 +669,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     </div>
     <div class="f-links">
       <a href="#">이용안내</a>
-      <a href="education.html">교양 정보</a>
+      <a href="education.html">맞춤 정보</a>
       <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
       <a href="research.html">연구사업 소개</a>
       <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>
@@ -706,6 +740,54 @@ function updateNav() {
 
 window.addEventListener('scroll', updateNav, { passive: true });
 updateNav(); // 초기화
+</script>
+
+<!-- 슬라이드쇼 모달 -->
+<div class="modal-overlay" id="slideModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">
+        <svg class="ic" width="16" height="16" style="color:#7dd3fc"><use href="#i-globe"/></svg>
+        KIOST-ESM 기반 전망 결과
+      </div>
+      <div class="modal-actions">
+        <a class="modal-btn" id="modalDownload" href="kiost-esm-slideshow-4k.html" download="KIOST-ESM-전망결과.html">
+          <svg class="ic" width="13" height="13"><use href="#i-download"/></svg>
+          다운로드
+        </a>
+        <button class="modal-btn close-btn" onclick="closeSlideModal()" title="닫기">✕</button>
+      </div>
+    </div>
+    <iframe class="modal-iframe" id="slideIframe"></iframe>
+  </div>
+</div>
+
+<script>
+/* ── 슬라이드쇼 모달 ── */
+const slideModal = document.getElementById('slideModal');
+const slideIframe = document.getElementById('slideIframe');
+
+function openSlideModal() {
+  slideIframe.src = 'kiost-esm-slideshow-4k.html';
+  slideModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSlideModal() {
+  slideModal.classList.remove('open');
+  document.body.style.overflow = '';
+  slideIframe.src = '';
+}
+
+/* 오버레이 배경 클릭 시 닫기 */
+slideModal.addEventListener('click', (e) => {
+  if (e.target === slideModal) closeSlideModal();
+});
+
+/* ESC 키로 닫기 */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && slideModal.classList.contains('open')) closeSlideModal();
+});
 </script>
 
 </body>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>해양기후 교양 정보 – 한반도 주변 상세 해양기후 정보 서비스</title>
+<title>해양기후 맞춤 정보 – 한반도 주변 상세 해양기후 정보 서비스</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -25,6 +25,11 @@
   <symbol id="i-shield"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
   <symbol id="i-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></symbol>
   <symbol id="i-droplet"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></symbol>
+  <symbol id="i-star"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-graduation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+  <symbol id="i-fish"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 12c0 0-1-5 5.5-5s8 5 8 5-1.5 5-8 5-5.5-5-5.5-5z"/><path d="M2 12s1.5-3 4.5-3"/><path d="M2 12s1.5 3 4.5 3"/><circle cx="15" cy="12" r="1"/></symbol>
+  <symbol id="i-anchor"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="22" x2="12" y2="8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/></symbol>
+  <symbol id="i-book-open"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
 </svg>
 
 <style>
@@ -221,6 +226,36 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 .placeholder-sec .ph-title { font-size: 15px; font-weight: 600; color: #64748b; margin-bottom: 6px; }
 .placeholder-sec .ph-desc { font-size: 13px; line-height: 1.6; }
 
+/* ── 수요자 맞춤형: 서브 그리드 ── */
+.custom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.custom-link-card {
+  background: #fff; border-radius: 12px; border: 1px solid #e2e8f0;
+  padding: 28px 24px; display: flex; align-items: center; gap: 16px;
+  transition: border-color .15s, box-shadow .15s; text-decoration: none; color: inherit;
+}
+.custom-link-card:hover { border-color: #0284c7; box-shadow: 0 2px 14px rgba(2,132,199,.1); }
+.custom-link-card.disabled {
+  opacity: .6; pointer-events: none; cursor: default; background: #f8fafc;
+}
+.clc-icon {
+  width: 54px; height: 54px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.clc-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+.clc-sub   { font-size: 13px; color: #64748b; }
+.clc-badge {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 11px; padding: 3px 9px; border-radius: 20px;
+  background: #fef3c7; color: #92400e;
+  display: flex; align-items: center; gap: 4px;
+}
+@media (max-width: 640px) { .custom-grid { grid-template-columns: 1fr; } }
+
 /* ── PDF 미리보기 정보 ── */
 .pdf-meta {
   display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;
@@ -293,7 +328,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     <div class="nav-links">
       <a class="nav-a" href="index.html#sec-climate">해양기후 변화</a>
       <a class="nav-a" href="index.html#sec-future">미래 전망</a>
-      <a class="nav-a on" href="education.html">교양 정보</a>
+      <a class="nav-a on" href="education.html">맞춤 정보</a>
       <a class="nav-a" href="index.html#sec-expert">전문가 서비스</a>
       <a class="nav-a" href="research.html">연구사업 안내</a>
     </div>
@@ -312,7 +347,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html#sec-climate">해양기후 변화</a>
   <a href="index.html#sec-future">미래 전망</a>
-  <a href="education.html" class="on">교양 정보</a>
+  <a href="education.html" class="on">맞춤 정보</a>
   <a href="index.html#sec-expert">전문가 서비스</a>
   <a href="research.html">연구사업 안내</a>
 </div>
@@ -323,10 +358,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     <div class="breadcrumb">
       <a href="index.html">홈</a>
       <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
-      <span>해양기후 교양 정보</span>
+      <span>해양기후 맞춤 정보</span>
     </div>
-    <h1>해양기후 교양 정보</h1>
-    <p>해양기후변화 영향 관련 정책 가이드라인, 수요자 맞춤형 정보, 주제별 교양 콘텐츠를 제공합니다.</p>
+    <h1>해양기후 맞춤 정보</h1>
+    <p>해양기후변화 영향 관련 정책 가이드라인, 수요자 맞춤형 정보, 주제별 맞춤 콘텐츠를 제공합니다.</p>
   </div>
 </section>
 
@@ -343,7 +378,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     </a>
     <a class="tab-a" href="#topics" data-tab="topics">
       <svg class="ic" width="15" height="15"><use href="#i-bulb"/></svg>
-      주제별 교양 정보
+      주제별 맞춤 정보
     </a>
   </div>
 </div>
@@ -394,7 +429,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
             </span>
           </div>
           <div class="gl-actions">
-            <a class="gl-btn primary" href="정책활용_시범_가이드라인_해양_아열대화와_외래생물종__최종.pdf" download>
+            <a class="gl-btn primary" href="policy-guideline-subtropicalization.pdf" download>
               <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
               PDF 다운로드
             </a>
@@ -477,20 +512,96 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
             <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-users"/></svg>
             수요자 맞춤형 정보
           </div>
-          <div class="sec-sub">어업·연안관리·환경 등 분야별 수요자를 위한 맞춤형 해양기후변화 정보</div>
+          <div class="sec-sub">초중고 학생, 교사, 대학·일반인, 수산·어업·항만·해운 종사자 등 수요자별 맞춤형 해양기후변화 정보</div>
         </div>
       </div>
-      <div class="placeholder-sec">
-        <div class="ph-icon"><svg class="ic" width="36" height="36" style="color:#cbd5e1"><use href="#i-users"/></svg></div>
-        <div class="ph-title">콘텐츠 준비중입니다</div>
-        <div class="ph-desc">초중고 학생용, 교사용 지도서, 대학/일반용, 수산·어업·항만·해운 종사자용 콘텐츠가 순차적으로 추가될 예정입니다.</div>
+
+      <!-- 제공 중인 콘텐츠 -->
+      <div class="custom-grid">
+
+        <!-- 초중고 학생용 -->
+        <a class="custom-link-card" href="students.html">
+          <div class="clc-icon" style="background:#ede9fe; color:#7c3aed;">
+            <svg class="ic" width="22" height="22"><use href="#i-star"/></svg>
+          </div>
+          <div>
+            <div class="clc-title">초중고 학생용</div>
+            <div class="clc-sub">체험학습지 · 보드게임 · 만들기 키트</div>
+          </div>
+          <svg class="ic" width="16" height="16" style="color:#94a3b8; margin-left:auto"><use href="#i-chevron-r"/></svg>
+        </a>
+
+        <!-- 초중고 교사용 지도서 -->
+        <a class="custom-link-card" href="teachers.html">
+          <div class="clc-icon" style="background:#dcfce7; color:#15803d;">
+            <svg class="ic" width="22" height="22"><use href="#i-book-open"/></svg>
+          </div>
+          <div>
+            <div class="clc-title">초중고 교사용 지도서</div>
+            <div class="clc-sub">수업 활용 교사 지도안 및 해설 자료</div>
+          </div>
+          <svg class="ic" width="16" height="16" style="color:#94a3b8; margin-left:auto"><use href="#i-chevron-r"/></svg>
+        </a>
+
+        <!-- 대학/일반용 (준비중) -->
+        <div class="custom-link-card disabled">
+          <div class="clc-icon" style="background:#e0f2fe; color:#0284c7;">
+            <svg class="ic" width="22" height="22"><use href="#i-graduation"/></svg>
+          </div>
+          <div>
+            <div class="clc-title">대학/일반용</div>
+            <div class="clc-sub">전공·맞춤 수준의 해양기후 콘텐츠</div>
+          </div>
+          <span class="clc-badge">
+            <svg class="ic" width="10" height="10"><use href="#i-clock"/></svg>
+            준비중
+          </span>
+        </div>
+
+        <!-- 수산/어업/항만/해운 종사자용 (준비중) -->
+        <div class="custom-link-card disabled">
+          <div class="clc-icon" style="background:#ccfbf1; color:#0d9488;">
+            <svg class="ic" width="22" height="22"><use href="#i-anchor"/></svg>
+          </div>
+          <div>
+            <div class="clc-title">수산/어업/항만/해운 종사자용</div>
+            <div class="clc-sub">산업 현장 맞춤형 기후 정보</div>
+          </div>
+          <span class="clc-badge">
+            <svg class="ic" width="10" height="10"><use href="#i-clock"/></svg>
+            준비중
+          </span>
+        </div>
+
       </div>
+
+      <!-- 참고 자료 카드 -->
+      <div class="gl-card" style="margin-top:8px; padding:16px 20px; align-items:center;">
+        <div class="gl-icon" style="background:#fef3c7; color:#d97706; width:40px; height:40px; border-radius:10px; flex-shrink:0;">
+          <svg class="ic" width="20" height="20"><use href="#i-book"/></svg>
+        </div>
+        <div class="gl-body" style="margin:0;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span class="gl-label" style="background:#fef3c7; color:#92400e; margin-bottom:0;">
+              <svg class="ic" width="10" height="10"><use href="#i-file"/></svg>
+              참고 자료
+            </span>
+            <span style="font-size:14px; font-weight:600; color:#0f172a;">참고 자료</span>
+            <span style="font-size:13px; color:#64748b;">해양기후변화 교육 관련 참고 자료 목록 (보고서, 데이터 출처 등)</span>
+            <a class="gl-btn outline" href="https://app.notion.com/p/ocpc/2bca8aed798f8165a769c2cc3f08604c?source=copy_link" target="_blank" style="margin-left:auto; white-space:nowrap;">
+              <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
+              목록 보기
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- ③ 주제별 교양 정보 -->
+  <!-- ③ 주제별 맞춤 정보 -->
   <section class="sec" id="topics">
     <div class="wrap">
       <div class="sec-hd">
@@ -498,9 +609,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
           <div class="sec-title">
             <span class="sec-bar"></span>
             <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-bulb"/></svg>
-            주제별 교양 정보
+            주제별 맞춤 정보
           </div>
-          <div class="sec-sub">해양기후변화의 원인·현황·영향에 관한 주제별 교양 콘텐츠</div>
+          <div class="sec-sub">해양기후변화의 원인·현황·영향에 관한 주제별 맞춤 콘텐츠</div>
         </div>
       </div>
       <div class="placeholder-sec">
@@ -522,7 +633,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     </div>
     <div class="f-links">
       <a href="index.html">메인</a>
-      <a href="education.html">교양 정보</a>
+      <a href="education.html">맞춤 정보</a>
       <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
       <a href="research.html">연구사업 소개</a>
       <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>
