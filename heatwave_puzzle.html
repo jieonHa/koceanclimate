@@ -97,13 +97,13 @@ a{text-decoration:none;color:inherit}
 
 /* ── 차트 ── */
 .chart-wrap{width:100%;display:flex;flex-direction:column;min-height:0}
-.chart-sub{font-size:11px;color:#94a3b8;text-align:center;margin-bottom:5px;flex-shrink:0}
+.chart-sub{font-size:14px;color:#94a3b8;text-align:center;margin-bottom:5px;flex-shrink:0}
 .grid-container{flex:1;display:flex;overflow:hidden;min-height:0}
 .y-axis{display:flex;flex-direction:column;justify-content:space-between;padding-bottom:18px;min-width:30px;padding-right:4px;flex-shrink:0}
-.y-lbl{font-size:9.5px;color:#94a3b8;text-align:right;height:0;transform:translateY(-50%);line-height:1}
+.y-lbl{font-size:12px;color:#94a3b8;text-align:right;height:0;transform:translateY(-50%);line-height:1}
 .grid-right{flex:1;display:flex;flex-direction:column;min-width:0}
 .x-axis{display:grid;grid-template-columns:repeat(12,1fr);margin-bottom:3px;flex-shrink:0}
-.x-lbl{font-size:9.5px;color:#94a3b8;text-align:center}
+.x-lbl{font-size:12px;color:#94a3b8;text-align:center}
 .grid-cells{flex:1;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(13,1fr);gap:1.5px;min-height:0}
 
 /* 정답 셀 */
@@ -242,9 +242,9 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
   .panel-body{padding:6px}
 
   /* 차트 폰트 */
-  .chart-sub{font-size:10px;margin-bottom:3px}
-  .y-lbl{font-size:8px}
-  .x-lbl{font-size:8px}
+  .chart-sub{font-size:12px;margin-bottom:3px}
+  .y-lbl{font-size:10px}
+  .x-lbl{font-size:10px}
   .y-axis{min-width:24px;padding-right:3px}
 
   /* 사이드 카드 */
@@ -366,7 +366,7 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
         <span class="chip-lbl">극심함</span>
       </div>
       <div class="eraser-chip" draggable="true" data-color="erase" id="chip-erase" title="지우기">🧹</div>
-      <div class="chip-tip">클릭으로 선택<br>후 칸 클릭<br>또는 드래그</div>
+      <div class="chip-tip">클릭으로 선택 후<br>칸 클릭 또는 드래그</div>
     </div>
   </div>
 </div>
@@ -493,7 +493,7 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
       </div>
       <div class="how-step">
         <div class="how-num">6</div>
-        <div class="how-text"><strong>초록 글로우</strong> = 정답, <strong>빨간 글로우</strong> = 오답. 모든 칸을 채우면 완료!</div>
+        <div class="how-text">모든 칸을 채운 뒤 <strong>완성 — 점수 확인하기</strong> 버튼을 눌러 결과를 확인하세요.</div>
       </div>
     </div>
 
