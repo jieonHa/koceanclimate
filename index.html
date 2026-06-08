@@ -158,6 +158,14 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
   display: flex; align-items: center; gap: 12px;
   padding: 12px 14px; border-radius: 9px;
   background: rgba(255,255,255,.05); margin-bottom: 8px;
+  cursor: pointer;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+  text-decoration: none; color: inherit;
+}
+.model-step:hover {
+  background: rgba(255,255,255,.13);
+  box-shadow: 0 0 14px rgba(125,211,252,.25);
+  transform: translateY(-2px) scale(1.01);
 }
 .model-icon { width: 40px; height: 40px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .ms-name { font-size: 13.5px; font-weight: 600; color: #e2e8f0; }
@@ -414,30 +422,30 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     </div>
     <div class="hero-panel">
       <div class="hp-label">핵심 모형 체계</div>
-      <div class="model-step">
+      <a class="model-step" href="global-model.html">
         <div class="model-icon" style="background:#1e3a5f">
           <svg class="ic" width="20" height="20" style="color:#60a5fa"><use href="#i-globe"/></svg>
         </div>
         <div><div class="ms-name">전구 모형</div><div class="ms-sub">CMIP6 전지구 해양-대기</div></div>
-      </div>
+      </a>
       <div class="arr-center">
         <svg class="ic" width="16" height="16"><use href="#i-arrow-dn"/></svg>
       </div>
-      <div class="model-step">
+      <a class="model-step" href="pacific-model.html">
         <div class="model-icon" style="background:#1a3a2f">
           <svg class="ic" width="20" height="20" style="color:#34d399"><use href="#i-globe"/></svg>
         </div>
         <div><div class="ms-name">북태평양 모형</div><div class="ms-sub">광역 다운스케일링</div></div>
-      </div>
+      </a>
       <div class="arr-center">
         <svg class="ic" width="16" height="16"><use href="#i-arrow-dn"/></svg>
       </div>
-      <div class="model-step">
+      <a class="model-step" href="korean-model.html">
         <div class="model-icon" style="background:#2d1f5e">
           <svg class="ic" width="20" height="20" style="color:#a78bfa"><use href="#i-globe"/></svg>
         </div>
         <div><div class="ms-name">한반도 주변해 모형</div><div class="ms-sub">북서태평양 고해상도</div></div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
