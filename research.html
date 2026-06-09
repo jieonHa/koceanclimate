@@ -135,7 +135,13 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 .msub   { font-size:12px; color:#6b7280; line-height:1.6; }
 
 .spec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.spec-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:22px 24px; }
+.spec-card {
+  background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:22px 24px;
+  cursor:pointer; transition: border-color .2s, box-shadow .2s, transform .2s;
+}
+.spec-card.global:hover  { border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.08),  0 4px 20px rgba(59,130,246,.18);  transform:translateY(-2px); }
+.spec-card.pacific:hover { border-color:#10b981; box-shadow:0 0 0 3px rgba(16,185,129,.08),  0 4px 20px rgba(16,185,129,.18);  transform:translateY(-2px); }
+.spec-card.korea:hover   { border-color:#7c3aed; box-shadow:0 0 0 3px rgba(124,58,237,.08),  0 4px 20px rgba(124,58,237,.18);  transform:translateY(-2px); }
 .spec-card-hd { display:flex; align-items:center; gap:10px; margin-bottom:16px; padding-bottom:14px; border-bottom:1px solid #f1f5f9; }
 .spec-badge { font-size:10.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:3px 10px; border-radius:20px; }
 .sb-global  { background:#eff6ff; color:#1d4ed8; }
@@ -146,7 +152,18 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 .spec-row:last-child { border-bottom:none; }
 .spec-label { color:#64748b; min-width:72px; flex-shrink:0; }
 .spec-val   { color:#0f172a; font-weight:500; }
-.source-tag { display:inline-flex; align-items:center; gap:4px; font-size:12px; background:#f1f5f9; color:#475569; padding:2px 8px; border-radius:5px; font-weight:500; }
+.source-btn {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:12px; font-weight:500; padding:2px 9px; border-radius:5px;
+  text-decoration:none; transition:background .15s;
+}
+.source-btn.global  { background:#eff6ff; color:#1d4ed8; border:0.5px solid #bfdbfe; }
+.source-btn.global:hover  { background:#dbeafe; }
+.source-btn.pacific { background:#f0fdf4; color:#065f46; border:0.5px solid #6ee7b7; }
+.source-btn.pacific:hover { background:#d1fae5; }
+.source-btn.korea   { background:#faf5ff; color:#5b21b6; border:0.5px solid #ddd6fe; }
+.source-btn.korea:hover   { background:#ede9fe; }
+.spec-card-hint { font-size:12px; color:#94a3b8; margin-bottom:10px; }
 
 .period-row { display:flex; gap:0; margin-top:6px; }
 .period-item { flex:1; text-align:center; padding:8px 4px; background:#f8fafc; border-radius:6px; font-size:11.5px; }
@@ -246,10 +263,9 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
 <!-- 상단바 -->
 <div class="topbar">
   <div class="wrap">
-    <a href="https://www.ocpc.kr/" target="_blank" >한국해양과학기술원 (KIOST) · 해양기후예측센터</a>
-    <div class="topbar-links">
-      <a href="https://www.kiost.ac.kr/kor.do" target="_blank">KIOST 메인</a>
-      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+    <div style="display:flex; gap:24px;">
+    <a href="https://www.kiost.ac.kr/kor.do" target="_blank" target="_blank">한국해양과학기술원 (KIOST)    </a>
+    <a href="https://www.ocpc.kr/" target="_blank"> 해양기후예측센터</a>
     </div>
   </div>
 </div>
@@ -273,15 +289,14 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
       </div>
     </a>
     <div class="nav-links">
-      <a class="nav-a" href="index.html#sec-climate">해양기후 변화</a>
+      <a class="nav-a" href="index.html#sec-climate">과거 변화</a>
       <a class="nav-a" href="index.html#sec-future">미래 전망</a>
       <a class="nav-a" href="index.html#sec-edu">맞춤 정보</a>
-      <a class="nav-a" href="index.html#sec-expert">전문가 서비스</a>
       <a class="nav-a on" href="research.html">연구사업 안내</a>
     </div>
     <div class="nav-right">
       <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
-      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가 데이터 ↗</a>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가용 데이터 포털↗</a>
     </div>
   </div>
 </nav>
@@ -491,14 +506,17 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
     <!-- 모형별 상세 스펙 -->
     <div>
       <div class="sec-hd">
-        <h2><span class="sec-bar"></span>
-          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-cpu"/></svg>
-          모형별 상세 사양
-        </h2>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <h2 style="margin:0;"><span class="sec-bar"></span>
+            <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-cpu"/></svg>
+            모형별 사양
+          </h2>
+          <div style="font-size:12px; color:#94a3b8; padding-left:28px;">카드를 누르면 상세 페이지로 연결됩니다.</div>
+        </div>
       </div>
       <div class="spec-grid">
 
-        <div class="spec-card">
+        <div class="spec-card global" onclick="window.open('https://app.notion.com/p/ocpc/2bca8aed798f81018c52d01e4e3095a1','_blank')">
           <div class="spec-card-hd">
             <span class="spec-badge sb-global">GLOBAL</span>
             <h3>전구 모형</h3>
@@ -509,7 +527,9 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
           <div class="spec-row"><span class="spec-label">산출</span><span class="spec-val">북태평양 모형 경계값 제공</span></div>
           <div class="spec-row">
             <span class="spec-label">출처</span>
-            <span class="source-tag"><strong>부경대학교</strong></span>
+            <a class="source-btn global" href="https://pknu.ac.kr" target="_blank" onclick="event.stopPropagation()">
+              <svg class="ic" width="11" height="11"><use href="#i-external"/></svg> 부경대학교
+            </a>
           </div>
           <div class="period-row" style="margin-top:14px">
             <div class="period-item"><div class="pv">과거 재현</div><div class="pl">1983–2014</div></div>
@@ -517,7 +537,7 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
           </div>
         </div>
 
-        <div class="spec-card">
+        <div class="spec-card pacific" onclick="window.open('https://app.notion.com/p/ocpc/2bca8aed798f819b91d9d8a28aa351eb','_blank')">
           <div class="spec-card-hd">
             <span class="spec-badge sb-pacific">REGIONAL</span>
             <h3>북태평양 모형</h3>
@@ -528,7 +548,9 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
           <div class="spec-row"><span class="spec-label">시나리오</span><span class="spec-val">SSP 시나리오 기반</span></div>
           <div class="spec-row">
             <span class="spec-label">출처</span>
-            <span class="source-tag"><strong>서울대학교</strong></span>
+            <a class="source-btn pacific" href="https://snu.ac.kr" target="_blank" onclick="event.stopPropagation()">
+              <svg class="ic" width="11" height="11"><use href="#i-external"/></svg> 서울대학교
+            </a>
           </div>
           <div class="period-row" style="margin-top:14px">
             <div class="period-item"><div class="pv">재현</div><div class="pl">1983–2014</div></div>
@@ -537,7 +559,7 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
           </div>
         </div>
 
-        <div class="spec-card">
+        <div class="spec-card korea" onclick="window.open('https://app.notion.com/p/ocpc/2bca8aed798f81328f82e3f26875bc12','_blank')">
           <div class="spec-card-hd">
             <span class="spec-badge sb-korea">LOCAL</span>
             <h3>한반도 주변해 모형</h3>
@@ -548,7 +570,9 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
           <div class="spec-row"><span class="spec-label">시나리오</span><span class="spec-val">지역 상세 시나리오 생산</span></div>
           <div class="spec-row">
             <span class="spec-label">출처</span>
-            <span class="source-tag"><strong>전남대학교</strong></span>
+            <a class="source-btn korea" href="https://jnu.ac.kr" target="_blank" onclick="event.stopPropagation()">
+              <svg class="ic" width="11" height="11"><use href="#i-external"/></svg> 전남대학교
+            </a>
           </div>
           <div class="period-row" style="margin-top:14px">
             <div class="period-item"><div class="pv">재현</div><div class="pl">1983–2014</div></div>
@@ -739,12 +763,6 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
       <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
       <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
     </div>
-    <div class="f-links">
-      <a href="#">이용안내</a>
-      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
-      <a href="research.html">연구사업 소개</a>
-      <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>
-    </div>
   </div>
   <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
 </footer>
@@ -773,6 +791,24 @@ document.querySelectorAll('.bcat').forEach(btn => {
     btn.classList.add('on');
   });
 });
+
+/* ── URL 해시로 탭 자동 활성화 (예: research.html#tab2) ── */
+function activateTabFromHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  const targetTab = document.querySelector(`[data-tab="${hash}"]`);
+  if (!targetTab) return;
+  pageTabs.forEach(t  => t.classList.remove('on'));
+  tabPanels.forEach(p => p.classList.remove('on'));
+  targetTab.classList.add('on');
+  document.getElementById(hash).classList.add('on');
+  // 탭 메뉴가 화면에 보이도록 스크롤
+  setTimeout(() => {
+    document.querySelector('.page-hero').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+activateTabFromHash();
+window.addEventListener('hashchange', activateTabFromHash);
 </script>
 
 </body>

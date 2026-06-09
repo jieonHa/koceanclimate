@@ -334,10 +334,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 <!-- 상단바 -->
 <div class="topbar">
   <div class="wrap">
-    <a href="https://www.ocpc.kr/" target="_blank">한국해양과학기술원 (KIOST) · 해양기후예측센터</a>
-    <div class="topbar-links">
-      <a href="https://www.kiost.ac.kr/kor.do" target="_blank">KIOST 메인</a>
-      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+    <div style="display:flex; gap:24px;">
+    <a href="https://www.kiost.ac.kr/kor.do" target="_blank" target="_blank">한국해양과학기술원 (KIOST)    </a>
+    <a href="https://www.ocpc.kr/" target="_blank"> 해양기후예측센터 (OCPC)</a>
     </div>
   </div>
 </div>
@@ -365,13 +364,12 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
       <a class="nav-a" href="#sec-climate"  data-sec="sec-climate">과거 변화</a>
       <a class="nav-a" href="#sec-future"   data-sec="sec-future">미래 전망</a>
       <a class="nav-a" href="#sec-edu"      data-sec="sec-edu">맞춤 정보</a>
-      <a class="nav-a" href="#sec-expert"   data-sec="sec-expert">전문가 서비스</a>
       <a class="nav-a" href="research.html">연구사업 안내</a>
     </div>
 
     <div class="nav-right">
       <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
-      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가 데이터 ↗</a>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가용 데이터 포털↗</a>
       <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="메뉴 열기">
         <span></span><span></span><span></span>
       </button>
@@ -384,7 +382,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
   <a href="#sec-climate"  data-sec="sec-climate">과거 변화</a>
   <a href="#sec-future"   data-sec="sec-future">미래 전망</a>
   <a href="#sec-edu"      data-sec="sec-edu">맞춤 정보</a>
-  <a href="#sec-expert"   data-sec="sec-expert">전문가 서비스</a>
   <a href="research.html">연구사업 안내</a>
 </div>
 
@@ -593,39 +590,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 
   <div class="divider"></div>
 
-  <!-- 전문가 서비스 -->
-  <section class="sec-alt" id="sec-expert">
-    <div class="wrap">
-      <div class="sec-hd">
-        <div class="sec-title">
-          <span class="sec-bar"></span>
-          <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-database"/></svg>
-          전문가용 데이터 서비스
-        </div>
-      </div>
-      <div class="g2">
-        <a class="link-card" href="https://nwpoclimate.kr" target="_blank">
-          <div class="lc-icon ci-blue"><svg class="ic" width="22" height="22"><use href="#i-database"/></svg></div>
-          <div>
-            <div class="lc-title">북서태평양 해양기후 자료 서비스</div>
-            <div class="lc-sub">nwpoclimate.kr · 전문가용 상세 데이터 포털</div>
-          </div>
-          <svg class="ic" width="16" height="16" style="color:#94a3b8;margin-left:auto"><use href="#i-external"/></svg>
-        </a>
-        <a class="link-card" href="mailto:ocpc@kiost.ac.kr">
-          <div class="lc-icon ci-green"><svg class="ic" width="22" height="22"><use href="#i-mail"/></svg></div>
-          <div>
-            <div class="lc-title">데이터 제공 문의</div>
-            <div class="lc-sub">ocpc@kiost.ac.kr · 해양기후예측센터</div>
-          </div>
-          <svg class="ic" width="16" height="16" style="color:#94a3b8;margin-left:auto"><use href="#i-chevron-r"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
   <!-- 연구사업 안내 -->
   <section class="sec" id="sec-research">
     <div class="wrap">
@@ -636,10 +600,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
           연구사업 안내
         </div>
         <div style="display:flex;gap:14px">
-          <a href="research.html" style="font-size:13px;color:#0284c7">사업목표</a>
-          <a href="research.html" style="font-size:13px;color:#0284c7">모형 소개</a>
-          <a href="research.html" style="font-size:13px;color:#0284c7">연구 성과</a>
-          <a href="research.html" style="font-size:13px;color:#0284c7">게시판</a>
+          <a href="research.html#tab1" style="font-size:13px;color:#0284c7">사업목표</a>
+          <a href="research.html#tab2" style="font-size:13px;color:#0284c7">모형 소개</a>
+          <a href="research.html#tab3" style="font-size:13px;color:#0284c7">연구 성과</a>
+          <a href="research.html#tab4" style="font-size:13px;color:#0284c7">게시판</a>
         </div>
       </div>
       <div class="research-cols">
@@ -677,13 +641,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
     <div>
       <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
       <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
-    </div>
-    <div class="f-links">
-      <a href="#">이용안내</a>
-      <a href="education.html">맞춤 정보</a>
-      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
-      <a href="research.html">연구사업 소개</a>
-      <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>
     </div>
   </div>
   <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
@@ -725,7 +682,7 @@ document.addEventListener('click', e => {
 /* ── 스크롤 스파이 (scroll 이벤트 기반 — 짧은 섹션도 정확히 동작) ──
    원리: 각 섹션의 top이 (navbar높이 + 여유값) 이하인 것 중 가장 마지막 섹션이 현재 섹션
 */
-const SPY_IDS   = ['sec-climate','sec-future','sec-edu','sec-expert','sec-research'];
+const SPY_IDS   = ['sec-climate','sec-future','sec-edu','sec-research'];
 const allLinks  = () => document.querySelectorAll('[data-sec]');
 
 function getActiveId() {
