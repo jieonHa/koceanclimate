@@ -36,14 +36,41 @@ a{text-decoration:none;color:inherit}
 
 /* ── 셀렉터 바 ── */
 .ctrl-bar{background:#fff;border-bottom:1px solid #e2e8f0;padding:10px 0}
-.ctrl-bar .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.ctrl-group{display:flex;align-items:center;gap:6px}
-.ctrl-label{font-size:12px;color:#64748b;white-space:nowrap;font-weight:500}
-.ctrl-sep{width:1px;height:24px;background:#e2e8f0;margin:0 2px}
+.ctrl-bar .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.ctrl-group{display:flex;align-items:center;gap:6px;border:1.5px solid rgba(148,163,184,.35);border-radius:10px;padding:5px 10px;background:#f8fafc}
+.ctrl-label{font-size:13px;color:#475569;white-space:nowrap;font-weight:700;padding-right:6px;border-right:1px solid rgba(148,163,184,.35);margin-right:2px}
+.ctrl-sep{display:none}
 
-.sel-btn{padding:5px 12px;border-radius:8px;border:1px solid #e2e8f0;background:#f8fafc;color:#64748b;font-size:12.5px;cursor:pointer;transition:all .15s;font-family:inherit;font-weight:500}
-.sel-btn:hover{border-color:#0284c7;color:#0284c7;background:#f0f9ff}
-.sel-btn.active{background:#0284c7;border-color:#0284c7;color:#fff;font-weight:600}
+.sel-btn{padding:7px 16px;border-radius:8px;border:1.5px solid rgba(148,163,184,.4);background:#fff;color:#64748b;font-size:14px;cursor:pointer;transition:all .15s;font-family:inherit;font-weight:500}
+.sel-btn:hover{background:#e2e8f0;color:#0f172a;border-color:rgba(100,116,139,.5)}
+
+/* ── SSP 시나리오 버튼 색상 (밝은→짙은, 붉은 계열) ── */
+.sel-btn[data-ssp="ssp126"]{color:#fca5a5}
+.sel-btn[data-ssp="ssp126"]:hover{background:#fff1f2;color:#f87171;border-color:#fecaca}
+.sel-btn[data-ssp="ssp126"].active{background:#f87171;border-color:#f87171;color:#fff;font-weight:600}
+.sel-btn[data-ssp="ssp245"]{color:#f87171}
+.sel-btn[data-ssp="ssp245"]:hover{background:#fee2e2;color:#ef4444;border-color:#fca5a5}
+.sel-btn[data-ssp="ssp245"].active{background:#ef4444;border-color:#ef4444;color:#fff;font-weight:600}
+.sel-btn[data-ssp="ssp370"]{color:#ef4444}
+.sel-btn[data-ssp="ssp370"]:hover{background:#fecaca;color:#dc2626;border-color:#f87171}
+.sel-btn[data-ssp="ssp370"].active{background:#dc2626;border-color:#dc2626;color:#fff;font-weight:600}
+.sel-btn[data-ssp="ssp585"]{color:#b91c1c}
+.sel-btn[data-ssp="ssp585"]:hover{background:#fca5a5;color:#991b1b;border-color:#ef4444}
+.sel-btn[data-ssp="ssp585"].active{background:#b91c1c;border-color:#b91c1c;color:#fff;font-weight:600}
+
+/* ── 해역 버튼 고유 색상 ── */
+.sel-btn[data-region="동아시아"]{color:#7c3aed;border-color:rgba(167,139,250,.45)}
+.sel-btn[data-region="동아시아"]:hover{background:#ede9fe;color:#7c3aed;border-color:#a78bfa}
+.sel-btn[data-region="동아시아"].active{background:#7c3aed;border-color:#7c3aed;color:#fff;font-weight:600}
+.sel-btn[data-region="동중국해"]{color:#c026d3;border-color:rgba(240,171,252,.45)}
+.sel-btn[data-region="동중국해"]:hover{background:#fae8ff;color:#c026d3;border-color:#f0abfc}
+.sel-btn[data-region="동중국해"].active{background:#c026d3;border-color:#c026d3;color:#fff;font-weight:600}
+.sel-btn[data-region="동해"]{color:#0891b2;border-color:rgba(103,232,249,.45)}
+.sel-btn[data-region="동해"]:hover{background:#cffafe;color:#0891b2;border-color:#67e8f9}
+.sel-btn[data-region="동해"].active{background:#0891b2;border-color:#0891b2;color:#fff;font-weight:600}
+.sel-btn[data-region="황해"]{color:#d97706;border-color:rgba(252,211,77,.45)}
+.sel-btn[data-region="황해"]:hover{background:#fef3c7;color:#d97706;border-color:#fcd34d}
+.sel-btn[data-region="황해"].active{background:#d97706;border-color:#d97706;color:#fff;font-weight:600}
 
 .start-btn{margin-left:auto;padding:7px 18px;border-radius:9px;background:linear-gradient(135deg,#0284c7,#0369a1);border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit;box-shadow:0 2px 10px rgba(2,132,199,.25);display:flex;align-items:center;gap:6px}
 .start-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(2,132,199,.4)}
@@ -51,16 +78,15 @@ a{text-decoration:none;color:inherit}
 .dl-btn:hover{background:#f0f9ff;border-color:#0284c7;transform:translateY(-1px)}
 
 /* ── 범례 + 팔레트 바 ── */
-.legend-palette-bar{background:#fff;border-bottom:1px solid #e2e8f0;padding:0}
-.lp-inner{display:grid;grid-template-columns:1fr auto;gap:0;border-bottom:1px solid #e2e8f0}
-.legend-area{padding:8px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.legend-title{font-size:12px;color:#64748b;font-weight:600}
-.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#334155}
-.legend-dot{width:18px;height:18px;border-radius:4px;flex-shrink:0}
-
+.legend-palette-bar{background:#fff;border-bottom:1px solid #e2e8f0;padding:8px 0}
+.lp-inner{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.legend-area{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1.5px solid rgba(148,163,184,.35);border-radius:10px;padding:6px 12px;background:#f8fafc}
+.legend-title{font-size:13px;color:#475569;font-weight:700;white-space:nowrap;padding-right:8px;border-right:1px solid rgba(148,163,184,.35);margin-right:2px}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:13px;color:#334155;font-weight:500}
+.legend-dot{width:32px;height:20px;border-radius:6px;flex-shrink:0}
 /* 팔레트 영역 */
-.palette-area{border-left:1px solid #e2e8f0;padding:10px 28px;display:flex;align-items:center;gap:10px;background:#fafbfc}
-.palette-title{font-size:12px;color:#64748b;font-weight:600;white-space:nowrap}
+.palette-area{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1.5px solid rgba(148,163,184,.35);border-radius:10px;padding:6px 12px;background:#f8fafc;margin-left:auto}
+.palette-title{font-size:13px;color:#475569;font-weight:700;white-space:nowrap;padding-right:8px;border-right:1px solid rgba(148,163,184,.35);margin-right:2px}
 
 /* 색상 칩 — 범례의 2배 크기 */
 .color-chip{width:52px;height:52px;border-radius:10px;cursor:grab;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:2px solid rgba(0,0,0,.12);transition:all .15s;user-select:none;position:relative;box-shadow:0 2px 6px rgba(0,0,0,.12)}
@@ -222,11 +248,12 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
   .sel-btn{padding:4px 10px;font-size:12px}
   .start-btn{width:100%;justify-content:center;margin-left:0}
 
+
   /* 범례+팔레트 → 세로 스택 */
-  .legend-palette-bar .wrap{grid-template-columns:1fr !important;gap:0}
-  .legend-area{border-bottom:1px solid #e2e8f0;padding:8px 12px;flex-wrap:wrap;gap:10px}
-  .palette-area{border-left:none;padding:8px 12px;gap:8px;flex-wrap:wrap}
-  .color-chip{width:44px;height:44px;border-radius:8px}
+  .legend-palette-bar .lp-inner{flex-direction:column;align-items:flex-start;gap:8px}
+  .legend-area{padding:6px 10px;gap:8px}
+  .palette-area{padding:6px 10px;gap:8px;flex-wrap:wrap}
+  .palette-area{margin-left:0;padding:6px 10px;gap:8px;flex-wrap:wrap}
   .eraser-chip{width:44px;height:44px}
   .chip-tip{display:none}
   .palette-title,.legend-title{font-size:11px}
@@ -330,7 +357,6 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
       초기화
     </button>
-    <!-- TODO: href를 실제 PPT 파일 경로로 교체하세요 -->
     <a class="dl-btn" href="heatwave_puzzle_coloring.pptx" download="해양열파_미래변화_색칠놀이.pptx">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       PPT 다운로드
@@ -340,35 +366,37 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
 
 <!-- 범례 + 팔레트 -->
 <div class="legend-palette-bar">
-  <div class="wrap" style="display:grid;grid-template-columns:1fr auto;gap:0;border:none">
-    <!-- 범례 -->
-    <div class="legend-area">
-      <span class="legend-title">등급 범례</span>
-      <div class="legend-item"><div class="legend-dot" style="background:#FFD700"></div>보통</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#FF9900"></div>강함</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#FF6000"></div>심함</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#000000"></div>극심함</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#e8edf3;border:1px solid #d1d9e0"></div>해당없음</div>
-    </div>
-    <!-- 팔레트 -->
-    <div class="palette-area">
-      <span class="palette-title">색상 팔레트</span>
-      <div class="color-chip chip-yellow" draggable="true" data-color="yellow" id="chip-yellow">
-        <span class="chip-lbl">보통</span>
+  <div class="wrap">
+    <div class="lp-inner">
+      <!-- 범례 -->
+      <div class="legend-area">
+        <span class="legend-title">등급 범례</span>
+        <div class="legend-item"><div class="legend-dot" style="background:#FFD700"></div>보통</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#FF9900"></div>강함</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#FF6000"></div>심함</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#000000"></div>극심함</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e8edf3;border:1px solid #d1d9e0"></div>해당없음</div>
       </div>
-      <div class="color-chip chip-orange" draggable="true" data-color="orange" id="chip-orange">
-        <span class="chip-lbl">강함</span>
-      </div>
-      <div class="color-chip chip-red" draggable="true" data-color="red" id="chip-red">
-        <span class="chip-lbl">심함</span>
-      </div>
-      <div class="color-chip chip-black" draggable="true" data-color="black" id="chip-black">
-        <span class="chip-lbl">극심함</span>
-      </div>
-      <div class="eraser-chip" draggable="true" data-color="erase" id="chip-erase" title="지우기">🧹</div>
-      <div class="chip-tip">클릭으로 선택 후<br>칸 클릭 또는 드래그</div>
-    </div>
-  </div>
+      <!-- 팔레트 -->
+      <div class="palette-area">
+        <span class="palette-title">색상 팔레트</span>
+        <div class="color-chip chip-yellow" draggable="true" data-color="yellow" id="chip-yellow">
+          <span class="chip-lbl">보통</span>
+        </div>
+        <div class="color-chip chip-orange" draggable="true" data-color="orange" id="chip-orange">
+          <span class="chip-lbl">강함</span>
+        </div>
+        <div class="color-chip chip-red" draggable="true" data-color="red" id="chip-red">
+          <span class="chip-lbl">심함</span>
+        </div>
+        <div class="color-chip chip-black" draggable="true" data-color="black" id="chip-black">
+          <span class="chip-lbl">극심함</span>
+        </div>
+        <div class="eraser-chip" draggable="true" data-color="erase" id="chip-erase" title="지우기">🧹</div>
+        <div class="chip-tip">클릭으로 선택 후<br>칸 클릭 또는 드래그</div>
+      </div><!-- /palette-area -->
+    </div><!-- /lp-inner -->
+  </div><!-- /wrap -->
 </div>
 
 <!-- 메인 -->
@@ -473,7 +501,7 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
       </div>
       <div class="how-step">
         <div class="how-num">1</div>
-        <div class="how-text"><strong>시나리오와 해역</strong>을 선택하고 <strong>초기화</strong> 버튼을 눌러 시작하세요.</div>
+        <div class="how-text"><strong>시나리오와 해역</strong>을 선택하여 게임을 시작하세요.</div>
       </div>
       <div class="how-step">
         <div class="how-num">2</div>
@@ -809,6 +837,8 @@ document.addEventListener('touchend', () => { isPainting = false; });
 document.querySelectorAll('.color-chip,.eraser-chip').forEach(chip => {
   chip.addEventListener('click', () => selectChip(chip.dataset.color));
 });
+// ── 페이지 로드 시 '보통(yellow)' 칩 자동 선택 ──
+selectChip('yellow');
 
 // ── 셀렉터 — 변경 즉시 차트 업데이트 ──
 document.querySelectorAll('[data-ssp]').forEach(btn => {
