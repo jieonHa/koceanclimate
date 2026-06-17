@@ -206,6 +206,18 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
 .how-text{font-size:12px;color:#334155;line-height:1.55}
 .how-text strong{color:#0284c7;font-weight:600}
 
+/* ── 게임 방법 팝업 ── */
+.howto-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:1500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.howto-overlay.show{opacity:1;pointer-events:all}
+.howto-box{position:relative;background:#fff;border-radius:20px;border:1px solid #e2e8f0;padding:30px 28px 22px;max-width:420px;width:90vw;box-shadow:0 20px 60px rgba(0,0,0,.15);transform:scale(.92);transition:transform .3s;max-height:85vh;overflow-y:auto}
+.howto-overlay.show .howto-box{transform:scale(1)}
+.howto-title{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.howto-close{position:absolute;top:14px;right:14px;background:#f1f5f9;border:none;color:#475569;font-size:15px;line-height:1;width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.howto-close:hover{background:#e2e8f0}
+.howto-box .how-step{padding:9px 0}
+.howto-start-btn{margin-top:16px;width:100%;padding:11px 0;border-radius:11px;background:linear-gradient(135deg,#0284c7,#0369a1);border:none;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;box-shadow:0 3px 12px rgba(2,132,199,.3)}
+.howto-start-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(2,132,199,.4)}
+
 /* ── 완료 모달 ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
 .modal-overlay.show{opacity:1;pointer-events:all}
@@ -527,6 +539,42 @@ body.painting .pcell:not(.no-data){cursor:crosshair}
 
   </div><!-- /side-panel -->
 </div><!-- /main-layout -->
+
+<!-- 게임 방법 팝업 (최초 진입 시 표시) -->
+<div class="howto-overlay" id="howtoOverlay">
+  <div class="howto-box">
+    <button class="howto-close" id="howtoClose" aria-label="닫기">✕</button>
+    <div class="howto-title">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      게임 방법
+    </div>
+    <div class="how-step">
+      <div class="how-num">1</div>
+      <div class="how-text"><strong>시나리오와 해역</strong>을 선택하여 게임을 시작하세요.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">2</div>
+      <div class="how-text"><strong>좌측 정답 차트</strong>를 보고 각 칸의 색상 등급을 파악하세요.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">3</div>
+      <div class="how-text">팔레트에서 <strong>색상 칩을 클릭</strong>해 선택하세요. 선택된 칩은 파란 테두리로 표시됩니다.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">4</div>
+      <div class="how-text">우측 퍼즐에서 <strong>칸을 클릭하거나, 클릭한 채로 드래그</strong>하면 연속으로 색칠됩니다.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">5</div>
+      <div class="how-text">🧹 <strong>지우개</strong>를 선택한 뒤 칸을 클릭하거나 드래그하면 지워집니다.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">6</div>
+      <div class="how-text">모든 칸을 채운 뒤 <strong>완성 — 점수 확인하기</strong> 버튼을 눌러 결과를 확인하세요.</div>
+    </div>
+    <button class="howto-start-btn" id="howtoStartBtn">확인했어요, 시작하기</button>
+  </div>
+</div>
 
 <!-- 지도 확대 팝업 -->
 <div class="map-zoom-overlay" id="mapZoom">
@@ -899,8 +947,20 @@ document.getElementById('mapZoom').addEventListener('click', e => {
   if (e.target === e.currentTarget) document.getElementById('mapZoom').classList.remove('show');
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.getElementById('mapZoom').classList.remove('show');
+  if (e.key === 'Escape') {
+    document.getElementById('mapZoom').classList.remove('show');
+    document.getElementById('howtoOverlay').classList.remove('show');
+  }
 });
+
+// ── 게임 방법 팝업 (최초 진입 시) ──
+function closeHowto(){ document.getElementById('howtoOverlay').classList.remove('show'); }
+document.getElementById('howtoClose').addEventListener('click', closeHowto);
+document.getElementById('howtoStartBtn').addEventListener('click', closeHowto);
+document.getElementById('howtoOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeHowto();
+});
+document.getElementById('howtoOverlay').classList.add('show');
 
 document.getElementById('modalNext').addEventListener('click', () => {
   document.getElementById('modal').classList.remove('show');
