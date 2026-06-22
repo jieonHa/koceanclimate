@@ -799,6 +799,12 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
   <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
 </footer>
 
+<!-- 이미지 확대 모달 -->
+<div class="img-modal" id="imgModal">
+  <button class="img-modal-close" id="imgModalClose" aria-label="닫기">&times;</button>
+  <img id="imgModalImg" src="" alt="확대 이미지">
+</div>
+
 <script>
 const ham = document.getElementById('hamburger');
 const mob = document.getElementById('mobileMenu');
@@ -857,12 +863,13 @@ document.addEventListener('click', e => {
 const imgModal = document.getElementById('imgModal');
 const imgModalImg = document.getElementById('imgModalImg');
 
-document.querySelectorAll('.kit-preview-box img').forEach(img => {
-  img.addEventListener('click', () => {
-    imgModalImg.src = img.dataset.full || img.src;  // 고해상도 원본 우선
-    imgModalImg.alt = img.alt || '확대 이미지';
-    imgModal.classList.add('open');
-  });
+// 이벤트 위임: 미리보기 박스 안 이미지를 클릭하면 확대
+document.addEventListener('click', e => {
+  const img = e.target.closest('.kit-preview-box img');
+  if (!img) return;
+  imgModalImg.src = img.dataset.full || img.src;  // 고해상도 원본 우선
+  imgModalImg.alt = img.alt || '확대 이미지';
+  imgModal.classList.add('open');
 });
 
 function closeImgModal() {
@@ -879,11 +886,7 @@ imgModal.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && imgModal.classList.contains('open')) closeImgModal();
 });
-</script><!-- 이미지 확대 모달 -->
-<div class="img-modal" id="imgModal">
-  <button class="img-modal-close" id="imgModalClose" aria-label="닫기">&times;</button>
-  <img id="imgModalImg" src="" alt="확대 이미지">
-</div>
+</script>
 
 </body>
 </html>
