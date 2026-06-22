@@ -235,7 +235,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
   z-index: 1000;
   justify-content: center; align-items: center;
   padding: 32px;
-  cursor: zoom-out;
 }
 .img-modal.open { display: flex; }
 .img-modal img {
@@ -243,16 +242,41 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 20px 60px rgba(0,0,0,.4);
-  cursor: default;
+  cursor: zoom-in;
+  transform: scale(1) translate(0, 0);
+  transform-origin: center center;
+  transition: transform .15s ease;
+  user-select: none; -webkit-user-drag: none;
 }
+.img-modal img.zoomed { cursor: grab; }
+.img-modal img.dragging { cursor: grabbing; transition: none; }
+
 .img-modal-close {
   position: absolute; top: 20px; right: 28px;
   width: 40px; height: 40px; border-radius: 50%;
   border: none; background: rgba(255,255,255,.15); color: #fff;
   font-size: 24px; line-height: 1; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
+  z-index: 2;
 }
 .img-modal-close:hover { background: rgba(255,255,255,.3); }
+
+/* 확대 컨트롤 버튼 */
+.img-modal-controls {
+  position: absolute; bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px;
+  background: rgba(0,0,0,.35);
+  padding: 6px; border-radius: 999px;
+  z-index: 2;
+}
+.img-modal-controls button {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: none; background: rgba(255,255,255,.15); color: #fff;
+  font-size: 18px; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.img-modal-controls button:hover { background: rgba(255,255,255,.3); }
 </style>
 </head>
 <body>
@@ -803,6 +827,11 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 <div class="img-modal" id="imgModal">
   <button class="img-modal-close" id="imgModalClose" aria-label="닫기">&times;</button>
   <img id="imgModalImg" src="" alt="확대 이미지">
+  <div class="img-modal-controls">
+    <button id="imgZoomOut" aria-label="축소">&minus;</button>
+    <button id="imgZoomReset" aria-label="원래대로">⟲</button>
+    <button id="imgZoomIn" aria-label="확대">+</button>
+  </div>
 </div>
 
 <script>
@@ -863,25 +892,91 @@ document.addEventListener('click', e => {
 const imgModal = document.getElementById('imgModal');
 const imgModalImg = document.getElementById('imgModalImg');
 
-// 이벤트 위임: 미리보기 박스 안 이미지를 클릭하면 확대
+const ZOOM_STEP = 0.5;   // 클릭/버튼당 확대 배율 증가량
+const ZOOM_MAX = 4;      // 최대 배율
+const ZOOM_MIN = 1;      // 최소 배율(원래 크기)
+let scale = 1, tx = 0, ty = 0;          // 현재 배율과 이동값
+let isDragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+let moved = false;       // 드래그였는지 구분(드래그 후 클릭 확대 방지)
+
+function applyTransform() {
+  imgModalImg.style.transform = `scale(${scale}) translate(${tx}px, ${ty}px)`;
+  imgModalImg.classList.toggle('zoomed', scale > 1);
+}
+function resetZoom() {
+  scale = 1; tx = 0; ty = 0;
+  applyTransform();
+}
+function setZoom(next) {
+  scale = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, next));
+  if (scale === 1) { tx = 0; ty = 0; }   // 원래 크기로 돌아오면 위치도 초기화
+  applyTransform();
+}
+
+// 미리보기 이미지 클릭 → 모달 열기 (이벤트 위임)
 document.addEventListener('click', e => {
   const img = e.target.closest('.kit-preview-box img');
   if (!img) return;
   imgModalImg.src = img.dataset.full || img.src;  // 고해상도 원본 우선
   imgModalImg.alt = img.alt || '확대 이미지';
+  resetZoom();
   imgModal.classList.add('open');
 });
 
 function closeImgModal() {
   imgModal.classList.remove('open');
   imgModalImg.src = '';
+  resetZoom();
 }
 
-// 배경 클릭 시 닫기 (이미지 자체 클릭은 제외)
-imgModal.addEventListener('click', e => {
-  if (e.target === imgModalImg) return;
-  closeImgModal();
+// 이미지 클릭 → 단계별 확대 (최대치 도달 시 원래대로)
+imgModalImg.addEventListener('click', e => {
+  e.stopPropagation();          // 배경 클릭 닫기로 전파 방지
+  if (moved) { moved = false; return; }  // 드래그 직후 클릭은 무시
+  if (scale >= ZOOM_MAX) resetZoom();
+  else setZoom(scale + ZOOM_STEP);
 });
+
+// 드래그로 이동(패닝) — 확대 상태에서만
+imgModalImg.addEventListener('mousedown', e => {
+  if (scale <= 1) return;
+  e.preventDefault();
+  isDragging = true; moved = false;
+  startX = e.clientX; startY = e.clientY;
+  startTx = tx; startTy = ty;
+  imgModalImg.classList.add('dragging');
+});
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const dx = (e.clientX - startX) / scale;  // 배율 보정
+  const dy = (e.clientY - startY) / scale;
+  if (Math.abs(e.clientX - startX) > 3 || Math.abs(e.clientY - startY) > 3) moved = true;
+  tx = startTx + dx; ty = startTy + dy;
+  applyTransform();
+});
+window.addEventListener('mouseup', () => {
+  if (!isDragging) return;
+  isDragging = false;
+  imgModalImg.classList.remove('dragging');
+});
+
+// 컨트롤 버튼
+document.getElementById('imgZoomIn').addEventListener('click', e => {
+  e.stopPropagation(); setZoom(scale + ZOOM_STEP);
+});
+document.getElementById('imgZoomOut').addEventListener('click', e => {
+  e.stopPropagation(); setZoom(scale - ZOOM_STEP);
+});
+document.getElementById('imgZoomReset').addEventListener('click', e => {
+  e.stopPropagation(); resetZoom();
+});
+
+// 배경 클릭 시 닫기 (이미지/컨트롤 클릭은 제외)
+imgModal.addEventListener('click', e => {
+  if (e.target === imgModal) closeImgModal();
+});
+document.getElementById('imgModalClose').addEventListener('click', closeImgModal);
+
 // ESC 키로 닫기
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && imgModal.classList.contains('open')) closeImgModal();
