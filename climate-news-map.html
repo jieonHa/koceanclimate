@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기후변화 교양 정보 – 한반도 주변 상세 해양기후 정보 서비스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- SVG 아이콘 스프라이트 -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-chevron-r"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-globe"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-map-pin"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="i-news"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></symbol>
+  <symbol id="i-layers"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+  <symbol id="i-cap"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/><path d="M22 9v6"/></symbol>
+  <symbol id="i-plus"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+</svg>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.65;
+  min-width: 320px;
+}
+a { text-decoration: none; color: inherit; }
+svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+/* ── 공통 래퍼 ── */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 36px; }
+
+/* ── 상단바 ── */
+.topbar { background: #0a2540; padding: 8px 0; font-size: 12px; color: rgba(255,255,255,.45); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+.topbar-links { display: flex; gap: 18px; }
+.topbar a { color: rgba(255,255,255,.6); }
+.topbar a:hover { color: #7dd3fc; }
+
+/* ── 네비게이션 ── */
+.navbar { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+.navbar .wrap { display: flex; align-items: center; height: 62px; }
+.logo { display: flex; align-items: center; gap: 12px; margin-right: 44px; flex-shrink: 0; }
+.logo-globe {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #0369a1);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-name { font-size: 14.5px; font-weight: 700; color: #0a2540; line-height: 1.25; }
+.logo-sub  { font-size: 11px; color: #64748b; }
+
+.nav-links { display: flex; align-items: stretch; height: 62px; flex: 1; }
+.nav-a {
+  padding: 0 18px; display: flex; align-items: center;
+  font-size: 14px; color: #334155; white-space: nowrap;
+  border-bottom: 2.5px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.nav-a:hover { color: #0284c7; border-bottom-color: #bae6fd; }
+.nav-a.on   { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.btn-nav {
+  padding: 6px 14px; border-radius: 8px; font-size: 13px;
+  border: 1px solid #e2e8f0; background: #fff; color: #64748b; cursor: pointer;
+}
+.btn-nav:hover { background: #f8fafc; }
+.btn-nav.primary { background: #0284c7; color: #fff; border-color: #0284c7; font-weight: 500; }
+.btn-nav.primary:hover { background: #0369a1; }
+
+/* 햄버거 (모바일) */
+.hamburger {
+  display: none; flex-direction: column; justify-content: center; align-items: center;
+  width: 42px; height: 42px; border-radius: 8px;
+  border: 1px solid #e2e8f0; background: #fff; cursor: pointer; gap: 5px; margin-left: 8px;
+}
+.hamburger span { display: block; width: 18px; height: 2px; background: #334155; border-radius: 2px; transition: all .25s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none; flex-direction: column;
+  background: #fff; border-bottom: 1px solid #e2e8f0;
+  padding: 6px 0 14px; animation: slideDown .2s ease;
+}
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 13px 24px; font-size: 15px; color: #334155;
+  border-left: 3px solid transparent; transition: all .15s;
+}
+.mobile-menu a:hover, .mobile-menu a.on { color: #0284c7; border-left-color: #0284c7; background: #f0f9ff; }
+
+/* ── 페이지 히어로 ── */
+.page-hero {
+  background: #0a2540; padding: 40px 0 44px;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, #0c4a6e 0%, transparent 65%);
+}
+.page-hero::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23f0f4f8' d='M0,20 C360,40 720,0 1080,20 C1260,30 1380,25 1440,23 L1440,40 L0,40 Z'/%3E%3C/svg%3E") no-repeat bottom/cover;
+}
+.page-hero .wrap { position: relative; z-index: 1; }
+.page-hero .breadcrumb {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12.5px; color: rgba(255,255,255,.45); margin-bottom: 16px;
+}
+.page-hero .breadcrumb a { color: rgba(255,255,255,.6); }
+.page-hero .breadcrumb a:hover { color: #7dd3fc; }
+.page-hero h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.page-hero p { font-size: 14.5px; color: #94a3b8; line-height: 1.7; max-width: 600px; }
+
+/* ── 본문 ── */
+.page-bg { padding: 40px 0 48px; }
+.intro-card {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 16px;
+  padding: 34px 36px; max-width: 860px; margin: 0 auto;
+  box-shadow: 0 2px 20px rgba(15,23,42,.04);
+}
+.intro-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.intro-icon {
+  width: 52px; height: 52px; border-radius: 13px;
+  background: #e0f2fe; color: #0284c7;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.intro-title { font-size: 21px; font-weight: 700; color: #0a2540; }
+.intro-lead { font-size: 14.5px; color: #64748b; }
+
+.intro-desc { font-size: 15px; color: #475569; line-height: 1.8; margin-bottom: 26px; }
+.intro-desc strong { color: #0284c7; font-weight: 600; }
+
+/* 기능 소개 리스트 */
+.feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 30px; }
+.feature-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: #f8fafc; border: 1px solid #eef2f6; border-radius: 12px; padding: 15px 16px;
+}
+.feature-item .fi-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: #e0f2fe; color: #0284c7;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.fi-title { font-size: 14px; font-weight: 600; color: #0a2540; margin-bottom: 2px; }
+.fi-sub { font-size: 12.5px; color: #64748b; line-height: 1.5; }
+
+/* 콘텐츠 카드 그리드 */
+.content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 22px; }
+.content-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px;
+  transition: box-shadow .2s, border-color .2s;
+}
+.content-card:hover { box-shadow: 0 4px 16px rgba(15,23,42,.07); border-color: #bae6fd; }
+.cc-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: #e0f2fe; color: #0284c7;
+  display: flex; align-items: center; justify-content: center;
+}
+.cc-body { flex: 1; min-width: 0; }
+.cc-title-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.cc-title { font-size: 15px; font-weight: 600; color: #0a2540; }
+.cc-sub { font-size: 12.5px; color: #64748b; margin-top: 4px; line-height: 1.55; }
+.cc-chevron { color: #94a3b8; flex-shrink: 0; }
+.badge-soon {
+  font-size: 11px; color: #92400e; background: #fef3c7;
+  padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+}
+.content-card.placeholder {
+  border: 1.5px dashed #cbd5e1; background: transparent; color: #94a3b8;
+  flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; min-height: 96px;
+}
+.content-card.placeholder .cc-icon { background: transparent; color: #94a3b8; width: auto; height: auto; margin-bottom: 4px; }
+
+/* CTA 버튼 */
+.cta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: #0284c7; color: #fff; font-weight: 600; font-size: 15px;
+  padding: 14px 26px; border-radius: 11px; transition: background .2s;
+}
+.cta-btn:hover { background: #0369a1; }
+.cta-note { font-size: 12.5px; color: #94a3b8; }
+
+/* 출처 배너 */
+.source-line {
+  margin-top: 26px; padding-top: 20px; border-top: 1px solid #eef2f6;
+  font-size: 12.5px; color: #94a3b8;
+}
+.source-line a { color: #0284c7; }
+.source-line a:hover { text-decoration: underline; }
+
+/* ── 푸터 ── */
+footer { background: #0a2540; padding: 28px 0 22px; margin-top: 16px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.f-logo { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; }
+.f-sub  { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.7; }
+.f-copy { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .topbar-links { display: none; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px; }
+  .page-hero h1 { font-size: 22px; }
+  .intro-card { padding: 26px 22px; }
+  .feature-list { grid-template-columns: 1fr; }
+  .content-grid { grid-template-columns: 1fr; }
+  .cta-row { flex-direction: column; align-items: flex-start; }
+  footer .wrap { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- 상단바 -->
+<div class="topbar">
+  <div class="wrap">
+    <div style="display:flex; gap:24px;">
+    <a href="https://www.kiost.ac.kr/kor.do" target="_blank">한국해양과학기술원 (KIOST)</a>
+    <a href="https://www.ocpc.kr/" target="_blank"> 해양기후예측센터 (OCPC)</a>
+    </div>
+  </div>
+</div>
+
+<!-- 네비게이션 -->
+<nav class="navbar" id="navbar">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <div class="logo-globe">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+          <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.2"/>
+          <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="white" stroke-width="1.2"/>
+          <line x1="2" y1="10" x2="18" y2="10" stroke="white" stroke-width="1.2"/>
+          <line x1="3.5" y1="6" x2="16.5" y2="6" stroke="white" stroke-width=".8"/>
+          <line x1="3.5" y1="14" x2="16.5" y2="14" stroke="white" stroke-width=".8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">한반도 해양기후 정보 서비스</div>
+        <div class="logo-sub">koceanclimate.kr</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a class="nav-a" href="index.html#sec-climate">해양기후 변화</a>
+      <a class="nav-a" href="index.html#sec-future">미래 전망</a>
+      <a class="nav-a on" href="education.html">맞춤 정보</a>
+      <a class="nav-a" href="research.html">연구사업 안내</a>
+    </div>
+
+    <div class="nav-right">
+      <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가용 데이터 포털↗</a>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- 모바일 메뉴 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#sec-climate">해양기후 변화</a>
+  <a href="index.html#sec-future">미래 전망</a>
+  <a href="education.html" class="on">맞춤 정보</a>
+  <a href="research.html">연구사업 안내</a>
+</div>
+
+<!-- 페이지 히어로 -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">홈</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <a href="education.html">해양기후 맞춤 정보</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <span>기후변화 교양 정보</span>
+    </div>
+    <h1>기후변화 교양 정보</h1>
+    <p>해양 기후 리터러시 증진을 위한 교양 콘텐츠를 모아 제공합니다.</p>
+  </div>
+</section>
+
+<!-- 본문 -->
+<div class="page-bg">
+  <div class="wrap">
+    <div class="intro-card">
+
+      <div class="intro-head">
+        <div class="intro-icon">
+          <svg class="ic" width="26" height="26"><use href="#i-cap"/></svg>
+        </div>
+        <div>
+          <div class="intro-title">기후변화 교양 정보</div>
+          <div class="intro-lead">해양 기후 리터러시 증진을 위한 교양 콘텐츠</div>
+        </div>
+      </div>
+
+      <p class="intro-desc">
+        대학생·일반인이 <strong>해양·기후 변화</strong>를 쉽고 흥미롭게 이해할 수 있도록 구성한 교양 콘텐츠 모음입니다.
+        아래 목록에서 원하는 콘텐츠를 선택해 살펴보세요.
+      </p>
+
+      <div class="content-grid">
+
+        <a class="content-card" href="http://ec2-3-38-236-137.ap-northeast-2.compute.amazonaws.com:3838/" target="_blank" rel="noopener noreferrer">
+          <div class="cc-icon"><svg class="ic" width="22" height="22"><use href="#i-globe"/></svg></div>
+          <div class="cc-body">
+            <div class="cc-title-row">
+              <span class="cc-title">지도로 보는 최신 기후 뉴스</span>
+              <svg class="ic cc-chevron" width="17" height="17"><use href="#i-external"/></svg>
+            </div>
+            <div class="cc-sub">세계 지도 위에서 지역별·시기별 기후 뉴스와 최신 CO₂ 농도 등 기후 지표를 확인하는 대화형 지도</div>
+          </div>
+        </a>
+
+        <div class="content-card placeholder">
+          <div class="cc-icon"><svg class="ic" width="20" height="20"><use href="#i-plus"/></svg></div>
+          <div class="cc-sub">새로운 교양 콘텐츠가 추가될 예정입니다</div>
+        </div>
+
+      </div>
+
+      <div class="source-line">
+        Ocean Climate Issues provided by <a href="https://www.ocpc.kr/" target="_blank" rel="noopener noreferrer">OCPC</a>
+        · CO₂ 데이터 출처: NOAA GML
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 푸터 -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
+      <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
+    </div>
+  </div>
+  <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
+</footer>
+
+<script>
+/* ── 햄버거 ── */
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => {
+  const open = mob.classList.toggle('open');
+  ham.classList.toggle('open', open);
+  ham.setAttribute('aria-expanded', String(open));
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 960) {
+    mob.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+
+</body>
+</html>
