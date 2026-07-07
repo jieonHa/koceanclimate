@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>초중고 학생용 – 해양기후 맞춤 정보</title>
+<title>해양 심폐소생 프로젝트 CODE BLUE – 게임 설명서 | 해양기후 맞춤 정보</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -30,6 +30,8 @@
   <symbol id="i-home"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></symbol>
   <symbol id="i-coin"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9.5c0-1 1-2 3-2s3 1 3 1.8c0 2.2-6 1.2-6 3.7 0 .8 1 1.8 3 1.8s3-1 3-2"/></symbol>
   <symbol id="i-trophy"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 5H4a3 3 0 0 0 3 5"/><path d="M17 5h3a3 3 0 0 1-3 5"/></symbol>
+  <symbol id="i-cards"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7.5" width="14" height="14" rx="2" transform="rotate(-11 9.5 14.5)"/><rect x="7.5" y="4" width="14" height="14" rx="2"/></symbol>
+  <symbol id="i-zap"      viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></symbol>
 
 </svg>
 
@@ -303,7 +305,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 /* ── 보드게임: 서브 헤딩 ── */
 .subhead {
   font-size: 15px; font-weight: 700; color: #0a2540;
-  margin: 28px 0 4px; display: flex; align-items: center; gap: 7px;
+  margin: 42px 0 4px; display: flex; align-items: center; gap: 7px;
 }
 .subhead svg { color: #0284c7; }
 .subhead-desc { font-size: 13px; color: #64748b; line-height: 1.65; margin-bottom: 16px; }
@@ -318,7 +320,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 .comp-cell .cp-name { font-size: 12px; color: #64748b; margin-top: 2px; line-height: 1.4; }
 
 /* ── 보드게임: 번호 규칙 목록 ── */
-.rule-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 6px; }
+.rule-list { display: flex; flex-direction: column; gap: 24px; margin-bottom: 6px; }
 .rule-item { display: flex; gap: 14px; align-items: flex-start; }
 .rule-num {
   width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
@@ -434,6 +436,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
   <a href="research.html">연구사업 안내</a>
 </div>
 
+
 <!-- 페이지 히어로 -->
 <section class="page-hero">
   <div class="wrap">
@@ -442,206 +445,18 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
       <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
       <a href="education.html">해양기후 맞춤 정보</a>
       <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
-      <span>초중고 학생용</span>
+      <a href="students.html">초중고 학생용</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <span>해양기후 보드게임 설명서</span>
     </div>
-    <h1>초중고 학생용</h1>
-    <p>초등학생부터 고등학생까지, 해양기후변화를 쉽고 재미있게 배울 수 있는 체험학습지, 보드게임, 만들기 키트 등 다양한 교육 콘텐츠를 제공합니다. KIOST 해양기후예측센터가 직접 개발·제작한 비매품 교육 자료입니다.</p>
+    <h1>해양 심폐소생 프로젝트 CODE BLUE</h1>
+    <p>환경 보호 전략 보드게임 「CODE BLUE」의 구성품부터 기본 규칙, 찬스·효과 카드, 자금 위기 관리, 승리 조건까지 한눈에 확인하는 게임 설명서입니다.</p>
   </div>
 </section>
 
-<!-- 탭 내비게이션 -->
-<div class="tab-nav" id="tabNav">
-  <div class="wrap">
-    <a class="tab-a on" href="#elementary" data-tab="elementary">
-      <svg class="ic" width="15" height="15"><use href="#i-star"/></svg>
-      맹그로브 서식지 변화
-    </a>
-    <a class="tab-a" href="#heat-wave" data-tab="heat-wave">
-      <svg class="ic" width="15" height="15"><use href="#i-chart"/></svg>
-      해양열파 미래변화 퍼즐
-    </a>
-    <a class="tab-a" href="#board-game" data-tab="board-game">
-      <svg class="ic" width="15" height="15"><use href="#i-puzzle"/></svg>
-      해양기후 보드게임
-    </a>
-    <a class="tab-a" href="#diy-kit" data-tab="diy-kit">
-      <svg class="ic" width="15" height="15"><use href="#i-translate"/></svg>
-      만들기 키트 번역본
-    </a>
-  </div>
-</div>
-
-<!-- 본문 -->
 <div class="page-bg">
-
-  <!-- ① 맹그로브 서식지 변화_초등학생 체험학습지 -->
-  <section class="sec" id="elementary">
+  <section class="sec">
     <div class="wrap">
-      <div class="sec-hd">
-        <div>
-          <div class="sec-title">
-            <span class="sec-bar"></span>
-            <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-star"/></svg>
-            맹그로브 서식지 변화_초등학생 체험학습지
-          </div>
-          <div class="sec-sub">맹그로브 생태, 블루카본, 해면수온 변화 등을 초등학생 눈높이에 맞춰 직접 탐구하는 해양기후 체험학습지</div>
-        </div>
-      </div>
-
-      <div class="section-banner">
-        <div class="sb-icon">
-          <svg class="ic" width="26" height="26" style="color:#fff"><use href="#i-globe"/></svg>
-        </div>
-        <div>
-          <div class="sb-title">우리나라에도 맹그로브가 자랄 수 있다고?</div>
-          <div class="sb-desc">맹그로브는 열대·아열대 해안가에 자라는 염생식물로, 다양한 해양생물의 보금자리이자 지구의 허파·탄소저장고입니다. 기후변화로 서식지가 북상하면서 우리나라 주변 바다에도 변화가 생기고 있어요. 학습지를 통해 맹그로브의 생태와 기후변화의 관계를 직접 탐구해 보세요!</div>
-        </div>
-      </div>
-
-      <div class="gl-card">
-        <div class="gl-icon green">
-          <svg class="ic" width="26" height="26"><use href="#i-book"/></svg>
-        </div>
-        <div class="gl-body">
-          <span class="gl-label elem">
-            <svg class="ic" width="10" height="10"><use href="#i-star"/></svg>
-            초등학생용
-          </span>
-          <div class="gl-title">우리나라에도 맹그로브가 자랄 수 있다고? – 체험학습지</div>
-          <div class="gl-desc">
-            맹그로브의 생태적 특징부터 전지구·한반도 주변 바다의 미래 해면수온 변화까지 탐구하는 초등학생용 해양기후 체험학습지입니다.
-            맹그로브 생김새 관찰, 서식지 분포 지도 읽기, 해역별 염생식물 조사, 해면수온 색칠 활동, 블루카본 개념 학습, 5문항 퀴즈 등
-            다양한 탐구 활동으로 구성되어 있습니다. 참고 사이트(oceanclimate.kr)를 활용해 미래 수온 변화도 직접 확인합니다.
-          </div>
-          <div class="gl-tags">
-            <span class="gl-tag">초등학생용</span>
-            <span class="gl-tag">해양기후 체험학습</span>
-            <span class="gl-tag">맹그로브 · 블루카본</span>
-            <span class="gl-tag">염생식물 탐구</span>
-            <span class="gl-tag">서식지 북상</span>
-          </div>
-          <div class="gl-meta">
-            <span class="gl-meta-item">
-              <svg class="ic" width="12" height="12"><use href="#i-file"/></svg>
-              학습지 PDF · 총 16쪽
-            </span>
-            <span class="gl-meta-item">
-              <svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>
-              2024년 10월 발간
-            </span>
-            <span class="gl-meta-item">
-              KIOST 해양기후예측센터 (김은진, 김현진, 강현우)
-            </span>
-          </div>
-          <div class="gl-actions">
-            <!-- TODO: href에 배포할 PDF 파일 경로를 넣어주세요. 예) href="files/mangrove_student.pdf" -->
-          <!--  <a class="gl-btn primary" href="https://mysharedaddview.s3.ap-northeast-2.amazonaws.com/koceanclimate/Mangrove_Students.pdf" download="우리나라에도_맹그로브가_자랄_수_있다고(학생용).pdf"> -->
-            <a class="gl-btn primary" href="literacy/Mangrove/mangrove_students_under25mb.pdf" download="우리나라에도_맹그로브가_자랄_수_있다고(학생용).pdf">  
-              <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
-              학습지 다운로드
-            </a>
-            <!-- TODO: href에 웹에서 보기용 HTML 파일 경로를 넣어주세요. 예) href="mangrove_view.html" -->
-            <a class="gl-btn outline" href="mangrove_student_200dpi.html" target="_blank">
-              <svg class="ic" width="14" height="14"><use href="#i-external"/></svg>
-              웹에서 열람
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ② 해양열파 미래변화 -->
-  <section class="sec" id="heat-wave">
-    <div class="wrap">
-      <div class="sec-hd">
-        <div>
-          <div class="sec-title">
-            <span class="sec-bar"></span>
-            <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-chart"/></svg>
-            해양열파 미래변화
-          </div>
-          <div class="sec-sub">뜨거워지는 바다, 해양열파가 미래에 어떻게 변할지 알아보는 교육 콘텐츠</div>
-        </div>
-      </div>
-
-      <div class="section-banner" style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-color: #fed7aa;">
-        <div class="sb-icon" style="background: #ea580c;">
-          <svg class="ic" width="26" height="26" style="color:#fff"><use href="#i-chart"/></svg>
-        </div>
-        <div>
-          <div class="sb-title" style="color:#7c2d12;">해양열파란 무엇일까요?</div>
-          <div class="sb-desc" style="color:#c2410c;">해양열파(Marine Heatwave)는 바닷물의 온도가 비정상적으로 높은 상태가 5일 이상 지속되는 현상입니다.
-            기후변화로 해양열파가 더 자주, 더 강하게, 더 오래 발생하고 있어요. 아래 색칠 퍼즐로 SSP 시나리오별 해양열파 미래변화를 직접 탐구해 보세요!</div>
-        </div>
-      </div>
-
-      <div class="gl-card">
-        <div class="gl-icon orange">
-          <svg class="ic" width="26" height="26"><use href="#i-puzzle"/></svg>
-        </div>
-        <div class="gl-body">
-          <span class="gl-label mid">
-            <svg class="ic" width="10" height="10"><use href="#i-star"/></svg>
-            초등학생용
-          </span>
-          <div class="gl-title">해양열파 미래변화 색칠 퍼즐</div>
-          <div class="gl-desc">
-            SSP 시나리오(1-2.6 / 2-4.5 / 3-7.0 / 5-8.5)와 해역(동아시아·동중국해·동해·황해)을 선택하고, 정답 차트를 보며 빈 칸에 알맞은 색을 칠하는 탐구형 색칠 퍼즐입니다. 색상 칩을 클릭해 선택한 뒤 칸을 클릭하거나 드래그해서 색칠하세요.
-          </div>
-          <div class="gl-tags">
-            <span class="gl-tag">초등학생</span>
-            <span class="gl-tag">기후 시나리오</span>
-            <span class="gl-tag">해양열파</span>
-            <span class="gl-tag">데이터 분석</span>
-            <span class="gl-tag">SSP 시나리오</span>
-          </div>
-          <div class="gl-meta">
-            <span class="gl-meta-item">
-              <svg class="ic" width="12" height="12"><use href="#i-file"/></svg>
-              탐구 자료 pptx
-            </span>
-            <span class="gl-meta-item">
-              <svg class="ic" width="12" height="12"><use href="#i-clock"/></svg>
-              2024년 발간
-            </span>
-          </div>
-          <div class="gl-actions">
-            <!-- TODO: href에 배포할 PDF 파일 경로를 넣어주세요. 예) href="files/heatwave_student.pdf" -->
-            <a class="gl-btn primary" href="heatwave_puzzle_coloring.pptx" download>
-              <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
-              자료 다운로드
-            </a>
-            <!-- TODO: href에 웹에서 보기용 HTML 파일 경로를 넣어주세요. 예) href="heatwave_view.html" -->
-            <a class="gl-btn outline" href="heatwave_puzzle.html" target="_blank">
-              <svg class="ic" width="14" height="14"><use href="#i-gamepad"/></svg>
-              게임 실행하기
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ③ 해양기후 보드게임 -->
-  <section class="sec" id="board-game">
-    <div class="wrap">
-      <div class="sec-hd">
-        <div>
-          <div class="sec-title">
-            <span class="sec-bar"></span>
-            <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-puzzle"/></svg>
-            해양기후 보드게임
-          </div>
-          <div class="sec-sub">게임으로 배우는 해양기후변화 — 환경 보호 전략 보드게임 「CODE BLUE」</div>
-        </div>
-      </div>
 
       <div class="section-banner">
         <div class="sb-icon">
@@ -667,6 +482,8 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
             주사위를 굴려 이동하며 해양부동산을 사고팔고, 탄소코인을 관리해 나가는 보드게임입니다.
             해양부동산을 통해 탄소를 흡수하고, 찬스 카드와 효과 카드로 예측할 수 없는 기후 변화에 대응하면서
             자산을 불려나가 보세요. KIOST 해양기후예측센터(OCPC)가 직접 개발·제작한 비매품 교육 자료입니다.
+            <br><br>
+            아래에서 세부 규칙을 읽기 전에, <strong style="color:#0f172a;">봇을 상대로 먼저 플레이해보며</strong> 대략적인 흐름을 몸으로 익힐 수 있습니다.
           </div>
           <div class="gl-tags">
             <span class="gl-tag">2~6인</span>
@@ -675,123 +492,248 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
             <span class="gl-tag">탄소중립 · 기후위기 대응</span>
           </div>
           <div class="gl-actions">
-            <a class="gl-btn primary" href="board-game-guide.html">
-              <svg class="ic" width="14" height="14"><use href="#i-book"/></svg>
-              게임 설명서 보기
+            <a class="gl-btn primary" href="board-game-demo.html">
+              <svg class="ic" width="14" height="14"><use href="#i-play"/></svg>
+              데모게임 플레이하기
             </a>
             <!-- TODO: href에 게임설명서 PDF 파일 경로를 넣어주세요. -->
             <span class="gl-btn disabled">
               <svg class="ic" width="14" height="14"><use href="#i-download"/></svg>
-              PDF 다운로드 준비 중
+              설명서 PDF 준비 중
             </span>
           </div>
         </div>
       </div>
 
-    </div>
-  </section>
+      <!-- 게임 구성품 -->
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-puzzle"/></svg>
+        게임 구성품
+      </div>
+      <div class="comp-grid">
+        <div class="comp-cell"><div class="cp-qty">1개</div><div class="cp-name">게임판</div></div>
+        <div class="comp-cell"><div class="cp-qty">2개</div><div class="cp-name">주사위</div></div>
+        <div class="comp-cell"><div class="cp-qty">15장</div><div class="cp-name">희망의 파도 카드</div></div>
+        <div class="comp-cell"><div class="cp-qty">15장</div><div class="cp-name">바다의 경고 카드</div></div>
+        <div class="comp-cell"><div class="cp-qty">각 15개</div><div class="cp-name">효과카드 (3종)</div></div>
+        <div class="comp-cell"><div class="cp-qty">16개</div><div class="cp-name">해양관리증서</div></div>
+        <div class="comp-cell"><div class="cp-qty">6개</div><div class="cp-name">탄소보관소</div></div>
+        <div class="comp-cell"><div class="cp-qty">50~40매</div><div class="cp-name">기금 지폐 (10만~500만원권)</div></div>
+        <div class="comp-cell"><div class="cp-qty">100·100·70개</div><div class="cp-name">탄소코인 (1·2·5 단위)</div></div>
+      </div>
 
-  <div class="divider"></div>
-
-  <!-- ④ 만들기 키트 번역본 -->
-  <section class="sec" id="diy-kit">
-    <div class="wrap">
-      <div class="sec-hd">
-        <div>
-          <div class="sec-title">
-            <span class="sec-bar"></span>
-            <svg class="ic" width="18" height="18" style="color:#0284c7"><use href="#i-translate"/></svg>
-            만들기 키트 번역본
+      <!-- 게임 기본 규칙 -->
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-dice"/></svg>
+        게임 기본 규칙
+      </div>
+      <div class="rule-list">
+        <div class="rule-item">
+          <div class="rule-num">1</div>
+          <div class="rule-body">
+            <div class="rule-title">주사위 던지기</div>
+            <div class="rule-desc">주사위 2개를 던져 나온 숫자만큼 이동합니다. 주사위를 던질 때마다 탄소코인 2개를 받습니다.</div>
+            <div class="rule-desc">더블: 두 주사위 숫자가 똑같으면 탄소코인을 받지 않고 한 번 더 이동할 수 있습니다.</div>
           </div>
-          <div class="sec-sub">NOAA·NWS의 해양기후 교육 키트를 KIOST 해양기후예측센터가 한국어로 번역 — 총 4종</div>
         </div>
-        <a class="gl-btn outline" href="diy-kit.html">
-          전체 보기
-          <svg class="ic" width="14" height="14"><use href="#i-chevron-r"/></svg>
+        <div class="rule-item">
+          <div class="rule-num">2</div>
+          <div class="rule-body">
+            <div class="rule-title">해양부동산 구매하기</div>
+            <div class="rule-desc">주인이 없는 칸에 도착하면 해양관리증서에 표시된 돈을 내고 해양부동산을 구매할 수 있습니다.</div>
+            <div class="rule-desc">먼저 도착한 플레이어가 구매를 포기하면 다음 플레이어가 구매할 수 있습니다.</div>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num">3</div>
+          <div class="rule-body">
+            <div class="rule-title">해양부동산 관리하기</div>
+            <div class="rule-desc">내가 가지고 있는 해양부동산에 도착하면 해양관리증서에 적힌 대로 보유한 탄소코인을 버릴 수 있습니다.</div>
+            <div class="rule-desc">다른 플레이어가 내가 소유한 부동산에 방문하면 통행료를 받습니다. (해양관리증서 참고)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 찬스 카드 -->
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-cards"/></svg>
+        찬스 카드
+      </div>
+      <div class="subhead-desc">
+        바다에는 예상치 못한 일들이 일어납니다. 찬스 칸에 도착하면 해당 카드더미 가장 위에 있는 카드 한 장을 뽑아 적힌 대로 실행하고, 실행이 끝난 카드는 카드 더미의 맨 아래로 넣습니다.
+      </div>
+      <div class="chance-grid">
+        <div class="chance-card hope">
+          <span class="chance-tag">희망의 파도 · 15장</span>
+          <div class="chance-title">바다를 살리는 좋은 소식</div>
+          <div class="chance-desc">긍정적 효과. 예) 해양 탄소 포집 기술 개발로 탄소 흡수량이 증가합니다.</div>
+        </div>
+        <div class="chance-card warn">
+          <span class="chance-tag">바다의 경고 · 15장</span>
+          <div class="chance-title">주의해야 할 기후 위기 소식</div>
+          <div class="chance-desc">부정적 효과. 예) 극심한 해양 열파 발생으로 해양 생태계가 무너져 탄소 흡수력이 감소합니다.</div>
+        </div>
+      </div>
+
+      <!-- 효과 카드 -->
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-zap"/></svg>
+        효과 카드
+      </div>
+      <div class="subhead-desc">
+        찬스 카드를 통해 탄소 흡수량 변화가 발생합니다. 해양부동산 칸 윗부분에 표시된 <strong style="color:#0f172a;">카테고리(생태계 · 친환경 · 연구)</strong>가
+        찬스 카드의 내용과 동일하면, 해당 카테고리의 모든 해양부동산 칸에 효과카드가 올라가고 이 효과는 모든 플레이어에게 적용됩니다.
+      </div>
+      <div class="effect-grid">
+        <div class="effect-cell">
+          <div class="ef-icon" style="background:#fee2e2; color:#dc2626;">▼</div>
+          <div class="ef-label">탄소 흡수량<br>50% 감소</div>
+        </div>
+        <div class="effect-cell">
+          <div class="ef-icon" style="background:#dcfce7; color:#16a34a;">▲</div>
+          <div class="ef-label">탄소 흡수량<br>50% 증가</div>
+        </div>
+        <div class="effect-cell">
+          <div class="ef-icon" style="background:#334155; color:#fde047;">✕</div>
+          <div class="ef-label">탄소 흡수<br>불가</div>
+        </div>
+      </div>
+      <div class="subhead-desc" style="margin-top:6px;">
+        예시) 증가(▲)되어 있던 칸이 감소(▼) 효과가 나오면 기본값으로 돌아갑니다 · 증가(▲)되어 있던 칸이 불가(✕) 효과가 나오면 흡수가 불가합니다 · 불가(✕)했던 칸이 회복 효과가 나오면 기본값으로 돌아갑니다.
+      </div>
+
+      <!-- 자금 위기 관리 -->
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-coin"/></svg>
+        자금 위기 관리
+      </div>
+      <div class="subhead-desc">바다를 구하다 보면 돈이 부족할 수도 있어요. 그럴 땐 이렇게 하세요!</div>
+      <div class="rule-list">
+        <div class="rule-item">
+          <div class="rule-num" style="background:#d97706;">1</div>
+          <div class="rule-body">
+            <div class="rule-title">해양부동산 팔거나 넘기기</div>
+            <div class="rule-desc">자금이 부족하면 내가 가진 해양부동산을 해양기후관리기금에 팔 수 있습니다. 단, 판매 시 원래 가격에서 수수료 50만 원을 뺀 금액을 받습니다.</div>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num" style="background:#d97706;">2</div>
+          <div class="rule-body">
+            <div class="rule-title">증서 넘기기</div>
+            <div class="rule-desc">기금이 없을 땐 내가 가진 해양관리증서를 다른 플레이어에게 넘겨서 부족한 비용을 대신 낼 수 있습니다. 단, 차액이 발생해도 받을 수 없습니다.</div>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num" style="background:#dc2626;">3</div>
+          <div class="rule-body">
+            <div class="rule-title">긴급 회생 지원 (1번만 신청 가능)</div>
+            <div class="rule-desc"><strong>신청</strong> — 지불할 돈이 부족해서 파산할 것 같을 때 한 번 신청할 수 있습니다.</div>
+            <div class="rule-desc"><strong>지원</strong> — 즉시 기금 700만 원을 받고, 환경 책임에 대한 탄소코인 5개를 받습니다.</div>
+            <div class="rule-desc"><strong>갚기</strong> — 빌린 돈에 이자를 포함하여 총 800만 원을 갚아야 합니다.</div>
+            <div class="rule-desc"><strong>제한</strong> — 돈을 다 갚기 전까지는 출발지에서 받는 기금이 자동으로 갚아지며, 새로운 해양부동산을 살 수 없습니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 승리 및 종료 조건 -->
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-trophy"/></svg>
+        승리 및 종료 조건
+      </div>
+      <div class="rule-list">
+        <div class="rule-item">
+          <div class="rule-num" style="background:#15803d;">
+            <svg class="ic" width="13" height="13"><use href="#i-star"/></svg>
+          </div>
+          <div class="rule-body">
+            <div class="rule-title">기후 위기 극복 선언 (개인 승리)</div>
+            <div class="rule-desc">플레이어 중 한 명이 탄소코인 10개 이하 & 자산(기금+해양부동산) 3,000만 원 이상을 모두 달성하면 즉시 승리합니다.</div>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-num" style="background:#334155;">
+            <svg class="ic" width="13" height="13"><use href="#i-info"/></svg>
+          </div>
+          <div class="rule-body">
+            <div class="rule-title">해양 생태계 붕괴 선언 (전체 종료)</div>
+            <div class="rule-desc">모든 플레이어의 탄소코인 평균이 90개 이상이 되면 게임이 종료됩니다. 이때는 탄소코인 개수가 가장 적은 플레이어가 '최후의 생존자'로 승리합니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 게임 플레이 팁 -->
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-bulb"/></svg>
+        게임 플레이 팁
+      </div>
+      <div class="tip-grid">
+        <div class="tip-card"><div class="tip-num">1</div><div class="tip-desc">내가 구매한 해양부동산에 도착했을 때 탄소코인 버릴 기회를 놓치지 마세요!</div></div>
+        <div class="tip-card"><div class="tip-num">2</div><div class="tip-desc">주사위 숫자가 똑같이 나오면 탄소코인 안 받고 이동! 더블을 노려보세요.</div></div>
+        <div class="tip-card"><div class="tip-num">3</div><div class="tip-desc">돈만 모으기보다 탄소코인을 제때 버리는 것이 진정한 승리의 비결이에요.</div></div>
+        <div class="tip-card"><div class="tip-num">4</div><div class="tip-desc">긴급 회생 지원은 갚기 전까지 새 땅을 살 수 없으니, 대출은 신중하게 결정하세요.</div></div>
+        <div class="tip-card"><div class="tip-num">5</div><div class="tip-desc">다른 플레이어의 탄소코인 개수도 확인하며, 바다 전체의 건강을 함께 지켜보세요.</div></div>
+      </div>
+
+      <!-- 초기 자산 배분표 -->
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-home"/></svg>
+        초기 자산 배분표
+      </div>
+      <div class="subhead-desc">인원수에 따라 아래와 같이 기금과 탄소코인을 나누어 게임을 시작합니다. 한 바퀴를 돌아 출발지를 지날 때마다 200만 원을 추가로 받습니다.</div>
+      <table class="game-table">
+        <thead>
+          <tr><th>플레이어 수</th><th>기금</th><th>탄소코인</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2인</td>
+            <td>500만원×2, 200만원×2, 100만원×2,<br>50만원×2, 20만원×3, 10만원×4<br><strong>= 1,800만원</strong></td>
+            <td>5개×9, 2개×4, 1개×7<br><strong>= 60개</strong></td>
+          </tr>
+          <tr>
+            <td>3~4인</td>
+            <td>500만원×2, 200만원×3, 100만원×2,<br>50만원×2, 20만원×3, 10만원×4<br><strong>= 2,000만원</strong></td>
+            <td>5개×8, 2개×3, 1개×4<br><strong>= 50개</strong></td>
+          </tr>
+          <tr>
+            <td>5~6인</td>
+            <td>500만원×1, 200만원×2, 100만원×3,<br>50만원×4, 20만원×3, 10만원×4<br><strong>= 1,500만원</strong></td>
+            <td>5개×6, 2개×3, 1개×4<br><strong>= 40개</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="subhead">
+        <svg class="ic" width="17" height="17"><use href="#i-play"/></svg>
+        웹 데모로 미리 체험하기
+      </div>
+      <div class="subhead-desc">
+        실물 보드게임을 구하기 전에, 웹 브라우저에서 봇을 상대로 먼저 플레이해보며 대략적인 규칙을 몸으로 익힐 수 있습니다.
+        주사위 굴리기부터 해양부동산 구매, 찬스 카드, 자금 위기 관리, 승리 조건까지 위에서 설명한 규칙을 실제로 체험할 수 있어요.
+      </div>
+      <div class="tip-grid">
+        <div class="tip-card"><div class="tip-num">1</div><div class="tip-desc">나 1명 + 봇 1~5명, 2~6인 중 원하는 인원으로 시작</div></div>
+        <div class="tip-card"><div class="tip-num">2</div><div class="tip-desc">주사위를 굴리면 두 눈에 맞춰 두 번 점프하며 이동하는 모습을 직접 확인</div></div>
+        <div class="tip-card"><div class="tip-num">3</div><div class="tip-desc">부동산을 사면 칸에 소유자 깃발이 표시되고, 통행료·버릴 수 있는 탄소코인 개수도 칸에서 바로 확인</div></div>
+        <div class="tip-card"><div class="tip-num">4</div><div class="tip-desc">찬스 카드 30종(희망의 파도·바다의 경고 각 15종, 실제 게임설명서 기준)이 무작위로 등장</div></div>
+      </div>
+      <div class="subhead-desc" style="margin-top:2px;">
+        ※ 보드판 칸 구성·가격표·찬스 카드 내용은 아직 확정 전이라 데모에서는 임시 데이터를 사용합니다. 실제 내용이 정해지면 동일한 구조로 교체될 예정입니다.
+      </div>
+
+      <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="gl-btn primary" href="board-game-demo.html">
+          <svg class="ic" width="14" height="14"><use href="#i-play"/></svg>
+          솔로플레이 데모 해보기 (봇 대전)
+        </a>
+        <a class="gl-btn outline" href="students.html#board-game">
+          <svg class="ic" width="14" height="14"><use href="#i-chevron-l"/></svg>
+          초중고 학생용 페이지로 돌아가기
         </a>
       </div>
 
-      <div class="section-banner" style="background:linear-gradient(135deg,#f0fdfa 0%,#ccfbf1 100%);border-color:#99f6e4;">
-        <div class="sb-icon" style="background:#0d9488;">
-          <svg class="ic" width="26" height="26" style="color:#fff"><use href="#i-translate"/></svg>
-        </div>
-        <div>
-          <div class="sb-title" style="color:#134e4a;">직접 오리고 조립하며 배우는 해양기후!</div>
-          <div class="sb-desc" style="color:#0f766e;">NOAA·NWS에서 개발한 지구본 만들기·원판 만들기 키트를 한국어로 번역했습니다. 엘니뇨·라니냐, 열대 저기압 경로, 해수면 염분, 미래 기온 변화까지 — 손으로 만들며 해양기후 원리를 체험해 보세요.</div>
-        </div>
-      </div>
-
-      <!-- 4종 키트 미리보기 그리드 -->
-      <div class="kit-grid">
-
-        <a class="kit-card" href="diy-kit.html#enso">
-          <div class="kit-card-icon" style="background:linear-gradient(135deg,#0ea5e9,#0369a1);">
-            <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
-              <circle cx="20" cy="20" r="16" stroke="white" stroke-width="1.5" opacity=".5"/>
-              <path d="M8 20 Q14 12 20 20 Q26 28 32 20" stroke="white" stroke-width="2" fill="none"/>
-              <circle cx="20" cy="20" r="4" fill="white" opacity=".8"/>
-            </svg>
-          </div>
-          <div class="kit-card-body">
-            <span class="kit-card-tag">회전 원판</span>
-            <div class="kit-card-title">엘니뇨 – 라니냐</div>
-            <div class="kit-card-desc">ENSO 원리를 회전 원판으로 직접 조작하며 학습</div>
-          </div>
-          <div class="kit-card-arrow"><svg class="ic" width="16" height="16"><use href="#i-chevron-r"/></svg></div>
-        </a>
-
-        <a class="kit-card" href="diy-kit.html#hurricane">
-          <div class="kit-card-icon" style="background:linear-gradient(135deg,#f59e0b,#b45309);">
-            <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
-              <circle cx="20" cy="20" r="16" stroke="white" stroke-width="1.5" opacity=".5"/>
-              <path d="M20 8 Q28 14 24 20 Q20 26 12 24 Q8 22 14 18 Q18 15 20 20" stroke="white" stroke-width="2" fill="none"/>
-            </svg>
-          </div>
-          <div class="kit-card-body">
-            <span class="kit-card-tag">지구본 조립</span>
-            <div class="kit-card-title">전 세계 열대 저기압 경로</div>
-            <div class="kit-card-desc">1950–2020년 태풍·허리케인·사이클론 이동 경로 지구본</div>
-          </div>
-          <div class="kit-card-arrow"><svg class="ic" width="16" height="16"><use href="#i-chevron-r"/></svg></div>
-        </a>
-
-        <a class="kit-card" href="diy-kit.html#salinity">
-          <div class="kit-card-icon" style="background:linear-gradient(135deg,#10b981,#065f46);">
-            <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
-              <circle cx="20" cy="20" r="16" stroke="white" stroke-width="1.5" opacity=".5"/>
-              <path d="M8 22 Q12 16 16 20 Q20 24 24 18 Q28 12 32 18" stroke="white" stroke-width="2" fill="none"/>
-              <circle cx="20" cy="30" r="3" fill="white" opacity=".7"/>
-            </svg>
-          </div>
-          <div class="kit-card-body">
-            <span class="kit-card-tag">지구본 조립</span>
-            <div class="kit-card-title">해수면 염분</div>
-            <div class="kit-card-desc">전 세계 해수면 염분 분포와 해양 순환의 관계 탐구</div>
-          </div>
-          <div class="kit-card-arrow"><svg class="ic" width="16" height="16"><use href="#i-chevron-r"/></svg></div>
-        </a>
-
-        <a class="kit-card" href="diy-kit.html#ssp5">
-          <div class="kit-card-icon" style="background:linear-gradient(135deg,#ef4444,#991b1b);">
-            <svg viewBox="0 0 40 40" fill="none" width="32" height="32">
-              <circle cx="20" cy="20" r="16" stroke="white" stroke-width="1.5" opacity=".5"/>
-              <path d="M10 26 L16 18 L22 22 L28 12" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="28" cy="12" r="2.5" fill="white"/>
-            </svg>
-          </div>
-          <div class="kit-card-body">
-            <span class="kit-card-tag">지구본 조립</span>
-            <div class="kit-card-title">2050년 지표면 온도 변화 (SSP5)</div>
-            <div class="kit-card-desc">화석연료 기반 시나리오 SSP5 적용 미래 기온 변화</div>
-          </div>
-          <div class="kit-card-arrow"><svg class="ic" width="16" height="16"><use href="#i-chevron-r"/></svg></div>
-        </a>
-
-      </div><!-- /kit-grid -->
-
     </div>
   </section>
-
 </div><!-- /page-bg -->
 
 <!-- 푸터 -->
@@ -812,8 +754,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
   <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
 </footer>
 
+
 <script>
-/* ── 햄버거 ── */
+/* 햄버거 메뉴 */
 const ham = document.getElementById('hamburger');
 const mob = document.getElementById('mobileMenu');
 ham.addEventListener('click', () => {
@@ -827,69 +770,6 @@ window.addEventListener('resize', () => {
     ham.classList.remove('open');
     ham.setAttribute('aria-expanded', 'false');
   }
-});
-
-/* ── 탭 스크롤 스파이 ── */
-const TAB_IDS = ['elementary', 'heat-wave', 'board-game', 'diy-kit'];
-const tabLinks = () => document.querySelectorAll('[data-tab]');
-
-/* 클릭으로 이동 중일 때는 스파이를 멈추고, 도착 후 강제로 탭을 고정 */
-let scrollingToId = null;
-let scrollTimer = null;
-
-function setActiveTab(id) {
-  tabLinks().forEach(a => {
-    a.classList.toggle('on', a.dataset.tab === id);
-  });
-}
-
-function getActiveTab() {
-  const navH = document.getElementById('navbar').offsetHeight;
-  const tabH = document.getElementById('tabNav').offsetHeight;
-  const threshold = navH + tabH + 40;
-  let active = null;
-  for (const id of TAB_IDS) {
-    const el = document.getElementById(id);
-    if (!el) continue;
-    if (el.getBoundingClientRect().top <= threshold) active = id;
-  }
-  return active;
-}
-
-function updateTabs() {
-  /* 프로그래밍적 스크롤 중이면 스파이 억제 */
-  if (scrollingToId) return;
-  const activeId = getActiveTab();
-  if (activeId) setActiveTab(activeId);
-}
-
-window.addEventListener('scroll', updateTabs, { passive: true });
-updateTabs();
-
-/* ── 탭 클릭 스무스 스크롤 ── */
-document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="#"]');
-  if (!a) return;
-  const id = a.getAttribute('href').slice(1);
-  const target = document.getElementById(id);
-  if (!target) return;
-  e.preventDefault();
-  mob.classList.remove('open');
-  ham.classList.remove('open');
-  ham.setAttribute('aria-expanded', 'false');
-
-  /* 목적지 탭을 즉시 하이라이트하고, 스파이는 도착할 때까지 멈춤 */
-  scrollingToId = id;
-  setActiveTab(id);
-  clearTimeout(scrollTimer);
-
-  const navH = document.getElementById('navbar').offsetHeight;
-  const tabH = document.getElementById('tabNav').offsetHeight;
-  const top = target.getBoundingClientRect().top + window.scrollY - navH - tabH - 12;
-  window.scrollTo({ top, behavior: 'smooth' });
-
-  /* smooth scroll 최대 소요 시간(1.2s) 후 스파이 재개 */
-  scrollTimer = setTimeout(() => { scrollingToId = null; }, 1200);
 });
 </script>
 
