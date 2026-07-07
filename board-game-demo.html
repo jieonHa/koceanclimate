@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CODE BLUE 솔로플레이 데모 – 해양 심폐소생 프로젝트 | 해양기후 맞춤 정보</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-chart"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+  <symbol id="i-globe"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-book"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+  <symbol id="i-users"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-bulb"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></symbol>
+  <symbol id="i-file"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-chevron-r"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-chevron-l"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-mail"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-info"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+  <symbol id="i-clock"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-star"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-play"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></symbol>
+  <symbol id="i-puzzle"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.23 8.77c.24-.24.581-.353.917-.303.515.077.877.528 1.073 1.01a2.5 2.5 0 1 0 3.259-3.259c-.482-.196-.933-.558-1.01-1.073-.05-.336.062-.676.303-.917l1.525-1.525A2.402 2.402 0 0 1 12 1.998c.617 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02z"/></symbol>
+  <symbol id="i-translate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/></symbol>
+  <symbol id="i-gamepad"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/></symbol>
+  <symbol id="i-dice"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-home"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></symbol>
+  <symbol id="i-coin"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9.5c0-1 1-2 3-2s3 1 3 1.8c0 2.2-6 1.2-6 3.7 0 .8 1 1.8 3 1.8s3-1 3-2"/></symbol>
+  <symbol id="i-trophy"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 5H4a3 3 0 0 0 3 5"/><path d="M17 5h3a3 3 0 0 1-3 5"/></symbol>
+  <symbol id="i-ship"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l1.5 4.5a1 1 0 0 0 1 .5h13a1 1 0 0 0 1-.5L21 15"/><path d="M5 15l1-7h12l1 7"/><path d="M12 8V3"/><path d="M12 3h4l-4 3.5"/></symbol>
+
+</svg>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.65;
+  min-width: 320px;
+}
+a { text-decoration: none; color: inherit; }
+svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+/* ── 공통 래퍼 ── */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 36px; }
+
+/* ── 상단바 ── */
+.topbar { background: #0a2540; padding: 8px 0; font-size: 12px; color: rgba(255,255,255,.45); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+.topbar-links { display: flex; gap: 18px; }
+.topbar a { color: rgba(255,255,255,.6); }
+.topbar a:hover { color: #7dd3fc; }
+
+/* ── 네비게이션 ── */
+.navbar { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+.navbar .wrap { display: flex; align-items: center; height: 62px; }
+.logo { display: flex; align-items: center; gap: 12px; margin-right: 44px; flex-shrink: 0; }
+.logo-globe {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #0369a1);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-name { font-size: 14.5px; font-weight: 700; color: #0a2540; line-height: 1.25; }
+.logo-sub  { font-size: 11px; color: #64748b; }
+
+.nav-links { display: flex; align-items: stretch; height: 62px; flex: 1; }
+.nav-a {
+  padding: 0 18px; display: flex; align-items: center;
+  font-size: 14px; color: #334155; white-space: nowrap;
+  border-bottom: 2.5px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.nav-a:hover { color: #0284c7; border-bottom-color: #bae6fd; }
+.nav-a.on   { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.btn-nav {
+  padding: 6px 14px; border-radius: 8px; font-size: 13px;
+  border: 1px solid #e2e8f0; background: #fff; color: #64748b; cursor: pointer;
+}
+.btn-nav:hover { background: #f8fafc; }
+.btn-nav.primary { background: #0284c7; color: #fff; border-color: #0284c7; font-weight: 500; }
+.btn-nav.primary:hover { background: #0369a1; }
+
+/* 햄버거 (모바일) */
+.hamburger {
+  display: none; flex-direction: column; justify-content: center; align-items: center;
+  width: 42px; height: 42px; border-radius: 8px;
+  border: 1px solid #e2e8f0; background: #fff; cursor: pointer; gap: 5px; margin-left: 8px;
+}
+.hamburger span { display: block; width: 18px; height: 2px; background: #334155; border-radius: 2px; transition: all .25s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none; flex-direction: column;
+  background: #fff; border-bottom: 1px solid #e2e8f0;
+  padding: 6px 0 14px; animation: slideDown .2s ease;
+}
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: 13px 24px; font-size: 15px; color: #334155;
+  border-left: 3px solid transparent; transition: all .15s;
+}
+.mobile-menu a:hover, .mobile-menu a.on { color: #0284c7; border-left-color: #0284c7; background: #f0f9ff; }
+
+/* ── 페이지 히어로 ── */
+.page-hero {
+  background: #0a2540; padding: 40px 0 44px;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, #0c4a6e 0%, transparent 65%);
+}
+.page-hero::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 40px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%23f0f4f8' d='M0,20 C360,40 720,0 1080,20 C1260,30 1380,25 1440,23 L1440,40 L0,40 Z'/%3E%3C/svg%3E") no-repeat bottom/cover;
+}
+.page-hero .wrap { position: relative; z-index: 1; }
+.page-hero .breadcrumb {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12.5px; color: rgba(255,255,255,.45); margin-bottom: 16px;
+}
+.page-hero .breadcrumb a { color: rgba(255,255,255,.6); }
+.page-hero .breadcrumb a:hover { color: #7dd3fc; }
+.page-hero h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.page-hero p { font-size: 14.5px; color: #94a3b8; line-height: 1.7; max-width: 600px; }
+
+/* ── 탭 내비게이션 ── */
+.tab-nav {
+  background: #fff; border-bottom: 1px solid #e2e8f0;
+  position: sticky; top: 62px; z-index: 90;
+  overflow-x: auto;
+}
+.tab-nav .wrap { display: flex; gap: 0; }
+.tab-a {
+  padding: 14px 22px; font-size: 14px; color: #64748b;
+  border-bottom: 2.5px solid transparent;
+  transition: all .15s; cursor: pointer; white-space: nowrap;
+  display: flex; align-items: center; gap: 7px;
+}
+.tab-a:hover { color: #0284c7; }
+.tab-a.on { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+
+/* ── 본문 공통 ── */
+.page-bg { background: #f0f4f8; }
+.sec { padding: 36px 0 32px; }
+
+.sec-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.sec-title {
+  font-size: 16px; font-weight: 700; color: #0f172a;
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-bar { width: 3px; height: 20px; background: #0284c7; border-radius: 2px; }
+.sec-sub { font-size: 13px; color: #64748b; margin-top: 6px; }
+
+.divider { height: 1px; background: #e2e8f0; }
+
+/* 앵커 오프셋 */
+#elementary, #middle-high, #heat-wave, #board-game, #diy-kit {
+  scroll-margin-top: 130px;
+}
+
+/* ── 콘텐츠 카드 ── */
+.gl-card {
+  background: #fff; border-radius: 14px; border: 1px solid #e2e8f0;
+  padding: 28px; transition: border-color .15s, box-shadow .15s;
+  display: flex; gap: 22px; align-items: flex-start;
+}
+.gl-card:hover { border-color: #0284c7; box-shadow: 0 4px 20px rgba(2,132,199,.08); }
+.gl-card + .gl-card { margin-top: 14px; }
+
+.gl-icon {
+  width: 54px; height: 54px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.gl-icon.green  { background: #dcfce7; color: #15803d; }
+.gl-icon.blue   { background: #e0f2fe; color: #0284c7; }
+.gl-icon.purple { background: #ede9fe; color: #7c3aed; }
+.gl-icon.amber  { background: #fef3c7; color: #d97706; }
+.gl-icon.teal   { background: #ccfbf1; color: #0d9488; }
+.gl-icon.rose   { background: #ffe4e6; color: #e11d48; }
+.gl-icon.orange { background: #ffedd5; color: #ea580c; }
+
+.gl-body { flex: 1; min-width: 0; }
+.gl-label {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;
+}
+.gl-label.pilot  { background: #e0f2fe; color: #0369a1; }
+.gl-label.prep   { background: #fef3c7; color: #92400e; }
+.gl-label.done   { background: #dcfce7; color: #166534; }
+.gl-label.elem   { background: #ede9fe; color: #6d28d9; }
+.gl-label.mid    { background: #ccfbf1; color: #0f766e; }
+.gl-label.game   { background: #ffedd5; color: #c2410c; }
+.gl-label.kit    { background: #fce7f3; color: #9d174d; }
+
+.gl-title { font-size: 15.5px; font-weight: 700; color: #0f172a; margin-bottom: 6px; line-height: 1.45; }
+.gl-desc { font-size: 13.5px; color: #64748b; line-height: 1.65; margin-bottom: 16px; }
+
+.gl-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.gl-tag {
+  font-size: 12px; padding: 3px 10px; border-radius: 20px;
+  background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0;
+}
+
+.gl-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+.gl-meta-item {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: #94a3b8;
+}
+
+.gl-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.gl-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  transition: all .15s; cursor: pointer; border: none;
+}
+.gl-btn.primary { background: #0284c7; color: #fff; }
+.gl-btn.primary:hover { background: #0369a1; }
+.gl-btn.outline { background: #fff; color: #0284c7; border: 1px solid #bae6fd; }
+.gl-btn.outline:hover { background: #f0f9ff; border-color: #0284c7; }
+.gl-btn.disabled { background: #f1f5f9; color: #94a3b8; cursor: default; pointer-events: none; }
+
+/* ── 섹션 소개 배너 ── */
+.section-banner {
+  border-radius: 14px; padding: 22px 26px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+}
+.section-banner .sb-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: #0284c7; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.section-banner .sb-title { font-size: 15px; font-weight: 700; color: #0c4a6e; margin-bottom: 4px; }
+.section-banner .sb-desc  { font-size: 13px; color: #0369a1; line-height: 1.6; }
+
+/* ── 푸터 ── */
+footer { background: #0a2540; padding: 28px 0 22px; margin-top: 16px; }
+footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.f-logo { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; }
+.f-sub  { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.7; }
+.f-links { display: flex; gap: 20px; }
+.f-links a { font-size: 12px; color: rgba(255,255,255,.45); }
+.f-links a:hover { color: #7dd3fc; }
+.f-copy { font-size: 12px; color: rgba(255,255,255,.25); margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+
+/* ── 반응형 ── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .topbar-links { display: none; }
+  .tab-nav { top: 62px; }
+  .tab-a { padding: 12px 16px; font-size: 13px; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 16px; }
+  .page-hero h1 { font-size: 22px; }
+  .gl-card { flex-direction: column; gap: 14px; }
+  .gl-actions { flex-direction: column; }
+  .gl-btn { justify-content: center; }
+  footer .wrap { flex-direction: column; }
+  .section-banner { flex-direction: column; gap: 12px; }
+}
+/* ── 만들기 키트 그리드 ── */
+.kit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.kit-card {
+  display: flex; align-items: center; gap: 16px;
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
+  padding: 18px 16px; text-decoration: none; color: inherit;
+  transition: border-color .15s, box-shadow .15s;
+}
+.kit-card:hover { border-color: #0284c7; box-shadow: 0 4px 18px rgba(2,132,199,.09); }
+.kit-card-icon {
+  width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.kit-card-body { flex: 1; min-width: 0; }
+.kit-card-tag {
+  font-size: 11px; padding: 2px 8px; border-radius: 20px;
+  background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0;
+  display: inline-block; margin-bottom: 6px;
+}
+.kit-card-title { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 3px; line-height: 1.4; }
+.kit-card-desc  { font-size: 12.5px; color: #64748b; line-height: 1.55; }
+.kit-card-arrow { color: #94a3b8; flex-shrink: 0; }
+.kit-card:hover .kit-card-arrow { color: #0284c7; }
+@media (max-width: 600px) {
+  .kit-grid { grid-template-columns: 1fr; }
+}
+
+/* ── 보드게임: 서브 헤딩 ── */
+.subhead {
+  font-size: 15px; font-weight: 700; color: #0a2540;
+  margin: 28px 0 4px; display: flex; align-items: center; gap: 7px;
+}
+.subhead svg { color: #0284c7; }
+.subhead-desc { font-size: 13px; color: #64748b; line-height: 1.65; margin-bottom: 16px; }
+
+/* ── 보드게임: 구성품 그리드 ── */
+.comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 10px; margin-bottom: 6px; }
+.comp-cell {
+  background: #f8fafc; border: 1px solid #eef2f6; border-radius: 10px;
+  padding: 12px 14px; text-align: center;
+}
+.comp-cell .cp-qty { font-size: 15px; font-weight: 700; color: #0284c7; }
+.comp-cell .cp-name { font-size: 12px; color: #64748b; margin-top: 2px; line-height: 1.4; }
+
+/* ── 보드게임: 번호 규칙 목록 ── */
+.rule-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 6px; }
+.rule-item { display: flex; gap: 14px; align-items: flex-start; }
+.rule-num {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+  background: #0284c7; color: #fff; font-size: 12.5px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.rule-body { flex: 1; min-width: 0; }
+.rule-title { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 5px; }
+.rule-desc { font-size: 13px; color: #64748b; line-height: 1.65; }
+.rule-desc + .rule-desc { margin-top: 3px; }
+
+/* ── 보드게임: 찬스 카드 ── */
+.chance-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 6px; }
+.chance-card { border-radius: 12px; border: 1px solid #e2e8f0; padding: 18px; background: #fff; }
+.chance-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px;
+}
+.chance-card.hope .chance-tag { background: #dcfce7; color: #166534; }
+.chance-card.warn .chance-tag { background: #fee2e2; color: #b91c1c; }
+.chance-title { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+.chance-desc { font-size: 12.5px; color: #64748b; line-height: 1.6; }
+@media (max-width: 600px) { .chance-grid { grid-template-columns: 1fr; } }
+
+/* ── 보드게임: 효과 카드 ── */
+.effect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 6px; }
+.effect-cell { border-radius: 12px; border: 1px solid #e2e8f0; padding: 16px 10px; text-align: center; background: #fff; }
+.effect-cell .ef-icon {
+  width: 36px; height: 36px; border-radius: 9px; margin: 0 auto 8px;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px;
+}
+.effect-cell .ef-label { font-size: 12px; color: #475569; line-height: 1.5; }
+@media (max-width: 600px) { .effect-grid { grid-template-columns: 1fr; } }
+
+/* ── 보드게임: 플레이 팁 ── */
+.tip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; margin-bottom: 6px; }
+.tip-card { background: #f8fafc; border: 1px solid #eef2f6; border-radius: 12px; padding: 14px 16px; display: flex; gap: 10px; align-items: flex-start; }
+.tip-num {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+  background: #15803d; color: #fff; font-size: 11.5px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.tip-desc { font-size: 12.5px; color: #475569; line-height: 1.6; }
+
+/* ── 보드게임: 초기 자산 배분표 ── */
+.game-table { width: 100%; border-collapse: collapse; margin-bottom: 6px; font-size: 13px; }
+.game-table th, .game-table td { border: 1px solid #e2e8f0; padding: 12px 14px; text-align: center; vertical-align: middle; }
+.game-table th { background: #f8fafc; color: #334155; font-weight: 700; }
+.game-table td { color: #475569; line-height: 1.7; }
+.game-table td strong { color: #0f172a; }
+@media (max-width: 700px) {
+  .game-table { font-size: 12px; }
+  .game-table th, .game-table td { padding: 8px 6px; }
+}
+
+/* ── 보드게임 데모 ── */
+/* 이 페이지의 콘텐츠 영역만 넓게 (헤더·네비게이션의 .wrap 폭에는 영향 없음) */
+.game-sec .wrap { max-width: 1560px; }
+.game-sec { padding: 22px 0 24px; }
+
+.demo-banner {
+  border-radius: 14px; padding: 18px 22px; margin-bottom: 22px;
+  display: flex; align-items: center; gap: 14px;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #fde68a;
+}
+.demo-banner .db-icon {
+  width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0;
+  background: #d97706; display: flex; align-items: center; justify-content: center;
+}
+.demo-banner .db-title { font-size: 14.5px; font-weight: 700; color: #92400e; margin-bottom: 3px; }
+.demo-banner .db-desc  { font-size: 12.5px; color: #a16207; line-height: 1.6; }
+
+.game-shell { display: flex; gap: 26px; align-items: flex-start; flex-wrap: wrap; }
+
+/* ── 보드 ── */
+.board-wrap {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 18px;
+  padding: 18px; flex-shrink: 0;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(7, 108px);
+  grid-template-rows: repeat(7, 108px);
+  gap: 4px; background: #cfe4fb; border-radius: 12px; padding: 4px;
+  position: relative;
+}
+.tile {
+  background: #fff; border-radius: 8px; padding: 7px 7px 5px;
+  font-size: 11px; line-height: 1.3; color: #475569;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  position: relative; overflow: hidden; border: 1px solid #eef2f6;
+  transition: background .25s, border-color .25s;
+}
+.tile.start   { background: #0284c7; color: #fff; align-items: center; justify-content: center; text-align:center; font-weight:700; font-size:13px; }
+.tile.rest    { background: #f1f5f9; align-items: center; justify-content: center; text-align: center; color: #64748b; font-weight: 600; font-size: 10.5px; padding: 4px; }
+.tile.jail    { background: #1e293b; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 4px; }
+.jail-name { font-size: 11px; font-weight: 700; line-height: 1.25; }
+.jail-sub  { font-size: 9px; color: #fca5a5; margin-top: 4px; font-weight: 600; }
+.tile.chance_hope { background: #eff6ff; align-items: center; justify-content: center; text-align: center; }
+.tile.chance_warn { background: #1e2749; align-items: center; justify-content: center; text-align: center; }
+.chance-tile-label { font-size: 12px; font-weight: 800; line-height: 1.3; }
+.tile.chance_hope .chance-tile-label { color: #0369a1; }
+.tile.chance_warn .chance-tile-label { color: #fca5a5; }
+
+/* 카테고리 표시: 설명서의 카테고리 동그라미 아이콘 참고 + 글자 */
+.tile-cat-dot {
+  position: absolute; top: 5px; left: 5px; z-index: 2;
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(15,23,42,.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8.5px; font-weight: 800; color: #fff;
+}
+/* 효과카드 적용 배지: ▲ 증가 / ▼ 감소 / ✕ 불가 */
+.tile-effect-badge {
+  position: absolute; top: 4px; left: 27px; z-index: 2;
+  width: 16px; height: 16px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; color: #fff;
+}
+.tile-effect-badge.up      { background: #16a34a; }
+.tile-effect-badge.down    { background: #dc2626; }
+.tile-effect-badge.blocked { background: #334155; }
+
+.tile-name {
+  font-weight: 700; color: #0f172a; margin-top: 23px; font-size: 10px;
+  line-height: 1.2; word-break: keep-all; overflow-wrap: break-word;
+}
+.tile-price { font-size: 8.5px; color: #94a3b8; margin-top: 3px; }
+.tile-toll  { font-size: 8.5px; color: #c2410c; margin-top: 1px; font-weight: 600; }
+.tile-dump  { font-size: 8.5px; color: #0284c7; margin-top: 1px; font-weight: 600; }
+
+/* 소유권 표시: 모서리 깃발 리본 (색상은 JS에서 소유자 색으로 지정) */
+.tile-owner-flag {
+  position: absolute; top: 0; right: 0; z-index: 3;
+  width: 0; height: 0;
+  border-style: solid; border-width: 0 24px 24px 0;
+  border-color: transparent transparent transparent transparent;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+}
+
+.tile-tokens { position: absolute; bottom: 4px; right: 4px; display: flex; z-index: 4; }
+.token {
+  width: 21px; height: 21px; flex-shrink: 0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #fff; border: 2px solid; box-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+.tile-tokens .token:not(:first-child) { margin-left: -9px; }
+.tile-tokens .token:nth-child(1) { z-index: 6; }
+.tile-tokens .token:nth-child(2) { z-index: 5; }
+.tile-tokens .token:nth-child(3) { z-index: 4; }
+.tile-tokens .token:nth-child(4) { z-index: 3; }
+.tile-tokens .token:nth-child(5) { z-index: 2; }
+.tile-tokens .token:nth-child(6) { z-index: 1; }
+.token.landing { animation: tokenLand .57s ease-out; z-index: 7 !important; }
+@keyframes tokenLand {
+  0%   { transform: translateY(-16px) scale(1.35); box-shadow: 0 6px 8px rgba(0,0,0,.3); }
+  60%  { transform: translateY(2px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.board-center {
+  grid-column: 2 / 7; grid-row: 2 / 7;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  text-align: center;
+}
+.board-center .bc-logo { font-size: 17px; font-weight: 700; color: #0a2540; letter-spacing: .6px; }
+.dice-row { display: flex; gap: 22px; }
+.die-scene { width: 56px; height: 56px; perspective: 340px; }
+.die-cube {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(.25,.85,.35,1);
+}
+.die-face {
+  position: absolute; inset: 0;
+  width: 56px; height: 56px; box-sizing: border-box;
+  background: #fff; border: 2.5px solid #0f172a; border-radius: 11px;
+  display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr);
+  padding: 8px;
+  box-shadow: inset 0 0 0 1px rgba(15,23,42,.04);
+}
+.die-face.front  { transform: translateZ(28px); }
+.die-face.back   { transform: rotateY(180deg) translateZ(28px); }
+.die-face.right  { transform: rotateY(90deg) translateZ(28px); }
+.die-face.left   { transform: rotateY(-90deg) translateZ(28px); }
+.die-face.top    { transform: rotateX(90deg) translateZ(28px); }
+.die-face.bottom { transform: rotateX(-90deg) translateZ(28px); }
+.die-pip { width: 9px; height: 9px; border-radius: 50%; background: #0f172a; align-self: center; justify-self: center; }
+.die-pip.empty { background: transparent; }
+.turn-indicator { font-size: 13.5px; font-weight: 700; padding: 5px 14px; border-radius: 20px; }
+.turn-indicator.me  { background: #e0f2fe; color: #0369a1; }
+.turn-indicator.bot { background: #fee2e2; color: #b91c1c; }
+
+.legend { display: flex; gap: 14px; justify-content: center; margin-top: 4px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #64748b; }
+.legend-dot { width: 14px; height: 14px; border: 2px solid #fff; box-shadow: 0 0 0 1px #e2e8f0; }
+.legend-dot.me  { background: #0284c7; border-radius: 50%; }
+.legend-dot.bot { background: #dc2626; border-radius: 4px; }
+
+/* ── 사이드 패널 ── */
+.panel { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 16px; }
+.player-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.player-card {
+  position: relative; overflow: visible;
+  border-radius: 14px; border: 2px solid #e2e8f0; padding: 14px 16px; background: #fff;
+  transition: border-color .2s, box-shadow .2s;
+}
+.player-card.active { border-color: #0284c7; box-shadow: 0 0 0 3px rgba(2,132,199,.14); }
+.player-card .pc-name { display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 9px; }
+.pc-dot { width: 12px; height: 12px; }
+.pc-dot.me  { border-radius: 50%; background: #0284c7; }
+.pc-dot.bot { border-radius: 4px;  background: #dc2626; }
+.pc-row { display: flex; justify-content: space-between; font-size: 12.5px; color: #64748b; margin-top: 4px; }
+.pc-row strong { color: #0f172a; font-size: 13px; }
+.pc-debt { font-size: 11.5px; color: #dc2626; margin-top: 6px; font-weight: 600; }
+
+/* 자금/탄소코인 증감 이펙트 */
+.float-effect {
+  position: absolute; right: 14px; font-weight: 800; font-size: 13.5px;
+  pointer-events: none; z-index: 20;
+  animation: floatUp 1.64s ease-out forwards;
+  text-shadow: 0 1px 2px rgba(255,255,255,.9);
+}
+.float-effect.gain { color: #16a34a; }
+.float-effect.loss { color: #dc2626; }
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(4px) scale(.85); }
+  15%  { opacity: 1; transform: translateY(-2px) scale(1.05); }
+  100% { opacity: 0; transform: translateY(-30px) scale(1); }
+}
+
+.action-box {
+  border-radius: 14px; border: 1px solid #e2e8f0; background: #fff; padding: 16px 18px; min-height: 60px;
+  display: flex; flex-direction: column; gap: 11px; align-items: center; text-align: center;
+}
+.action-msg { font-size: 13.5px; color: #334155; line-height: 1.6; width: 100%; }
+.action-msg strong { color: #0f172a; }
+.action-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; width: 100%; }
+.abtn {
+  padding: 9px 16px; border-radius: 9px; font-size: 13.5px; font-weight: 600;
+  border: 1px solid #e2e8f0; background: #fff; color: #334155; cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.abtn:hover { background: #f8fafc; }
+.abtn.primary { background: #0284c7; color: #fff; border-color: #0284c7; }
+.abtn.primary:hover { background: #0369a1; }
+.abtn.ghost { color: #64748b; }
+.abtn:disabled { opacity: .5; cursor: not-allowed; }
+
+.card-alert {
+  border-radius: 12px; padding: 13px 15px; font-size: 13px; line-height: 1.6;
+  border: 1px solid; width: 100%; box-sizing: border-box; text-align: left;
+}
+.card-alert.hope { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+.card-alert.warn { background: #fef2f2; border-color: #fecaca; color: #b91c1c; }
+.card-alert .ca-tag { font-weight: 700; margin-bottom: 4px; display: block; }
+
+/* ── 게임 로그: 배경과 확실히 분리 ── */
+.log-panel {
+  border-radius: 14px; border: 1px solid #cbd5e1; background: #fff;
+  box-shadow: 0 2px 10px rgba(15,23,42,.05); overflow: hidden;
+}
+.log-header {
+  background: #0a2540; color: #fff; font-size: 12.5px; font-weight: 700;
+  padding: 9px 16px; display: flex; align-items: center; gap: 7px;
+}
+.log-box {
+  padding: 4px 16px; font-size: 13px; color: #334155; line-height: 1.7;
+  max-height: 260px; overflow-y: auto;
+}
+.log-box div { padding: 7px 0; }
+.log-box div:nth-child(odd) { background: #f8fafc; margin: 0 -16px; padding: 7px 16px; }
+.log-box div + div { border-top: 1px solid #eef2f6; }
+.log-box .log-new {
+  color: #0a2540; font-weight: 700; font-size: 15px;
+  background: #dbeafe !important; margin: 0 -16px !important; padding: 9px 16px !important;
+  border-top: none !important; border-radius: 6px;
+  animation: logFlash 2.3s ease-out;
+}
+@keyframes logFlash {
+  0%   { background: #7dd3fc; }
+  100% { background: #dbeafe; }
+}
+
+.win-overlay {
+  position: fixed; inset: 0; background: rgba(10,37,64,.55); z-index: 999;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.win-modal {
+  background: #fff; border-radius: 16px; padding: 32px; max-width: 380px; width: 100%; text-align: center;
+}
+.win-modal .wm-title { font-size: 18px; font-weight: 700; color: #0a2540; margin-bottom: 8px; }
+.win-modal .wm-desc { font-size: 13.5px; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
+.setup-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+
+@media (max-width: 900px) {
+  .board {
+    grid-template-columns: repeat(7, 64px);
+    grid-template-rows: repeat(7, 64px);
+  }
+  .tile { font-size: 8px; padding: 4px 5px 3px; }
+  .tile-name { font-size: 7.5px; margin-top: 17px; }
+  .tile-price { font-size: 6.5px; }
+  .tile-toll  { font-size: 6.5px; }
+  .tile-dump  { font-size: 6.5px; }
+  .jail-name  { font-size: 8px; }
+  .jail-sub   { font-size: 6.5px; }
+  .chance-tile-label { font-size: 8.5px; }
+  .die-scene { width: 40px; height: 40px; perspective: 240px; }
+  .die-face { width: 40px; height: 40px; padding: 6px; }
+  .die-face.front  { transform: translateZ(20px); }
+  .die-face.back   { transform: rotateY(180deg) translateZ(20px); }
+  .die-face.right  { transform: rotateY(90deg) translateZ(20px); }
+  .die-face.left   { transform: rotateY(-90deg) translateZ(20px); }
+  .die-face.top    { transform: rotateX(90deg) translateZ(20px); }
+  .die-face.bottom { transform: rotateX(-90deg) translateZ(20px); }
+  .die-pip { width: 6px; height: 6px; }
+  .board-center .bc-logo { font-size: 13px; }
+}
+@media (max-width: 760px) {
+  .game-shell { flex-direction: column; }
+  .board-wrap { overflow-x: auto; width: 100%; }
+  .player-cards { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- 상단바 -->
+<div class="topbar">
+  <div class="wrap">
+    <div style="display:flex; gap:24px;">
+    <a href="https://www.kiost.ac.kr/kor.do" target="_blank" target="_blank">한국해양과학기술원 (KIOST)    </a>
+    <a href="https://www.ocpc.kr/" target="_blank"> 해양기후예측센터 (OCPC)</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- 네비게이션 -->
+<nav class="navbar" id="navbar">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <div class="logo-globe">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+          <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.2"/>
+          <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="white" stroke-width="1.2"/>
+          <line x1="2" y1="10" x2="18" y2="10" stroke="white" stroke-width="1.2"/>
+          <line x1="3.5" y1="6" x2="16.5" y2="6" stroke="white" stroke-width=".8"/>
+          <line x1="3.5" y1="14" x2="16.5" y2="14" stroke="white" stroke-width=".8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">한반도 해양기후 정보 서비스</div>
+        <div class="logo-sub">koceanclimate.kr</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a class="nav-a" href="index.html#sec-climate">해양기후 변화</a>
+      <a class="nav-a" href="index.html#sec-future">미래 전망</a>
+      <a class="nav-a on" href="education.html">맞춤 정보</a>
+  <!--    <a class="nav-a" href="index.html#sec-expert">전문가 서비스</a> -->
+      <a class="nav-a" href="research.html">연구사업 안내</a>
+    </div>
+
+    <div class="nav-right">
+      <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가용 데이터 포털↗</a>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- 모바일 메뉴 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#sec-climate">해양기후 변화</a>
+  <a href="index.html#sec-future">미래 전망</a>
+  <a href="education.html" class="on">맞춤 정보</a>
+<!--  <a href="index.html#sec-expert">전문가 서비스</a> -->
+  <a href="research.html">연구사업 안내</a>
+</div>
+
+
+<!-- 페이지 히어로 -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">홈</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <a href="education.html">해양기후 맞춤 정보</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <a href="students.html">초중고 학생용</a>
+      <svg class="ic" width="12" height="12"><use href="#i-chevron-r"/></svg>
+      <span>보드게임 솔로플레이 데모</span>
+    </div>
+    <h1>CODE BLUE 솔로플레이 데모</h1>
+    <p>봇을 상대로 혼자서 즐기는 「해양 심폐소생 프로젝트 CODE BLUE」 웹 데모입니다. 주사위를 굴려 해양부동산을 사고팔며 탄소코인을 관리해 보세요.</p>
+  </div>
+</section>
+
+<div class="page-bg">
+  <section class="sec game-sec">
+    <div class="wrap">
+
+      <div class="demo-banner">
+        <div class="db-icon">
+          <svg class="ic" width="22" height="22" style="color:#fff"><use href="#i-info"/></svg>
+        </div>
+        <div>
+          <div class="db-title">데모 버전 안내</div>
+          <div class="db-desc">
+          기본 규칙·자금 위기 관리·승리 조건은 실제 게임설명서를 그대로 구현했습니다. "나 1명 + 봇 여러 명"으로 최대 6인까지 진행할 수 있습니다.</div>
+        </div>
+      </div>
+
+      <div class="game-shell">
+        <div class="board-wrap">
+          <div class="board" id="board">
+            <div class="board-center">
+              <div class="bc-logo">CODE BLUE</div>
+              <div class="dice-row">
+                <div class="die-scene" id="dieScene1"></div>
+                <div class="die-scene" id="dieScene2"></div>
+              </div>
+              <div class="turn-indicator me" id="turnIndicator">내 차례</div>
+              <div class="legend" id="legend"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="player-cards" id="playerCards"></div>
+          <div class="action-box" id="actionBox"></div>
+          <div class="log-panel">
+            <div class="log-header">
+              <svg class="ic" width="14" height="14"><use href="#i-book"/></svg>
+              게임 로그
+            </div>
+            <div class="log-box" id="logBox"></div>
+          </div>
+          <div>
+            <button class="abtn ghost" onclick="restartGame()">새 게임 시작</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;">
+        <a class="gl-btn outline" href="board-game-guide.html">
+          <svg class="ic" width="14" height="14"><use href="#i-chevron-l"/></svg>
+          게임 설명서로 돌아가기
+        </a>
+      </div>
+
+    </div>
+  </section>
+</div><!-- /page-bg -->
+
+<div class="win-overlay" id="winOverlay" style="display:none;">
+  <div class="win-modal">
+    <div class="wm-title" id="winTitle"></div>
+    <div class="wm-desc" id="winDesc"></div>
+    <button class="abtn primary" onclick="restartGame()">다시 하기</button>
+  </div>
+</div>
+
+<div class="win-overlay" id="setupOverlay" style="display:none;">
+  <div class="win-modal">
+    <div class="wm-title">플레이어 수를 선택하세요</div>
+    <div class="wm-desc">나(플레이어) 1명 + 봇 여러 명이 함께합니다. 인원이 많을수록 설명서 기준 시작 기금·탄소코인이 달라집니다.</div>
+    <div class="setup-btns" id="setupBtns"></div>
+    <button class="abtn primary" style="width:100%;" onclick="confirmSetup()">게임 시작</button>
+  </div>
+</div>
+
+<!-- 푸터 -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
+      <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
+    </div>
+<!--    <div class="f-links">
+      <a href="index.html">메인</a>
+      <a href="education.html">맞춤 정보</a>
+      <a href="https://nwpoclimate.kr" target="_blank">북서태평양 기후서비스</a>
+      <a href="research.html">연구사업 소개</a>
+      <a href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+    </div>  -->
+  </div>
+  <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
+</footer>
+
+
+<script>
+/* 햄버거 메뉴 */
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => {
+  const open = mob.classList.toggle('open');
+  ham.classList.toggle('open', open);
+  ham.setAttribute('aria-expanded', String(open));
+});
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 960) {
+    mob.classList.remove('open');
+    ham.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
+
+<script>
+/* ============================================================
+   해양 심폐소생 프로젝트 CODE BLUE — 솔로플레이(봇 대전) 데모
+   ------------------------------------------------------------
+   ⚠ 아래 TILES / CHANCE 카드 데이터는 전부 임시(placeholder)입니다.
+   실제 보드판 칸 목록·가격표·카드 내용이 확정되면
+   이 블록만 교체하면 나머지 로직은 그대로 동작합니다.
+   ============================================================ */
+
+const CATS = {
+  eco:      { label: '생태계', color: '#0284c7', bg: '#e0f2fe', letter: '생' },
+  green:    { label: '친환경', color: '#15803d', bg: '#dcfce7', letter: '친' },
+  research: { label: '연구',   color: '#c2410c', bg: '#ffedd5', letter: '연' },
+};
+
+/* 아래 부동산 가격·통행료·버리기 개수는 사용자께서 직접 확인해 주신 실제 수치입니다.
+   (심층 해양 탄소 저장고 / 대규모 해상 풍력 발전 단지는 아직 수치를 못 받아 기존 임시값 유지 — 표시: ※임시)
+   찬스 칸은 "?"로 뭉뚱그리지 않고, 실제 보드처럼 희망의 파도(chance_hope) / 바다의 경고(chance_warn)
+   칸을 고정 배치했습니다. '해양 쓰레기섬'은 업로드해주신 보드 이미지대로 3턴 쉬어가는 특수 칸입니다.
+   idx: 0~23 (7x7 둘레를 도는 24칸) */
+const TILES = [
+  { idx: 0,  type: 'start', name: '출발' },
+  { idx: 1,  type: 'chance_hope' },
+  { idx: 2,  type: 'property', name: '해조류 양식장',            cat: 'eco',      price: 250, toll: 10, dumpOwner: 6,  dumpVisitor: 4 },
+  { idx: 3,  type: 'chance_warn' },
+  { idx: 4,  type: 'property', name: '친환경 양식장',            cat: 'green',    price: 250, toll: 10, dumpOwner: 6,  dumpVisitor: 4 },
+  { idx: 5,  type: 'property', name: '해양바이오 기술연구센터',  cat: 'research', price: 550, toll: 30, dumpOwner: 8,  dumpVisitor: 5 },
+  { idx: 6,  type: 'jail', name: '해양 쓰레기섬' },
+  { idx: 7,  type: 'property', name: '맹그로브 숲',              cat: 'eco',      price: 300, toll: 15, dumpOwner: 10, dumpVisitor: 6 },
+  { idx: 8,  type: 'property', name: '친환경 항만',              cat: 'green',    price: 400, toll: 30, dumpOwner: 3,  dumpVisitor: 1 },
+  { idx: 9,  type: 'chance_hope' },
+  { idx: 10, type: 'property', name: '해양 미세조류 배양시설',   cat: 'research', price: 600, toll: 30, dumpOwner: 10, dumpVisitor: 6 },
+  { idx: 11, type: 'property', name: '연안습지',                 cat: 'eco',      price: 350, toll: 20, dumpOwner: 10, dumpVisitor: 6 },
+  { idx: 12, type: 'rest', name: '해양기후예측센터' },
+  { idx: 13, type: 'property', name: '해양 플라스틱 재활용센터', cat: 'green',    price: 550, toll: 30, dumpOwner: 8,  dumpVisitor: 5 },
+  { idx: 14, type: 'property', name: '심층 해양 탄소 저장고',    cat: 'research', price: 180, toll: 32, dumpOwner: 6,  dumpVisitor: 3 }, // ※임시
+  { idx: 15, type: 'chance_warn' },
+  { idx: 16, type: 'property', name: '산호초 군락지',            cat: 'eco',      price: 450, toll: 30, dumpOwner: 10, dumpVisitor: 6 },
+  { idx: 17, type: 'property', name: '해양 쓰레기 청소 공장',    cat: 'green',    price: 650, toll: 40, dumpOwner: 10, dumpVisitor: 6 },
+  { idx: 18, type: 'rest', name: '한국해양과학기술원' },
+  { idx: 19, type: 'chance_hope' },
+  { idx: 20, type: 'property', name: '해양 생태공원',            cat: 'eco',      price: 650, toll: 50, dumpOwner: 8,  dumpVisitor: 5 },
+  { idx: 21, type: 'chance_warn' },
+  { idx: 22, type: 'property', name: '극지방 해양보호구역',      cat: 'eco',      price: 450, toll: 30, dumpOwner: 5,  dumpVisitor: 2 },
+  { idx: 23, type: 'property', name: '대규모 해상 풍력 발전 단지', cat: 'green',   price: 250, toll: 46, dumpOwner: 7,  dumpVisitor: 4 }, // ※임시
+];
+
+/* 아래 찬스 카드는 업로드해주신 게임설명서 PDF(찬스카드 페이지)를 다시 한번 정밀하게
+   재검토해 반영한 내용입니다 (각 15장, 실제 구성품 수량과 동일).
+   - 카테고리 효과가 여러 카테고리에 동시에 걸리는 카드는 categories 배열로 정확히 반영했습니다.
+   - "탄소코인 개수만큼 세금", "보유 부동산 개수만큼 비용" 같은 카드는 실제 수식 그대로
+     effect(player)에서 계산합니다 (근사가 아니라 정확한 재현입니다).
+   - "해양데이터 공유"는 가장 가까운 무료 정거장(해양기후예측센터/한국해양과학기술원)으로
+     이동하는 카드라, 별도의 moveToNearest 특수 처리로 구현했습니다.
+   - 다만 "해양 쓰레기 청소(탈출권)"은 원본이 보드에 없는 '해양 쓰레기 섬' 감금 칸을
+     전제로 한 카드라 이 데모 구조상 그대로 재현할 수 없어 근사치로 남겨뒀습니다(표시: ※근사). */
+const HOPE_CARDS = [
+  { title: '해양 탄소 포집 기술 개발',     desc: '탄소 포집 기술이 개발되어 탄소 흡수량이 증가했습니다. 축하금 200만 원을 받고, 탄소코인 10개를 반납합니다.', effect: () => ({ fund: 200, carbon: -10 }) },
+  { title: '블루카본 생태계 복원 성공',     desc: '거대 탄소 흡수원인 블루카본 생태계 복원에 성공했습니다. 축하금 300만 원을 받고, 탄소코인 10개를 반납합니다. 감소했던 생태계 카테고리 통행료가 회복됩니다.', effect: () => ({ fund: 300, carbon: -10, categories: [{ category: 'eco', dir: 'normal' }] }) },
+  { title: '연안습지 복원 프로젝트 성공',   desc: '연안습지 복원에 성공해 탄소 흡수량이 증가했습니다. 축하금 200만 원을 받고, 탄소코인 6개를 반납합니다.', effect: () => ({ fund: 200, carbon: -6 }) },
+  { title: '대규모 맹그로브 숲 복원 완료',  desc: '맹그로브 숲 복원 프로젝트가 성공해 탄소 흡수량이 증가했습니다. 축하금 300만 원을 받고, 탄소코인 6개를 반납합니다.', effect: () => ({ fund: 300, carbon: -6 }) },
+  { title: '산호초 복원 기술',             desc: '산호초 복원 기술 개발로 군락지가 늘어 탄소 흡수량이 증가했습니다. 축하금 200만 원을 받고, 탄소코인 6개를 반납합니다.', effect: () => ({ fund: 200, carbon: -6 }) },
+  { title: '친환경 선박 연료 개발',        desc: '친환경 선박 연료 개발로 탄소 배출량이 감소했습니다. 축하금 300만 원을 받고, 탄소코인 10개를 반납합니다.', effect: () => ({ fund: 300, carbon: -10 }) },
+  { title: '국제 해양 보호 구역 확대',     desc: '해양 보호 구역이 확대되어 생태계 기능이 강화되었습니다. 탄소코인 10개를 반납합니다.', effect: () => ({ carbon: -10 }) },
+  { title: '해상 풍력 발전 효율 2배 향상', desc: '해상 풍력 발전 효율이 2배로 향상되어 청정에너지 공급이 늘었습니다. 친환경 카테고리 통행료가 50% 증가합니다. (이미 감소 상태였다면 서로 상쇄되어 기본값으로 돌아갑니다.)', effect: () => ({ categories: [{ category: 'green', dir: 'up' }] }) },
+  { title: '해양 미세조류 탄소 포집 상용화', desc: '해양 미세조류를 이용한 탄소 포집 기술이 상용화되었습니다. 연구비 200만 원을 받고, 탄소코인 8개를 반납합니다.', effect: () => ({ fund: 200, carbon: -8 }) },
+  { title: '해양 플라스틱 재활용 상용화',   desc: '해양 플라스틱 재활용이 상용화되어 바다 오염 속도가 느려졌습니다. 축하금 150만 원을 받고, 탄소코인 5개를 반납합니다.', effect: () => ({ fund: 150, carbon: -5 }) },
+  { title: '해양 바이오 기술 연구 성공',   desc: '해양 바이오 기술 연구에 성공해 재생에너지 공급이 증가했습니다. 연구비 100만 원을 받고, 연구 카테고리 통행료가 50% 증가합니다. (이미 감소 상태였다면 서로 상쇄되어 기본값으로 돌아갑니다.)', effect: () => ({ fund: 100, categories: [{ category: 'research', dir: 'up' }] }) },
+  { title: '해양 쓰레기 청소 (탈출권)',    desc: '해양 쓰레기 청소 공장에서 청소에 성공했습니다. 축하금 100만 원을 받고, 탄소코인 8개를 반납합니다. ※원본은 "쓰레기 섬"에 갇혔을 때 쓰는 탈출권 카드입니다 — 해양 쓰레기섬에 갇힌 상태라면 즉시 탈출합니다.', escapeJail: true, effect: () => ({ fund: 100, carbon: -8 }) },
+  { title: '해양 생태공원 관광 성공',      desc: '해양 생태공원 관광이 성공적으로 마무리되었습니다. 탄소코인 15개를 반납합니다.', effect: () => ({ carbon: -15 }) },
+  { title: '유엔기후변화협약체결',         desc: '탄소 배출 제한을 목표로 유엔기후변화협약을 체결했습니다. 탄소코인 8개를 반납합니다.', effect: () => ({ carbon: -8 }) },
+  { title: '해양데이터 공유',              desc: '해양 데이터 공유로 전 세계 기후 모델이 개선되었습니다. 가장 가까운 무료 정거장(해양기후예측센터·한국해양과학기술원)으로 이동합니다. 도착 후 탄소코인 8개를 반납합니다.', moveToNearest: [12, 18], effect: () => ({ carbon: -8 }) },
+];
+const WARN_CARDS = [
+  { title: '극심한 해양 열파 발생',        desc: '해양 열파로 생태계가 큰 피해를 입어 탄소 흡수력이 감소했습니다. 탄소코인 5개를 받습니다. 생태계 카테고리 통행료가 50%로 감소합니다. (이미 증가 상태였다면 서로 상쇄되어 기본값으로 돌아갑니다.)', effect: () => ({ carbon: 5, categories: [{ category: 'eco', dir: 'down' }] }) },
+  { title: '온난화로 인한 해수면 상승',    desc: '해수면 상승으로 침수 피해를 입었습니다. 피해 복구 비용 300만 원을 지불합니다.', effect: () => ({ fund: -300 }) },
+  { title: '대규모 북극 빙하 붕괴',        desc: '북극 빙하 붕괴로 온난화가 가속화되고 있습니다. 탄소코인 8개를 받습니다. 모든 해양 부동산의 통행료가 50%로 감소합니다. (카테고리별로 증가 상태였다면 서로 상쇄되어 기본값으로 돌아갑니다.)', effect: () => ({ carbon: 8, categories: [{ category: 'eco', dir: 'down' }, { category: 'green', dir: 'down' }, { category: 'research', dir: 'down' }] }) },
+  { title: '심각한 해양 산성화',           desc: '이산화탄소가 해양에 흡수되어 산성도가 높아져 수산자원이 감소했습니다. 탄소코인 12개를 받습니다.', effect: () => ({ carbon: 12 }) },
+  { title: '해면수온 급상승',              desc: '해면수온이 급격히 올라 해양 생태계가 큰 피해를 입었습니다. 탄소코인 10개를 받습니다.', effect: () => ({ carbon: 10 }) },
+  { title: '해면수온 증가',                desc: '해면수온 증가로 생태계 탄소 흡수량이 감소했습니다. 탄소코인 5개를 받습니다. 생태계 카테고리 통행료가 50%로 감소합니다. (이미 증가 상태였다면 서로 상쇄되어 기본값으로 돌아갑니다.)', effect: () => ({ carbon: 5, categories: [{ category: 'eco', dir: 'down' }] }) },
+  { title: '슈퍼 엘니뇨 발생',             desc: '슈퍼 엘니뇨로 온난화가 가속화되고 있습니다. 탄소코인 10개를 받습니다. (원본은 이번 턴 모든 부동산에서 탄소코인을 버릴 수 없다는 조건도 있으나, 지속시간이 명시되어 있지 않아 이 데모에는 반영하지 않았습니다.)', effect: () => ({ carbon: 10 }) },
+  { title: '슈퍼 태풍 발생',               desc: '슈퍼 태풍이 발생해 강한 바람과 강수로 큰 피해가 발생했습니다. 친환경·연구 카테고리 통행료가 50%로 감소합니다. (이미 증가 상태였다면 서로 상쇄되어 기본값으로 돌아갑니다.)', effect: () => ({ categories: [{ category: 'green', dir: 'down' }, { category: 'research', dir: 'down' }] }) },
+  { title: '바다의 사막화',                desc: '해양오염과 수온 상승으로 해조류가 감소해 바다의 사막화가 발생했습니다. 복구 비용 200만 원을 지불하고, 탄소코인 8개를 받습니다.', effect: () => ({ fund: -200, carbon: 8 }) },
+  { title: '글로벌 탄소세 도입',           desc: '전 세계적으로 탄소 감축을 위해 탄소세를 도입했습니다. 보유한 탄소코인 1개당 5만 원의 세금을 납부합니다.', effect: (p) => ({ fund: -(p.carbon * 5) }) },
+  { title: '미세플라스틱 오염 경보',       desc: '미세플라스틱 오염으로 해양 생태계 파괴 위험이 증가했습니다. 복구 비용 200만 원을 지불합니다.', effect: () => ({ fund: -200 }) },
+  { title: '석탄발전소 비상가동',          desc: '친환경 발전소 가동 불가로 석탄 발전소를 비상 가동했습니다. 가동 비용 300만 원을 지불하고, 탄소코인 15개를 받습니다.', effect: () => ({ fund: -300, carbon: 15 }) },
+  { title: '대형 유조선 기름 유출',        desc: '대형 유조선에서 기름이 유출되어 바다를 덮었습니다. 방제작업 비용 400만 원을 지불하고, 탄소코인 15개를 받습니다.', effect: () => ({ fund: -400, carbon: 15 }) },
+  { title: '해양 쓰레기섬 증가',           desc: '버려지는 쓰레기가 늘어 해양 쓰레기섬이 증가했습니다. 보유한 해양부동산 1곳당 복구 비용 100만 원을 지불합니다.', effect: (p) => ({ fund: -(p.owned.length * 100) }) },
+  { title: '해양 생태계 난개발',           desc: '해양 생태계의 무분별한 개발로 생태계가 파괴되어 탄소 흡수량이 대폭 감소했습니다. 탄소코인 15개를 받습니다.', effect: () => ({ carbon: 15 }) },
+];
+
+/* ── 게임 상수 ── */
+const PASS_START_BONUS = 200;
+const BAILOUT_GRANT_FUND = 700;
+const BAILOUT_GRANT_CARBON = 5;
+const BAILOUT_DEBT = 800;
+const SELL_FEE = 50;
+const WIN_CARBON_MAX = 10;
+const WIN_ASSET_MIN = 3000;
+const END_AVG_CARBON = 90;
+
+/* 플레이어 구분 색상 (나 + 봇 최대 5명) */
+const PLAYER_COLORS = ['#0284c7', '#dc2626', '#d97706', '#7c3aed', '#059669', '#db2777'];
+
+/* 설명서의 인원별 초기 자산 배분표 */
+function getStartAssets(count) {
+  if (count <= 2) return { fund: 1800, carbon: 60 };
+  if (count <= 4) return { fund: 2000, carbon: 50 };
+  return { fund: 1500, carbon: 40 }; // 5~6인
+}
+
+function newPlayer(id, name, isBot, color, fund, carbon) {
+  return {
+    id, name, isBot, color,
+    fund, carbon,
+    pos: 0,
+    owned: [],      // tile idx[]
+    debt: 0,
+    bailoutUsed: false,
+    skipTurns: 0,   // 해양 쓰레기섬에 갇혀 쉬어야 하는 남은 턴 수
+  };
+}
+
+/* 카테고리 통행료 상태머신: up(▲1.5배) / normal(×1) / down(▼0.5배) / blocked(✕0배)
+   "50% 감소 상태에서 50% 증가 카드가 나오면 상쇄되어 기본값으로 돌아간다"는 규칙을 반영합니다. */
+const CATEGORY_MULT_BY_STATE = { up: 1.5, normal: 1, down: 0.5, blocked: 0 };
+function catMult(cat) { return CATEGORY_MULT_BY_STATE[categoryState[cat]]; }
+function applyCategoryEffect(cat, dir) {
+  const cur = categoryState[cat];
+  if (dir === 'blocked' || dir === 'normal') { categoryState[cat] = dir; return; }
+  if (dir === 'up')   categoryState[cat] = (cur === 'down') ? 'normal' : 'up';
+  if (dir === 'down') categoryState[cat] = (cur === 'up')   ? 'normal' : 'down';
+}
+
+let state = null;
+let categoryState = { eco: 'normal', green: 'normal', research: 'normal' };
+let pending = null;     // {type:'buy'|'dump'|'card', ...}
+let gameOver = false;
+let rolling = false;    // 주사위 애니메이션 진행 중 여부
+let setupCount = 2;     // 설정 화면에서 선택 중인 인원 수
+
+function initGame(count) {
+  const n = Math.max(2, Math.min(6, count || 2));
+  const { fund, carbon } = getStartAssets(n);
+
+  const players = [ newPlayer('p0', '나', false, PLAYER_COLORS[0], fund, carbon) ];
+  for (let i = 1; i < n; i++) {
+    players.push(newPlayer('p' + i, '봇' + i, true, PLAYER_COLORS[i], fund, carbon));
+  }
+
+  state = { players, turn: 0, dice: [1, 1] };
+  categoryState = { eco: 'normal', green: 'normal', research: 'normal' };
+  pending = null;
+  gameOver = false;
+  rolling = false;
+  clearLog();
+  buildPlayerCards();
+  renderLegend();
+
+  if (!dieRot1) {
+    dieRot1 = buildDieCube('dieScene1');
+    dieRot2 = buildDieCube('dieScene2');
+  }
+
+  log(`${n}인 게임을 시작합니다 (나 + 봇 ${n - 1}명). 초기 기금 ${fund}만 원, 탄소코인 ${carbon}개로 출발합니다.`);
+  render();
+}
+
+function tileOwner(idx) {
+  return state.players.find(p => p.owned.includes(idx)) || null;
+}
+function currentPlayer() { return state.players[state.turn]; }
+function assetValue(p) {
+  const propVal = p.owned.reduce((sum, idx) => sum + TILES.find(t => t.idx === idx).price, 0);
+  return p.fund + propVal;
+}
+
+/* ── 로그 ── */
+function log(msg) {
+  const box = document.getElementById('logBox');
+  const div = document.createElement('div');
+  div.className = 'log-new';
+  div.textContent = msg;
+  box.prepend(div);
+  [...box.children].forEach((c, i) => { if (i > 0) c.classList.remove('log-new'); });
+}
+function clearLog() {
+  const box = document.getElementById('logBox');
+  if (box) box.innerHTML = '';
+}
+
+/* ── 기금 / 탄소코인 변경 (증감 이펙트 포함) ── */
+function changeFund(p, amount) {
+  if (!amount) return;
+  p.fund = Math.max(0, p.fund + amount);
+  spawnFloat(p, amount, 'fund');
+}
+function changeCarbon(p, amount) {
+  if (!amount) return;
+  p.carbon = Math.max(0, p.carbon + amount);
+  spawnFloat(p, amount, 'carbon');
+}
+function spawnFloat(p, amount, kind) {
+  const idx = state.players.indexOf(p);
+  const card = document.getElementById('pcard-' + idx);
+  if (!card) return;
+  // 기금은 늘어나면 좋은 일(초록), 탄소코인은 늘어나면 나쁜 일(빨강) — 반대 규칙
+  const good = kind === 'fund' ? amount > 0 : amount < 0;
+  const span = document.createElement('div');
+  span.className = 'float-effect ' + (good ? 'gain' : 'loss');
+  const sign = amount > 0 ? '+' : '';
+  span.textContent = sign + amount + (kind === 'fund' ? '만원' : '개');
+  const stack = parseInt(card.dataset.floatCount || '0', 10);
+  card.dataset.floatCount = String(stack + 1);
+  span.style.top = (30 + stack * 17) + 'px';
+  card.appendChild(span);
+  setTimeout(() => {
+    span.remove();
+    card.dataset.floatCount = String(Math.max(0, parseInt(card.dataset.floatCount || '1', 10) - 1));
+  }, 1640);
+}
+
+/* ── 3D 주사위 ── */
+const PIP_PATTERNS = {
+  1: [4],
+  2: [0, 8],
+  3: [0, 4, 8],
+  4: [0, 2, 6, 8],
+  5: [0, 2, 4, 6, 8],
+  6: [0, 2, 3, 5, 6, 8],
+};
+/* 정육면체 고정 배치: 앞=1, 뒤=6, 오른쪽=3, 왼쪽=4, 위=5, 아래=2 (마주보는 면 합=7) */
+const DIE_FACE_VALUE = { front: 1, back: 6, right: 3, left: 4, top: 5, bottom: 2 };
+/* 특정 숫자를 정면으로 보이게 하는 회전각 (0~270도 범위로 정규화) */
+const FACE_TARGET_ANGLE = {
+  1: { x: 0,   y: 0   },
+  6: { x: 0,   y: 180 },
+  3: { x: 0,   y: 270 },
+  4: { x: 0,   y: 90  },
+  5: { x: 270, y: 0   },
+  2: { x: 90,  y: 0   },
+};
+
+function buildPipFace(value) {
+  const face = document.createElement('div');
+  const active = new Set(PIP_PATTERNS[value]);
+  for (let i = 0; i < 9; i++) {
+    const pip = document.createElement('div');
+    pip.className = 'die-pip' + (active.has(i) ? '' : ' empty');
+    face.appendChild(pip);
+  }
+  return face;
+}
+
+function buildDieCube(sceneId) {
+  const scene = document.getElementById(sceneId);
+  const cube = document.createElement('div');
+  cube.className = 'die-cube';
+  cube.id = sceneId + 'Cube';
+  Object.entries(DIE_FACE_VALUE).forEach(([faceName, value]) => {
+    const face = buildPipFace(value);
+    face.className = 'die-face ' + faceName;
+    cube.appendChild(face);
+  });
+  scene.appendChild(cube);
+  return { x: 0, y: 0 }; // 누적 회전 상태 초기값
+}
+
+let dieRot1 = null, dieRot2 = null;
+
+function nextRotation(state, targetAngle) {
+  function step(current, targetMod) {
+    const curMod = ((current % 360) + 360) % 360;
+    let delta = targetMod - curMod;
+    if (delta < 0) delta += 360;
+    const extraTurns = 360 * (2 + Math.floor(Math.random() * 2)); // 2~3바퀴 추가 회전
+    return current + delta + extraTurns;
+  }
+  return { x: step(state.x, targetAngle.x), y: step(state.y, targetAngle.y) };
+}
+
+function spinDieTo(cubeId, state, value) {
+  const next = nextRotation(state, FACE_TARGET_ANGLE[value]);
+  state.x = next.x; state.y = next.y;
+  const cube = document.getElementById(cubeId);
+  cube.style.transform = `rotateX(${next.x}deg) rotateY(${next.y}deg)`;
+}
+
+/* ── 주사위 애니메이션 ── */
+function animateDice(d1, d2, onDone) {
+  spinDieTo('dieScene1Cube', dieRot1, d1);
+  spinDieTo('dieScene2Cube', dieRot2, d2);
+  setTimeout(onDone, 1000);
+}
+
+/* ── 주사위 굴리기 & 이동 ── */
+function rollDice() {
+  if (gameOver || pending || rolling) return;
+  const p = currentPlayer();
+  if (p.isBot) return;
+  beginRoll(p);
+}
+
+function beginRoll(p) {
+  rolling = true;
+  renderAction();
+  const d1 = 1 + Math.floor(Math.random() * 6);
+  const d2 = 1 + Math.floor(Math.random() * 6);
+  animateDice(d1, d2, () => {
+    rolling = false;
+    resolveRoll(p, d1, d2);
+  });
+}
+
+function resolveRoll(p, d1, d2) {
+  state.dice = [d1, d2];
+  const isDouble = d1 === d2;
+
+  log(`${p.name}: 주사위 ${d1}, ${d2} → ${d1 + d2}칸 이동` + (isDouble ? ' (더블!)' : ''));
+
+  if (!isDouble) {
+    changeCarbon(p, 2);
+    log(`${p.name}: 탄소코인 2개 획득 (보유 ${p.carbon}개)`);
+  } else {
+    log(`${p.name}: 더블이라 탄소코인은 받지 않습니다.`);
+  }
+
+  animateMove(p, [d1, d2], () => {
+    resolveTile(p, isDouble);
+  });
+}
+
+/* 주사위 눈(d1 → d2) 순서로 두 번 점프해서 이동하는 애니메이션 */
+let justMovedId = null;
+function animateMove(p, hops, onDone) {
+  let i = 0;
+  function nextHop() {
+    if (i >= hops.length) { onDone(); return; }
+    const before = p.pos;
+    p.pos = (p.pos + hops[i]) % TILES.length;
+    if (p.pos < before) grantPassStart(p);
+
+    justMovedId = p.id;
+    render();
+    justMovedId = null;
+
+    i++;
+    setTimeout(nextHop, 615);
+  }
+  nextHop();
+}
+
+function grantPassStart(p) {
+  if (p.debt > 0) {
+    const pay = Math.min(p.debt, PASS_START_BONUS);
+    p.debt -= pay;
+    const remain = PASS_START_BONUS - pay;
+    if (remain > 0) changeFund(p, remain);
+    log(`${p.name}: 출발지 통과! 지원금 ${PASS_START_BONUS}만 원 중 ${pay}만 원이 대출 상환에 자동 사용됩니다. (잔여 대출 ${p.debt}만 원)`);
+  } else {
+    changeFund(p, PASS_START_BONUS);
+    log(`${p.name}: 출발지를 지나 기금 ${PASS_START_BONUS}만 원을 받습니다.`);
+  }
+}
+
+/* ── 칸 도착 처리 ── */
+function resolveTile(p, wasDouble) {
+  const tile = TILES.find(t => t.idx === p.pos);
+
+  if (tile.type === 'start') {
+    log(`${p.name}: 출발 칸에 도착했습니다.`);
+    return afterTileResolved(p, wasDouble);
+  }
+  if (tile.type === 'rest') {
+    log(`${p.name}: '${tile.name}'에서 잠시 쉬어갑니다. 아무 일도 일어나지 않습니다.`);
+    return afterTileResolved(p, wasDouble);
+  }
+  if (tile.type === 'jail') {
+    p.skipTurns = 3;
+    log(`${p.name}: '${tile.name}'에 갇혔습니다! 이후 3턴을 쉬어야 합니다. (탈출권 카드를 뽑으면 즉시 탈출)`);
+    return afterTileResolved(p, wasDouble);
+  }
+  if (tile.type === 'chance_hope' || tile.type === 'chance_warn') {
+    return drawChance(p, wasDouble, tile.type === 'chance_hope' ? HOPE_CARDS : WARN_CARDS);
+  }
+  if (tile.type === 'property') {
+    const owner = tileOwner(tile.idx);
+    if (!owner) {
+      if (p.debt > 0) {
+        log(`${p.name}: 대출을 다 갚기 전까지는 새로운 해양부동산을 구매할 수 없습니다. (잔여 대출 ${p.debt}만 원) '${tile.name}' 구매가 제한됩니다.`);
+        return afterTileResolved(p, wasDouble);
+      }
+      if (p.isBot) {
+        const decision = p.fund - tile.price >= 150; // 봇: 최소 150만원 여유 있으면 구매
+        if (decision) {
+          changeFund(p, -tile.price);
+          p.owned.push(tile.idx);
+          log(`${p.name}: '${tile.name}'을(를) ${tile.price}만 원에 구매했습니다.`);
+        } else {
+          log(`${p.name}: '${tile.name}' 구매를 포기했습니다.`);
+        }
+        return afterTileResolved(p, wasDouble);
+      } else {
+        pending = { type: 'buy', tile, player: p, wasDouble };
+        render();
+        return;
+      }
+    } else if (owner.id === p.id) {
+      return offerDump(p, tile, tile.dumpOwner, wasDouble, false);
+    } else {
+      const mult = catMult(tile.cat);
+      const toll = Math.round(tile.toll * mult);
+      log(`${p.name}: '${tile.name}'은(는) ${owner.name}의 부동산입니다. 통행료 ${toll}만 원을 지불합니다.`
+        + (mult !== 1 ? ` (효과카드 적용 배율 ×${mult})` : ''));
+      payToll(p, owner, toll);
+      return offerDump(p, tile, tile.dumpVisitor, wasDouble, true);
+    }
+  }
+}
+
+/* 부동산 도착 시 탄소코인 버리기 제안 (소유자=본인 소유 부동산 / 방문자=남의 부동산 방문) */
+function offerDump(p, tile, amount, wasDouble, isVisitor) {
+  if (!amount || p.carbon <= 0) {
+    if (!isVisitor) log(`${p.name}: 자신의 부동산 '${tile.name}'에 도착했습니다.`);
+    return afterTileResolved(p, wasDouble);
+  }
+  if (p.isBot) {
+    const dumpAmt = Math.min(amount, p.carbon);
+    changeCarbon(p, -dumpAmt);
+    log(`${p.name}: '${tile.name}'에서 탄소코인 ${dumpAmt}개를 버렸습니다. (보유 ${p.carbon}개)`);
+    return afterTileResolved(p, wasDouble);
+  }
+  pending = { type: 'dump', tile, player: p, wasDouble, amount, isVisitor };
+  render();
+}
+
+function afterTileResolved(p, wasDouble) {
+  const winner = checkWin();
+  if (winner) return endGame(winner);
+  if (wasDouble && !gameOver) {
+    log(`${p.name}: 더블이므로 한 번 더 이동합니다.`);
+    render();
+    if (p.isBot) {
+      setTimeout(() => beginRoll(p), 785);
+    }
+    return;
+  }
+  render();
+  endTurn();
+}
+
+/* ── 통행료 / 재정 위기 ── */
+function payToll(p, owner, amount) {
+  if (p.fund >= amount) {
+    changeFund(p, -amount);
+    changeFund(owner, amount);
+    return;
+  }
+  let shortfall = amount - p.fund;
+  changeFund(owner, p.fund);
+  changeFund(p, -p.fund);
+  log(`${p.name}: 자금이 부족합니다. 자금 위기 관리를 시작합니다.`);
+
+  // 1) 부동산 매각 (저렴한 것부터 처분)
+  const sellable = [...p.owned].sort((a, b) => {
+    const pa = TILES.find(t => t.idx === a).price, pb = TILES.find(t => t.idx === b).price;
+    return pa - pb;
+  });
+  for (const idx of sellable) {
+    if (shortfall <= 0) break;
+    const t = TILES.find(x => x.idx === idx);
+    const sellPrice = Math.max(0, t.price - SELL_FEE);
+    p.owned = p.owned.filter(o => o !== idx);
+    changeFund(p, sellPrice);
+    log(`${p.name}: '${t.name}'을(를) 해양기후관리기금에 ${sellPrice}만 원에 매각했습니다. (수수료 ${SELL_FEE}만 원 차감)`);
+    const pay = Math.min(p.fund, shortfall);
+    changeFund(p, -pay); changeFund(owner, pay); shortfall -= pay;
+  }
+
+  // 2) 긴급 회생 지원
+  if (shortfall > 0 && !p.bailoutUsed) {
+    p.bailoutUsed = true;
+    changeFund(p, BAILOUT_GRANT_FUND);
+    changeCarbon(p, BAILOUT_GRANT_CARBON);
+    p.debt += BAILOUT_DEBT;
+    log(`${p.name}: 긴급 회생 지원을 신청합니다. 기금 ${BAILOUT_GRANT_FUND}만 원과 탄소코인 ${BAILOUT_GRANT_CARBON}개를 받고, 대출 ${BAILOUT_DEBT}만 원이 발생합니다.`);
+    const pay = Math.min(p.fund, shortfall);
+    changeFund(p, -pay); changeFund(owner, pay); shortfall -= pay;
+  }
+
+  // 3) 그래도 부족하면 파산
+  if (shortfall > 0) {
+    log(`${p.name}: 더 이상 지불할 자금이 없습니다. 파산했습니다!`);
+    return endGame(owner, true, p);
+  }
+}
+
+/* ── 구매 / 버리기 결정 (플레이어 전용 버튼) ── */
+function confirmBuy(yes) {
+  const { tile, player, wasDouble } = pending;
+  pending = null;
+  if (yes) {
+    changeFund(player, -tile.price);
+    player.owned.push(tile.idx);
+    log(`${player.name}: '${tile.name}'을(를) ${tile.price}만 원에 구매했습니다.`);
+  } else {
+    log(`${player.name}: '${tile.name}' 구매를 포기했습니다.`);
+  }
+  afterTileResolved(player, wasDouble);
+}
+
+function confirmDump(yes) {
+  const { tile, player, wasDouble, amount } = pending;
+  pending = null;
+  if (yes) {
+    const dumpAmt = Math.min(amount, player.carbon);
+    changeCarbon(player, -dumpAmt);
+    log(`${player.name}: '${tile.name}'에서 탄소코인 ${dumpAmt}개를 버렸습니다. (보유 ${player.carbon}개)`);
+  } else {
+    log(`${player.name}: 탄소코인 버리기를 넘어갔습니다.`);
+  }
+  afterTileResolved(player, wasDouble);
+}
+
+/* ── 찬스 카드 ── */
+function drawChance(p, wasDouble, deck) {
+  const isHope = deck === HOPE_CARDS;
+  const card = deck[Math.floor(Math.random() * deck.length)];
+
+  if (card.moveToNearest) {
+    const before = p.pos;
+    let best = null, bestDist = Infinity;
+    card.moveToNearest.forEach(idx => {
+      const dist = (idx - p.pos + TILES.length) % TILES.length;
+      if (dist > 0 && dist < bestDist) { bestDist = dist; best = idx; }
+    });
+    if (best !== null) {
+      p.pos = best;
+      if (p.pos < before) grantPassStart(p);
+    }
+  }
+
+  if (card.escapeJail && p.skipTurns > 0) {
+    p.skipTurns = 0;
+    log(`${p.name}: 탈출권을 사용해 해양 쓰레기섬에서 즉시 탈출합니다!`);
+  }
+
+  const result = card.effect(p);
+
+  if (result.fund) changeFund(p, result.fund);
+  if (result.carbon) changeCarbon(p, result.carbon);
+  if (result.categories) result.categories.forEach(ce => applyCategoryEffect(ce.category, ce.dir));
+
+  log(`${p.name}: [${isHope ? '희망의 파도' : '바다의 경고'}] ${card.title} — ${card.desc}`);
+
+  if (!p.isBot) {
+    pending = { type: 'card', card, isHope, player: p, wasDouble };
+    render();
+    return;
+  }
+  afterTileResolved(p, wasDouble);
+}
+
+function confirmCard() {
+  const { player, wasDouble } = pending;
+  pending = null;
+  afterTileResolved(player, wasDouble);
+}
+
+/* ── 승리 / 종료 조건 ── */
+function checkWin() {
+  for (const p of state.players) {
+    if (p.carbon <= WIN_CARBON_MAX && assetValue(p) >= WIN_ASSET_MIN) {
+      return p;
+    }
+  }
+  const avg = state.players.reduce((s, p) => s + p.carbon, 0) / state.players.length;
+  if (avg >= END_AVG_CARBON) {
+    return state.players.reduce((min, p) => (p.carbon < min.carbon ? p : min), state.players[0]);
+  }
+  return null;
+}
+
+function endGame(winner, byBankruptcy, loser) {
+  gameOver = true;
+  render();
+  const overlay = document.getElementById('winOverlay');
+  const title = document.getElementById('winTitle');
+  const desc = document.getElementById('winDesc');
+  title.textContent = winner.isBot ? `${winner.name}이(가) 승리했습니다` : '당신이 승리했습니다!';
+  desc.textContent = byBankruptcy
+    ? `${loser ? loser.name : '상대'}이(가) 자금 위기를 극복하지 못하고 파산했습니다.`
+    : (winner.carbon <= WIN_CARBON_MAX && assetValue(winner) >= WIN_ASSET_MIN
+        ? `기후 위기 극복 선언! 탄소코인 ${winner.carbon}개, 자산 ${assetValue(winner)}만 원을 달성했습니다.`
+        : `해양 생태계 붕괴 선언 — 탄소코인이 가장 적은 '${winner.name}'가 최후의 생존자로 승리했습니다.`);
+  overlay.style.display = 'flex';
+}
+
+/* ── 턴 전환 ── */
+function endTurn() {
+  if (gameOver) return;
+  state.turn = (state.turn + 1) % state.players.length;
+  const p = currentPlayer();
+
+  if (p.skipTurns > 0) {
+    p.skipTurns--;
+    log(`${p.name}: 해양 쓰레기섬에 갇혀 이번 턴을 쉽니다. (남은 대기 ${p.skipTurns}턴)`);
+    render();
+    setTimeout(endTurn, 900);
+    return;
+  }
+
+  render();
+  if (p.isBot) {
+    setTimeout(() => beginRoll(p), 1000);
+  }
+}
+
+/* ── 렌더링 ── */
+function render() {
+  renderBoard();
+  renderPlayers();
+  renderDice();
+  renderAction();
+}
+
+function renderBoard() {
+  const board = document.getElementById('board');
+  board.querySelectorAll('.tile').forEach(el => el.remove());
+  TILES.forEach(tile => {
+    const div = document.createElement('div');
+    const owner = tile.type === 'property' ? tileOwner(tile.idx) : null;
+    div.className = 'tile ' + tile.type;
+    const coord = tileCoord(tile.idx);
+    div.style.gridColumn = coord.col;
+    div.style.gridRow = coord.row;
+
+    if (tile.type === 'start') {
+      div.textContent = '출발';
+    } else if (tile.type === 'rest') {
+      div.textContent = tile.name;
+    } else if (tile.type === 'jail') {
+      div.innerHTML = `<div class="jail-name">${tile.name}</div><div class="jail-sub">3턴 쉬어가기</div>`;
+    } else if (tile.type === 'chance_hope' || tile.type === 'chance_warn') {
+      const isHope = tile.type === 'chance_hope';
+      div.innerHTML = `<div class="chance-tile-label">${isHope ? '희망의 파도' : '바다의 경고'}</div>`;
+    } else if (tile.type === 'property') {
+      const cat = CATS[tile.cat];
+
+      // 카테고리 표시 (설명서의 카테고리 동그라미 아이콘 참고 + 글자로 추가 구분)
+      const dot = document.createElement('div');
+      dot.className = 'tile-cat-dot';
+      dot.style.background = cat.color;
+      dot.textContent = cat.letter;
+      dot.title = cat.label + ' 카테고리';
+      div.appendChild(dot);
+
+      // 효과카드 적용 배지 (▲ 증가 / ▼ 감소 / ✕ 불가)
+      const st = categoryState[tile.cat];
+      if (st !== 'normal') {
+        const eff = document.createElement('div');
+        eff.className = 'tile-effect-badge ' + st;
+        eff.textContent = st === 'up' ? '▲' : st === 'blocked' ? '✕' : '▼';
+        eff.title = cat.label + ' 카테고리 효과카드 적용 중';
+        div.appendChild(eff);
+      }
+
+      const nameEl = document.createElement('div');
+      nameEl.className = 'tile-name';
+      nameEl.textContent = tile.name;
+      div.appendChild(nameEl);
+
+      const priceEl = document.createElement('div');
+      priceEl.className = 'tile-price';
+      priceEl.textContent = '가격 ' + tile.price + '만원';
+      div.appendChild(priceEl);
+
+      const tollMult = catMult(tile.cat);
+      const tollEl = document.createElement('div');
+      tollEl.className = 'tile-toll';
+      tollEl.textContent = '통행료 ' + Math.round(tile.toll * tollMult) + '만원';
+      div.appendChild(tollEl);
+
+      const dumpEl = document.createElement('div');
+      dumpEl.className = 'tile-dump';
+      dumpEl.textContent = `버리기 ${tile.dumpOwner}·${tile.dumpVisitor}개`;
+      dumpEl.title = `소유자 ${tile.dumpOwner}개 · 방문자 ${tile.dumpVisitor}개`;
+      div.appendChild(dumpEl);
+
+      // 소유권 표시 (모서리 깃발 리본, 소유자 색상)
+      if (owner) {
+        const flag = document.createElement('div');
+        flag.className = 'tile-owner-flag';
+        flag.style.borderRightColor = owner.color;
+        flag.title = owner.name + ' 소유';
+        div.appendChild(flag);
+      }
+    }
+
+    const tokens = document.createElement('div');
+    tokens.className = 'tile-tokens';
+    state.players.forEach(p => {
+      if (p.pos === tile.idx) {
+        const t = document.createElement('div');
+        t.className = 'token' + (justMovedId === p.id ? ' landing' : '');
+        t.style.borderColor = p.color;
+        t.style.color = p.color;
+        t.title = p.name;
+        t.innerHTML = '<svg class="ic" width="13" height="13"><use href="#i-ship"/></svg>';
+        tokens.appendChild(t);
+      }
+    });
+    div.appendChild(tokens);
+
+    board.appendChild(div);
+  });
+
+  const cp = currentPlayer();
+  const ti = document.getElementById('turnIndicator');
+  ti.textContent = cp.isBot ? `${cp.name} 차례` : '내 차례';
+  ti.style.background = cp.color + '22';
+  ti.style.color = cp.color;
+}
+
+function tileCoord(i) {
+  if (i <= 6)  return { col: 7 - i, row: 7 };
+  if (i <= 12) return { col: 1, row: 7 - (i - 6) };
+  if (i <= 18) return { col: 2 + (i - 13), row: 1 };
+  return { col: 7, row: 2 + (i - 19) };
+}
+
+/* 플레이어 카드는 한 번만 만들고, 이후에는 내용만 갱신
+   (진행 중인 +/- 이펙트 애니메이션이 매 렌더마다 사라지지 않도록) */
+function buildPlayerCards() {
+  const wrap = document.getElementById('playerCards');
+  wrap.innerHTML = '';
+  state.players.forEach((p, i) => {
+    const el = document.createElement('div');
+    el.className = 'player-card';
+    el.id = 'pcard-' + i;
+    el.innerHTML = `
+      <div class="pc-name"><span class="pc-dot" style="background:${p.color}"></span>${p.name}${!p.isBot ? ' (나)' : ''}</div>
+      <div class="pc-row"><span>기금</span><strong id="pc-fund-${i}"></strong></div>
+      <div class="pc-row"><span>탄소코인</span><strong id="pc-carbon-${i}"></strong></div>
+      <div class="pc-row"><span>부동산</span><strong id="pc-owned-${i}"></strong></div>
+      <div class="pc-row"><span>총자산</span><strong id="pc-asset-${i}"></strong></div>
+      <div class="pc-debt" id="pc-debt-${i}"></div>
+    `;
+    wrap.appendChild(el);
+  });
+}
+
+function renderLegend() {
+  const el = document.getElementById('legend');
+  if (!el) return;
+  el.innerHTML = state.players.map(p =>
+    `<span class="legend-item"><span class="legend-dot" style="background:${p.color}"></span>${p.name}</span>`
+  ).join('');
+}
+
+function renderPlayers() {
+  state.players.forEach((p, i) => {
+    const card = document.getElementById('pcard-' + i);
+    if (!card) return;
+    const active = state.turn === i && !gameOver;
+    card.classList.toggle('active', active);
+    card.style.borderColor = active ? p.color : '';
+    card.style.boxShadow = active ? `0 0 0 3px ${p.color}22` : '';
+    document.getElementById('pc-fund-' + i).textContent = p.fund.toLocaleString() + '만 원';
+    document.getElementById('pc-carbon-' + i).textContent = p.carbon + '개';
+    document.getElementById('pc-owned-' + i).textContent = p.owned.length + '곳';
+    document.getElementById('pc-asset-' + i).textContent = assetValue(p).toLocaleString() + '만 원';
+    document.getElementById('pc-debt-' + i).textContent = p.debt > 0 ? `대출 잔액 ${p.debt}만 원` : '';
+  });
+}
+
+function renderDice() {
+  // 3D 큐브는 animateDice()/spinDieTo()가 직접 회전시키므로 여기서는 할 일이 없습니다.
+}
+
+function renderAction() {
+  const box = document.getElementById('actionBox');
+  const p = currentPlayer();
+
+  if (gameOver) {
+    box.innerHTML = `<div class="action-msg">게임이 종료되었습니다.</div>`;
+    return;
+  }
+
+  if (rolling) {
+    box.innerHTML = `<div class="action-msg">주사위를 굴리는 중…</div>`;
+    return;
+  }
+
+  if (pending && pending.type === 'buy') {
+    const { tile } = pending;
+    box.innerHTML = `<div class="action-msg"><strong>'${tile.name}'</strong>은(는) 주인이 없는 해양부동산입니다. ${tile.price}만 원에 구매하시겠습니까?</div>
+      <div class="action-btns">
+        <button class="abtn primary" onclick="confirmBuy(true)">구매하기</button>
+        <button class="abtn ghost" onclick="confirmBuy(false)">구매 안 함</button>
+      </div>`;
+    return;
+  }
+  if (pending && pending.type === 'dump') {
+    const { tile, player, amount, isVisitor } = pending;
+    const amt = Math.min(amount, player.carbon);
+    const place = isVisitor ? `방문한 <strong>'${tile.name}'</strong>` : `내 부동산 <strong>'${tile.name}'</strong>`;
+    box.innerHTML = `<div class="action-msg">${place}에서 탄소코인 ${amt}개를 버리시겠습니까? (보유 ${player.carbon}개)</div>
+      <div class="action-btns">
+        <button class="abtn primary" onclick="confirmDump(true)">버리기</button>
+        <button class="abtn ghost" onclick="confirmDump(false)">넘어가기</button>
+      </div>`;
+    return;
+  }
+  if (pending && pending.type === 'card') {
+    const { card, isHope } = pending;
+    box.innerHTML = `<div class="card-alert ${isHope ? 'hope' : 'warn'}">
+        <span class="ca-tag">${isHope ? '희망의 파도' : '바다의 경고'} — ${card.title}</span>
+        ${card.desc}
+      </div>
+      <div class="action-btns"><button class="abtn primary" onclick="confirmCard()">확인</button></div>`;
+    return;
+  }
+
+  if (p.isBot) {
+    box.innerHTML = `<div class="action-msg">${p.name}이(가) 주사위를 굴리는 중입니다…</div>`;
+  } else {
+    box.innerHTML = `<div class="action-msg">주사위를 굴려 이동하세요.</div>
+      <div class="action-btns"><button class="abtn primary" onclick="rollDice()">주사위 굴리기</button></div>`;
+  }
+}
+
+function restartGame() {
+  document.getElementById('winOverlay').style.display = 'none';
+  openSetup();
+}
+
+/* ── 인원수 설정 화면 ── */
+function openSetup() {
+  renderSetupBtns();
+  document.getElementById('setupOverlay').style.display = 'flex';
+}
+function selectSetupCount(n) {
+  setupCount = n;
+  renderSetupBtns();
+}
+function renderSetupBtns() {
+  const wrap = document.getElementById('setupBtns');
+  if (!wrap) return;
+  wrap.innerHTML = [2, 3, 4, 5, 6].map(n =>
+    `<button class="abtn ${n === setupCount ? 'primary' : ''}" onclick="selectSetupCount(${n})">${n}인</button>`
+  ).join('');
+}
+function confirmSetup() {
+  document.getElementById('setupOverlay').style.display = 'none';
+  initGame(setupCount);
+}
+
+window.addEventListener('DOMContentLoaded', openSetup);
+
+</script>
+
+</body>
+</html>
