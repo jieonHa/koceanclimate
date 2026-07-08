@@ -258,9 +258,21 @@ a.card { text-decoration: none; color: inherit; }
 
 /* ── 푸터 ── */
 footer { background: #0a2540; padding: 28px 0 22px; margin-top: 16px; }
-footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
 .f-logo { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 5px; }
 .f-sub  { font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.7; }
+
+/* ── 주관/참여기관 ── */
+.f-orgs-eyebrow { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 14px; text-align: center; }
+.f-org-row { display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+.f-org-item { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 7px; width: 76px; transition: transform .15s ease; }
+.f-org-item:hover { transform: translateY(-2px); }
+.f-badge { border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; overflow: hidden; }
+.f-badge img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.f-badge.main { width: 46px; height: 46px; background: rgba(14,165,233,.15); border: 1.5px solid rgba(14,165,233,.4); font-size: 12px; color: #7dd3fc; }
+.f-badge.sub  { width: 40px; height: 40px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); font-size: 10px; color: rgba(255,255,255,.75); margin-top: 3px; }
+.f-org-name { font-size: 11px; color: rgba(255,255,255,.5); text-align: center; line-height: 1.3; }
+.f-org-name .role { color: rgba(255,255,255,.32); font-size: 9.5px; }
 .f-links { display: flex; gap: 20px; }
 .f-links a { font-size: 12px; color: rgba(255,255,255,.45); }
 .f-links a:hover { color: #7dd3fc; }
@@ -642,7 +654,34 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
       <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
       <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
     </div>
+
+    <div>
+      <div class="f-orgs-eyebrow">주관기관 · 참여기관</div>
+      <div class="f-org-row">
+        <a class="f-org-item" href="https://www.snu.ac.kr" target="_blank" rel="noopener">
+          <div class="f-badge main">SNU</div>
+          <span class="f-org-name">서울대학교<br><span class="role">주관기관</span></span>
+        </a>
+        <a class="f-org-item" href="https://www.pknu.ac.kr" target="_blank" rel="noopener">
+          <div class="f-badge sub">PKNU</div>
+          <span class="f-org-name">국립부경대학교</span>
+        </a>
+        <a class="f-org-item" href="https://www.jnu.ac.kr" target="_blank" rel="noopener">
+          <div class="f-badge sub">CNU</div>
+          <span class="f-org-name">전남대학교</span>
+        </a>
+        <a class="f-org-item" href="https://www.kiost.ac.kr" target="_blank" rel="noopener">
+          <div class="f-badge sub">KIOST</div>
+          <span class="f-org-name">한국해양과학기술원</span>
+        </a>
+        <a class="f-org-item" href="https://www.kmi.re.kr" target="_blank" rel="noopener">
+          <div class="f-badge sub">KMI</div>
+          <span class="f-org-name">한국해양수산개발원</span>
+        </a>
+      </div>
+    </div>
   </div>
+
   <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
 </footer>
 
