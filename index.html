@@ -149,6 +149,47 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 .hs-num   { font-size: 24px; font-weight: 700; color: #0a2540; }
 .hs-label { font-size: 12px; color: #3d6580; margin-top: 3px; }
 
+.hs-tip { position: relative; display: inline-block; }
+.hs-cmip6 { cursor: help; }
+.hs-cmip6 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed #0a2540;
+}
+.hs-tip .hs-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0a2540;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 8px;
+  white-space: normal;
+  width: max-content;
+  max-width: 250px;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .15s ease, visibility .15s ease;
+  pointer-events: none;
+  z-index: 20;
+}
+.hs-tip .hs-tooltip strong { color: #7dd3fc; }
+.hs-tip .hs-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #0a2540;
+}
+.hs-tip:hover .hs-tooltip { opacity: 1; visibility: visible; }
+
 /* 히어로 오른쪽 패널 */
 .hero-panel {
   background: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.9);
@@ -444,10 +485,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
         <span class="hero-tag">수온 · 염분 · 질산염 · 인산염 · 엽록소a · 총무기탄소 · 알칼리도 </span>
       </div>
       <div class="hero-stats">
-        <div><div class="hs-num">9개</div><div class="hs-label">상세 해역 구분</div></div>
-        <div><div class="hs-num">1982~</div><div class="hs-label">장기 관측 기간</div></div>
-        <div><div class="hs-num">CMIP6</div><div class="hs-label">기후 시나리오</div></div>
-        <div><div class="hs-num">7종</div><div class="hs-label">자료 유형</div></div>
+        <div><div class="hs-num"><span class="hs-tip">9개<span class="hs-tooltip">황해 · 동중국해 · 동해 <br>한반도 서북/서부/남부/동북/동부/남동 해역</span></span></div><div class="hs-label">상세 해역 구분</div></div>
+        <div><div class="hs-num"><span class="hs-tip">1982~<span class="hs-tooltip">1982~2014 - 과거재현<br>2015~2100 - 미래전망</span></span></div><div class="hs-label">장기 관측 기간</div></div>
+        <div><div class="hs-num"><span class="hs-tip hs-cmip6"><a href="https://wcrp-cmip.org/cmip-phases/cmip6/" target="_blank" rel="noopener">CMIP6</a><span class="hs-tooltip">CMIP6란?<br>제 6차 기후 모형 상호 비교 프로젝트<br><br>더 자세한 내용을 알고 싶으시다면 <strong>CMIP6</strong> 텍스트를 클릭해주세요!</span></span></div><div class="hs-label">기후 시나리오</div></div>
+        <div><div class="hs-num"><span class="hs-tip">7종<span class="hs-tooltip">수온 · 염분 · 질산염 · 인산염 · 엽록소a · 총무기탄소 · 알칼리도</span></span></div><div class="hs-label">자료 유형</div></div>
       </div>
     </div>
     <div class="hero-panel">
