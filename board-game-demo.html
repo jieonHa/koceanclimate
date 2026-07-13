@@ -721,7 +721,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
       <span>보드게임 솔로플레이 데모</span>
     </div>
     <h1>CODE BLUE 솔로플레이 데모</h1>
-    <p>봇을 상대로 혼자서 즐기는 「해양 심폐소생 프로젝트 CODE BLUE」 웹 데모입니다. 주사위를 굴려 해양부동산을 사고팔며 탄소코인을 관리해 보세요.</p>
+    <p>컴퓨터 플레이어를 상대로 혼자서 즐기는 「해양 심폐소생 프로젝트 CODE BLUE」 웹 데모입니다. 주사위를 굴려 해양부동산을 사고팔며 탄소코인을 관리해 보세요.</p>
   </div>
 </section>
 
@@ -736,7 +736,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
         <div>
           <div class="db-title">데모 버전 안내</div>
           <div class="db-desc">
-          기본 규칙·자금 위기 관리·승리 조건은 실제 게임설명서를 그대로 구현했습니다. "나 1명 + 봇 여러 명"으로 최대 6인까지 진행할 수 있습니다.</div>
+          기본 규칙·자금 위기 관리·승리 조건은 실제 게임설명서를 그대로 구현했습니다. "나 1명 + 컴퓨터 플레이어 여러 명"으로 최대 6인까지 진행할 수 있습니다.</div>
         </div>
       </div>
 
@@ -793,8 +793,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 <div class="win-overlay" id="setupOverlay" style="display:none;">
   <div class="win-modal">
     <div class="wm-title">플레이어 수를 선택하세요</div>
-    <div class="wm-desc">나(플레이어) 1명 + 봇 여러 명이 함께합니다. 인원이 많을수록 설명서 기준 시작 기금·탄소코인이 달라집니다.</div>
+    <div class="wm-desc">나(플레이어) 1명 + 컴퓨터 플레이어 여러 명이 함께합니다. 인원이 많을수록 설명서 기준 시작 기금·탄소코인이 달라집니다.</div>
     <div class="setup-btns" id="setupBtns"></div>
+    <div class="wm-desc" style="margin-top:14px; margin-bottom:8px;">컴퓨터 플레이어의 구매 방식</div>
+    <div class="setup-btns" id="aiModeBtns"></div>
     <button class="abtn primary" style="width:100%;" onclick="confirmSetup()">게임 시작</button>
   </div>
 </div>
@@ -838,7 +840,7 @@ window.addEventListener('resize', () => {
 
 <script>
 /* ============================================================
-   해양 심폐소생 프로젝트 CODE BLUE — 솔로플레이(봇 대전) 데모
+   해양 심폐소생 프로젝트 CODE BLUE — 솔로플레이(컴퓨터 플레이어 대전) 데모
    ------------------------------------------------------------
    ⚠ 아래 TILES / CHANCE 카드 데이터는 전부 임시(placeholder)입니다.
    실제 보드판 칸 목록·가격표·카드 내용이 확정되면
@@ -937,7 +939,7 @@ const WIN_CARBON_MAX = 10;
 const WIN_ASSET_MIN = 3000;
 const END_AVG_CARBON = 90;
 
-/* 플레이어 구분 색상 (나 + 봇 최대 5명) */
+/* 플레이어 구분 색상 (나 + 컴퓨터 플레이어 최대 5명) */
 const PLAYER_COLORS = ['#0284c7', '#dc2626', '#d97706', '#7c3aed', '#059669', '#db2777'];
 
 /* 설명서의 인원별 초기 자산 배분표 */
@@ -976,17 +978,19 @@ let pending = null;     // {type:'buy'|'dump'|'card', ...}
 let gameOver = false;
 let rolling = false;    // 주사위 애니메이션 진행 중 여부
 let setupCount = 2;     // 설정 화면에서 선택 중인 인원 수
+let setupAiMode = 'fixed'; // 설정 화면에서 선택 중인 컴퓨터 구매 방식: 'fixed'(규칙 기반) | 'random'(랜덤 확률)
+const AI_BUY_PROBABILITY = 0.5; // 랜덤 확률 모드에서 여유 자금이 있을 때 구매를 결정할 확률
 
-function initGame(count) {
+function initGame(count, aiMode) {
   const n = Math.max(2, Math.min(6, count || 2));
   const { fund, carbon } = getStartAssets(n);
 
   const players = [ newPlayer('p0', '나', false, PLAYER_COLORS[0], fund, carbon) ];
   for (let i = 1; i < n; i++) {
-    players.push(newPlayer('p' + i, '봇' + i, true, PLAYER_COLORS[i], fund, carbon));
+    players.push(newPlayer('p' + i, '컴퓨터 플레이어 ' + i, true, PLAYER_COLORS[i], fund, carbon));
   }
 
-  state = { players, turn: 0, dice: [1, 1] };
+  state = { players, turn: 0, dice: [1, 1], aiMode: aiMode || 'fixed' };
   categoryState = { eco: 'normal', green: 'normal', research: 'normal' };
   pending = null;
   gameOver = false;
@@ -1000,7 +1004,7 @@ function initGame(count) {
     dieRot2 = buildDieCube('dieScene2');
   }
 
-  log(`${n}인 게임을 시작합니다 (나 + 봇 ${n - 1}명). 초기 기금 ${fund}만 원, 탄소코인 ${carbon}개로 출발합니다.`);
+  log(`${n}인 게임을 시작합니다 (나 + 컴퓨터 플레이어 ${n - 1}명). 초기 기금 ${fund}만 원, 탄소코인 ${carbon}개로 출발합니다.`);
   render();
 }
 
@@ -1229,7 +1233,11 @@ function resolveTile(p, wasDouble) {
         return afterTileResolved(p, wasDouble);
       }
       if (p.isBot) {
-        const decision = p.fund - tile.price >= 150; // 봇: 최소 150만원 여유 있으면 구매
+        // 컴퓨터 플레이어 구매 결정: '규칙 기반'은 최소 150만원 여유 있으면 무조건 구매,
+        // '랜덤 확률'은 구매 가능한 경우 정해진 확률(AI_BUY_PROBABILITY)로만 구매 여부를 결정
+        const decision = state.aiMode === 'random'
+          ? (p.fund >= tile.price && Math.random() < AI_BUY_PROBABILITY)
+          : (p.fund - tile.price >= 150);
         if (decision) {
           changeFund(p, -tile.price);
           p.owned.push(tile.idx);
@@ -1676,6 +1684,7 @@ function restartGame() {
 /* ── 인원수 설정 화면 ── */
 function openSetup() {
   renderSetupBtns();
+  renderAiModeBtns();
   document.getElementById('setupOverlay').style.display = 'flex';
 }
 function selectSetupCount(n) {
@@ -1689,9 +1698,24 @@ function renderSetupBtns() {
     `<button class="abtn ${n === setupCount ? 'primary' : ''}" onclick="selectSetupCount(${n})">${n}인</button>`
   ).join('');
 }
+function selectAiMode(mode) {
+  setupAiMode = mode;
+  renderAiModeBtns();
+}
+function renderAiModeBtns() {
+  const wrap = document.getElementById('aiModeBtns');
+  if (!wrap) return;
+  const options = [
+    { key: 'fixed', label: '규칙 기반' },
+    { key: 'random', label: '랜덤 확률' },
+  ];
+  wrap.innerHTML = options.map(o =>
+    `<button class="abtn ${o.key === setupAiMode ? 'primary' : ''}" onclick="selectAiMode('${o.key}')">${o.label}</button>`
+  ).join('');
+}
 function confirmSetup() {
   document.getElementById('setupOverlay').style.display = 'none';
-  initGame(setupCount);
+  initGame(setupCount, setupAiMode);
 }
 
 window.addEventListener('DOMContentLoaded', openSetup);
