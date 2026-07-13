@@ -156,6 +156,12 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
   text-decoration: none;
   border-bottom: 1px dashed #0a2540;
 }
+.hs-ssp { cursor:help; }
+.hs-ssp a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed #0a2540;
+}
 .hs-tip .hs-tooltip {
   position: absolute;
   bottom: calc(100% + 10px);
@@ -480,7 +486,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
       <div class="hero-tags">
         <span class="hero-tag">황해</span>
         <span class="hero-tag">동중국해</span>
-        <span class="hero-tag">동해</span>
+        <span class="hero-tag">동해</span>hs-tip hs-cmip
         <span class="hero-tag">한반도 서북/서부/남부/동북/동부/남동 해역</span>
         <span class="hero-tag">수온 · 염분 · 질산염 · 인산염 · 엽록소a · 총무기탄소 · 알칼리도 </span>
       </div>
@@ -489,6 +495,8 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
         <div><div class="hs-num"><span class="hs-tip">1981~<span class="hs-tooltip">1981~2014 - 과거재현<br>2015~2100 - 미래전망</span></span></div><div class="hs-label">자료 분석 기간</div></div>
         <div><div class="hs-num"><span class="hs-tip hs-cmip6"><a href="https://wcrp-cmip.org/cmip-phases/cmip6/" target="_blank" rel="noopener">CMIP6</a><span class="hs-tooltip">CMIP6란?<br>제 6차 기후 모형 상호 비교 프로젝트<br><br>더 자세한 내용을 알고 싶으시다면 <strong>CMIP6</strong> 텍스트를 클릭해주세요!</span></span></div><div class="hs-label">기후 변화 시나리오</div></div>
         <div><div class="hs-num"><span class="hs-tip">7종<span class="hs-tooltip">수온 · 염분 · 질산염 · 인산염 · 엽록소a · 총무기탄소 · 알칼리도</span></span></div><div class="hs-label">변수 종류</div></div>
+        <div><div class="hs-num"><span class="hs-tip ssp"><a href="ssp-guide.html" target="_blank" rel="noopener">4종</a><span class="hs-tooltip">SSP 기후변화 시나리오 중 4종<br><br>SSP 가 무엇인지 알고 싶으신가요?<br><br>더 자세한 내용을 알고 싶으시다면 <strong>4종</strong> 텍스트를 클릭해주세요!</span></span></div><div class="hs-label">대표 시나리오</div></div>
+
       </div>
     </div>
     <div class="hero-panel">
