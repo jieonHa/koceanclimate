@@ -987,7 +987,7 @@ function initGame(count, aiMode) {
 
   const players = [ newPlayer('p0', '나', false, PLAYER_COLORS[0], fund, carbon) ];
   for (let i = 1; i < n; i++) {
-    players.push(newPlayer('p' + i, '컴퓨터 플레이어 ' + i, true, PLAYER_COLORS[i], fund, carbon));
+    players.push(newPlayer('p' + i, 'Bot ' + i, true, PLAYER_COLORS[i], fund, carbon));
   }
 
   state = { players, turn: 0, dice: [1, 1], aiMode: aiMode || 'fixed' };
@@ -1585,7 +1585,7 @@ function buildPlayerCards() {
     el.className = 'player-card';
     el.id = 'pcard-' + i;
     el.innerHTML = `
-      <div class="pc-name"><span class="pc-dot" style="background:${p.color}"></span>${p.name}${!p.isBot ? ' (나)' : ''}</div>
+      <div class="pc-name"><span class="pc-dot" style="background:${p.color}"></span>${p.name}${!p.isBot ? ' (me)' : ''}</div>
       <div class="pc-row"><span>기금</span><strong id="pc-fund-${i}"></strong></div>
       <div class="pc-row"><span>탄소코인</span><strong id="pc-carbon-${i}"></strong></div>
       <div class="pc-row"><span>부동산</span><strong id="pc-owned-${i}"></strong></div>
