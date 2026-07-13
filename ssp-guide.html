@@ -87,6 +87,21 @@ section.block { padding: 56px 0; }
 .def-num { font-family:'Roboto Mono'; font-size: 12px; color:#94a3b8; margin-bottom:10px; }
 .def-card h3 { font-size: 15px; font-weight: 700; color: #0a2540; margin-bottom: 8px; }
 .def-card p { font-size: 13.5px; color: #64748b; }
+.def-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.def-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.def-grid-icons { gap: 12.6px; grid-template-columns: repeat(8,1fr); }
+.def-grid-icons .def-card { padding: 17.6px 22px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.def-grid-icons .def-icon { width: 46px; height: 46px; margin: 0 auto 11px; }
+.def-grid-icons .def-icon svg { width: 25px; height: 25px; }
+.def-grid-icons .def-card h3 { margin-bottom: 0; }
+.di-sst   { background:#dbeafe; color:#0284c7; }
+.di-level { background:#cffafe; color:#0891b2; }
+.di-air   { background:#fef3c7; color:#d97706; }
+.di-pres  { background:#ede9fe; color:#7c3aed; }
+.di-rain  { background:#e0e7ff; color:#4f46e5; }
+.di-wind  { background:#ccfbf1; color:#0d9488; }
+.di-ext   { background:#e2e8f0; color:#475569; }
+.di-thick { background:#dbeafe; color:#1e3a5f; }
 
 /* ── 매트릭스(시그니처) ── */
 .matrix-section { background: linear-gradient(155deg,#f0f9ff 0%, #e0f2fe 100%); color:#334155; }
@@ -184,12 +199,14 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
 /* ── 반응형 ── */
 @media (max-width: 860px) {
   .def-grid, .ssp-grid, .combo-strip { grid-template-columns: repeat(2,1fr); }
+  .def-grid-icons { grid-template-columns: repeat(4,1fr); }
   .hero h1 { font-size: 28px; }
   .hero .wrap { grid-template-columns: 1fr; }
   .hero-globe { order:-1; max-width:150px; margin:0 auto 8px; }
 }
 @media (max-width: 560px) {
   .def-grid, .ssp-grid, .combo-strip { grid-template-columns: 1fr; }
+  .def-grid-icons { grid-template-columns: repeat(2,1fr); }
   .matrix-wrap { grid-template-columns: 1fr; }
   .axis-y { margin-bottom:6px; }
   .axis-y .rot { transform:none; white-space:normal; }
@@ -203,6 +220,54 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
 </style>
 </head>
 <body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-var-sst" viewBox="0 0 24 24">
+    <path d="M13 3.3a1.5 1.5 0 0 0-3 0v8.6a3.5 3.5 0 1 0 3 0V3.3z"/>
+    <path d="M3.5 19.5c1.2-1.3 2.5-1.3 3.7 0s2.5 1.3 3.7 0 2.5-1.3 3.7 0 2.5 1.3 3.7 0"/>
+  </symbol>
+  <symbol id="i-var-level" viewBox="0 0 24 24">
+    <path d="M3 9.5c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/>
+    <path d="M3 15.5c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/>
+  </symbol>
+  <symbol id="i-var-air" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="12" y1="2" x2="12" y2="5"/>
+    <line x1="12" y1="19" x2="12" y2="22"/>
+    <line x1="2" y1="12" x2="5" y2="12"/>
+    <line x1="19" y1="12" x2="22" y2="12"/>
+    <line x1="4.9" y1="4.9" x2="7" y2="7"/>
+    <line x1="17" y1="17" x2="19.1" y2="19.1"/>
+    <line x1="4.9" y1="19.1" x2="7" y2="17"/>
+    <line x1="17" y1="7" x2="19.1" y2="4.9"/>
+  </symbol>
+  <symbol id="i-var-pres" viewBox="0 0 24 24">
+    <path d="M4 15a8 8 0 1 1 16 0"/>
+    <line x1="12" y1="15" x2="16" y2="10"/>
+    <circle cx="12" cy="15" r="1.2" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-var-rain" viewBox="0 0 24 24">
+    <path d="M6.5 15a3.5 3.5 0 0 1 .3-6.98 5 5 0 0 1 9.6 1.3A3.2 3.2 0 0 1 16 15z"/>
+    <line x1="8" y1="18" x2="8" y2="20.3"/>
+    <line x1="12" y1="18" x2="12" y2="21.3"/>
+    <line x1="16" y1="18" x2="16" y2="20.3"/>
+  </symbol>
+  <symbol id="i-var-wind" viewBox="0 0 24 24">
+    <path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5"/>
+    <path d="M3 12h14a2.5 2.5 0 1 1-2.5 2.5"/>
+    <path d="M3 16h8a2 2 0 1 1-2 2"/>
+  </symbol>
+  <symbol id="i-var-ext" viewBox="0 0 24 24">
+    <line x1="12" y1="2" x2="12" y2="22"/>
+    <line x1="3.5" y1="7" x2="20.5" y2="17"/>
+    <line x1="3.5" y1="17" x2="20.5" y2="7"/>
+  </symbol>
+  <symbol id="i-var-thick" viewBox="0 0 24 24">
+    <rect x="4" y="4" width="16" height="4" rx="1"/>
+    <rect x="4" y="10" width="16" height="4" rx="1"/>
+    <rect x="4" y="16" width="16" height="4" rx="1"/>
+  </symbol>
+</svg>
 
 <div class="ribbon"><div class="wrap"><span>용어 안내 · 기후변화 시나리오</span><span><b>SSP</b> · 공유사회경제경로</span></div></div>
 
@@ -440,15 +505,15 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
       <h2>SSP 시나리오 기반 해양기후 핵심변수</h2>
       <p>SSP 시나리오를 기후모델에 적용하면 다음과 같은 해양기후 핵심변수의 미래 변화를 산출할 수 있습니다.</p>
     </div>
-    <div class="def-grid" style="grid-template-columns:repeat(4,1fr);">
-      <div class="def-card"><h3>해면수온</h3></div>
-      <div class="def-card"><h3>해수면</h3></div>
-      <div class="def-card"><h3>해상기온</h3></div>
-      <div class="def-card"><h3>해면기압</h3></div>
-      <div class="def-card"><h3>해상강수량</h3></div>
-      <div class="def-card"><h3>해상풍</h3></div>
-      <div class="def-card"><h3>해빙면적</h3></div>
-      <div class="def-card"><h3>해빙두께</h3></div>
+    <div class="def-grid def-grid-icons">
+      <div class="def-card"><div class="def-icon di-sst"><svg><use href="#i-var-sst"/></svg></div><h3>해면수온</h3></div>
+      <div class="def-card"><div class="def-icon di-level"><svg><use href="#i-var-level"/></svg></div><h3>해수면</h3></div>
+      <div class="def-card"><div class="def-icon di-air"><svg><use href="#i-var-air"/></svg></div><h3>해상기온</h3></div>
+      <div class="def-card"><div class="def-icon di-pres"><svg><use href="#i-var-pres"/></svg></div><h3>해면기압</h3></div>
+      <div class="def-card"><div class="def-icon di-rain"><svg><use href="#i-var-rain"/></svg></div><h3>해상강수량</h3></div>
+      <div class="def-card"><div class="def-icon di-wind"><svg><use href="#i-var-wind"/></svg></div><h3>해상풍</h3></div>
+      <div class="def-card"><div class="def-icon di-ext"><svg><use href="#i-var-ext"/></svg></div><h3>해빙면적</h3></div>
+      <div class="def-card"><div class="def-icon di-thick"><svg><use href="#i-var-thick"/></svg></div><h3>해빙두께</h3></div>
     </div>
   </div>
 </section>
