@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSP(공유사회경제경로) 안내 | 한반도 주변 상세 해양기후 정보 서비스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', -apple-system, sans-serif;
+  background: #f4f8fb;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.mono { font-family: 'Roboto Mono', ui-monospace, monospace; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+/* ── 상단 리본 ── */
+.ribbon { background: #0a2540; color: rgba(255,255,255,.6); font-size: 12px; padding: 8px 0; }
+.ribbon .wrap { display: flex; justify-content: space-between; align-items: center; }
+.ribbon b { color: #7dd3fc; font-weight: 600; }
+
+/* ── 히어로 ── */
+.hero {
+  background: linear-gradient(155deg, #eaf6ff 0%, #dcf0fb 45%, #bfe4f2 100%);
+  color: #0a2540;
+  padding: 64px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(560px 300px at 88% -10%, rgba(255,255,255,.6), transparent 70%),
+    radial-gradient(420px 260px at -8% 110%, rgba(125,211,252,.5), transparent 70%);
+  pointer-events:none;
+}
+.hero .wrap { position: relative; z-index: 1; display:grid; grid-template-columns: 1fr 260px; gap:36px; align-items:center; }
+.hero-copy{}
+.eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size: 12.5px; font-weight: 600; letter-spacing: .04em;
+  color: #0369a1; background: rgba(255,255,255,.65);
+  border: 1px solid rgba(255,255,255,.9);
+  padding: 6px 14px; border-radius: 999px; margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(2,132,199,.08);
+}
+.eyebrow-dot { width:6px; height:6px; border-radius:50%; background:#0284c7; }
+.hero h1 { font-size: 38px; font-weight: 900; line-height: 1.32; letter-spacing: -.01em; margin-bottom: 16px; color:#0a2540; }
+.hero h1 span { color: #0284c7; }
+.hero p.lead { font-size: 15.5px; color: #3d6580; max-width: 560px; margin-bottom: 28px; }
+
+.formula {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.95);
+  border-radius: 14px; padding: 14px 20px; flex-wrap: wrap;
+  box-shadow: 0 10px 30px rgba(2,80,120,.08);
+}
+.formula .f-item { font-family:'Roboto Mono',monospace; font-size: 14px; font-weight:600; }
+.formula .f-soc { color:#16a34a; }
+.formula .f-plus { color: #94a3b8; font-size:16px; }
+.formula .f-rad { color:#dc2626; }
+.formula .f-eq { color: #94a3b8; font-size:16px; }
+.formula .f-out { color:#0284c7; }
+.formula .f-cap { display:block; font-family:'Noto Sans KR'; font-weight:400; font-size:11px; color:#7d93a6; margin-top:3px; }
+
+/* ── 히어로 지구 그래픽(원본 라인아트) ── */
+.hero-globe { display:flex; align-items:center; justify-content:center; }
+.hero-globe svg { width: 100%; max-width: 230px; height:auto; }
+
+/* ── 섹션 공통 ── */
+section.block { padding: 56px 0; }
+.block + .block { border-top: 1px solid #e2e8f0; }
+.block-head { max-width: 640px; margin-bottom: 34px; }
+.block-eyebrow { font-size: 14px; font-weight: 700; color: #0284c7; letter-spacing: .05em; margin-bottom: 8px; text-transform: uppercase; }
+.block-head h2 { font-size: 24px; font-weight: 700; color: #0a2540; margin-bottom: 10px; line-height: 1.4; }
+.block-head p { font-size: 14.5px; color: #556577; }
+
+/* ── 정의 카드 3분할 ── */
+.def-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.def-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; }
+.def-num { font-family:'Roboto Mono'; font-size: 12px; color:#94a3b8; margin-bottom:10px; }
+.def-card h3 { font-size: 15px; font-weight: 700; color: #0a2540; margin-bottom: 8px; }
+.def-card p { font-size: 13.5px; color: #64748b; }
+
+/* ── 매트릭스(시그니처) ── */
+.matrix-section { background: linear-gradient(155deg,#f0f9ff 0%, #e0f2fe 100%); color:#334155; }
+.matrix-section .block-eyebrow { color:#0284c7; }
+.matrix-section .block-head h2 { color:#0a2540; }
+.matrix-section .block-head p { color: #556577; }
+
+.mx-title { text-align:center; margin-top:46px; margin-bottom:26px; grid-column: 2; }
+.mx-title .mx-t1 { font-size:22px; font-weight:800; color:#0a2540; }
+.mx-title .mx-t2 { font-size:15px; color:#0a2540; font-weight:600; margin-top:2px; }
+.mx-title .mx-t3 { font-size:19px; font-weight:800; color:#0a2540; margin-top:4px; }
+
+.matrix-wrap { display: grid; grid-template-columns: 96px 1fr; gap: 10px; }
+.axis-y {
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color: #334155; text-align:center;
+}
+.axis-y .rot { display:inline-block; transform: rotate(-90deg); white-space:nowrap; line-height:1.6; }
+.axis-y .hl { color:#2563eb; font-weight:700; }
+.axis-y .arrow { color:#9aa5b1; }
+.matrix-box {
+  position: relative;
+  aspect-ratio: 16/14;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: visible;
+  box-shadow: 0 10px 30px rgba(2,80,120,.06);
+  margin: 6px 22px 22px 6px;
+}
+.mx-divider-v{ position:absolute; left:50%; top:4%; bottom:4%; width:0; border-left:2px dashed #d6dee6; }
+.mx-divider-h{ position:absolute; top:50%; left:4%; right:4%; height:0; border-top:2px dashed #d6dee6; }
+.mx-arrow-y{ position:absolute; left:-2px; top:-4%; bottom:0; width:3px; background:#9aa5b1; border-radius:2px; }
+.mx-arrow-y::before{ content:""; position:absolute; top:-3px; left:50%; transform:translate(-50%,-100%); border:9px solid transparent; border-bottom:14px solid #9aa5b1; }
+.mx-arrow-x{ position:absolute; left:-2px; right:-4%; bottom:-2px; height:3px; background:#9aa5b1; border-radius:2px; }
+.mx-arrow-x::before{ content:""; position:absolute; right:-3px; top:50%; transform:translate(100%,-50%); border:9px solid transparent; border-left:14px solid #9aa5b1; }
+
+.mq-cell{ position:absolute; transform:translate(-50%,-50%); text-align:center; }
+.mq-circle{
+  --c: #cbd5e1;
+  width: 230px; height: 230px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background: radial-gradient(circle, var(--c) 0%, var(--c) 34%, transparent 72%);
+}
+.mq-circle .mq-inner{ width:168px; }
+.mq-name{ display:inline-block; background:#8fbdfa; color:#0f172a; font-weight:800; font-size:24px; padding:5px 22px; border-radius:3px; margin-bottom:9px; }
+.mq-note{ font-size:14.5px; color:#475569; margin-bottom:4px; }
+.mq-phrase{ font-weight:700; font-size:19px; color:#1e3a8a; margin-bottom:4px; }
+.mq-road{ font-size:16px; color:#334155; }
+
+.axis-x { text-align:center; font-size:16px; color: #334155; margin-top:14px; grid-column: 2; }
+.axis-x .hl { color:#db2777; font-weight:700; }
+.axis-x .arrow { color:#9aa5b1; }
+
+/* ── SSP 카드 5장 ── */
+.ssp-grid { display:grid; grid-template-columns: repeat(5,1fr); gap:14px; }
+.ssp-card {
+  background:#fff; border-radius:16px; padding:20px 16px;
+  border-top: 4px solid var(--c);
+  border-left: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;
+  display:flex; flex-direction:column; gap:10px;
+}
+.ssp-card .ssp-tag { font-family:'Roboto Mono'; font-weight:700; font-size:13px; color: var(--c); }
+.ssp-card h3 { font-size:15px; font-weight:700; color:#0a2540; }
+.ssp-card .ssp-en { font-size:11.5px; color:#94a3b8; font-style:italic; margin-top:-6px; }
+.ssp-card p { font-size:12.8px; color:#64748b; }
+.ssp-meter { display:flex; flex-direction:column; gap:6px; margin-top:auto; padding-top:8px; border-top:1px dashed #e2e8f0; }
+.mrow { display:flex; align-items:center; gap:8px; font-size:11px; color:#64748b; }
+.mrow .mlabel { width:50px; flex-shrink:0; }
+.mbar { flex:1; height:5px; border-radius:3px; background:#eef2f6; overflow:hidden; }
+.mbar i { display:block; height:100%; background: var(--c); border-radius:3px; }
+
+/* ── RCP 조합 스트립 ── */
+.combo-strip { display:grid; grid-template-columns: repeat(4,1fr); gap:14px; }
+.combo-card { background:#f0f9ff; border:1px solid #bae6fd; border-radius:14px; padding:18px; text-align:center; }
+.combo-name { font-family:'Roboto Mono'; font-weight:700; font-size:16px; color:#0369a1; margin-bottom:6px; }
+.combo-force { font-size:11.5px; color:#0284c7; margin-bottom:8px; }
+.combo-desc { font-size:12px; color:#64748b; }
+
+/* ── 활용 노트 ── */
+.usage-box {
+  background: linear-gradient(135deg,#0ea5e9,#0369a1);
+  color:#fff; border-radius:18px; padding: 26px 28px;
+  display:flex; gap:20px; align-items:flex-start;
+}
+.usage-box .u-ic { font-family:'Roboto Mono'; font-size:22px; flex-shrink:0; opacity:.85; }
+.usage-box h3 { font-size:15.5px; font-weight:700; margin-bottom:6px; }
+.usage-box p { font-size:13px; color:rgba(255,255,255,.88); }
+.usage-box code { font-family:'Roboto Mono'; background:rgba(255,255,255,.18); padding:1px 6px; border-radius:5px; }
+
+/* ── 푸터 ── */
+footer { background:#0a2540; color:rgba(255,255,255,.5); font-size:12px; padding: 22px 0; }
+footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+/* ── 반응형 ── */
+@media (max-width: 860px) {
+  .def-grid, .ssp-grid, .combo-strip { grid-template-columns: repeat(2,1fr); }
+  .hero h1 { font-size: 28px; }
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-globe { order:-1; max-width:150px; margin:0 auto 8px; }
+}
+@media (max-width: 560px) {
+  .def-grid, .ssp-grid, .combo-strip { grid-template-columns: 1fr; }
+  .matrix-wrap { grid-template-columns: 1fr; }
+  .axis-y { margin-bottom:6px; }
+  .axis-y .rot { transform:none; white-space:normal; }
+  .hero { padding: 48px 0 40px; }
+  .hero h1 { font-size: 24px; }
+  .usage-box { flex-direction:column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ssp-dot { transition:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon"><div class="wrap"><span>용어 안내 · 기후변화 시나리오</span><span><b>SSP</b> · 공유사회경제경로</span></div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>IPCC AR6 · CMIP6 공식 기후변화 시나리오 체계</div>
+      <h1>미래는 하나로 정의되지 않습니다.<br>SSP, <span>다섯 가지 사회경제 경로</span></h1>
+      <p class="lead">SSP(공유사회경제경로)는 인구, 경제, 기술, 국제협력의 전개 방향에 따라 구성한 다섯 가지 사회경제 시나리오입니다. 여기에 온실가스 배출 수준을 결합하면 &lsquo;SSP2-4.5&rsquo;와 같은 기후변화 시나리오가 산출됩니다.</p>
+      <div class="formula">
+        <span class="f-item f-soc">사회경제 시나리오 (SSP1~5)<span class="f-cap">인구·경제·기술·정책의 전개 방향</span></span>
+        <span class="f-plus">+</span>
+        <span class="f-item f-rad">온실가스 배출 수준<span class="f-cap">2100년 기준 배출 경로</span></span>
+        <span class="f-eq">=</span>
+        <span class="f-item f-out">기후변화 시나리오<span class="f-cap">예: SSP2-4.5, SSP5-8.5</span></span>
+      </div>
+    </div>
+    <div class="hero-globe" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="72" stroke="#0284c7" stroke-width="2" opacity=".55"/>
+        <ellipse cx="100" cy="100" rx="72" ry="30" stroke="#0284c7" stroke-width="1.4" opacity=".4"/>
+        <ellipse cx="100" cy="100" rx="72" ry="30" stroke="#0284c7" stroke-width="1.4" opacity=".4" transform="rotate(60 100 100)"/>
+        <ellipse cx="100" cy="100" rx="72" ry="30" stroke="#0284c7" stroke-width="1.4" opacity=".4" transform="rotate(120 100 100)"/>
+        <line x1="28" y1="100" x2="172" y2="100" stroke="#0284c7" stroke-width="1.4" opacity=".4"/>
+        <!-- 상승하는 기온 그래프 라인 -->
+        <path d="M46 122 L72 108 L92 118 L114 92 L138 100 L156 74" stroke="#dc2626" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="156" cy="74" r="5" fill="#dc2626"/>
+        <!-- 물방울(해수면) 액센트 -->
+        <path d="M60 150c0 6-5 10-10 10s-10-4-10-10c0-6 10-18 10-18s10 12 10 18z" fill="#38bdf8" opacity=".85"/>
+        <!-- 잎(지속가능성) 액센트 -->
+        <path d="M132 150c10-14 28-14 34-4-10 14-24 16-34 4z" fill="#16a34a" opacity=".85"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <div class="block-eyebrow">다섯 가지 경로가 필요한 이유</div>
+      <h2>미래 사회의 전개 방향을 하나로 단정할 수 없기 때문입니다</h2>
+      <p>기후변화 시나리오란 인간 활동이 대기에 미치는 복사량과 미래 사회경제변화에 따라 나타날 수 있는 미래의 변화를 의미합니다. 사회의 전개 방향을 정확히 예측할 수 없으므로, 여러 가능성을 시나리오로 구성하고 각 경우에 따른 기후변화를 산출합니다.</p>
+    </div>
+    <div class="def-grid">
+      <div class="def-card">
+        <div class="def-num">01</div>
+        <h3>서사 구성</h3>
+        <p>인구 증감, 국제 협력 수준 등 사회의 전개 방향을 정성적 서사로 기술합니다.</p>
+      </div>
+      <div class="def-card">
+        <div class="def-num">02</div>
+        <h3>정량 지표 전환</h3>
+        <p>서사를 인구, 경제 규모 등 수치 지표로 정량화하여 모델의 입력값으로 변환합니다.</p>
+      </div>
+      <div class="def-card">
+        <div class="def-num">03</div>
+        <h3>기후모델 적용</h3>
+        <p>정량화된 지표로 온실가스 배출 경로를 산출하고, 이를 기후모델에 입력해 미래 기후를 전망합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block matrix-section">
+  <div class="wrap">
+    <div class="block-head">
+      <div class="block-eyebrow">SSP 매트릭스</div>
+      <h2>완화와 적응, 두 가지 과제의 어려움</h2>
+      <p>다섯 개의 시나리오를 완화와 적응 과제의 난이도를 기준으로 배치한 도식입니다. 세로축은 완화 과제의 어려움을, 가로축은 적응 과제의 어려움을 나타냅니다.</p>
+    </div>
+    <div class="matrix-wrap">
+      <div></div>
+      <div class="mx-title">
+        <div class="mx-t1">SSP</div>
+        <div class="mx-t2">(Shared Socioeconomic Pathways)</div>
+        <div class="mx-t3">공통사회경제경로</div>
+      </div>
+      <div class="axis-y"><span class="rot">기후 변화 <span class="hl">완화</span>를 위한<br>사회·경제적 과제의 어려움 <span class="arrow">&uarr;</span></span></div>
+      <div class="matrix-box">
+        <div class="mx-divider-v"></div>
+        <div class="mx-divider-h"></div>
+        <div class="mx-arrow-y"></div>
+        <div class="mx-arrow-x"></div>
+
+        <div class="mq-cell" style="left:25%; top:23%;">
+          <div class="mq-circle" style="--c:#fdba74;"><div class="mq-inner">
+            <span class="mq-name">SSP 5</span>
+            <div class="mq-note">(완화 과제 달성이 어려움)</div>
+            <div class="mq-phrase">화석연료 의존 발전</div>
+            <div class="mq-road">고성장 진로</div>
+          </div></div>
+        </div>
+        <div class="mq-cell" style="left:75%; top:23%;">
+          <div class="mq-circle" style="--c:#fca5a5;"><div class="mq-inner">
+            <span class="mq-name">SSP 3</span>
+            <div class="mq-note">(완화·적응 과제<br>달성이 어려움)</div>
+            <div class="mq-phrase">지역 간 경쟁</div>
+            <div class="mq-road">험난한 진로</div>
+          </div></div>
+        </div>
+        <div class="mq-cell" style="left:50%; top:50%;">
+          <div class="mq-circle" style="--c:#cbd5e1; width:250px; height:250px;"><div class="mq-inner" style="width:190px;">
+            <span class="mq-name">SSP 2</span>
+            <div class="mq-note">(중간 난이도의 완화·적응 과제)</div>
+            <div class="mq-phrase">중도 진로</div>
+          </div></div>
+        </div>
+        <div class="mq-cell" style="left:25%; top:77%;">
+          <div class="mq-circle" style="--c:#86efac;"><div class="mq-inner">
+            <span class="mq-name">SSP 1</span>
+            <div class="mq-note">(완화와 적응의<br>어려움이 적음)</div>
+            <div class="mq-phrase">지속가능성</div>
+            <div class="mq-road">녹색진로</div>
+          </div></div>
+        </div>
+        <div class="mq-cell" style="left:75%; top:77%;">
+          <div class="mq-circle" style="--c:#d8b4fe;"><div class="mq-inner">
+            <span class="mq-name">SSP 4</span>
+            <div class="mq-note">(적응 과제 달성이 어려움)</div>
+            <div class="mq-phrase">불평등</div>
+            <div class="mq-road">갈라진 진로</div>
+          </div></div>
+        </div>
+      </div>
+      <div></div>
+      <div class="axis-x">기후 변화 <span class="hl">적응</span>을 위한 사회·경제적 과제의 어려움 <span class="arrow">&rarr;</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <div class="block-eyebrow">SSP 시나리오 개요</div>
+      <h2>SSP1부터 SSP5까지</h2>
+      <p>각 시나리오는 온실가스 배출량이 아니라, 그 배출을 유발하는 사회의 성격을 규정합니다.</p>
+    </div>
+    <div class="ssp-grid">
+
+      <div class="ssp-card" style="--c:#16a34a;">
+        <div class="ssp-tag">SSP1</div>
+        <h3>지속가능성</h3>
+        <div class="ssp-en">녹색진로 · Taking the Green Road</div>
+        <p>지속가능한 소비·생산과 포용적 성장을 지향하며 국제 협력이 강화되는 경로입니다. 저탄소 기술 확산 속도가 빠릅니다.</p>
+        <div class="ssp-meter">
+          <div class="mrow"><span class="mlabel">완화</span><div class="mbar"><i style="width:20%"></i></div></div>
+          <div class="mrow"><span class="mlabel">적응</span><div class="mbar"><i style="width:22%"></i></div></div>
+        </div>
+      </div>
+
+      <div class="ssp-card" style="--c:#64748b;">
+        <div class="ssp-tag">SSP2</div>
+        <h3>중도 발전</h3>
+        <div class="ssp-en">중도 진로 · Middle of the Road</div>
+        <p>사회·경제·기술의 발전 양상이 과거 추세를 크게 벗어나지 않고 이어지는 경로로, 기준 시나리오로 가장 널리 활용됩니다.</p>
+        <div class="ssp-meter">
+          <div class="mrow"><span class="mlabel">완화</span><div class="mbar"><i style="width:52%"></i></div></div>
+          <div class="mrow"><span class="mlabel">적응</span><div class="mbar"><i style="width:52%"></i></div></div>
+        </div>
+      </div>
+
+      <div class="ssp-card" style="--c:#dc2626;">
+        <div class="ssp-tag">SSP3</div>
+        <h3>지역 경쟁</h3>
+        <div class="ssp-en">험난한 진로 · A Rocky Road</div>
+        <p>국가주의가 심화되고 국제 협력이 약화되며 불평등이 확대되는 경로입니다. 완화와 적응 모두 어려움을 겪습니다.</p>
+        <div class="ssp-meter">
+          <div class="mrow"><span class="mlabel">완화</span><div class="mbar"><i style="width:88%"></i></div></div>
+          <div class="mrow"><span class="mlabel">적응</span><div class="mbar"><i style="width:88%"></i></div></div>
+        </div>
+      </div>
+
+      <div class="ssp-card" style="--c:#9333ea;">
+        <div class="ssp-tag">SSP4</div>
+        <h3>불평등</h3>
+        <div class="ssp-en">갈라진 진로 · A Road Divided</div>
+        <p>계층·지역 간 격차가 심화되어, 일부는 저탄소 전환에 앞서지만 다수는 기후 영향에 취약한 상태로 남는 경로입니다.</p>
+        <div class="ssp-meter">
+          <div class="mrow"><span class="mlabel">완화</span><div class="mbar"><i style="width:34%"></i></div></div>
+          <div class="mrow"><span class="mlabel">적응</span><div class="mbar"><i style="width:80%"></i></div></div>
+        </div>
+      </div>
+
+      <div class="ssp-card" style="--c:#ea580c;">
+        <div class="ssp-tag">SSP5</div>
+        <h3>화석연료 기반 개발</h3>
+        <div class="ssp-en">고성장 진로 · Taking the Highway</div>
+        <p>화석연료 중심의 빠른 경제성장과 기술혁신이 특징이며, 온실가스 배출은 다섯 시나리오 중 가장 높은 수준으로 나타납니다.</p>
+        <div class="ssp-meter">
+          <div class="mrow"><span class="mlabel">완화</span><div class="mbar"><i style="width:92%"></i></div></div>
+          <div class="mrow"><span class="mlabel">적응</span><div class="mbar"><i style="width:26%"></i></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <div class="block-eyebrow">SSP-RCP 조합</div>
+      <h2>대표 시나리오 조합</h2>
+      <p>SSP 뒤에 붙는 숫자는 2100년 기준 예상 복사강제력(W/m&sup2;) 수준을 나타내며, 숫자가 클수록 온실가스 배출 및 온난화 수준이 높음을 의미합니다.</p>
+    </div>
+    <div class="combo-strip">
+      <div class="combo-card">
+        <div class="combo-name mono">SSP1-2.6</div>
+        <div class="combo-force">2100년 약 2.6 W/m&sup2;</div>
+        <div class="combo-desc">화석연료 최소화, 친환경적 경제성장</div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-name mono">SSP2-4.5</div>
+        <div class="combo-force">2100년 약 4.5 W/m&sup2;</div>
+        <div class="combo-desc">기후변화 및 사회경제 발전 정도가 중간 단계인 경우</div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-name mono">SSP3-7.0</div>
+        <div class="combo-force">2100년 약 7.0 W/m&sup2;</div>
+        <div class="combo-desc">국제 협력 약화로 배출이 높게 유지되는 경로</div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-name mono">SSP5-8.5</div>
+        <div class="combo-force">2100년 약 8.5 W/m&sup2;</div>
+        <div class="combo-desc">산업기술의 빠른 발전에 중심을 두어 고속성장할 경우</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <div class="block-eyebrow">해양기후 핵심변수</div>
+      <h2>SSP 시나리오 기반 해양기후 핵심변수</h2>
+      <p>SSP 시나리오를 기후모델에 적용하면 다음과 같은 해양기후 핵심변수의 미래 변화를 산출할 수 있습니다.</p>
+    </div>
+    <div class="def-grid" style="grid-template-columns:repeat(4,1fr);">
+      <div class="def-card"><h3>해면수온</h3></div>
+      <div class="def-card"><h3>해수면</h3></div>
+      <div class="def-card"><h3>해상기온</h3></div>
+      <div class="def-card"><h3>해면기압</h3></div>
+      <div class="def-card"><h3>해상강수량</h3></div>
+      <div class="def-card"><h3>해상풍</h3></div>
+      <div class="def-card"><h3>해빙면적</h3></div>
+      <div class="def-card"><h3>해빙두께</h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="usage-box">
+      <div class="u-ic">i</div>
+      <div>
+        <h3>본 사이트에서의 활용</h3>
+        <p>한반도 주변 해양기후 전망은 <code>SSP2-4.5</code>(중간 경로)와 <code>SSP5-8.5</code>(고배출 경로)를 기준으로 산출되며, 필요 시 <code>SSP1-2.6</code>(저탄소 경로) 자료를 함께 제공합니다. 시나리오 선택에 따라 동일 지역이라도 예측 범위가 크게 달라질 수 있으므로, 여러 시나리오를 비교 검토하시기 바랍니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>자료 구성: IPCC AR6 · CMIP6 ScenarioMIP 공식 분류 체계 기반</span>
+    <span>한반도 주변 상세 해양기후 정보 서비스 · 용어 안내</span>
+  </div>
+</footer>
+
+</body>
+</html>
