@@ -19,6 +19,54 @@ body {
 .mono { font-family: 'Roboto Mono', ui-monospace, monospace; }
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
 
+/* ── 좌측 목차 ── */
+.toc {
+  position: fixed; top: 50%; left: 24px; transform: translateY(-50%);
+  z-index: 40; width: 176px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.toc-label {
+  font-size: 10.5px; font-weight: 700; color: #94a3b8; letter-spacing: .08em;
+  text-transform: uppercase; margin-bottom: 8px; padding-left: 16px;
+}
+.toc a {
+  position: relative; display: block; padding: 6px 0 6px 16px;
+  font-size: 12.5px; color: #7d93a6; text-decoration: none;
+  border-left: 2px solid #dde6ee; line-height: 1.4;
+  transition: color .15s ease, border-color .15s ease;
+}
+.toc a:hover { color: #0284c7; }
+.toc a.active { color: #0a2540; font-weight: 700; border-left-color: #0284c7; }
+.toc a.active::before {
+  content: ""; position: absolute; left: -2px; top: 0; bottom: 0; width: 2px; background: #0284c7;
+}
+@media (max-width: 1400px) { .toc { display: none; } }
+
+/* ── 우측 맨 위로 이동 버튼 ── */
+.back-to-top {
+  position: fixed; right: 24px; top: 50%; z-index: 40;
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  border: none; background: transparent; cursor: pointer;
+  opacity: 0; visibility: hidden; transform: translateY(calc(-50% + 10px));
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+}
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(-50%); }
+.btt-circle {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #0284c7 55%, #0369a1);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 24px rgba(2,80,120,.28);
+  transition: box-shadow .15s ease;
+}
+.back-to-top:hover .btt-circle { box-shadow: 0 12px 28px rgba(2,80,120,.4); }
+.btt-circle svg { width: 18px; height: 18px; }
+.btt-label {
+  font-size: 10.5px; font-weight: 600; color: #0a2540;
+  background: rgba(255,255,255,.85); padding: 2px 9px; border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(2,80,120,.1); white-space: nowrap;
+}
+@media (max-width: 640px) { .back-to-top { right: 16px; } .btt-circle { width: 40px; height: 40px; } }
+
 /* ── 상단 리본 ── */
 .ribbon { background: #0a2540; color: rgba(255,255,255,.6); font-size: 12px; padding: 8px 0; }
 .ribbon .wrap { display: flex; justify-content: space-between; align-items: center; }
@@ -74,7 +122,7 @@ body {
 .hero-globe svg { width: 100%; max-width: 230px; height:auto; }
 
 /* ── 섹션 공통 ── */
-section.block { padding: 56px 0; }
+section.block { padding: 56px 0; scroll-margin-top: 20px; }
 .block + .block { border-top: 1px solid #e2e8f0; }
 .block-head { max-width: 650px; margin-bottom: 34px; }
 .block-eyebrow { font-size: 14px; font-weight: 700; color: #0284c7; letter-spacing: .05em; margin-bottom: 8px; text-transform: uppercase; }
@@ -308,6 +356,25 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
 </head>
 <body>
 
+<nav class="toc" aria-label="목차">
+  <div class="toc-label">목차</div>
+  <a href="#sec-terms">핵심 용어 (SSP)</a>
+  <a href="#sec-why">다섯 경로가 필요한 이유</a>
+  <a href="#sec-matrix">SSP 매트릭스</a>
+  <a href="#sec-scenarios">SSP 시나리오 개요</a>
+  <a href="#sec-combo">SSP-RCP 조합</a>
+  <a href="#sec-ecv">해양기후 핵심변수</a>
+</nav>
+
+<button class="back-to-top" id="backToTop" aria-label="맨 위로 이동">
+  <span class="btt-circle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </span>
+  <span class="btt-label">맨 위로 이동</span>
+</button>
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol id="i-var-sst" viewBox="0 0 24 24">
     <path d="M13 3.3a1.5 1.5 0 0 0-3 0v8.6a3.5 3.5 0 1 0 3 0V3.3z"/>
@@ -484,7 +551,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   </div>
 </header>
 
-<section class="block">
+<section class="block" id="sec-terms">
   <div class="wrap">
     <div class="block-head">
       <div class="block-eyebrow">핵심 용어</div>
@@ -498,7 +565,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   </div>
 </section>
 
-<section class="block">
+<section class="block" id="sec-why">
   <div class="wrap">
     <div class="block-head">
       <div class="block-eyebrow">다섯 가지 경로가 필요한 이유</div>
@@ -525,7 +592,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   </div>
 </section>
 
-<section class="block matrix-section">
+<section class="block matrix-section" id="sec-matrix">
   <div class="wrap">
     <div class="block-head">
       <div class="block-eyebrow">SSP 매트릭스</div>
@@ -592,7 +659,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   </div>
 </section>
 
-<section class="block">
+<section class="block" id="sec-scenarios">
   <div class="wrap">
     <div class="block-head">
       <div class="block-eyebrow">SSP 시나리오 개요</div>
@@ -660,7 +727,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   </div>
 </section>
 
-<section class="block">
+<section class="block" id="sec-combo">
   <div class="wrap">
     <div class="block-head">
       <div class="block-eyebrow">SSP-RCP 조합</div>
@@ -692,7 +759,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   </div>
 </section>
 
-<section class="block">
+<section class="block" id="sec-ecv">
   <div class="wrap">
     <div class="block-head">
       <div class="block-eyebrow">해양기후 핵심변수</div>
@@ -781,5 +848,35 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   </div>
 </footer>
 
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if (!sections.length) return;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var link = document.querySelector('.toc a[href="#' + entry.target.id + '"]');
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(function(a){ a.classList.remove('active'); });
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+  sections.forEach(function(sec){ observer.observe(sec); });
+})();
+
+(function(){
+  var btn = document.getElementById('backToTop');
+  if (!btn) return;
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 480) btn.classList.add('show');
+    else btn.classList.remove('show');
+  });
+  btn.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
 </body>
 </html>
