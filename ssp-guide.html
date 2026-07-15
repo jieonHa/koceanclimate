@@ -101,7 +101,7 @@ body {
 .eyebrow-dot { width:6px; height:6px; border-radius:50%; background:#0284c7; }
 .hero h1 { font-size: 38px; font-weight: 900; line-height: 1.32; letter-spacing: -.01em; margin-bottom: 16px; color:#0a2540; }
 .hero h1 span { color: #0284c7; }
-.hero p.lead { font-size: 15.5px; color: #3d6580; max-width: 560px; margin-bottom: 28px; }
+.hero p.lead { font-size: 15.5px; color: #3d6580; max-width: 580px; margin-bottom: 28px; }
 
 .formula {
   display: inline-flex; align-items: center; gap: 12px;
@@ -124,7 +124,7 @@ body {
 /* ── 섹션 공통 ── */
 section.block { padding: 56px 0; scroll-margin-top: 20px; }
 .block + .block { border-top: 1px solid #e2e8f0; }
-.block-head { max-width: 650px; margin-bottom: 34px; }
+.block-head { max-width: 700px; margin-bottom: 34px; }
 .block-eyebrow { font-size: 14px; font-weight: 700; color: #0284c7; letter-spacing: .05em; margin-bottom: 8px; text-transform: uppercase; }
 .block-head h2 { font-size: 24px; font-weight: 700; color: #0a2540; margin-bottom: 10px; line-height: 1.4; }
 .block-head p { font-size: 14.5px; color: #556577; }
@@ -174,7 +174,7 @@ section.block { padding: 56px 0; scroll-margin-top: 20px; }
   vertical-align:middle;
 }
 .ecv-domain-tag--ref { color:#b45309; background:#fff7ed; border-color:#fed7aa; }
-.ecv-footnote { max-width:680px; margin-top:26px; font-size:12.5px; color:#94a3b8; line-height:1.65; }
+.ecv-footnote { max-width:1000px; margin-top:26px; font-size:12.5px; color:#94a3b8; line-height:1.65; }
 .ecv-footnote b { color:#64748b; }
 .block-head p a { color:#0284c7; font-weight:600; text-decoration:none; border-bottom:1px solid rgba(2,132,199,.35); white-space:nowrap; }
 .block-head p a:hover { border-bottom-color:#0284c7; }
@@ -318,6 +318,19 @@ section.block { padding: 56px 0; scroll-margin-top: 20px; }
 .combo-force { font-size:11.5px; color:#0284c7; margin-bottom:8px; }
 .combo-desc { font-size:12px; color:#64748b; }
 
+/* ── CMIP7 신규 시나리오 ── */
+.cmip7-grid { display:flex; flex-wrap:wrap; gap:12px; }
+.cmip7-card {
+  flex:1 1 140px; background:#fff; border:1px solid #e2e8f0; border-radius:13px;
+  padding:15px 14px; border-top:4px solid var(--c);
+  display:flex; flex-direction:column; gap:5px;
+}
+.cmip7-card .c7-code { font-family:'Roboto Mono'; font-weight:800; font-size:14px; color:var(--c); }
+.cmip7-card .c7-name { font-size:12.5px; font-weight:700; color:#0a2540; }
+.cmip7-card .c7-desc { font-size:11.5px; color:#64748b; line-height:1.5; }
+.cmip7-highlights { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px; }
+.cmip7-highlights .rcp-note { max-width:none; }
+
 /* ── 활용 노트 ── */
 .usage-box {
   background: linear-gradient(135deg,#0ea5e9,#0369a1);
@@ -336,6 +349,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
 /* ── 반응형 ── */
 @media (max-width: 860px) {
   .def-grid, .ssp-grid, .combo-strip { grid-template-columns: repeat(2,1fr); }
+  .cmip7-highlights { grid-template-columns: 1fr; }
   .hero h1 { font-size: 28px; }
   .hero .wrap { grid-template-columns: 1fr; }
   .hero-globe { order:-1; max-width:150px; margin:0 auto 8px; }
@@ -363,7 +377,8 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   <a href="#sec-matrix">SSP 매트릭스</a>
   <a href="#sec-scenarios">SSP 시나리오 개요</a>
   <a href="#sec-combo">SSP-RCP 조합</a>
-  <a href="#sec-ecv">해양기후 핵심변수</a>
+  <a href="#sec-cmip7">CMIP7 새 시나리오</a>
+
 </nav>
 
 <button class="back-to-top" id="backToTop" aria-label="맨 위로 이동">
@@ -597,7 +612,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
     <div class="block-head">
       <div class="block-eyebrow">SSP 매트릭스</div>
       <h2>완화와 적응, 두 가지 과제의 어려움</h2>
-      <p>다섯 개의 시나리오를 완화와 적응 과제의 난이도를 기준으로 배치한 도식입니다. 세로축은 완화 과제의 어려움을, 가로축은 적응 과제의 어려움을 나타냅니다.</p>
+      <p>다섯 개의 시나리오를 완화와 적응 과제의 난이도를 기준으로 배치한 도식입니다. <br>세로축은 완화 과제의 어려움을, 가로축은 적응 과제의 어려움을 나타냅니다.</p>
     </div>
     <div class="matrix-wrap">
       <div></div>
@@ -732,7 +747,8 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
     <div class="block-head">
       <div class="block-eyebrow">SSP-RCP 조합</div>
       <h2>대표 시나리오 조합</h2>
-      <p>SSP 뒤에 붙는 숫자(RCP)는 2100년 기준 지구 대기에 남아있는 잉여 복사강제력(W/m&sup2;)의 양을 나타내며, 숫자가 클수록 온실가스 배출 및 온난화 수준이 높음을 의미합니다.</p>
+      <p>SSP 뒤에 붙는 숫자(RCP)는 2100년 기준 지구 대기에 남아있는 잉여 복사강제력(W/m&sup2;)의 양을 나타내며, 
+        <br>숫자가 클수록 온실가스 배출 및 온난화 수준이 높음을 의미합니다.</p>
     </div>
     <div class="combo-strip">
       <div class="combo-card">
@@ -759,74 +775,89 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   </div>
 </section>
 
-<section class="block" id="sec-ecv">
+<section class="block" id="sec-cmip7">
   <div class="wrap">
     <div class="block-head">
-      <div class="block-eyebrow">해양기후 핵심변수</div>
-      <h2>필수기후변수(ECV) 중 해양 부문</h2>
-      <p>GCOS(Global Climate Observing System)가 정의한 55개 필수기후변수(Essential Climate Variable) 중, <b style="color:#0a2540;">해양(Ocean)</b> 도메인에 해당하는 물리·생지화학·생물·생태계 19개 변수입니다. <br>아울러 해상의 <b style="color:#0a2540;">대기(Atmosphere)</b>변수 4종(해상기온·해면기압·해상강수량·해상풍)도 중요한 해양기후 변수입니다.</p>  
-      <p><br><a href="https://gcos.wmo.int/site/global-climate-observing-system-gcos/essential-climate-variables" target="_blank" rel="noopener">GCOS 필수기후변수 전체 목록 보기 ↗</a></p>
+      <div class="block-eyebrow">CMIP7 · 차세대 시나리오</div>
+      <h2>SSP-RCP를 넘어서는 CMIP7의 새 배출 시나리오</h2>
+      <p>2026년 4월 발표된 ScenarioMIP-CMIP7 논문(Van Vuuren et al., 2026)은 CMIP7의 기후 연구를 이끌 <BR>7개의 새로운 전지구 배출 시나리오를 제시했습니다. 
+        <br>이 시나리오들은 여전히 SSP 서사를 바탕으로 산출되지만, 특정 SSP 하나에 종속되지 않고 여러 사회경제 가정과<br> 두루 호환되도록 설계되어 &lsquo;SSP5-8.5&rsquo; 같은 기존 이름 대신 배출 특성을 그대로 드러내는 이름을 사용합니다.</p>
     </div>
 
-    <div class="ecv-group">
-      <div class="ecv-group-title">해양 물리 변수<span class="ecv-domain-tag">Ocean · Physical</span></div>
-      <div class="carousel-wrap">
-        <div class="carousel-nav prev" onclick="this.nextElementSibling.scrollBy({left:-150,behavior:'smooth'})">&#8249;</div>
-        <div class="carousel-track">
-          <div class="def-card"><div class="def-icon di-heatflux"><svg><use href="#i-var-heatflux"/></svg></div><h3>표층 열플럭스</h3></div>
-          <div class="def-card"><div class="def-icon di-seaice"><svg><use href="#i-var-seaice"/></svg></div><h3>해빙</h3></div>
-          <div class="def-card"><div class="def-icon di-level"><svg><use href="#i-var-level"/></svg></div><h3>해수면</h3></div>
-          <div class="def-card"><div class="def-icon di-seastate"><svg><use href="#i-var-seastate"/></svg></div><h3>파랑</h3></div>
-          <div class="def-card"><div class="def-icon di-currents"><svg><use href="#i-var-currents"/></svg></div><h3>표층 해류</h3></div>
-          <div class="def-card"><div class="def-icon di-salinity"><svg><use href="#i-var-salinity"/></svg></div><h3>표층 염분</h3></div>
-          <div class="def-card"><div class="def-icon di-stress"><svg><use href="#i-var-stress"/></svg></div><h3>표층 응력</h3></div>
-          <div class="def-card"><div class="def-icon di-sst"><svg><use href="#i-var-sst"/></svg></div><h3>표층 수온</h3></div>
-          <div class="def-card"><div class="def-icon di-subcurrents"><svg><use href="#i-var-subcurrents"/></svg></div><h3>심층 해류</h3></div>
-          <div class="def-card"><div class="def-icon di-subsalinity"><svg><use href="#i-var-subsalinity"/></svg></div><h3>심층 염분</h3></div>
-          <div class="def-card"><div class="def-icon di-subtemp"><svg><use href="#i-var-subtemp"/></svg></div><h3>심층 수온</h3></div>
-        </div>
-        <div class="carousel-nav next" onclick="this.previousElementSibling.scrollBy({left:150,behavior:'smooth'})">&#8250;</div>
+    <div class="cmip7-grid">
+      <div class="cmip7-card" style="--c:#16a34a;">
+        <div class="c7-code">VL</div>
+        <div class="c7-name">Very Low</div>
+        <div class="c7-desc">가능한 가장 낮은 수준으로 배출을 감축해 금세기 말 1.5&deg;C 근접 수준으로 온난화를 억제하는 경로</div>
+      </div>
+      <div class="cmip7-card" style="--c:#0d9488;">
+        <div class="c7-code">LN</div>
+        <div class="c7-name">Low-to-Negative</div>
+        <div class="c7-desc">VL보다 배출 감소가 다소 느려 1.5&deg;C를 넘어섰다가, 이후 순배출을 마이너스로 전환해 온도를 다시 낮추는 경로</div>
+      </div>
+      <div class="cmip7-card" style="--c:#65a30d;">
+        <div class="c7-code">L</div>
+        <div class="c7-name">Low</div>
+        <div class="c7-desc">2&deg;C 아래 억제 가능성이 높고, 금세기 말 이전에는 1.5&deg;C로 복귀하지 못하는 수준의 배출 경로</div>
+      </div>
+      <div class="cmip7-card" style="--c:#0284c7;">
+        <div class="c7-code">ML</div>
+        <div class="c7-name">Medium-to-Low</div>
+        <div class="c7-desc">배출이 점진적으로 감소해 금세기 말 무렵 순배출 0(넷제로)에 도달하는 경로</div>
+      </div>
+      <div class="cmip7-card" style="--c:#f59e0b;">
+        <div class="c7-code">M</div>
+        <div class="c7-name">Medium</div>
+        <div class="c7-desc">2025년 기준 시행 중인 정책 수준에서 배출이 고정되어 중간 수준의 온난화로 이어지는 경로</div>
+      </div>
+      <div class="cmip7-card" style="--c:#ea580c;">
+        <div class="c7-code">HL</div>
+        <div class="c7-name">High-to-Low</div>
+        <div class="c7-desc">초반에는 High 경로처럼 배출이 증가하지만, 세기 후반 급격히 감축해 2100년 넷제로에 도달하는 경로</div>
+      </div>
+      <div class="cmip7-card" style="--c:#dc2626;">
+        <div class="c7-code">H</div>
+        <div class="c7-name">High</div>
+        <div class="c7-desc">현재의 기후정책이 후퇴한다는 가정 아래 배출이 가능한 최대 수준까지 늘어나는 경로</div>
       </div>
     </div>
 
-    <div class="ecv-group">
-      <div class="ecv-group-title">해양 생지화학 변수<span class="ecv-domain-tag">Ocean · Biogeochemical</span></div>
-      <div class="ecv-static">
-        <div class="def-card"><div class="def-icon di-carbon"><svg><use href="#i-var-carbon"/></svg></div><h3>무기탄소</h3></div>
-        <div class="def-card"><div class="def-icon di-n2o"><svg><use href="#i-var-n2o"/></svg></div><h3>아산화질소</h3></div>
-        <div class="def-card"><div class="def-icon di-nutrients"><svg><use href="#i-var-nutrients"/></svg></div><h3>영양염</h3></div>
-        <div class="def-card"><div class="def-icon di-colour"><svg><use href="#i-var-colour"/></svg></div><h3>해색</h3></div>
-        <div class="def-card"><div class="def-icon di-oxygen"><svg><use href="#i-var-oxygen"/></svg></div><h3>용존산소</h3></div>
-        <div class="def-card"><div class="def-icon di-tracers"><svg><use href="#i-var-tracers"/></svg></div><h3>트레이서</h3></div>
+    <div class="cmip7-highlights">
+      <div class="rcp-note" style="border-left-color:#dc2626;">
+        <span class="rcp-note-tag" style="color:#dc2626;">고배출 시나리오도 낮아졌지만, 4&deg;C 가능성은 여전</span>
+        <p>CMIP7의 최고 배출 시나리오(H)는 최근 실제 배출 추세와 재생에너지 비용 하락을 반영해 CMIP6의 <span class="mono">SSP5-8.5</span>나 CMIP5의 <span class="mono">RCP8.5</span>보다 배출량이 낮게 설정되었습니다. 다만 이 경로에서도 2100년 기준 산업화 이전 대비 약 3.5&deg;C의 온난화가 전망되며, 기후 민감도나 탄소순환 되먹임에 따라 4&deg;C를 넘어설 가능성도 여전히 배제할 수 없습니다.</p>
+      </div>
+      <div class="rcp-note" style="border-left-color:#0284c7;">
+        <span class="rcp-note-tag" style="color:#0284c7;">1.5&deg;C 아래 머무는 경로는 더 이상 없음</span>
+        <p>최근 몇 년간 배출량이 계속 증가하면서, 21세기 내내 1.5&deg;C 아래에 머무는 시나리오는 더 이상 설계할 수 없게 되었습니다. 가장 낮은 시나리오(VL)조차 1.5&deg;C를 0.2~0.3&deg;C가량 일시적으로 초과(overshoot)한 뒤, 대규모 이산화탄소 제거 기술을 통해 금세기 말까지 다시 1.5&deg;C로 되돌아오는 경로로 설계되었습니다.</p>
       </div>
     </div>
 
-    <div class="ecv-group">
-      <div class="ecv-dual">
-        <div class="ecv-dual-col">
-          <div class="ecv-group-title">해양 생물·생태계 변수<span class="ecv-domain-tag">Ocean · Biological/Ecosystems</span></div>
-          <div class="ecv-static ecv-row">
-            <div class="def-card"><div class="def-icon di-habitat"><svg><use href="#i-var-habitat"/></svg></div><h3>해양서식지</h3></div>
-            <div class="def-card"><div class="def-icon di-plankton"><svg><use href="#i-var-plankton"/></svg></div><h3>플랑크톤</h3></div>
-          </div>
-        </div>
-        <div class="ecv-divider"></div>
-        <div class="ecv-dual-col">
-          <div class="ecv-group-title">해상 대기 변수<span class="ecv-domain-tag ecv-domain-tag--ref">Atmosphere · Surface </span></div>
-          <div class="ecv-static ecv-row">
-            <div class="def-card"><div class="def-icon di-air"><svg><use href="#i-var-air"/></svg></div><h3>해상기온</h3></div>
-            <div class="def-card"><div class="def-icon di-pres"><svg><use href="#i-var-pres"/></svg></div><h3>해면기압</h3></div>
-            <div class="def-card"><div class="def-icon di-rain"><svg><use href="#i-var-rain"/></svg></div><h3>해상강수량</h3></div>
-            <div class="def-card"><div class="def-icon di-wind"><svg><use href="#i-var-wind"/></svg></div><h3>해상풍</h3></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <p class="ecv-footnote"><br>
+      ※ CMIP7 시나리오는 농도가 아닌 CO&sup2; 배출량 경로를 직접 입력값으로 사용해 탄소순환 불확실성을 더 잘 반영하도록 설계되었으며, 
+      <br>탄소 제거를 통한 온난화 되돌림 효과를 살펴볼 수 있는 오버슈트 시나리오도 포함합니다. 자세한 내용은 <a href="https://wcrp-cmip.org/explainer-scenarios-for-cmip7/" target="_blank" rel="noopener">WCRP CMIP7 공식 설명자료</a>에서 확인할 수 있습니다.</p>
 
   </div>
-
 </section>
+
+
+<!--
+<section class="block" id="sec-related">
+  <div class="wrap">
+    <div class="block-head">
+      <div class="block-eyebrow">관련 자료</div>
+      <h2>해양기후 핵심변수(ECV) 살펴보기</h2>
+      <p>WMO GCOS가 정의한 필수기후변수 중 해양 부문 19개 변수와, 해양기후와 밀접한 대기 표층 변수 4종을 아이콘으로 정리한 별도 페이지에서 확인할 수 있습니다.</p>
+    </div>
+    <a class="usage-box" href="ecv-guide.html" style="text-decoration:none; cursor:pointer;">
+      <div class="u-ic">ECV</div>
+      <div>
+        <h3>필수기후변수(ECV) 중 해양 부문 보기 →</h3>
+        <p>물리 11종 · 생지화학 6종 · 생물·생태계 2종 · 대기 표층(참고) 4종</p>
+      </div>
+    </a>
+  </div>
+</section>-->
   
 <!--
 <section class="block">
