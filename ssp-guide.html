@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SSP(공유사회경제경로) 안내 | 한반도 주변 상세 해양기후 정보 서비스</title>
+<title>SSP(공통사회경제경로) 안내 | 한반도 주변 상세 해양기후 정보 서비스</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -76,7 +76,7 @@ body {
 /* ── 섹션 공통 ── */
 section.block { padding: 56px 0; }
 .block + .block { border-top: 1px solid #e2e8f0; }
-.block-head { max-width: 640px; margin-bottom: 34px; }
+.block-head { max-width: 650px; margin-bottom: 34px; }
 .block-eyebrow { font-size: 14px; font-weight: 700; color: #0284c7; letter-spacing: .05em; margin-bottom: 8px; text-transform: uppercase; }
 .block-head h2 { font-size: 24px; font-weight: 700; color: #0a2540; margin-bottom: 10px; line-height: 1.4; }
 .block-head p { font-size: 14.5px; color: #556577; }
@@ -89,11 +89,6 @@ section.block { padding: 56px 0; }
 .def-card p { font-size: 13.5px; color: #64748b; }
 .def-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
 .def-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.def-grid-icons { gap: 12.6px; grid-template-columns: repeat(8,1fr); }
-.def-grid-icons .def-card { padding: 17.6px 22px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.def-grid-icons .def-icon { width: 46px; height: 46px; margin: 0 auto 11px; }
-.def-grid-icons .def-icon svg { width: 25px; height: 25px; }
-.def-grid-icons .def-card h3 { margin-bottom: 0; }
 .di-sst   { background:#dbeafe; color:#0284c7; }
 .di-level { background:#cffafe; color:#0891b2; }
 .di-air   { background:#fef3c7; color:#d97706; }
@@ -102,6 +97,100 @@ section.block { padding: 56px 0; }
 .di-wind  { background:#ccfbf1; color:#0d9488; }
 .di-ext   { background:#e2e8f0; color:#475569; }
 .di-thick { background:#dbeafe; color:#1e3a5f; }
+.di-heatflux    { background:#ffedd5; color:#ea580c; }
+.di-seaice      { background:#e0f2fe; color:#0369a1; }
+.di-seastate    { background:#e0e7ff; color:#4f46e5; }
+.di-currents    { background:#cffafe; color:#0891b2; }
+.di-salinity    { background:#dbeafe; color:#2563eb; }
+.di-stress      { background:#e2e8f0; color:#475569; }
+.di-subcurrents { background:#ccfbf1; color:#0f766e; }
+.di-subsalinity { background:#dbeafe; color:#1e3a8a; }
+.di-subtemp     { background:#ede9fe; color:#7c3aed; }
+.di-carbon      { background:#f1f5f9; color:#64748b; }
+.di-n2o         { background:#fae8ff; color:#a21caf; }
+.di-nutrients   { background:#dcfce7; color:#16a34a; }
+.di-colour      { background:#ffe4e6; color:#e11d48; }
+.di-oxygen      { background:#e0f2fe; color:#0284c7; }
+.di-tracers     { background:#fef3c7; color:#d97706; }
+.di-habitat     { background:#d1fae5; color:#059669; }
+.di-plankton    { background:#fce7f3; color:#db2777; }
+
+/* ── 핵심변수 캐러셀 ── */
+.ecv-group { margin-bottom: 30px; }
+.ecv-group:last-child { margin-bottom: 0; }
+.ecv-group-title { font-size:14px; font-weight:700; color:#0284c7; letter-spacing:.03em; margin-bottom:12px; text-align:center; }
+.ecv-domain-tag {
+  display:inline-block; margin-left:8px; font-family:'Roboto Mono',monospace;
+  font-size:10px; font-weight:600; letter-spacing:.01em; color:#0c4596;
+  background:#eaf5ff; border:1px solid #4797ff; border-radius:5px; padding:2px 7px;
+  vertical-align:middle;
+}
+.ecv-domain-tag--ref { color:#b45309; background:#fff7ed; border-color:#fed7aa; }
+.ecv-footnote { max-width:680px; margin-top:26px; font-size:12.5px; color:#94a3b8; line-height:1.65; }
+.ecv-footnote b { color:#64748b; }
+.block-head p a { color:#0284c7; font-weight:600; text-decoration:none; border-bottom:1px solid rgba(2,132,199,.35); white-space:nowrap; }
+.block-head p a:hover { border-bottom-color:#0284c7; }
+.carousel-wrap { position:relative; }
+.carousel-track {
+  display:flex; gap:12.6px; overflow-x:auto; scroll-snap-type:x proximity;
+  padding:2px 2px 10px; scrollbar-width:none;
+}
+.carousel-track::-webkit-scrollbar { display:none; }
+.carousel-track .def-card {
+  flex: 0 0 auto; width:128px; scroll-snap-align:start;
+  padding: 17.6px 14px; display:flex; flex-direction:column; align-items:center; text-align:center;
+}
+.carousel-track .def-icon { width:46px; height:46px; margin:0 auto 11px; }
+.carousel-track .def-icon svg { width:25px; height:25px; }
+.carousel-track .def-card h3 { margin-bottom:0; font-size:13px; }
+.carousel-nav {
+  position:absolute; top:38%; transform:translateY(-50%);
+  width:32px; height:32px; border-radius:50%; border:1px solid #e2e8f0;
+  background:#fff; color:#0284c7; display:flex; align-items:center; justify-content:center;
+  cursor:pointer; box-shadow:0 6px 16px rgba(2,80,120,.12); font-size:15px;
+  z-index:2; user-select:none;
+}
+.carousel-nav:hover { background:#f0f9ff; }
+.carousel-nav.prev { left:-14px; }
+.carousel-nav.next { right:-14px; }
+@media (max-width:640px){ .carousel-nav{ display:none; } }
+
+/* ── 핵심변수 중앙정렬(캐러셀 미적용) ── */
+.ecv-static {
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:12.6px; padding:2px 2px 10px;
+}
+.ecv-static .ecv-group-title { text-align:center; }
+.ecv-static .def-card {
+  flex:0 0 auto; width:128px; scroll-snap-align:unset;
+  padding:17.6px 14px; display:flex; flex-direction:column; align-items:center; text-align:center;
+}
+.ecv-static .def-icon { width:46px; height:46px; margin:0 auto 11px; }
+.ecv-static .def-icon svg { width:25px; height:25px; }
+.ecv-static .def-card h3 { margin-bottom:0; font-size:13px; }
+.ecv-static.ecv-row { flex-wrap:nowrap; }
+
+/* ── 생물·생태계 / 대기 변수 두 그룹을 한 행에 배치 + 그룹 간 구분선 ── */
+.ecv-dual { display:flex; align-items:stretch; justify-content:center; gap:32px; }
+.ecv-dual-col { display:flex; flex-direction:column; align-items:center; }
+.ecv-dual-col .ecv-group-title { text-align:center; }
+.ecv-divider { width:1px; align-self:stretch; background:#dbe4ec; flex:0 0 auto; }
+@media (max-width:900px){
+  .ecv-dual { flex-direction:column; align-items:center; gap:26px; }
+  .ecv-divider { display:none; }
+}
+@media (max-width:640px){
+  .ecv-static.ecv-row { flex-wrap:wrap; }
+}
+
+/* ── RCP 보조 설명(서브 항목) ── */
+.rcp-note {
+  border-left: 3px solid #cbd5e1; background:#f8fafc;
+  border-radius: 0 10px 10px 0; padding: 12px 18px; max-width: 640px;
+}
+.rcp-note-tag { display:inline-block; font-size:11px; font-weight:700; color:#64748b; letter-spacing:.04em; margin-bottom:5px; text-transform:uppercase; }
+.rcp-note p { font-size:12.8px; color:#64748b; line-height:1.6; }
+.rcp-note .mono { color:#475569; font-weight:600; }
 
 /* ── 매트릭스(시그니처) ── */
 .matrix-section { background: linear-gradient(155deg,#f0f9ff 0%, #e0f2fe 100%); color:#334155; }
@@ -199,14 +288,12 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
 /* ── 반응형 ── */
 @media (max-width: 860px) {
   .def-grid, .ssp-grid, .combo-strip { grid-template-columns: repeat(2,1fr); }
-  .def-grid-icons { grid-template-columns: repeat(4,1fr); }
   .hero h1 { font-size: 28px; }
   .hero .wrap { grid-template-columns: 1fr; }
   .hero-globe { order:-1; max-width:150px; margin:0 auto 8px; }
 }
 @media (max-width: 560px) {
   .def-grid, .ssp-grid, .combo-strip { grid-template-columns: 1fr; }
-  .def-grid-icons { grid-template-columns: repeat(2,1fr); }
   .matrix-wrap { grid-template-columns: 1fr; }
   .axis-y { margin-bottom:6px; }
   .axis-y .rot { transform:none; white-space:normal; }
@@ -267,20 +354,113 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
     <rect x="4" y="10" width="16" height="4" rx="1"/>
     <rect x="4" y="16" width="16" height="4" rx="1"/>
   </symbol>
+  <symbol id="i-var-heatflux" viewBox="0 0 24 24">
+    <path d="M12 3v9"/>
+    <path d="M8.5 8.5 12 12l3.5-3.5"/>
+    <path d="M3.5 18c1.2-1.3 2.5-1.3 3.7 0s2.5 1.3 3.7 0 2.5-1.3 3.7 0 2.5 1.3 3.7 0"/>
+  </symbol>
+  <symbol id="i-var-seaice" viewBox="0 0 24 24">
+    <path d="M12 2v20M4 6l16 12M20 6 4 18"/>
+  </symbol>
+  <symbol id="i-var-seastate" viewBox="0 0 24 24">
+    <path d="M2 8c1.4-2.4 2.8-2.4 4.2 0s2.8 2.4 4.2 0 2.8-2.4 4.2 0 2.8 2.4 4.2 0"/>
+    <path d="M3 14.5c1.2-1.3 2.5-1.3 3.7 0s2.5 1.3 3.7 0 2.5-1.3 3.7 0 2.5 1.3 3.7 0"/>
+    <path d="M3.5 20c1.2-1.2 2.4-1.2 3.6 0s2.4 1.2 3.6 0 2.4-1.2 3.6 0 2.4 1.2 3.6 0"/>
+  </symbol>
+  <symbol id="i-var-currents" viewBox="0 0 24 24">
+    <path d="M4 12a8 8 0 1 1 3 6.2"/>
+    <path d="M4 12 2.3 9M4 12l3-1.3"/>
+  </symbol>
+  <symbol id="i-var-salinity" viewBox="0 0 24 24">
+    <path d="M12 2.5S5 11 5 15.5a7 7 0 0 0 14 0C19 11 12 2.5 12 2.5z"/>
+    <circle cx="12" cy="16" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="9.5" cy="17.5" r="1.1" fill="currentColor" stroke="none"/>
+    <circle cx="14.5" cy="17.5" r="1.1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-var-stress" viewBox="0 0 24 24">
+    <path d="M4 6h11a2.2 2.2 0 1 0-2.2-2.2"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+    <path d="M17 18V9M14 12l3-3 3 3"/>
+  </symbol>
+  <symbol id="i-var-subcurrents" viewBox="0 0 24 24">
+    <path d="M3 6h14a2.3 2.3 0 1 1-2.3 2.3"/>
+    <path d="M3 12h10"/>
+    <path d="M3 18h14a2.3 2.3 0 1 0-2.3-2.3"/>
+  </symbol>
+  <symbol id="i-var-subsalinity" viewBox="0 0 24 24">
+    <path d="M12 2.5S5 11 5 15.5a7 7 0 0 0 14 0C19 11 12 2.5 12 2.5z" opacity=".45"/>
+    <line x1="9" y1="14" x2="15" y2="18"/>
+    <line x1="15" y1="14" x2="9" y2="18"/>
+  </symbol>
+  <symbol id="i-var-subtemp" viewBox="0 0 24 24">
+    <path d="M13 3.3a1.5 1.5 0 0 0-3 0v8.6a3.5 3.5 0 1 0 3 0V3.3z" opacity=".45"/>
+    <path d="M3 15h6M3 18.5h6"/>
+  </symbol>
+  <symbol id="i-var-carbon" viewBox="0 0 24 24">
+    <circle cx="7" cy="12" r="3.4"/>
+    <circle cx="17" cy="12" r="3.4"/>
+    <line x1="10.4" y1="12" x2="13.6" y2="12"/>
+  </symbol>
+  <symbol id="i-var-n2o" viewBox="0 0 24 24">
+    <circle cx="6" cy="8" r="2.6"/>
+    <circle cx="14" cy="14" r="2.6"/>
+    <circle cx="19" cy="7" r="2.2"/>
+    <line x1="8.2" y1="9.6" x2="12" y2="12.5"/>
+    <line x1="16" y1="12.5" x2="17.6" y2="9.2"/>
+  </symbol>
+  <symbol id="i-var-nutrients" viewBox="0 0 24 24">
+    <circle cx="12" cy="5.5" r="1.8"/>
+    <circle cx="5.5" cy="16" r="1.8"/>
+    <circle cx="18.5" cy="16" r="1.8"/>
+    <line x1="12" y1="7.3" x2="6.6" y2="14.4"/>
+    <line x1="12" y1="7.3" x2="17.4" y2="14.4"/>
+    <line x1="7.3" y1="16" x2="16.7" y2="16"/>
+  </symbol>
+  <symbol id="i-var-colour" viewBox="0 0 24 24">
+    <path d="M12 3a8.5 8.5 0 1 0 0 17c1 0 1.8-.7 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.7 1.8-1.7H16a4.5 4.5 0 0 0 4.5-4.5C20.5 5.6 16.7 3 12 3z"/>
+    <circle cx="7.5" cy="10" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="11" cy="7.5" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="8" cy="14.5" r="1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-var-oxygen" viewBox="0 0 24 24">
+    <circle cx="9" cy="12" r="4"/>
+    <circle cx="16" cy="12" r="3"/>
+  </symbol>
+  <symbol id="i-var-tracers" viewBox="0 0 24 24">
+    <path d="M3 18c3-1 3-4 6-5s3-4 6-5 3 3.5 6 2.5" stroke-dasharray="1 3.4"/>
+    <circle cx="19.5" cy="10" r="1.3" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="i-var-habitat" viewBox="0 0 24 24">
+    <path d="M4 20c2-6 2-11 0-16"/>
+    <path d="M9 20c2-5 2-10 0-15"/>
+    <path d="M14 20c2-4 2-9 0-13"/>
+    <path d="M19 20c1.6-3 1.6-6.5 0-9.5"/>
+  </symbol>
+  <symbol id="i-var-plankton" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="3.2"/>
+    <line x1="12" y1="3.5" x2="12" y2="7.2"/>
+    <line x1="12" y1="16.8" x2="12" y2="20.5"/>
+    <line x1="3.5" y1="12" x2="7.2" y2="12"/>
+    <line x1="16.8" y1="12" x2="20.5" y2="12"/>
+    <line x1="6.3" y1="6.3" x2="8.8" y2="8.8"/>
+    <line x1="15.2" y1="15.2" x2="17.7" y2="17.7"/>
+    <line x1="6.3" y1="17.7" x2="8.8" y2="15.2"/>
+    <line x1="15.2" y1="8.8" x2="17.7" y2="6.3"/>
+  </symbol>
 </svg>
 
-<div class="ribbon"><div class="wrap"><span>용어 안내 · 기후변화 시나리오</span><span><b>SSP</b> · 공유사회경제경로</span></div></div>
+<div class="ribbon"><div class="wrap"><span>용어 안내 · 기후변화 시나리오</span><span><b>SSP</b> · 공통사회경제경로</span></div></div>
 
 <header class="hero">
   <div class="wrap">
     <div class="hero-copy">
       <div class="eyebrow"><span class="eyebrow-dot"></span>IPCC AR6 · CMIP6 공식 기후변화 시나리오 체계</div>
       <h1>미래는 하나로 정의되지 않습니다.<br>SSP, <span>다섯 가지 사회경제 경로</span></h1>
-      <p class="lead">SSP(공유사회경제경로)는 인구, 경제, 기술, 국제협력의 전개 방향에 따라 구성한 다섯 가지 사회경제 시나리오입니다. 여기에 온실가스 배출 수준을 결합하면 &lsquo;SSP2-4.5&rsquo;와 같은 기후변화 시나리오가 산출됩니다.</p>
+      <p class="lead">SSP(공통사회경제경로)는 인구, 경제, 기술, 국제협력의 전개 방향에 따라 구성한 다섯 가지 사회경제 시나리오입니다. 여기에 배출 수준을 나타내는 RCP(대표농도경로)를 결합하면 &lsquo;SSP2-4.5&rsquo;와 같은 기후변화 시나리오가 산출됩니다.</p>
       <div class="formula">
         <span class="f-item f-soc">사회경제 시나리오 (SSP1~5)<span class="f-cap">인구·경제·기술·정책의 전개 방향</span></span>
         <span class="f-plus">+</span>
-        <span class="f-item f-rad">온실가스 배출 수준<span class="f-cap">2100년 기준 배출 경로</span></span>
+        <span class="f-item f-rad" style="font-size:12px; opacity:.85;">온실가스 배출 경로(RCP)<span class="f-cap">대표농도경로 · 배출 수준</span></span>
         <span class="f-eq">=</span>
         <span class="f-item f-out">기후변화 시나리오<span class="f-cap">예: SSP2-4.5, SSP5-8.5</span></span>
       </div>
@@ -307,6 +487,20 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
 <section class="block">
   <div class="wrap">
     <div class="block-head">
+      <div class="block-eyebrow">핵심 용어</div>
+      <h2>SSP(공유사회경제경로)란</h2>
+      <p>인구, 경제, 기술, 국제협력 등 미래 사회가 어떤 방향으로 전개될지를 나타내는 다섯 가지 사회경제 시나리오(SSP1~5)입니다. 사회의 성격이 온실가스 배출과 기후 적응 여건을 좌우합니다.</p>
+    </div>
+    <div class="rcp-note">
+      <span class="rcp-note-tag">참고 · RCP</span>
+      <p>SSP 뒤에 붙는 숫자(예: <span class="mono">2.6</span>, <span class="mono">4.5</span>, <span class="mono">8.5</span>)는 RCP(Representative Concentration Pathway, 대표농도경로) 값입니다. 온실가스 농도 증가에 따라 2100년까지 예상되는 복사강제력(W/m&sup2;) 수준을 나타내며, 숫자가 클수록 배출량과 온난화 수준이 높다는 의미입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
       <div class="block-eyebrow">다섯 가지 경로가 필요한 이유</div>
       <h2>미래 사회의 전개 방향을 하나로 단정할 수 없기 때문입니다</h2>
       <p>기후변화 시나리오란 인간 활동이 대기에 미치는 복사량과 미래 사회경제변화에 따라 나타날 수 있는 미래의 변화를 의미합니다. 사회의 전개 방향을 정확히 예측할 수 없으므로, 여러 가능성을 시나리오로 구성하고 각 경우에 따른 기후변화를 산출합니다.</p>
@@ -315,7 +509,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
       <div class="def-card">
         <div class="def-num">01</div>
         <h3>서사 구성</h3>
-        <p>인구 증감, 국제 협력 수준 등 사회의 전개 방향을 정성적 서사로 기술합니다.</p>
+        <p>인구 증감, 국제 협력 수준 등 사회의 전개 방향을 정성적 서사(SSP)로 기술합니다.</p>
       </div>
       <div class="def-card">
         <div class="def-num">02</div>
@@ -325,7 +519,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
       <div class="def-card">
         <div class="def-num">03</div>
         <h3>기후모델 적용</h3>
-        <p>정량화된 지표로 온실가스 배출 경로를 산출하고, 이를 기후모델에 입력해 미래 기후를 전망합니다.</p>
+        <p>정량화된 배출 경로를 RCP 수준으로 환산하고, 이를 기후모델에 입력해 미래 기후를 전망합니다.</p>
       </div>
     </div>
   </div>
@@ -471,7 +665,7 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
     <div class="block-head">
       <div class="block-eyebrow">SSP-RCP 조합</div>
       <h2>대표 시나리오 조합</h2>
-      <p>SSP 뒤에 붙는 숫자는 2100년 기준 예상 복사강제력(W/m&sup2;) 수준을 나타내며, 숫자가 클수록 온실가스 배출 및 온난화 수준이 높음을 의미합니다.</p>
+      <p>SSP 뒤에 붙는 숫자(RCP)는 2100년 기준 지구 대기에 남아있는 잉여 복사강제력(W/m&sup2;)의 양을 나타내며, 숫자가 클수록 온실가스 배출 및 온난화 수준이 높음을 의미합니다.</p>
     </div>
     <div class="combo-strip">
       <div class="combo-card">
@@ -502,20 +696,69 @@ footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:
   <div class="wrap">
     <div class="block-head">
       <div class="block-eyebrow">해양기후 핵심변수</div>
-      <h2>SSP 시나리오 기반 해양기후 핵심변수</h2>
-      <p>SSP 시나리오를 기후모델에 적용하면 다음과 같은 해양기후 핵심변수의 미래 변화를 산출할 수 있습니다.</p>
+      <h2>필수기후변수(ECV) 중 해양 부문</h2>
+      <p>GCOS(Global Climate Observing System)가 정의한 55개 필수기후변수(Essential Climate Variable) 중, <b style="color:#0a2540;">해양(Ocean)</b> 도메인에 해당하는 물리·생지화학·생물·생태계 19개 변수입니다. <br>아울러 해상의 <b style="color:#0a2540;">대기(Atmosphere)</b>변수 4종(해상기온·해면기압·해상강수량·해상풍)도 중요한 해양기후 변수입니다.</p>  
+      <p><br><a href="https://gcos.wmo.int/site/global-climate-observing-system-gcos/essential-climate-variables" target="_blank" rel="noopener">GCOS 필수기후변수 전체 목록 보기 ↗</a></p>
     </div>
-    <div class="def-grid def-grid-icons">
-      <div class="def-card"><div class="def-icon di-sst"><svg><use href="#i-var-sst"/></svg></div><h3>해면수온</h3></div>
-      <div class="def-card"><div class="def-icon di-level"><svg><use href="#i-var-level"/></svg></div><h3>해수면</h3></div>
-      <div class="def-card"><div class="def-icon di-air"><svg><use href="#i-var-air"/></svg></div><h3>해상기온</h3></div>
-      <div class="def-card"><div class="def-icon di-pres"><svg><use href="#i-var-pres"/></svg></div><h3>해면기압</h3></div>
-      <div class="def-card"><div class="def-icon di-rain"><svg><use href="#i-var-rain"/></svg></div><h3>해상강수량</h3></div>
-      <div class="def-card"><div class="def-icon di-wind"><svg><use href="#i-var-wind"/></svg></div><h3>해상풍</h3></div>
-      <div class="def-card"><div class="def-icon di-ext"><svg><use href="#i-var-ext"/></svg></div><h3>해빙면적</h3></div>
-      <div class="def-card"><div class="def-icon di-thick"><svg><use href="#i-var-thick"/></svg></div><h3>해빙두께</h3></div>
+
+    <div class="ecv-group">
+      <div class="ecv-group-title">해양 물리 변수<span class="ecv-domain-tag">Ocean · Physical</span></div>
+      <div class="carousel-wrap">
+        <div class="carousel-nav prev" onclick="this.nextElementSibling.scrollBy({left:-150,behavior:'smooth'})">&#8249;</div>
+        <div class="carousel-track">
+          <div class="def-card"><div class="def-icon di-heatflux"><svg><use href="#i-var-heatflux"/></svg></div><h3>표층 열플럭스</h3></div>
+          <div class="def-card"><div class="def-icon di-seaice"><svg><use href="#i-var-seaice"/></svg></div><h3>해빙</h3></div>
+          <div class="def-card"><div class="def-icon di-level"><svg><use href="#i-var-level"/></svg></div><h3>해수면</h3></div>
+          <div class="def-card"><div class="def-icon di-seastate"><svg><use href="#i-var-seastate"/></svg></div><h3>파랑</h3></div>
+          <div class="def-card"><div class="def-icon di-currents"><svg><use href="#i-var-currents"/></svg></div><h3>표층 해류</h3></div>
+          <div class="def-card"><div class="def-icon di-salinity"><svg><use href="#i-var-salinity"/></svg></div><h3>표층 염분</h3></div>
+          <div class="def-card"><div class="def-icon di-stress"><svg><use href="#i-var-stress"/></svg></div><h3>표층 응력</h3></div>
+          <div class="def-card"><div class="def-icon di-sst"><svg><use href="#i-var-sst"/></svg></div><h3>표층 수온</h3></div>
+          <div class="def-card"><div class="def-icon di-subcurrents"><svg><use href="#i-var-subcurrents"/></svg></div><h3>심층 해류</h3></div>
+          <div class="def-card"><div class="def-icon di-subsalinity"><svg><use href="#i-var-subsalinity"/></svg></div><h3>심층 염분</h3></div>
+          <div class="def-card"><div class="def-icon di-subtemp"><svg><use href="#i-var-subtemp"/></svg></div><h3>심층 수온</h3></div>
+        </div>
+        <div class="carousel-nav next" onclick="this.previousElementSibling.scrollBy({left:150,behavior:'smooth'})">&#8250;</div>
+      </div>
     </div>
+
+    <div class="ecv-group">
+      <div class="ecv-group-title">해양 생지화학 변수<span class="ecv-domain-tag">Ocean · Biogeochemical</span></div>
+      <div class="ecv-static">
+        <div class="def-card"><div class="def-icon di-carbon"><svg><use href="#i-var-carbon"/></svg></div><h3>무기탄소</h3></div>
+        <div class="def-card"><div class="def-icon di-n2o"><svg><use href="#i-var-n2o"/></svg></div><h3>아산화질소</h3></div>
+        <div class="def-card"><div class="def-icon di-nutrients"><svg><use href="#i-var-nutrients"/></svg></div><h3>영양염</h3></div>
+        <div class="def-card"><div class="def-icon di-colour"><svg><use href="#i-var-colour"/></svg></div><h3>해색</h3></div>
+        <div class="def-card"><div class="def-icon di-oxygen"><svg><use href="#i-var-oxygen"/></svg></div><h3>용존산소</h3></div>
+        <div class="def-card"><div class="def-icon di-tracers"><svg><use href="#i-var-tracers"/></svg></div><h3>트레이서</h3></div>
+      </div>
+    </div>
+
+    <div class="ecv-group">
+      <div class="ecv-dual">
+        <div class="ecv-dual-col">
+          <div class="ecv-group-title">해양 생물·생태계 변수<span class="ecv-domain-tag">Ocean · Biological/Ecosystems</span></div>
+          <div class="ecv-static ecv-row">
+            <div class="def-card"><div class="def-icon di-habitat"><svg><use href="#i-var-habitat"/></svg></div><h3>해양서식지</h3></div>
+            <div class="def-card"><div class="def-icon di-plankton"><svg><use href="#i-var-plankton"/></svg></div><h3>플랑크톤</h3></div>
+          </div>
+        </div>
+        <div class="ecv-divider"></div>
+        <div class="ecv-dual-col">
+          <div class="ecv-group-title">해상 대기 변수<span class="ecv-domain-tag ecv-domain-tag--ref">Atmosphere · Surface </span></div>
+          <div class="ecv-static ecv-row">
+            <div class="def-card"><div class="def-icon di-air"><svg><use href="#i-var-air"/></svg></div><h3>해상기온</h3></div>
+            <div class="def-card"><div class="def-icon di-pres"><svg><use href="#i-var-pres"/></svg></div><h3>해면기압</h3></div>
+            <div class="def-card"><div class="def-icon di-rain"><svg><use href="#i-var-rain"/></svg></div><h3>해상강수량</h3></div>
+            <div class="def-card"><div class="def-icon di-wind"><svg><use href="#i-var-wind"/></svg></div><h3>해상풍</h3></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
+
 </section>
   
 <!--
