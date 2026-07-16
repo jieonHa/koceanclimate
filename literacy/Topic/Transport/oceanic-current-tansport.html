@@ -1,770 +1,303 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>주요 해류 수송량 정보 예시</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-/* Override strong tags inside headings to maintain consistent weight */
-h1 strong,
-h2 strong,
-h3 strong {
-	font-weight: 600;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 10px;
-	padding: 1rem;
-}
-
-/* For default-background callouts, render the border outline. */
-.callout.block-color-default_background {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-figure,
-aside,
-details {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-
-	table.collection-content {
-		width: 100%;
-		table-layout: fixed;
-	}
-
-	table.collection-content th,
-	table.collection-content td {
-		overflow-wrap: anywhere;
-	}
-
-	table.collection-content td > .user,
-	table.collection-content td > time {
-		white-space: pre-wrap;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content-wrapper {
-	overflow-x: auto;
-}
-
-@media only print {
-	.collection-content-wrapper {
-		overflow-x: visible;
-	}
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.collection-content td {
-	white-space: pre-wrap;
-	word-break: break-word;
-}
-
-.column-list {
-	display: flex;
-	gap: 46px;
-}
-
-.column {
-	min-width: 0;
-	overflow: hidden;
-}
-
-.column > *:first-child {
-	margin-top: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding-inline: 0.125rem;
-	padding-block: 0.375rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-table {
-	border-collapse: collapse;
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol.numbered-list.numbered-list-digits-2 {
-	padding-inline-start: 2em;
-}
-
-ol.numbered-list.numbered-list-digits-3plus {
-	padding-inline-start: 2.4em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-	margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-/*
- * Render emoji icons using a ::before pseudo-element to keep the glyph
- * out of the DOM textContent traversal. This avoids double-rendering icons
- * in callouts and page titles.
- * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
- * flag as a duplicate tag after codegen.
- */
-.icon[data-emoji]::before {
-	content: attr(data-emoji);
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.callout img.notion-static-icon {
-	width: 1em;
-	height: 1em;
-}
-
-.callout p {
-	margin: 0;
-}
-
-.callout h1,
-.callout h2,
-.callout h3 {
-	margin: 0 0 0.6rem;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	margin-right: 0.4em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-blockquote.quote-large {
-	font-size: 1.25em;
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.tab {
-	margin: 1.25em 0;
-	padding-inline: 1rem;
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.highlight-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.highlight-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.highlight-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.highlight-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.highlight-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.highlight-default_background {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray_background {
-	background: rgba(42, 28, 0, 0.07);
-}
-.highlight-brown_background {
-	background: rgba(139, 46, 0, 0.086);
-}
-.highlight-orange_background {
-	background: rgba(224, 101, 1, 0.129);
-}
-.highlight-yellow_background {
-	background: rgba(211, 168, 0, 0.137);
-}
-.highlight-teal_background {
-	background: rgba(0, 100, 45, 0.09);
-}
-.highlight-blue_background {
-	background: rgba(0, 124, 215, 0.094);
-}
-.highlight-purple_background {
-	background: rgba(102, 0, 178, 0.078);
-}
-.highlight-pink_background {
-	background: rgba(197, 0, 93, 0.086);
-}
-.highlight-red_background {
-	background: rgba(223, 22, 0, 0.094);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.block-color-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.block-color-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.block-color-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.block-color-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.block-color-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.block-color-default_background {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray_background {
-	background: rgba(240, 239, 237, 1);
-}
-.block-color-brown_background {
-	background: rgba(245, 237, 233, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 235, 222, 1);
-}
-.block-color-yellow_background {
-	background: rgba(249, 243, 220, 1);
-}
-.block-color-teal_background {
-	background: rgba(232, 241, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(229, 242, 252, 1);
-}
-.block-color-purple_background {
-	background: rgba(243, 235, 249, 1);
-}
-.block-color-pink_background {
-	background: rgba(250, 233, 241, 1);
-}
-.block-color-red_background {
-	background: rgba(252, 233, 231, 1);
-}
-.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
-.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
-.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
-.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
-.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
-.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
-.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
-.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
-.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
-.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="2bca8aed-798f-81e6-87a8-efe54cb55442" class="page sans"><header><h1 class="page-title" dir="auto">주요 해류 수송량 정보 예시</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="39ea8aed-798f-8029-9007-cf7518db3aa0" class="" dir="auto">한국해양과학기술원 전지구 해양시스템 모형 <br/>(KIOST-Ocean System Model, KOSM)으로 생산한 <br/>주요 해협을 통과하는 해류 수송량의 <br/>기후 평년 (1991~2020) 변동성 예시</h1><p id="39ea8aed-798f-80d8-af5f-dd5ef39c63de" class="" dir="auto">
-</p><figure id="39ea8aed-798f-802c-aeb6-d164a85419f8" class="image" data-notion-image="image.png" dir="ltr"><a href="image.png"><img style="width:4322px" src="image.png"/></a><figcaption>한국해양과학기술원 전지구 해양순환모형(KOSM)에서 도출한 한반도 주변해역 주요 해류 수송량 기후 평균장(1991~2020 월평균) (배경 해류모식도는 국립해양조사원 제공) - <em><mark class="highlight-red" data-notion-highlight="red">주요 해협을 통과하는 해류의 수송량은 관측으로 정량화하기도 매우 어렵고, 해마다 달라지므로 KOSM과 같은 특정 모형을 이용한 추정치의 절댓값은 참고용으로만 사용하시기 바랍니다.</mark></em></figcaption></figure><p id="39ea8aed-798f-8027-bb73-f1413e531dd7" class="" dir="auto">&lt;참고&gt; 상자 그림(Boxplot)의 이해</p><figure id="39ea8aed-798f-8052-8d4d-e31a70ac8c08" class="image" data-notion-image="whiskerbox.png" dir="ltr"><a href="whiskerbox.png"><img style="width:192px" src="whiskerbox.png"/></a></figure><p id="39ea8aed-798f-80bb-9b94-cd6e4e5895f6" class="" dir="auto"><strong>[해류 수송량의 단위]</strong> 해류(Oceanic Current)의 체적 수송량(Volume Transport)은 단위 시간(초,s)당 어떤 단면을 통과하는 유량의 부피( <span data-notion-inline-equation="m^3" class="notion-text-equation-token" contenteditable="false"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span></span>)로 표현하며, 초당 1백만톤씩 흐르는 수송량 (<span data-notion-inline-equation="10^6 m^3/s" class="notion-text-equation-token" contenteditable="false"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal">s</span></span></span></span></span>)을 <strong>1 Sv</strong> (<strong>스베드럽,</strong> <strong>Svedrup</strong>)이라 한다.  Svedrup은 노르웨이의 해양학자이자 기상학자이며 미국 스크립스 해양연구소장과 노르웨이 극지연구소장을 지냈던 <strong>Harald Ulrik Sverdrup</strong> (1888~1957)의 이름을 따서 명명했다. <strong>1 Sv</strong>의 수송량은 세계에서 가장 방류량이 많은 아마존 강 평균 방류량의 약 5배에 해당하는 수송량이며, 우리나라에서 가장 큰 소양감댐 최대 방류량(초당 5,500톤)의 약 180배에 달한다.</p><p id="39ea8aed-798f-80c4-9ac5-e71eeb871e7b" class="" dir="auto"><strong>[해류 수송량은 왜 알아야 할까?] </strong>바닷물에는 다양한 원소가 녹아 있으며, 위치에 따라 수온, 염분 등 해수의 물리적 성질과 영양염, 플랑크톤 등 해수의 생지화학적-생태학적 특성이 다르다. 해류는 한 위치에 있는 이런 해수의 특성을 다른 곳으로 옮기는 역할을 하는데, 문제는 이동 과정 중에 다양한 물리-생지화학-생물-지질학적 환경 변화를 겪으며 온도나 농도 등이 변한다. 따라서 해류 수송량은 관심 있는 해역의 특성이 물리적인 이동에 의해서 어떻게 바뀌며, 그 해역에 얼마나 많은 열에너지와 물질을 수송하는 지를 판단하는 기준이 된다. 여기에 더해서 다른 물리 현상 (바람과 파도에 의한 해수의 연직 혼합 또는 용승, 해양과-대기 사이의 열에너지, 수분, 기체의 교환)과 생지화학-생태학적 과정 (식물플랑크톤의 번성, 먹이 사슬을 통한 에너지 전이, 오염물질의 유입, 혼합 등) 등에 의한 해양의 변화를 추적하고, 필요에 따라 적절한 대응을 하는 데 있어서 반드시 알아야 할 필수 변수이다. 해류를 통한 전지구적 해양 순환은 지구의 열에너지와 물질의 수송 및 재분배 과정을 통해 기후를 조절한다.</p><h3 id="2bca8aed-798f-81dc-bf53-fc5dd8645a83" class="" dir="auto">쿠로시오 해류 수송량 변동성</h3><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-8063-8d6f-de1184760727" style="display:inline-block">대만 동부해역 통과 수송량</h4></summary><div class="indented"><figure id="39ea8aed-798f-803d-adc4-e0f7fa8b18c9" class="image" data-notion-image="kuroshio7923.png" dir="ltr"><a href="kuroshio7923.png"><img style="width:10800px" src="kuroshio7923.png"/></a><figcaption>계절변동이 크지 않으나, 7월에 다소 많고 10월에 다소 적은 변동성을 보임. 각 월별 최댓값-최솟값의 범위가 크므로 해마다 월평균 수송량이 달라지는 경년변동성은 비교적 큰 편임을 알 수 있음</figcaption></figure></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-801d-9962-e2ac56b4ae2f" style="display:inline-block">P-N 단면 통과 수송량</h4></summary><div class="indented"><figure id="39ea8aed-798f-80e2-a421-d1e3e8f8ce43" class="image" data-notion-image="pn7923.png" dir="ltr"><a href="pn7923.png"><img style="width:10800px" src="pn7923.png"/></a><figcaption>대만 동부해역을 통과하는 상류역과 비슷한 경향을 보이나 8월의 경년변동성이 매우 크게 나타남</figcaption></figure></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-8047-ae28-ec497ab25627" style="display:inline-block">토카라 해협 통과</h4></summary><div class="indented"><figure id="39ea8aed-798f-800d-bfc2-efdf7c3a7ff3" class="image" data-notion-image="tk7923.png" dir="ltr"><a href="tk7923.png"><img style="width:10800px" src="tk7923.png"/></a><figcaption>대만 동부 및 P-N 단면보다 절대값은 작으나 계절 변동성 및 경년 변동성은 비슷함.</figcaption></figure></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-805e-8806-c94652896bc4" style="display:inline-block">루손 해협</h4></summary><div class="indented"><figure id="39ea8aed-798f-809f-99f3-c67ae6e5dc28" class="image" data-notion-image="luzon7923.png" dir="ltr"><a href="luzon7923.png"><img style="width:10800px" src="luzon7923.png"/></a><figcaption>5~6월에는 서에서 동으로 흘러 쿠로시오 해류가 들어가지 않는 경우가 많고, 일반적으로 겨울에 동쪽의 필리핀 해역에서 남중국해로 들어가는 수송량이 큼 - 4월과 11~12월의 경년 변동성이 큼</figcaption></figure></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-80e6-bb13-fcfaa53d4e08" style="display:inline-block">대만해협</h4></summary><div class="indented"><p id="39ea8aed-798f-80f4-b7b5-eaaaa36804c4" class="" dir="auto">
-</p><figure id="39ea8aed-798f-80d3-8e50-ca7884b6dccd" class="image" data-notion-image="tw7923.png" dir="ltr"><a href="tw7923.png"><img style="width:10800px" src="tw7923.png"/></a><figcaption>여름에 많고 겨울에 적거나 반대로 흐르기도 함. 경년 변동성은 봄~여름보다는 가을~겨울에 큰 편임</figcaption></figure></div></details><h3 id="39ea8aed-798f-8062-b95b-c9ffafb418a7" class="" dir="auto">제주 난류</h3><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-8098-b4d6-cd3858e8782b" style="display:inline-block">제주해협</h4></summary><div class="indented"><figure id="39ea8aed-798f-80d6-8b19-c520b73fe990" class="image" data-notion-image="jeju7923.png" dir="ltr"><a href="jeju7923.png"><img style="width:10800px" src="jeju7923.png"/></a><figcaption>2월에 최소, 8월에 최대 수송량을 보이나 해마다 달라질 수 있다. 특히 여름철과 겨울철의 경년 변동성이 큰 편이다.</figcaption></figure></div></details><h3 id="39ea8aed-798f-8057-bb8d-d6fb72f5bf82" class="" dir="auto">동해 통과류 (쓰시마 난류)</h3><p id="39ea8aed-798f-809a-9c24-e6246392ad0f" class="" dir="auto"><em>동해 통과류(East Sea Throughflow)는 공식적으로 인정되는 용어는 아니며, 쓰시마 난류가 대마도(쓰시마섬)를 통과하는 해류라는 성격이 강하기에 쓰시마 난류, 동한난류, 일본분지류 등을 합쳐 모두 동해를 통과하는 해류로 보자는 일부 해양학자들의 의견을 반영한 것입니다.</em></p><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-8022-9891-ffbc5e3399d7" style="display:inline-block">대한해협</h4></summary><div class="indented"><figure id="39ea8aed-798f-80c3-ba9c-d25e99431511" class="image" data-notion-image="korea7923.png" dir="ltr"><a href="korea7923.png"><img style="width:10800px" src="korea7923.png"/></a><figcaption>2월 최소, 8월 최대이지만 10월에도 비교적 높은 수송량을 보이며, 상대적으로 6,7월의 경년 변동성이 적음, 참고로 대마도와 우리나라 사이의 해협을 대한해협 서수도(Western Channel)라 부르며, 대마도와 일본 큐슈 사이의 해협을 대한해협 동수도(Eastern Channel)라 부르며, 서수도를 통과한 물은 동한난류로 이어지며, 동수로를 통과한 물은 일본 열도 서쪽을 따라 흐름. 동해를 통과한 해수는 쓰가루 해협과 소야 해협을 통해 태평양으로 빠져 나감</figcaption></figure></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-8061-9656-f60c2d497895" style="display:inline-block">쓰가루 해협</h4></summary><div class="indented"><figure id="39ea8aed-798f-80cf-b07d-d1d68eadfd6f" class="image" data-notion-image="tsugaru7923.png" dir="ltr"><a href="tsugaru7923.png"><img style="width:10800px" src="tsugaru7923.png"/></a><figcaption>대한해협 수송량의 계절변동과는 달리 상대적으로 계절 변동성이 크지 않으나, 경년 변동성은 큰 편임.</figcaption></figure><p id="39ea8aed-798f-80bc-a684-efc5b9e444c4" class="" dir="auto">
-</p></div></details><details open="" class="" dir="auto"><summary style="font-weight:600;font-size:1.125em;line-height:1.3;margin:0"><h4 id="39ea8aed-798f-8084-80ce-cb2abd0fd19a" style="display:inline-block">소야 해협</h4></summary><div class="indented"><figure id="39ea8aed-798f-8028-a7bf-da3e724cf5a3" class="image" data-notion-image="soya7923.png" dir="ltr"><a href="soya7923.png"><img style="width:10800px" src="soya7923.png"/></a><figcaption>1, 2월에는 오호츠크해에서 오히려 들어 오는 경우도 있으며, 10월에 동해에서 오호츠크해로 최대로 흐름</figcaption></figure></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주요 해류 수송량 정보 예시 – 한반도 해양기후 정보 서비스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-chevron-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-chevron-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+  <symbol id="i-arrow-wave-right-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 10h4v4"/><path d="M3 12c.887-1.284 2.48-2.033 4-2c1.52-.033 3.113.716 4 2s2.48 2.033 4 2c1.52.033 3-1 4-2l2-2"/></symbol>
+</svg>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:#f5f7fa;color:#1e293b;font-size:15px;line-height:1.8}
+a{text-decoration:underline;color:inherit}
+svg.ic{display:inline-block;vertical-align:middle;flex-shrink:0}
+
+/* ── 상단 문서 내비게이션 ── */
+.top-nav{background:#0a2540;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.06)}
+.top-nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:54px;gap:16px}
+.tn-back{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.5);padding:6px 12px;border-radius:6px;transition:all .15s;text-decoration:none}
+.tn-back:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
+.tn-title{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toc-toggle{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);cursor:pointer}
+
+.layout{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:270px 1fr;gap:0;min-height:calc(100vh - 54px)}
+
+/* ── 사이드바 TOC ── */
+.sidebar{border-right:1px solid #e2e8f0;background:#fff;position:sticky;top:54px;height:calc(100vh - 54px);overflow-y:auto;padding:20px 0;scrollbar-width:thin}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+.toc-header{padding:0 20px 14px;border-bottom:1px solid #e2e8f0;margin-bottom:10px}
+.toc-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:#0369a1;background:#e0f2fe;padding:3px 9px;border-radius:20px;margin-bottom:8px;letter-spacing:.3px}
+.toc-doc-title{font-size:14px;font-weight:700;color:#0f172a;line-height:1.45}
+.toc-group{padding:6px 0}
+.toc-ch{display:block;padding:8px 20px;font-size:12.5px;font-weight:700;color:#64748b;letter-spacing:.5px;text-transform:uppercase;border-left:2.5px solid transparent;transition:all .12s;cursor:pointer;text-decoration:none}
+.toc-ch:hover{color:#0f172a;background:#f8fafc}
+.toc-ch.active{color:#0284c7;border-left-color:#0284c7;background:#f0f9ff}
+.toc-link{display:block;padding:5px 20px 5px 28px;font-size:13px;color:#64748b;line-height:1.5;border-left:2.5px solid transparent;transition:all .12s;cursor:pointer;text-decoration:none}
+.toc-link:hover{color:#0284c7;background:#f0f9ff}
+.toc-link.active{color:#0284c7;font-weight:600;border-left-color:#0284c7;background:#f0f9ff}
+
+.main{padding:36px 48px 80px;max-width:860px}
+
+/* ── 문서 헤더 (원문 그대로, 컨테이너만 재구성) ── */
+.doc-header{margin-bottom:32px;padding-bottom:26px;border-bottom:1px solid #e2e8f0}
+.doc-sup{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:#0369a1;letter-spacing:.5px;margin-bottom:14px}
+.doc-icon{width:38px;height:38px;border-radius:10px;background:#e0f2fe;color:#0284c7;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.doc-h1{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:700;color:#0f172a;line-height:1.4;margin-bottom:14px}
+.doc-subhead{font-size:16px;font-weight:600;color:#334155;line-height:1.6}
+
+/* ── 대분류 섹션 헤더 (원문 h3) ── */
+.ch-header{margin:48px 0 20px;padding:18px 24px;background:linear-gradient(135deg,#0c4a6e,#0a2540);border-radius:12px;color:#fff;scroll-margin-top:70px}
+.ch-title{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:700}
+
+.prose{margin-bottom:20px}
+.prose p{margin-bottom:14px;color:#334155}
+.prose strong{color:#0f172a;font-weight:600}
+.prose em{color:#475569}
+
+/* ── 그림 (원문 figure/figcaption) ── */
+.fig{margin:18px 0 24px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;background:#fff}
+.fig img{width:100%;display:block}
+.fig-caption{padding:12px 16px;font-size:12.5px;color:#64748b;background:#f8fafc;border-top:1px solid #e2e8f0;line-height:1.6}
+.fig-caption .warn{color:#dc2626;font-weight:600}
+.fig.small{max-width:280px}
+
+/* ── 아코디언(원문 details/summary open) ── */
+.accordion{border:1px solid #e2e8f0;border-radius:12px;background:#fff;margin-bottom:12px;overflow:hidden;scroll-margin-top:70px}
+.accordion > summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:#0f172a;transition:background .15s}
+.accordion > summary::-webkit-details-marker{display:none}
+.accordion > summary:hover{background:#f8fafc}
+.accordion-chev{margin-left:auto;color:#94a3b8;transition:transform .2s}
+.accordion[open] .accordion-chev{transform:rotate(180deg)}
+.accordion-body{padding:0 20px 20px}
+
+.scroll-top{position:fixed;bottom:24px;right:24px;z-index:150;width:44px;height:44px;border-radius:50%;background:#0284c7;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,.3);opacity:0;transform:translateY(10px);transition:all .2s;pointer-events:none}
+.scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.scroll-top:hover{background:#0369a1}
+
+.doc-footer{background:#0a2540;padding:24px 0;text-align:center;font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:1024px){
+.layout{grid-template-columns:1fr}
+.sidebar{display:none;position:fixed;left:0;top:54px;width:300px;height:calc(100vh - 54px);z-index:180;box-shadow:6px 0 30px rgba(0,0,0,.15)}
+.sidebar.open{display:block}
+.sidebar-overlay{display:none;position:fixed;inset:0;top:54px;background:rgba(0,0,0,.3);z-index:170}
+.sidebar-overlay.open{display:block}
+.toc-toggle{display:flex}
+.main{padding:24px 20px 60px}
+}
+@media(max-width:600px){
+.doc-h1{font-size:22px}
+.doc-subhead{font-size:14.5px}
+.ch-header{padding:16px 18px}
+.ch-title{font-size:16px}
+.tn-title{display:none}
+.accordion > summary{padding:14px 16px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <button class="toc-toggle" id="tocToggle" aria-label="목차 열기"><svg class="ic" width="20" height="20"><use href="#i-menu"/></svg></button>
+    <a class="tn-back" href="custom-info.html#topics"><svg class="ic" width="16" height="16"><use href="#i-chevron-l"/></svg> 맞춤 정보</a>
+    <span class="tn-title">주제별 맞춤 정보 — 주요 해류 수송량 정보 예시</span>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="toc-header">
+    <div class="toc-badge">자료 예시</div>
+    <div class="toc-doc-title">주요 해류 수송량<br>정보 예시</div>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#kuroshio">쿠로시오 해류 수송량 변동성</a>
+    <a class="toc-link" href="#taiwan-east">대만 동부해역 통과 수송량</a>
+    <a class="toc-link" href="#pn">P-N 단면 통과 수송량</a>
+    <a class="toc-link" href="#tokara">토카라 해협 통과</a>
+    <a class="toc-link" href="#luzon">루손 해협</a>
+    <a class="toc-link" href="#taiwan-strait">대만해협</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#jeju">제주 난류</a>
+    <a class="toc-link" href="#jeju-strait">제주해협</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#eastsea">동해 통과류 (쓰시마 난류)</a>
+    <a class="toc-link" href="#korea-strait">대한해협</a>
+    <a class="toc-link" href="#tsugaru">쓰가루 해협</a>
+    <a class="toc-link" href="#soya">소야 해협</a>
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="doc-header">
+  <div class="doc-sup">
+    <span class="doc-icon"><svg class="ic" width="19" height="19"><use href="#i-arrow-wave-right-up"/></svg></span>
+    주제별 맞춤 정보 · 자료 예시
+  </div>
+  <h1 class="doc-h1">주요 해류 수송량 정보 예시</h1>
+  <p class="doc-subhead">한국해양과학기술원 전지구 해양시스템 모형 (KIOST-Ocean System Model, KOSM)으로 생산한 주요 해협을 통과하는 해류 수송량의 기후 평년 (1991~2020) 변동성 예시</p>
+</div>
+
+<div class="fig">
+  <img src="image.png" alt="한반도 주변해역 주요 해류 수송량 기후 평균장">
+  <div class="fig-caption">한국해양과학기술원 전지구 해양순환모형(KOSM)에서 도출한 한반도 주변해역 주요 해류 수송량 기후 평균장(1991~2020 월평균) (배경 해류모식도는 국립해양조사원 제공) - <span class="warn">주요 해협을 통과하는 해류의 수송량은 관측으로 정량화하기도 매우 어렵고, 해마다 달라지므로 KOSM과 같은 특정 모형을 이용한 추정치의 절댓값은 참고용으로만 사용하시기 바랍니다.</span></div>
+</div>
+
+<div class="prose">
+<p>&lt;참고&gt; 상자 그림(Boxplot)의 이해</p>
+</div>
+<div class="fig small">
+  <img src="whiskerbox.png" alt="상자 그림(Boxplot) 이해를 돕는 도식">
+</div>
+
+<div class="prose">
+<p><strong>[해류 수송량의 단위]</strong> 해류(Oceanic Current)의 체적 수송량(Volume Transport)은 단위 시간(초,s)당 어떤 단면을 통과하는 유량의 부피(m<sup>3</sup>)로 표현하며, 초당 1백만톤씩 흐르는 수송량 (10<sup>6</sup> m<sup>3</sup>/s)을 <strong>1 Sv</strong> (<strong>스베드럽,</strong> <strong>Svedrup</strong>)이라 한다.  Svedrup은 노르웨이의 해양학자이자 기상학자이며 미국 스크립스 해양연구소장과 노르웨이 극지연구소장을 지냈던 <strong>Harald Ulrik Sverdrup</strong> (1888~1957)의 이름을 따서 명명했다. <strong>1 Sv</strong>의 수송량은 세계에서 가장 방류량이 많은 아마존 강 평균 방류량의 약 5배에 해당하는 수송량이며, 우리나라에서 가장 큰 소양감댐 최대 방류량(초당 5,500톤)의 약 180배에 달한다.</p>
+<p><strong>[해류 수송량은 왜 알아야 할까?] </strong>바닷물에는 다양한 원소가 녹아 있으며, 위치에 따라 수온, 염분 등 해수의 물리적 성질과 영양염, 플랑크톤 등 해수의 생지화학적-생태학적 특성이 다르다. 해류는 한 위치에 있는 이런 해수의 특성을 다른 곳으로 옮기는 역할을 하는데, 문제는 이동 과정 중에 다양한 물리-생지화학-생물-지질학적 환경 변화를 겪으며 온도나 농도 등이 변한다. 따라서 해류 수송량은 관심 있는 해역의 특성이 물리적인 이동에 의해서 어떻게 바뀌며, 그 해역에 얼마나 많은 열에너지와 물질을 수송하는지를 판단하는 기준이 된다. 여기에 더해서 다른 물리 현상 (바람과 파도에 의한 해수의 연직 혼합 또는 용승, 해양과-대기 사이의 열에너지, 수분, 기체의 교환)과 생지화학-생태학적 과정 (식물플랑크톤의 번성, 먹이 사슬을 통한 에너지 전이, 오염물질의 유입, 혼합 등) 등에 의한 해양의 변화를 추적하고, 필요에 따라 적절한 대응을 하는 데 있어서 반드시 알아야 할 필수 변수이다. 해류를 통한 전지구적 해양 순환은 지구의 열에너지와 물질의 수송 및 재분배 과정을 통해 기후를 조절한다.</p>
+</div>
+
+<!-- ══ 쿠로시오 해류 수송량 변동성 ══ -->
+<div class="ch-header" id="kuroshio"><div class="ch-title">쿠로시오 해류 수송량 변동성</div></div>
+
+<details class="accordion" id="taiwan-east" open>
+  <summary>대만 동부해역 통과 수송량<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="kuroshio7923.png" alt="대만 동부해역 통과 수송량 월별 변동성">
+      <div class="fig-caption">계절변동이 크지 않으나, 7월에 다소 많고 10월에 다소 적은 변동성을 보임. 각 월별 최댓값-최솟값의 범위가 크므로 해마다 월평균 수송량이 달라지는 경년변동성은 비교적 큰 편임을 알 수 있음</div>
+    </div>
+  </div>
+</details>
+
+<details class="accordion" id="pn" open>
+  <summary>P-N 단면 통과 수송량<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="pn7923.png" alt="P-N 단면 통과 수송량 월별 변동성">
+      <div class="fig-caption">대만 동부해역을 통과하는 상류역과 비슷한 경향을 보이나 8월의 경년변동성이 매우 크게 나타남</div>
+    </div>
+  </div>
+</details>
+
+<details class="accordion" id="tokara" open>
+  <summary>토카라 해협 통과<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="tk7923.png" alt="토카라 해협 통과 수송량 월별 변동성">
+      <div class="fig-caption">대만 동부 및 P-N 단면보다 절대값은 작으나 계절 변동성 및 경년 변동성은 비슷함.</div>
+    </div>
+  </div>
+</details>
+
+<details class="accordion" id="luzon" open>
+  <summary>루손 해협<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="luzon7923.png" alt="루손 해협 통과 수송량 월별 변동성">
+      <div class="fig-caption">5~6월에는 서에서 동으로 흘러 쿠로시오 해류가 들어가지 않는 경우가 많고, 일반적으로 겨울에 동쪽의 필리핀 해역에서 남중국해로 들어가는 수송량이 큼 - 4월과 11~12월의 경년 변동성이 큼</div>
+    </div>
+  </div>
+</details>
+
+<details class="accordion" id="taiwan-strait" open>
+  <summary>대만해협<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="tw7923.png" alt="대만해협 통과 수송량 월별 변동성">
+      <div class="fig-caption">여름에 많고 겨울에 적거나 반대로 흐르기도 함. 경년 변동성은 봄~여름보다는 가을~겨울에 큰 편임</div>
+    </div>
+  </div>
+</details>
+
+<!-- ══ 제주 난류 ══ -->
+<div class="ch-header" id="jeju"><div class="ch-title">제주 난류</div></div>
+
+<details class="accordion" id="jeju-strait" open>
+  <summary>제주해협<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="jeju7923.png" alt="제주해협 통과 수송량 월별 변동성">
+      <div class="fig-caption">2월에 최소, 8월에 최대 수송량을 보이나 해마다 달라질 수 있다. 특히 여름철과 겨울철의 경년 변동성이 큰 편이다.</div>
+    </div>
+  </div>
+</details>
+
+<!-- ══ 동해 통과류 (쓰시마 난류) ══ -->
+<div class="ch-header" id="eastsea"><div class="ch-title">동해 통과류 (쓰시마 난류)</div></div>
+<div class="prose">
+<p><em>동해 통과류(East Sea Throughflow)는 공식적으로 인정되는 용어는 아니며, 쓰시마 난류가 대마도(쓰시마섬)를 통과하는 해류라는 성격이 강하기에 쓰시마 난류, 동한난류, 일본분지류 등을 합쳐 모두 동해를 통과하는 해류로 보자는 일부 해양학자들의 의견을 반영한 것입니다.</em></p>
+</div>
+
+<details class="accordion" id="korea-strait" open>
+  <summary>대한해협<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="korea7923.png" alt="대한해협 통과 수송량 월별 변동성">
+      <div class="fig-caption">2월 최소, 8월 최대이지만 10월에도 비교적 높은 수송량을 보이며, 상대적으로 6,7월의 경년 변동성이 적음, 참고로 대마도와 우리나라 사이의 해협을 대한해협 서수도(Western Channel)라 부르며, 대마도와 일본 큐슈 사이의 해협을 대한해협 동수도(Eastern Channel)라 부르며, 서수도를 통과한 물은 동한난류로 이어지며, 동수로를 통과한 물은 일본 열도 서쪽을 따라 흐름. 동해를 통과한 해수는 쓰가루 해협과 소야 해협을 통해 태평양으로 빠져 나감</div>
+    </div>
+  </div>
+</details>
+
+<details class="accordion" id="tsugaru" open>
+  <summary>쓰가루 해협<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="tsugaru7923.png" alt="쓰가루 해협 통과 수송량 월별 변동성">
+      <div class="fig-caption">대한해협 수송량의 계절변동과는 달리 상대적으로 계절 변동성이 크지 않으나, 경년 변동성은 큰 편임.</div>
+    </div>
+  </div>
+</details>
+
+<details class="accordion" id="soya" open>
+  <summary>소야 해협<svg class="ic accordion-chev" width="18" height="18"><use href="#i-chevron-down"/></svg></summary>
+  <div class="accordion-body">
+    <div class="fig"><img src="soya7923.png" alt="소야 해협 통과 수송량 월별 변동성">
+      <div class="fig-caption">1, 2월에는 오호츠크해에서 오히려 들어 오는 경우도 있으며, 10월에 동해에서 오호츠크해로 최대로 흐름</div>
+    </div>
+  </div>
+</details>
+
+</main>
+</div>
+
+<button class="scroll-top" id="scrollTop" aria-label="맨 위로"><svg class="ic" width="20" height="20"><use href="#i-arrow-up"/></svg></button>
+
+<footer class="doc-footer">© KIOST 해양기후예측센터 · 한반도 주변 상세 해양기후 정보 서비스</footer>
+
+<script>
+const allTocLinks=document.querySelectorAll('.toc-link[href^="#"],.toc-ch[href^="#"]');
+const targets=[];
+allTocLinks.forEach(link=>{const id=link.getAttribute('href').slice(1);const el=document.getElementById(id);if(el)targets.push({link,el})});
+function updateToc(){let active=null;for(const{link,el}of targets){if(el.getBoundingClientRect().top<=90)active=link}allTocLinks.forEach(l=>l.classList.remove('active'));if(active)active.classList.add('active')}
+window.addEventListener('scroll',updateToc,{passive:true});updateToc();
+
+const sidebar=document.getElementById('sidebar'),overlay=document.getElementById('sidebarOverlay'),toggle=document.getElementById('tocToggle');
+function openSidebar(){sidebar.classList.add('open');overlay.classList.add('open')}
+function closeSidebar(){sidebar.classList.remove('open');overlay.classList.remove('open')}
+toggle.addEventListener('click',()=>sidebar.classList.contains('open')?closeSidebar():openSidebar());
+overlay.addEventListener('click',closeSidebar);
+sidebar.addEventListener('click',e=>{if(e.target.closest('.toc-link')||e.target.closest('.toc-ch'))closeSidebar()});
+
+allTocLinks.forEach(link=>{
+  link.addEventListener('click',()=>{
+    const id=link.getAttribute('href').slice(1);
+    const el=document.getElementById(id);
+    if(el && el.tagName==='DETAILS') el.open=true;
+  });
+});
+
+const scrollBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>{scrollBtn.classList.toggle('show',window.scrollY>400)},{passive:true});
+scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
