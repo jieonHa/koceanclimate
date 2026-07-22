@@ -112,7 +112,23 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 
 /* ── 공지 바 ── */
 .notice { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 9px 0; }
-.notice .wrap { display: flex; align-items: center; gap: 9px; font-size: 13px; color: #92400e; }
+.notice .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; color: #92400e; }
+.notice-text { display: flex; align-items: center; gap: 9px; }
+.notice-survey {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12.5px; font-weight: 600; color: #92400e;
+  padding: 5px 12px; border-radius: 999px;
+  background: #fef3c7; border: 1px solid #fbbf24;
+  cursor: pointer; white-space: nowrap;
+  transition: background .15s, transform .1s;
+}
+.notice-survey:hover { background: #fde68a; }
+.notice-survey:active { transform: scale(.97); }
+@media (max-width: 720px) {
+  .notice .wrap { flex-wrap: wrap; }
+  .notice-text { font-size: 12.5px; }
+}
 
 /* ── 히어로 (시안 스타일: 밝은 하늘·바다 그라데이션 배경) ── */
 .hero {
@@ -407,6 +423,95 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 .modal-iframe {
   width: 100%; height: 100%; border: none;
 }
+
+/* ── 설문조사 안내 팝업 ── */
+.survey-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9998;
+  background: rgba(10,37,64,.55); backdrop-filter: blur(3px);
+  align-items: center; justify-content: center; padding: 20px;
+  animation: fadeIn .2s ease;
+}
+.survey-overlay.open { display: flex; }
+
+.survey-box {
+  position: relative; width: 100%; max-width: 360px;
+  background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,.3);
+  animation: modalSlideUp .25s ease;
+}
+.survey-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 18px; background: #0a2540;
+}
+.survey-head-title { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: #fff; }
+.survey-close {
+  background: none; border: none; cursor: pointer; color: rgba(255,255,255,.7);
+  font-size: 15px; line-height: 1; padding: 4px;
+}
+.survey-close:hover { color: #fff; }
+
+.survey-body { padding: 26px 22px 20px; text-align: center; }
+.survey-illust { margin: 0 auto 12px; display: block; }
+.survey-title { font-size: 14.5px; font-weight: 600; color: #0a2540; margin-bottom: 7px; }
+.survey-desc { font-size: 12.5px; color: #64748b; line-height: 1.65; margin-bottom: 20px; }
+.survey-cta {
+  display: block; width: 100%; padding: 12px 0; border: none; border-radius: 8px;
+  background: linear-gradient(135deg,#0ea5e9,#0369a1); color: #fff;
+  font-size: 13.5px; font-weight: 600; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(2,132,199,.25);
+}
+.survey-cta:hover { filter: brightness(1.05); }
+
+.survey-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 18px; border-top: 1px solid #f1f5f9;
+}
+.survey-dismiss {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: #64748b; cursor: pointer; user-select: none;
+}
+.survey-dismiss input { width: 14px; height: 14px; accent-color: #0284c7; cursor: pointer; }
+.survey-later {
+  font-size: 12px; color: #94a3b8; background: none; border: none; cursor: pointer;
+}
+.survey-later:hover { color: #64748b; text-decoration: underline; }
+
+/* ── 설문조사 폼 모달 (구글 폼) ── */
+.form-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(10,37,64,.6); backdrop-filter: blur(3px);
+  align-items: center; justify-content: center; padding: 20px;
+  animation: fadeIn .2s ease;
+}
+.form-overlay.open { display: flex; }
+
+.form-box {
+  position: relative; width: 100%; max-width: 620px; height: 92vh; max-height: 980px;
+  background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,.3);
+  animation: modalSlideUp .25s ease;
+  display: flex; flex-direction: column;
+}
+.form-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 18px; background: #0a2540; flex-shrink: 0;
+}
+.form-head-title { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: #fff; }
+.form-head-actions { display: flex; align-items: center; gap: 4px; }
+.form-newtab {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  color: #fff; font-size: 12px; padding: 6px 11px; border-radius: 7px;
+  cursor: pointer; margin-right: 4px; white-space: nowrap;
+}
+.form-newtab:hover { background: rgba(255,255,255,.18); }
+.form-iframe { flex: 1; width: 100%; border: none; }
+
+@media (max-width: 480px) {
+  .survey-box { max-width: 100%; }
+  .form-box { height: 94vh; border-radius: 12px; }
+  .form-newtab span { display: none; }
+}
 </style>
 </head>
 <body>
@@ -468,8 +573,14 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 <!-- 공지 -->
 <div class="notice">
   <div class="wrap">
-    <svg class="ic" width="16" height="16"><use href="#i-info"/></svg>
-    연구사업 기반 시험 운영 사이트입니다. 해당 정보 및 콘텐츠는 검증·개선 중이며 <strong style="margin:0 3px">참고용으로만</strong> 사용하시길 바랍니다. &nbsp;문의: ocpc@kiost.ac.kr
+    <div class="notice-text">
+      <svg class="ic" width="16" height="16"><use href="#i-info"/></svg>
+      <span>연구사업 기반 시험 운영 사이트입니다. 해당 정보 및 콘텐츠는 검증·개선 중이며 <strong style="margin:0 3px">참고용으로만</strong> 사용하시길 바랍니다. &nbsp;문의: ocpc@kiost.ac.kr</span>
+    </div>
+    <button class="notice-survey" onclick="openSurveyModal()">
+      <svg class="ic" width="14" height="14"><use href="#i-file"/></svg>
+      설문조사 참여
+    </button>
   </div>
 </div>
 
@@ -894,6 +1005,138 @@ slideModal.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && slideModal.classList.contains('open')) closeSlideModal();
 });
+</script>
+
+<!-- 설문조사 안내 팝업 -->
+<div class="survey-overlay" id="surveyOverlay">
+  <div class="survey-box">
+    <div class="survey-head">
+      <div class="survey-head-title">
+        <svg class="ic" width="15" height="15" style="color:#7dd3fc"><use href="#i-file"/></svg>
+        설문조사 안내
+      </div>
+      <button class="survey-close" onclick="closeSurveyPopup()" aria-label="닫기">✕</button>
+    </div>
+    <div class="survey-body">
+      <svg class="survey-illust" width="92" height="86" viewBox="0 0 92 86">
+        <rect x="14" y="10" width="64" height="72" rx="7" fill="#dbeafe" stroke="#7dabde" stroke-width="1"/>
+        <rect x="22" y="20" width="48" height="56" rx="4" fill="#ffffff" stroke="#c7d9ea" stroke-width="1"/>
+        <rect x="34" y="4" width="24" height="12" rx="4" fill="#7dabde"/>
+        <rect x="38" y="7" width="16" height="6" rx="2" fill="#4f7fb0"/>
+        <rect x="29" y="30" width="34" height="4" rx="2" fill="#bcd4ec"/>
+        <rect x="29" y="40" width="34" height="4" rx="2" fill="#bcd4ec"/>
+        <rect x="29" y="50" width="22" height="4" rx="2" fill="#bcd4ec"/>
+        <rect x="29" y="60" width="16" height="16" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.4"/>
+        <path d="M32 68 L35 71 L42 63" fill="none" stroke="#0284c7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="survey-title">서비스 개선을 위한 설문조사</div>
+      <div class="survey-desc">여러분의 의견이 더 나은 해양기후 정보<br>서비스를 만드는 데 큰 도움이 됩니다.</div>
+      <button class="survey-cta" onclick="openSurveyForm()">설문조사 참여하기</button>
+    </div>
+    <div class="survey-foot">
+      <label class="survey-dismiss">
+        <input type="checkbox" id="surveyDismissToday">
+        오늘 하루 보지 않기
+      </label>
+      <button class="survey-later" onclick="closeSurveyPopup()">닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 설문조사 구글 폼 모달 -->
+<div class="form-overlay" id="surveyFormOverlay">
+  <div class="form-box">
+    <div class="form-head">
+      <div class="form-head-title">
+        <svg class="ic" width="15" height="15" style="color:#7dd3fc"><use href="#i-file"/></svg>
+        설문조사
+      </div>
+      <div class="form-head-actions">
+        <button class="form-newtab" onclick="openSurveyNewTab()">
+          <svg class="ic" width="13" height="13"><use href="#i-external"/></svg>
+          <span>새 창에서 열기</span>
+        </button>
+        <button class="survey-close" onclick="closeSurveyForm()" aria-label="닫기">✕</button>
+      </div>
+    </div>
+    <iframe class="form-iframe" id="surveyFormIframe" title="설문조사 폼"></iframe>
+  </div>
+</div>
+
+<script>
+/* ── 설문조사 팝업 로직 ── */
+const SURVEY_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeZeB4bRDiyVguXXNNNfC3xMkALAPtxG5eCqUGKCqA5KX0lKw/viewform?embedded=true';
+const SURVEY_FORM_URL_TAB = 'https://docs.google.com/forms/d/e/1FAIpQLSeZeB4bRDiyVguXXNNNfC3xMkALAPtxG5eCqUGKCqA5KX0lKw/viewform';
+const SURVEY_DISMISS_KEY = 'surveyDismissUntil';
+
+const surveyOverlay = document.getElementById('surveyOverlay');
+const surveyFormOverlay = document.getElementById('surveyFormOverlay');
+const surveyFormIframe = document.getElementById('surveyFormIframe');
+const surveyDismissToday = document.getElementById('surveyDismissToday');
+
+function getMidnightTimestamp() {
+  const now = new Date();
+  const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+  return midnight.getTime();
+}
+
+function isSurveyDismissed() {
+  const until = localStorage.getItem(SURVEY_DISMISS_KEY);
+  if (!until) return false;
+  return Date.now() < Number(until);
+}
+
+function openSurveyModal() {
+  surveyOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSurveyPopup() {
+  if (surveyDismissToday.checked) {
+    localStorage.setItem(SURVEY_DISMISS_KEY, String(getMidnightTimestamp()));
+  }
+  surveyOverlay.classList.remove('open');
+  if (!surveyFormOverlay.classList.contains('open')) {
+    document.body.style.overflow = '';
+  }
+}
+
+function openSurveyForm() {
+  surveyFormIframe.src = SURVEY_FORM_URL;
+  surveyOverlay.classList.remove('open');
+  surveyFormOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSurveyForm() {
+  surveyFormOverlay.classList.remove('open');
+  surveyFormIframe.src = '';
+  document.body.style.overflow = '';
+}
+
+function openSurveyNewTab() {
+  window.open(SURVEY_FORM_URL_TAB, '_blank', 'noopener,noreferrer');
+}
+
+/* 배경 클릭 시 닫기 */
+surveyOverlay.addEventListener('click', (e) => {
+  if (e.target === surveyOverlay) closeSurveyPopup();
+});
+surveyFormOverlay.addEventListener('click', (e) => {
+  if (e.target === surveyFormOverlay) closeSurveyForm();
+});
+
+/* ESC 키로 닫기 */
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if (surveyFormOverlay.classList.contains('open')) closeSurveyForm();
+  else if (surveyOverlay.classList.contains('open')) closeSurveyPopup();
+});
+
+/* 페이지 진입 시 즉시 팝업 표시 (단, 오늘 하루 닫기 처리된 경우 제외) */
+if (!isSurveyDismissed()) {
+  openSurveyModal();
+}
 </script>
 
 </body>
