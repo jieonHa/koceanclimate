@@ -454,13 +454,29 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 .survey-illust { margin: 0 auto 12px; display: block; }
 .survey-title { font-size: 14.5px; font-weight: 600; color: #0a2540; margin-bottom: 7px; }
 .survey-desc { font-size: 12.5px; color: #64748b; line-height: 1.65; margin-bottom: 20px; }
-.survey-cta {
-  display: block; width: 100%; padding: 12px 0; border: none; border-radius: 8px;
-  background: linear-gradient(135deg,#0ea5e9,#0369a1); color: #fff;
-  font-size: 13.5px; font-weight: 600; cursor: pointer;
+
+.survey-actions {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%;
+}
+.survey-btn {
+  width: 100%; padding: 12px 8px; border-radius: 10px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+  box-shadow: 0 2px 8px rgba(14, 116, 144, 0.08);
+}
+.survey-btn:hover { transform: translateY(-1px); }
+.survey-btn:active { transform: translateY(0); }
+
+.survey-btn.primary {
+  border: 1px solid #0ea5e9; background: linear-gradient(180deg,#0ea5e9,#0284c7); color: #fff;
   box-shadow: 0 4px 14px rgba(2,132,199,.25);
 }
-.survey-cta:hover { filter: brightness(1.05); }
+.survey-btn.primary:hover { filter: brightness(1.05); }
+
+.survey-btn.secondary {
+  border: 1px solid #87d4ff; background: linear-gradient(180deg,#38bdf8,#0ea5e9); color: #fff;
+}
+.survey-btn.secondary:hover { filter: brightness(1.05); }
 
 .survey-foot {
   display: flex; align-items: center; justify-content: space-between;
@@ -519,9 +535,12 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 <!-- 상단바 -->
 <div class="topbar">
   <div class="wrap">
-    <div style="display:flex; gap:24px;">
-    <a href="https://www.kiost.ac.kr/kor.do" target="_blank" target="_blank">한국해양과학기술원 (KIOST)    </a>
-    <a href="https://www.ocpc.kr/" target="_blank"> 해양기후예측센터 (OCPC)</a>
+    <div style="display:flex; gap:24px; align-items:center;">
+      <a href="https://www.kiost.ac.kr/kor.do" target="_blank" rel="noopener noreferrer">한국해양과학기술원 (KIOST)</a>
+      <a href="https://www.ocpc.kr/" target="_blank" rel="noopener noreferrer">해양기후예측센터 (OCPC)</a>
+    </div>
+    <div style="display:flex; align-items:center;">
+      <a href="https://youtu.be/sq0t0I10oXw" target="_blank" rel="noopener noreferrer">홈페이지 안내 영상</a>
     </div>
   </div>
 </div>
@@ -554,7 +573,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 
     <div class="nav-right">
       <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
-      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">전문가용 데이터 포털↗</a>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">해양기후 데이터 포털↗</a>
       <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="메뉴 열기">
         <span></span><span></span><span></span>
       </button>
@@ -575,7 +594,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
   <div class="wrap">
     <div class="notice-text">
       <svg class="ic" width="16" height="16"><use href="#i-info"/></svg>
-      <span>연구사업 기반 시험 운영 사이트입니다. 해당 정보 및 콘텐츠는 검증·개선 중이며 <strong style="margin:0 3px">참고용으로만</strong> 사용하시길 바랍니다. &nbsp;문의: ocpc@kiost.ac.kr</span>
+      <span>연구사업 기반 시험 운영 사이트입니다. 해당 정보 및 콘텐츠는 검증·개선 중이오니 <strong style="margin:0 3px">참고용으로만</strong> 사용하시길 바랍니다. &nbsp;</span>
     </div>
     <button class="notice-survey" onclick="openSurveyModal()">
       <svg class="ic" width="14" height="14"><use href="#i-file"/></svg>
@@ -1031,7 +1050,10 @@ document.addEventListener('keydown', (e) => {
       </svg>
       <div class="survey-title">서비스 개선을 위한 설문조사</div>
       <div class="survey-desc">여러분의 의견이 더 나은 해양기후 정보<br>서비스를 만드는 데 큰 도움이 됩니다.</div>
-      <button class="survey-cta" onclick="openSurveyForm()">설문조사 참여하기</button>
+      <div class="survey-actions">
+        <button class="survey-btn primary" onclick="openSurveyForm()">일반 사용자 설문조사</button>
+        <button class="survey-btn secondary" onclick="openExpertSurveyForm()">전문가용 설문조사</button>
+      </div>
     </div>
     <div class="survey-foot">
       <label class="survey-dismiss">
@@ -1067,12 +1089,14 @@ document.addEventListener('keydown', (e) => {
 /* ── 설문조사 팝업 로직 ── */
 const SURVEY_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeZeB4bRDiyVguXXNNNfC3xMkALAPtxG5eCqUGKCqA5KX0lKw/viewform?embedded=true';
 const SURVEY_FORM_URL_TAB = 'https://docs.google.com/forms/d/e/1FAIpQLSeZeB4bRDiyVguXXNNNfC3xMkALAPtxG5eCqUGKCqA5KX0lKw/viewform';
+const SURVEY_EXPERT_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScMtEorVKCUx_ZDCWC6lS_V7afr9k_1pvrSPD5hLg637dvOfw/viewform?usp=dialog'; // 전문가용 설문 URL을 여기에 직접 넣으면 됩니다.
 const SURVEY_DISMISS_KEY = 'surveyDismissUntil';
 
 const surveyOverlay = document.getElementById('surveyOverlay');
 const surveyFormOverlay = document.getElementById('surveyFormOverlay');
 const surveyFormIframe = document.getElementById('surveyFormIframe');
 const surveyDismissToday = document.getElementById('surveyDismissToday');
+let currentSurveyUrl = SURVEY_FORM_URL;
 
 function getMidnightTimestamp() {
   const now = new Date();
@@ -1101,11 +1125,16 @@ function closeSurveyPopup() {
   }
 }
 
-function openSurveyForm() {
-  surveyFormIframe.src = SURVEY_FORM_URL;
+function openSurveyForm(url = SURVEY_FORM_URL) {
+  currentSurveyUrl = url;
+  surveyFormIframe.src = currentSurveyUrl;
   surveyOverlay.classList.remove('open');
   surveyFormOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function openExpertSurveyForm() {
+  openSurveyForm(SURVEY_EXPERT_URL);
 }
 
 function closeSurveyForm() {
@@ -1115,7 +1144,8 @@ function closeSurveyForm() {
 }
 
 function openSurveyNewTab() {
-  window.open(SURVEY_FORM_URL_TAB, '_blank', 'noopener,noreferrer');
+  const targetUrl = currentSurveyUrl || SURVEY_FORM_URL_TAB;
+  window.open(targetUrl, '_blank', 'noopener,noreferrer');
 }
 
 /* 배경 클릭 시 닫기 */
