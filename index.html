@@ -78,6 +78,7 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 .nav-a.on     { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
 
 .nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.nav-a--mobile { display: none; }
 .btn-nav {
   padding: 7px 16px; border-radius: 999px; font-size: 13px;
   border: 1px solid #e2e8f0; background: #fff; color: #64748b; cursor: pointer;
@@ -85,30 +86,6 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 .btn-nav:hover { background: #f8fafc; }
 .btn-nav.primary { background: linear-gradient(135deg,#0ea5e9,#0369a1); color: #fff; border-color: transparent; font-weight: 500; box-shadow: 0 4px 14px rgba(2,132,199,.25); }
 .btn-nav.primary:hover { filter: brightness(1.05); }
-
-/* 햄버거 (모바일) */
-.hamburger {
-  display: none; flex-direction: column; justify-content: center; align-items: center;
-  width: 42px; height: 42px; border-radius: 8px;
-  border: 1px solid #e2e8f0; background: #fff; cursor: pointer; gap: 5px; margin-left: 8px;
-}
-.hamburger span { display: block; width: 18px; height: 2px; background: #334155; border-radius: 2px; transition: all .25s; }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.mobile-menu {
-  display: none; flex-direction: column;
-  background: #fff; border-bottom: 1px solid #e2e8f0;
-  padding: 6px 0 14px; animation: slideDown .2s ease;
-}
-@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  padding: 13px 24px; font-size: 15px; color: #334155;
-  border-left: 3px solid transparent; transition: all .15s;
-}
-.mobile-menu a:hover, .mobile-menu a.on { color: #0284c7; border-left-color: #0284c7; background: #f0f9ff; }
 
 /* ── 공지 바 ── */
 .notice { background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 9px 0; }
@@ -125,9 +102,23 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 }
 .notice-survey:hover { background: #fde68a; }
 .notice-survey:active { transform: scale(.97); }
+
+.notice-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.notice-link { display: none; }
+@media (max-width: 960px) {
+  .notice-link {
+    display: inline-flex; align-items: center;
+    font-size: 12px; font-weight: 600; color: #92400e;
+    padding: 5px 10px; border-radius: 999px;
+    background: rgba(255,255,255,.6); border: 1px solid #fbbf24;
+    white-space: nowrap;
+  }
+  .notice-link:hover { background: #fde68a; }
+}
 @media (max-width: 720px) {
   .notice .wrap { flex-wrap: wrap; }
   .notice-text { font-size: 12.5px; }
+  .notice-actions { flex-wrap: wrap; }
 }
 
 /* ── 히어로 (시안 스타일: 밝은 하늘·바다 그라데이션 배경) ── */
@@ -364,8 +355,27 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 
 /* ── 반응형 ── */
 @media (max-width: 960px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .navbar .wrap { flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 0; }
+  .nav-right { display: none; }
+  .nav-links {
+    flex: 1 0 100%; height: auto;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0; margin-top: 10px;
+  }
+  .nav-a {
+    flex: 1; justify-content: center; text-align: center;
+    padding: 12px 6px; font-size: 13px;
+    white-space: normal; line-height: 1.3;
+    position: relative;
+  }
+  .nav-a:not(:last-child)::after {
+    content: '';
+    position: absolute; right: 0; top: 22%; bottom: 22%;
+    width: 1px; background: #e2e8f0;
+  }
+  .nav-a.on { background: #fff; }
+  .nav-a--desktop { display: none; }
+  .nav-a--mobile { display: flex; }
   .hero .wrap { grid-template-columns: 1fr; }
   .hero-panel { display: none; }
   .hero { padding: 44px 0 60px; }
@@ -568,26 +578,16 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
       <a class="nav-a" href="#sec-climate"  data-sec="sec-climate">과거 변화</a>
       <a class="nav-a" href="#sec-future"   data-sec="sec-future">미래 전망</a>
       <a class="nav-a" href="#sec-edu"      data-sec="sec-edu">맞춤 정보</a>
-      <a class="nav-a" href="research.html">연구사업 안내</a>
+      <a class="nav-a nav-a--desktop" href="research.html">연구사업 안내</a>
+      <a class="nav-a nav-a--mobile" href="https://nwpoclimate.kr" target="_blank">해양기후 데이터 포털↗</a>
     </div>
 
     <div class="nav-right">
       <a class="btn-nav" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
       <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">해양기후 데이터 포털↗</a>
-      <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="메뉴 열기">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </div>
 </nav>
-
-<!-- 모바일 메뉴 -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#sec-climate"  data-sec="sec-climate">과거 변화</a>
-  <a href="#sec-future"   data-sec="sec-future">미래 전망</a>
-  <a href="#sec-edu"      data-sec="sec-edu">맞춤 정보</a>
-  <a href="research.html">연구사업 안내</a>
-</div>
 
 <!-- 공지 -->
 <div class="notice">
@@ -596,10 +596,14 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
       <svg class="ic" width="16" height="16"><use href="#i-info"/></svg>
       <span>연구사업 기반 시험 운영 사이트입니다. 해당 정보 및 콘텐츠는 검증·개선 중이오니 <strong style="margin:0 3px">참고용으로만</strong> 사용하시길 바랍니다. &nbsp;</span>
     </div>
-    <button class="notice-survey" onclick="openSurveyModal()">
-      <svg class="ic" width="14" height="14"><use href="#i-file"/></svg>
-      설문조사 참여
-    </button>
+    <div class="notice-actions">
+      <a class="notice-link" href="mailto:ocpc@kiost.ac.kr">문의하기</a>
+      <a class="notice-link" href="research.html">연구사업 안내</a>
+      <button class="notice-survey" onclick="openSurveyModal()">
+        <svg class="ic" width="14" height="14"><use href="#i-file"/></svg>
+        설문조사 참여
+      </button>
+    </div>
   </div>
 </div>
 
@@ -915,22 +919,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: flex-
 </footer>
 
 <script>
-/* ── 햄버거 ── */
-const ham = document.getElementById('hamburger');
-const mob = document.getElementById('mobileMenu');
-ham.addEventListener('click', () => {
-  const open = mob.classList.toggle('open');
-  ham.classList.toggle('open', open);
-  ham.setAttribute('aria-expanded', String(open));
-});
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 960) {
-    mob.classList.remove('open');
-    ham.classList.remove('open');
-    ham.setAttribute('aria-expanded', 'false');
-  }
-});
-
 /* ── 스무스 스크롤 ── */
 document.addEventListener('click', e => {
   const a = e.target.closest('a[href^="#"]');
@@ -939,9 +927,6 @@ document.addEventListener('click', e => {
   const target = document.getElementById(id);
   if (!target) return;
   e.preventDefault();
-  mob.classList.remove('open');
-  ham.classList.remove('open');
-  ham.setAttribute('aria-expanded', 'false');
   const navH = document.getElementById('navbar').offsetHeight;
   const top  = target.getBoundingClientRect().top + window.scrollY - navH - 12;
   window.scrollTo({ top, behavior: 'smooth' });
@@ -1049,9 +1034,9 @@ document.addEventListener('keydown', (e) => {
         <path d="M32 68 L35 71 L42 63" fill="none" stroke="#0284c7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="survey-title">서비스 개선을 위한 설문조사</div>
-      <div class="survey-desc">여러분의 의견이 더 나은 해양기후 정보<br>서비스를 만드는 데 큰 도움이 됩니다.</div>
+      <div class="survey-desc">지구과학 분야 학사 이상 또는<br>해양 기후 분야의 전문성을 지닌 분들은<br>전문가용 설문에 답해주시기 바랍니다.<br><br>여러분의 의견이 더 나은 해양기후 정보<br>서비스를 만드는 데 큰 도움이 됩니다.<br>감사합니다.</div>
       <div class="survey-actions">
-        <button class="survey-btn primary" onclick="openSurveyForm()">일반 사용자 설문조사</button>
+        <button class="survey-btn primary" onclick="openSurveyForm()">사용자 설문조사</button>
         <button class="survey-btn secondary" onclick="openExpertSurveyForm()">전문가용 설문조사</button>
       </div>
     </div>
