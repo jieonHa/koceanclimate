@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>식물플랑크톤 최대 번성 시기(월) – 한반도 해양기후 정보 서비스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-chevron-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+  <symbol id="i-arrow-wave-right-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 10h4v4"/><path d="M3 12c.887-1.284 2.48-2.033 4-2c1.52-.033 3.113.716 4 2s2.48 2.033 4 2c1.52.033 3-1 4-2l2-2"/></symbol>
+</svg>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:#f5f7fa;color:#1e293b;font-size:15px;line-height:1.8}
+a{text-decoration:underline;color:inherit}
+svg.ic{display:inline-block;vertical-align:middle;flex-shrink:0}
+
+/* ── 상단 문서 내비게이션 ── */
+.top-nav{background:#0a2540;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.06)}
+.top-nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:54px;gap:16px}
+.tn-back{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.5);padding:6px 12px;border-radius:6px;transition:all .15s;text-decoration:none}
+.tn-back:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
+.tn-title{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toc-toggle{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);cursor:pointer}
+
+.layout{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:270px 1fr;gap:0;min-height:calc(100vh - 54px)}
+
+/* ── 사이드바 TOC ── */
+.sidebar{border-right:1px solid #e2e8f0;background:#fff;position:sticky;top:54px;height:calc(100vh - 54px);overflow-y:auto;padding:20px 0;scrollbar-width:thin}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+.toc-header{padding:0 20px 14px;border-bottom:1px solid #e2e8f0;margin-bottom:10px}
+.toc-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:#0369a1;background:#e0f2fe;padding:3px 9px;border-radius:20px;margin-bottom:8px;letter-spacing:.3px}
+.toc-doc-title{font-size:14px;font-weight:700;color:#0f172a;line-height:1.45}
+.toc-group{padding:6px 0}
+.toc-ch{display:block;padding:8px 20px;font-size:12.5px;font-weight:700;color:#64748b;letter-spacing:.5px;text-transform:uppercase;border-left:2.5px solid transparent;transition:all .12s;cursor:pointer;text-decoration:none}
+.toc-ch:hover{color:#0f172a;background:#f8fafc}
+.toc-ch.active{color:#0284c7;border-left-color:#0284c7;background:#f0f9ff}
+.toc-link{display:block;padding:5px 20px 5px 28px;font-size:13px;color:#64748b;line-height:1.5;border-left:2.5px solid transparent;transition:all .12s;cursor:pointer;text-decoration:none}
+.toc-link:hover{color:#0284c7;background:#f0f9ff}
+.toc-link.active{color:#0284c7;font-weight:600;border-left-color:#0284c7;background:#f0f9ff}
+
+.main{padding:36px 48px 80px;max-width:860px}
+
+/* ── 문서 헤더 ── */
+.doc-header{margin-bottom:32px;padding-bottom:26px;border-bottom:1px solid #e2e8f0}
+.doc-sup{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:#0369a1;letter-spacing:.5px;margin-bottom:14px}
+.doc-icon{width:38px;height:38px;border-radius:10px;background:#e0f2fe;color:#0284c7;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.doc-h1{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:700;color:#0f172a;line-height:1.4;margin-bottom:14px}
+.doc-subhead{font-size:16px;font-weight:600;color:#334155;line-height:1.6}
+
+/* ── 대분류 섹션 헤더 ── */
+.ch-header{margin:48px 0 20px;padding:18px 24px;background:linear-gradient(135deg,#0c4a6e,#0a2540);border-radius:12px;color:#fff;scroll-margin-top:70px}
+.ch-title{font-family:'Noto Serif KR',serif;font-size:19px;font-weight:700}
+
+.prose{margin-bottom:20px}
+.prose p{margin-bottom:14px;color:#334155}
+.prose strong{color:#0f172a;font-weight:600}
+.prose em{color:#475569}
+
+/* ── 그림 ── */
+.fig{margin:18px 0 24px;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;background:#fff}
+.fig img{width:100%;display:block}
+.fig-caption{padding:12px 16px;font-size:12.5px;color:#64748b;background:#f8fafc;border-top:1px solid #e2e8f0;line-height:1.6}
+
+.scroll-top{position:fixed;bottom:24px;right:24px;z-index:150;width:44px;height:44px;border-radius:50%;background:#0284c7;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(2,132,199,.3);opacity:0;transform:translateY(10px);transition:all .2s;pointer-events:none}
+.scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.scroll-top:hover{background:#0369a1}
+
+.doc-footer{background:#0a2540;padding:24px 0;text-align:center;font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:1024px){
+.layout{grid-template-columns:1fr}
+.sidebar{display:none;position:fixed;left:0;top:54px;width:300px;height:calc(100vh - 54px);z-index:180;box-shadow:6px 0 30px rgba(0,0,0,.15)}
+.sidebar.open{display:block}
+.sidebar-overlay{display:none;position:fixed;inset:0;top:54px;background:rgba(0,0,0,.3);z-index:170}
+.sidebar-overlay.open{display:block}
+.toc-toggle{display:flex}
+.main{padding:24px 20px 60px}
+}
+@media(max-width:600px){
+.doc-h1{font-size:22px}
+.doc-subhead{font-size:14.5px}
+.ch-header{padding:16px 18px}
+.ch-title{font-size:16px}
+.tn-title{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <button class="toc-toggle" id="tocToggle" aria-label="목차 열기"><svg class="ic" width="20" height="20"><use href="#i-menu"/></svg></button>
+    <!--
+    <a class="tn-back" href="#"><svg class="ic" width="16" height="16"><use href="#i-chevron-l"/></svg> 돌아가기</a>
+    -->
+    <span class="tn-title">주제별 맞춤 정보 — 식물플랑크톤 최대 번성 시기(월)</span>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="toc-header">
+    <div class="toc-badge">자료 예시</div>
+    <div class="toc-doc-title">식물플랑크톤<br>최대 번성 시기(월)</div>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#bloom-satellite">번성과 위성 해색 관측</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#bloom-regional">해역별 최대 번성 시기</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#bloom-variability">번성 시기의 변동성</a>
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="doc-header">
+  <div class="doc-sup">
+    <span class="doc-icon"><svg class="ic" width="19" height="19"><use href="#i-arrow-wave-right-up"/></svg></span>
+    주제별 맞춤 정보 · 자료 예시
+  </div>
+  <h1 class="doc-h1">식물플랑크톤 최대 번성 시기(월)</h1>
+  <p class="doc-subhead">한국해양과학기술원 해양기후예측센터가 위성 해색(Ocean Color) 자료(OC-CCI, 1998~2023)로 산출한 엽록소a 농도를 바탕으로, 우리나라 주변 해역에서 식물플랑크톤이 연중 가장 왕성하게 번성하는 시기(월)를 분석한 예시 자료입니다.</p>
+</div>
+
+<!-- ══ 번성과 위성 해색 관측 ══ -->
+<div class="ch-header" id="bloom-satellite"><div class="ch-title">번성과 위성 해색 관측</div></div>
+<div class="prose">
+  <p>육상에서 계절에 따라 꽃이 피고 지듯이, 바다에 사는 식물 플랑크톤들은 햇빛과 영양염(질소, 인, 규소 등)이 풍부한 시기에 활발하게 번성한다. 인공위성에 탑재한 해색(Ocean Color) 센서를 통해 바다의 식물 플랑크톤이 가진 광합성 색소(엽록소a)의 농도를 추정할 수 있는데, 이를 통해 우리나라 주변 바다에서 일 년 중 언제 가장 왕성한 식물 플랑크톤 번성이 일어나는지 분석할 수 있다.</p>
+  <p>아래 그림은 유럽 항공우주국(ESA)과 미국 항공우주국(NASA) 등에서 발사한 위성에 탑재된 다양한 해색 센서 자료를 재분석하여 1998년부터 바다의 엽록소a 농도를 추정한 자료(OC-CCI)를 기반으로 평균적으로 연중 어느 시기에 식물플랑크톤의 최대 번성이 일어나는지를 표시한 것이다.</p>
+</div>
+
+<div class="fig">
+  <img src="image.png" alt="1년 중 식물 플랑크톤 최대 번성 시기(월)">
+  <div class="fig-caption">한국해양과학기술원 해양기후예측센터에서 OCCCI-Chl 자료(1998~2023)로 산출한 1년 중 식물 플랑크톤 최대 번성 시기(월)</div>
+</div>
+
+<!-- ══ 해역별 최대 번성 시기 ══ -->
+<div class="ch-header" id="bloom-regional"><div class="ch-title">해역별 최대 번성 시기</div></div>
+<div class="prose">
+  <p>평균적으로 따뜻한 남쪽 바다에서는 1~3월에 상대적으로 일찍 번성이 시작되는 것을 알 수 있으며, 황해와 동중국해 사이 해역과 황해를 둘러싼 북쪽 해역에서도 상대적으로 일찍 번성이 일어나는 것을 알 수 있다. 동중국해 중앙부와 황해 중앙부 및 동해의 대부분 해역에서는 4월에 식물 플랑크톤 최대 번성이 일어난다. 동해 연안역과 북동부 중앙해역에서는 이보다 한 달이 늦은 5월에 최대 번성이 일어나며, 중국의 창강(양쯔강) 하구역에서는 7월에 최대 번성이 일어남을 알 수 있다.</p>
+</div>
+
+<!-- ══ 번성 시기의 변동성과 기후변화 영향 ══ -->
+<div class="ch-header" id="bloom-variability"><div class="ch-title">번성 시기의 변동성과 기후변화 영향</div></div>
+<div class="prose">
+  <p>평균적인 최대 번성월을 위와 같이 기술할 수 있으나, 실제로 바다에서의 식물 플랑크톤 번성은 수 일 주기로 여러 번에 걸쳐 나타날 수 있으며, 수온과 구름, 바람의 작용에 의해 해마다 시기마다 매우 다르게 나타날 수 있다. 온난화로 대표되는 기후변화는 수층 간의 혼합을 억제해 깊은 곳의 영양염이 햇빛이 비치는 유광대로 쉽게 공급할 수 없게 만들어 바다에서의 일차생산이 줄어들 것으로 예측하기도 하지만, 다양한 환경 조건의 변화는 해역별로 다양한 변화를 유발할 수 있다.</p>
+</div>
+
+</main>
+</div>
+
+<button class="scroll-top" id="scrollTop" aria-label="맨 위로"><svg class="ic" width="20" height="20"><use href="#i-arrow-up"/></svg></button>
+
+<footer class="doc-footer">© KIOST 해양기후예측센터 · 한반도 주변 상세 해양기후 정보 서비스</footer>
+
+<script>
+const allTocLinks=document.querySelectorAll('.toc-link[href^="#"],.toc-ch[href^="#"]');
+const targets=[];
+allTocLinks.forEach(link=>{const id=link.getAttribute('href').slice(1);const el=document.getElementById(id);if(el)targets.push({link,el})});
+function updateToc(){let active=null;for(const{link,el}of targets){if(el.getBoundingClientRect().top<=90)active=link}allTocLinks.forEach(l=>l.classList.remove('active'));if(active)active.classList.add('active')}
+window.addEventListener('scroll',updateToc,{passive:true});updateToc();
+
+const sidebar=document.getElementById('sidebar'),overlay=document.getElementById('sidebarOverlay'),toggle=document.getElementById('tocToggle');
+function openSidebar(){sidebar.classList.add('open');overlay.classList.add('open')}
+function closeSidebar(){sidebar.classList.remove('open');overlay.classList.remove('open')}
+toggle.addEventListener('click',()=>sidebar.classList.contains('open')?closeSidebar():openSidebar());
+overlay.addEventListener('click',closeSidebar);
+sidebar.addEventListener('click',e=>{if(e.target.closest('.toc-link')||e.target.closest('.toc-ch'))closeSidebar()});
+
+const scrollBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>{scrollBtn.classList.toggle('show',window.scrollY>400)},{passive:true});
+scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
