@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMIP6 참여 전구모델 평가 – 해양기후예측센터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-chevron-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-menu"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-users"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-book"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+  <symbol id="i-image"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+</svg>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;background:#f5f7fa;color:#1e293b;font-size:15px;line-height:1.8}
+a{text-decoration:none;color:inherit}
+svg.ic{display:inline-block;vertical-align:middle;flex-shrink:0}
+
+/* ── 상단 네비바 ── */
+.top-nav{background:#1e1b4b;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.06)}
+.top-nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:54px;gap:16px}
+.tn-back{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.5);padding:6px 12px;border-radius:6px;transition:all .15s}
+.tn-back:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
+.tn-title{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tn-actions{margin-left:auto;display:flex;gap:8px}
+.tn-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:7px;font-size:12.5px;font-weight:500;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);cursor:pointer;transition:all .15s}
+.tn-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+.toc-toggle{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);cursor:pointer;flex-shrink:0}
+
+/* ── 레이아웃 ── */
+.layout{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:270px 1fr;gap:0;min-height:calc(100vh - 54px)}
+
+/* ── 사이드바 ── */
+.sidebar{border-right:1px solid #e2e8f0;background:#fff;position:sticky;top:54px;height:calc(100vh - 54px);overflow-y:auto;padding:20px 0;scrollbar-width:thin}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+.toc-header{padding:0 20px 14px;border-bottom:1px solid #e2e8f0;margin-bottom:10px}
+.toc-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:600;color:#6366f1;background:#e0e7ff;padding:3px 9px;border-radius:20px;margin-bottom:8px;letter-spacing:.3px}
+.toc-doc-title{font-size:14px;font-weight:700;color:#0f172a;line-height:1.45}
+.toc-group{padding:4px 0}
+.toc-ch{display:block;padding:8px 20px;font-size:12.5px;font-weight:700;color:#64748b;letter-spacing:.3px;border-left:2.5px solid transparent;transition:all .12s;cursor:pointer}
+.toc-ch:hover{color:#0f172a;background:#f8fafc}
+.toc-ch.active{color:#6366f1;border-left-color:#6366f1;background:#eef2ff}
+.toc-link{display:block;padding:5px 20px 5px 30px;font-size:13px;color:#64748b;line-height:1.5;border-left:2.5px solid transparent;transition:all .12s;cursor:pointer}
+.toc-link:hover{color:#6366f1;background:#eef2ff}
+.toc-link.active{color:#6366f1;font-weight:600;border-left-color:#6366f1;background:#eef2ff}
+
+/* ── 본문 ── */
+.main{padding:36px 48px 80px;max-width:860px}
+
+/* 문서 헤더 */
+.doc-header{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid #e2e8f0}
+.doc-sup{font-size:12.5px;font-weight:600;color:#6366f1;letter-spacing:.5px;margin-bottom:8px}
+.doc-h1{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:700;color:#0f172a;line-height:1.4;margin-bottom:12px}
+.doc-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:#94a3b8;margin-bottom:14px}
+.doc-meta span{display:flex;align-items:center;gap:4px}
+.doc-abstract{background:#eef2ff;border-left:4px solid #6366f1;border-radius:0 10px 10px 0;padding:16px 20px;font-size:14px;color:#312e81;line-height:1.75}
+
+/* 챕터 헤더 */
+.ch-header{margin:48px 0 24px;padding:20px 24px;background:linear-gradient(135deg,#312e81,#1e1b4b);border-radius:12px;color:#fff;scroll-margin-top:70px}
+.ch-num{font-size:12px;font-weight:600;color:#a5b4fc;letter-spacing:1px;margin-bottom:4px}
+.ch-title{font-family:'Noto Serif KR',serif;font-size:22px;font-weight:700}
+
+/* 섹션 헤더 */
+.sec-head{margin:32px 0 16px;padding-bottom:10px;border-bottom:2px solid #6366f1;scroll-margin-top:70px}
+.sec-head h3{font-size:17px;font-weight:700;color:#0f172a;display:flex;align-items:center;gap:8px}
+.sec-head h3::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}
+
+/* 서브섹션 */
+.subsec{margin:24px 0 16px;scroll-margin-top:70px}
+.subsec h4{font-size:15px;font-weight:700;color:#1e293b;padding-left:14px;border-left:3px solid #818cf8;margin-bottom:12px}
+
+/* 산문 */
+.prose{margin-bottom:20px}
+.prose p{margin-bottom:14px;color:#334155}
+.prose strong{color:#0f172a;font-weight:600}
+.prose ul{margin:10px 0 14px 20px;color:#334155}
+.prose ul li{margin-bottom:6px}
+.prose ul ul{margin:6px 0 6px 20px}
+
+/* 하이라이트 박스 */
+.highlight-box{margin:20px 0;padding:18px 22px;background:#eef2ff;border-left:4px solid #6366f1;border-radius:0 10px 10px 0;font-size:14px;color:#312e81;line-height:1.7}
+
+/* 인용 */
+.blockquote{margin:20px 0;padding:16px 20px;background:#f8fafc;border-left:4px solid #cbd5e1;border-radius:0 10px 10px 0;font-size:14px;color:#475569;font-style:italic;line-height:1.7}
+
+/* 이미지 플레이스홀더 */
+.fig{margin:22px auto 28px;width:70%;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;background:#fff}
+.fig img{width:100%;display:block;object-fit:cover}
+.fig-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;background:linear-gradient(135deg,#f8fafc 0%,#f1f5f9 50%,#e2e8f0 100%);color:#94a3b8;gap:10px;padding:30px}
+.fig-placeholder .fig-id{font-size:11px;font-weight:600;color:#6366f1;background:#e0e7ff;padding:3px 10px;border-radius:20px}
+.fig-placeholder .fig-name{font-size:13px;font-weight:500;text-align:center}
+.fig-caption{padding:10px 16px;font-size:12.5px;color:#64748b;background:#f8fafc;border-top:1px solid #e2e8f0;line-height:1.5}
+
+/* 참고자료 섹션 */
+.ref-section{margin-top:48px;padding-top:28px;border-top:2px solid #e2e8f0}
+.ref-section h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:16px}
+.ref-list{font-size:13px;color:#64748b;line-height:1.8;display:flex;flex-direction:column;gap:8px}
+.ref-item{display:flex;gap:10px;align-items:flex-start}
+.ref-item a{color:#6366f1}
+.ref-item a:hover{text-decoration:underline}
+
+/* ── 라이트박스 ── */
+.fig img{cursor:zoom-in}
+.lightbox{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:24px;animation:lbFadeIn .18s ease}
+.lightbox.open{display:flex}
+@keyframes lbFadeIn{from{opacity:0}to{opacity:1}}
+.lb-inner{position:relative;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:0}
+.lb-inner img{max-width:90vw;max-height:82vh;object-fit:contain;border-radius:6px;box-shadow:0 8px 40px rgba(0,0,0,.6);display:block}
+.lb-caption{margin-top:10px;font-size:12.5px;color:rgba(255,255,255,.55);text-align:center;max-width:600px;line-height:1.5}
+.lb-close{position:fixed;top:18px;right:22px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(255,255,255,.12);color:#fff;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;z-index:501}
+.lb-close:hover{background:rgba(255,255,255,.25)}
+
+/* 맨 위로 */
+.scroll-top{position:fixed;bottom:24px;right:24px;z-index:150;width:44px;height:44px;border-radius:50%;background:#6366f1;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(99,102,241,.35);opacity:0;transform:translateY(10px);transition:all .2s;pointer-events:none}
+.scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.scroll-top:hover{background:#4f46e5}
+
+/* 푸터 */
+.doc-footer{background:#0a2540;padding:24px 0;text-align:center;font-size:12px;color:rgba(255,255,255,.3)}
+
+/* 반응형 */
+@media(max-width:1024px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none;position:fixed;left:0;top:54px;width:300px;height:calc(100vh - 54px);z-index:180;box-shadow:6px 0 30px rgba(0,0,0,.15)}
+  .sidebar.open{display:block}
+  .sidebar-overlay{display:none;position:fixed;inset:0;top:54px;background:rgba(0,0,0,.3);z-index:170}
+  .sidebar-overlay.open{display:block}
+  .toc-toggle{display:flex}
+  .main{padding:24px 20px 60px}
+  .fig{width:100%}
+}
+@media(max-width:600px){
+  .doc-h1{font-size:22px}
+  .ch-header{padding:16px 18px}
+  .ch-title{font-size:18px}
+  .tn-title{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <button class="toc-toggle" id="tocToggle" aria-label="목차 열기">
+      <svg class="ic" width="20" height="20"><use href="#i-menu"/></svg>
+    </button>
+    <!--
+    <a class="tn-back" href="#">
+      <svg class="ic" width="16" height="16"><use href="#i-chevron-l"/></svg>
+      돌아가기
+    </a>
+    -->
+    <span class="tn-title">CMIP6 참여 전구모델 평가</span>
+  </div>
+</nav>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="toc-header">
+    <div class="toc-badge">연구 성과 요약</div>
+    <div class="toc-doc-title">CMIP6 참여 전구모델<br>평가</div>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch1-ohc">해양열함량(OHC) 평가</a>
+    <a class="toc-link" href="#ohc-horizontal">해양열함량 추세의 수평 분포</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch2-enso">CMIP6 ENSO 특성 분석 결과</a>
+    <a class="toc-link" href="#enso-mld">MLD와 ENSO 강도의 관계</a>
+    <a class="toc-link" href="#enso-d20">D20과 ENSO 강도의 관계</a>
+    <a class="toc-link" href="#enso-thermocline">적도 태평양 20℃ 등온선 경사</a>
+    <a class="toc-link" href="#enso-atmfeedback">대기 되먹임 분석</a>
+    <a class="toc-link" href="#enso-bjerknes-ts">Bjerknes feedback 시계열</a>
+    <a class="toc-link" href="#enso-slpa">SLPA–Nino3.4 회귀 분석</a>
+    <a class="toc-link" href="#enso-spectrum">Nino3.4 파워 스펙트럼</a>
+    <a class="toc-link" href="#enso-bjerknes-components">Bjerknes feedback 구성요소</a>
+    <a class="toc-link" href="#enso-thermaldamping">Thermal damping term</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch3-eval">전구 기후모델 모의 수준 평가</a>
+    <a class="toc-link" href="#eval-physical">물리량 모의수준 상호비교</a>
+    <a class="toc-link" href="#eval-trend">변동 경향 모의수준 상호비교</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch4-boundary">지역모델 경계값 선정 방법</a>
+    <a class="toc-link" href="#boundary-sensitivity">경계값의 민감도 평가</a>
+  </div>
+  <div class="toc-group">
+    <a class="toc-ch" href="#ch5-ref">참고</a>
+  </div>
+</aside>
+
+<main class="main">
+
+<div class="doc-header">
+  <div class="doc-sup">KIOST 해양기후예측센터 · CMIP6 모델 평가</div>
+  <h1 class="doc-h1">CMIP6 참여 전구모델 평가</h1>
+  <div class="doc-meta">
+    <span><svg class="ic" width="13" height="13"><use href="#i-users"/></svg> 작성: 한국해양과학기술원 해양기후예측센터</span>
+    <span><svg class="ic" width="13" height="13"><use href="#i-book"/></svg> 자료: 2023~2024년 연차(실적)보고서</span>
+  </div>
+  <div class="doc-abstract">
+    CMIP6에 참여한 전구기후모델들을 대상으로 해양열함량(OHC)의 전지구·수평 분포 재현성을 평가하고, ENSO 강도 변화와 관련된 혼합층 깊이·수온약층·대기 되먹임 특성을 분석함. 이어 물리량 및 변동 경향 측면에서 CMIP6 전구모델들의 모의 수준을 상호비교하고, 이를 바탕으로 북태평양·북서태평양 지역모델의 경계값으로 활용할 CMIP6 모델을 선정하는 방법과 그 민감도를 정리함.
+  </div>
+</div>
+
+<!-- ══ 해양열함량(OHC) 평가 ══ -->
+<div class="ch-header" id="ch1-ohc">
+  <div class="ch-num">CMIP6 참여 전구모델 평가</div>
+  <div class="ch-title">해양열함량(OHC, Ocean Heat Content) 평가</div>
+</div>
+
+<div class="prose">
+  <ul>
+    <li>수집한 CMIP6 전구모델들을 대상으로 전지구 적분한 해양열함량 변화를 평가하였음.
+      <ul>
+        <li>개별 모델들은 편차가 크며 관측과 큰 차이를 보이는 모델들도 존재(그림 1).</li>
+        <li>개별 모델들의 앙상블 평균은 관측과 유사한 모습을 보이나 여전히 해양열함량을 과소모의하고 있음.</li>
+        <li>특히 전지구 수평적분한 해양열함량 추세의 수직분포(그림 2)를 보면 상층 150 m까지는 관측에 비해 과대모의, 하층은 관측에 비해 과소모의하는 모습을 보이고 있고, 이는 전구해양기후모델들이 관측에 비해 해양의 성층을 더 강하게 모의하며 미래 예측에 있어 해양열함량이 과소모의될 수 있음을 의미.</li>
+        <li>해양열함량의 과소모의는 미래 해수면 예측에 직접적인 영향을 미칠 수 있는 요소이므로 어떤 원인으로 인해 해양열함량이 과소모의되었는지 파악하는 것이 중요함.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="fig">
+  <img src="evaluation/img01.png" alt="1980년 기준 상층 2000m 적분 전지구 해양열함량 변동 추세"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 1</span><span class=\'fig-name\'>1980년 기준 상층 2000m 적분 전지구 해양열함량 변동 추세</span></div><div class=\'fig-caption\'>1980년 기준 상층 2000m 적분 전지구 해양열함량 변동 추세, 2023 연차보고서</div>'">
+  <div class="fig-caption">1980년 기준 상층 2000m 적분 전지구 해양열함량 변동 추세, 2023 연차보고서</div>
+</div>
+
+<div class="fig">
+  <img src="evaluation/img02.png" alt="1980~2014 전지구 수평적분 해양열함량 추세의 연직 분포"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 2</span><span class=\'fig-name\'>1980~2014 전지구 수평적분 해양열함량 추세의 연직 분포</span></div><div class=\'fig-caption\'>1980~2014 전지구 수평적분 해양열함량 추세의 연직 분포</div>'">
+  <div class="fig-caption">1980~2014 전지구 수평적분 해양열함량 추세의 연직 분포</div>
+</div>
+
+<div class="sec-head" id="ohc-horizontal"><h3>해양열함량 추세의 수평 분포</h3></div>
+
+<div class="prose">
+  <ul>
+    <li>CMIP6 전구모델들 해양열함량 모의에 지역적으로 어떤 차이가 있는지 알아보기 위해 해양열함량 추세의 수평분포를 조사하였음
+      <ul>
+        <li>관측과 앙상블 평균의 해양열함량 추세를 비교했을 때 태평양과 인도양 일부 적도 부분, 태평양과 대서양의 서안경계류 지역, 그리고 남위 30도 지역에서 차이를 보임</li>
+        <li>태평양과 대서양의 서안경계류 지역은 각각 쿠로시오와 Gulf stream의 영향을 받는 지역으로 서안경계류의 큰 변동성으로 인해 모델들의 모의 성능이 저하될 수 있음</li>
+        <li>남위 30도 지역에서는 거의 모든 경도에서 차이가 나타나는 것으로 보아 남극순환류의 경로와 관련이 있을 수 있음</li>
+        <li>태평양 적도 지역은 그중에서도 가장 두드러지는 차이를 보이고 있으며 통계적으로도 유의미한 차이가 있음을 보여줌</li>
+        <li>특히 태평양 적도 지역에서 관측은 La Nina-like 패턴을 보이고 있는 앙상블 평균에서는 그러한 모습이 나타나지 않음</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="fig">
+  <img src="evaluation/img03.png" alt="해양열함량 추세 수평분포 (관측 대비 앙상블 평균)"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 3</span><span class=\'fig-name\'>해양열함량 추세 수평분포 (관측 대비 앙상블 평균)</span></div>'">
+</div>
+
+<div class="fig">
+  <img src="evaluation/img04.png" alt="CMIP6 모델들의 OHC trend 차이 (다중모델평균 - 관측)"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 4</span><span class=\'fig-name\'>CMIP6 모델들의 OHC trend 차이 (다중모델평균 - 관측)</span></div><div class=\'fig-caption\'>CMIP6 모델들의 OHC trend 차이 (다중모델평균 - 관측), 2023 연차실적보고서</div>'">
+  <div class="fig-caption">CMIP6 모델들의 OHC trend 차이 (다중모델평균 - 관측), 2023 연차실적보고서</div>
+</div>
+
+<div class="fig">
+  <img src="evaluation/img05.png" alt="CMIP6 모델(파란색)과 IAP 관측자료(빨간색)로 구한 1960~2014년 월별 해양열용량 변화"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 5</span><span class=\'fig-name\'>CMIP6 모델(파란색)과 IAP 관측자료(빨간색)로 구한 월별 해양열용량 변화</span></div><div class=\'fig-caption\'>CMIP6 모델들(파란색)과 IAP 관측자료(빨간색)으로 구한 1960~2014년 월별 해양열용량 변화. 수직적으로는 0-2,000m까지, 수평적으로는 위 그림에 나타난 영역에 대해 적분함, 2023 연차실적보고서</div>'">
+  <div class="fig-caption">CMIP6 모델들(파란색)과 IAP 관측자료(빨간색)으로 구한 1960~2014년 월별 해양열용량 변화. 수직적으로는 0-2,000m까지, 수평적으로는 위 그림에 나타난 영역에 대해 적분함, 2023 연차실적보고서</div>
+</div>
+
+<div class="fig">
+  <img src="evaluation/img06.png" alt="CMIP6 모델과 관측자료의 전지구 해양에 대해 적분한 OHC 시계열"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 6</span><span class=\'fig-name\'>CMIP6 모델과 관측자료의 전지구 해양 적분 OHC 시계열</span></div><div class=\'fig-caption\'>CMIP6 모델과 관측자료의 전지구 해양에 대해 적분한 OHC 시계열, 2023 연차실적보고서</div>'">
+  <div class="fig-caption">CMIP6 모델과 관측자료의 전지구 해양에 대해 적분한 OHC 시계열, 2023 연차실적보고서</div>
+</div>
+
+<div class="fig">
+  <img src="evaluation/img07.png" alt="관측자료(IAP)와 비교한 1960-2014기간동안 전지구 OHC 선형 변화 차이"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 7</span><span class=\'fig-name\'>관측자료(IAP) 대비 전지구 OHC 선형 변화 차이 (1960–2014)</span></div><div class=\'fig-caption\'>관측자료(IAP)와 비교한 1960-2014기간동안 전지구 OHC 선형 변화 차이, 2023 연차실적보고서</div>'">
+  <div class="fig-caption">관측자료(IAP)와 비교한 1960-2014기간동안 전지구 OHC 선형 변화 차이, 2023 연차실적보고서</div>
+</div>
+
+<!-- ══ CMIP6 ENSO 특성 분석 결과 ══ -->
+<div class="ch-header" id="ch2-enso">
+  <div class="ch-num">CMIP6 참여 전구모델 평가</div>
+  <div class="ch-title">CMIP6 ENSO 특성 분석 결과</div>
+</div>
+
+<div class="prose">
+  <p>총 16개 CMIP6 model의 historical run(1970년~2014년)과 SSP5-8.5(2070년~2100년) 동안 Nino3.4 지역과 Nino3 지역에서의 MLD와 ENSO 강도 사이 관계 분석을 수행함.</p>
+</div>
+
+<div class="subsec" id="enso-mld">
+  <h4>MLD와 ENSO 강도의 관계</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img08.png" alt="historical run과 SSP5-8.5 동안 Nino3.4·Nino3 지역에서의 MLD와 ENSO 강도 사이 관계 산포도"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 8</span><span class=\'fig-name\'>MLD와 ENSO 강도 사이 관계 산포도</span></div><div class=\'fig-caption\'>historical run(1970년-2014년)과 SSP5-8.5(2070년-2100년) 동안 Nino3.4 지역 및 Nino3 지역에서의 MLD와 ENSO 강도 사이 관계 산포도</div>'">
+  <div class="fig-caption">historical run(1970년-2014년)과 SSP5-8.5(2070년-2100년) 동안 Nino3.4 지역 및 Nino3 지역에서의 MLD와 ENSO 강도 사이 관계 산포도</div>
+</div>
+<div class="prose">
+  <p>두 지역 모두에서 미래기후에서 ENSO 강도가 증가하는 model(빨간색)은 MLD가 얕고, ENSO 강도가 감소하는 model(파란색)은 MLD가 깊음.</p>
+</div>
+
+<div class="subsec" id="enso-d20">
+  <h4>D20과 ENSO 강도의 관계</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img09.png" alt="historical run과 SSP5-8.5 동안 Nino3.4 지역에서의 D20과 ENSO 강도 사이 관계 산포도"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 9</span><span class=\'fig-name\'>D20과 ENSO 강도 사이 관계 산포도</span></div><div class=\'fig-caption\'>historical run(1970년-2014년)과 SSP5-8.5(2070년-2100년)동안 Nino3.4 지역에서의 D20과 ENSO 강도 사이 관계 산포도.</div>'">
+  <div class="fig-caption">historical run(1970년-2014년)과 SSP5-8.5(2070년-2100년)동안 Nino3.4 지역에서의 D20과 ENSO 강도 사이 관계 산포도.</div>
+</div>
+<div class="prose">
+  <ul>
+    <li>총 4개 CMIP6 model의 historical run (1970년-2014년)과 SSP 5-8.5 (2070년~2100년) 동안 Nino3.4 지역에서의 D20과 ENSO 강도 사이 관계 분석을 수행함(그림 9).</li>
+    <li>미래기후에서 ENSO 강도가 증가하는 model(빨간색)은 D20이 얕고, ENSO 강도가 감소하는 model(파란색)은 D20이 깊음.</li>
+    <li>총 4개 CMIP6 model의 historical run (1970년~2014년)과 SSP 5-8.5 (2070년~2100년) 동안 적도 태평양에서의 20℃ 등온선 분석을 수행함.</li>
+  </ul>
+</div>
+
+<div class="subsec" id="enso-thermocline">
+  <h4>적도 태평양 20℃ 등온선 경사</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img10.png" alt="적도 태평양에서의 20℃ 등온선의 x 기울기"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 10</span><span class=\'fig-name\'>적도 태평양에서의 20℃ 등온선의 x 기울기</span></div><div class=\'fig-caption\'>적도 태평양에서의 20℃ 등온선의 x 기울기</div>'">
+  <div class="fig-caption">적도 태평양에서의 20℃ 등온선의 x 기울기</div>
+</div>
+<div class="prose">
+  <ul>
+    <li>미래 기후로 갈수록 모든 CMIP6 model에서 동태평양에서의 수온약층 깊이가 깊어짐을 확인함. (a), (b)에 비하여 (c), (d)가 상대적으로 깊은 수온약층을 가지고 있으며, 미래 기후에서 동태평양의 수온약층 깊이가 깊어지는 정도도 더 크다는 것을 알 수 있음.</li>
+    <li>수온약층 두께가 두꺼워지고 있기때문에 Bjerknes feedback이 약화되는 것으로 추측됨. 이러한 기작의 차이로 인해 ENSO 강도가 달라짐에 영향을 준다는 것을 확인함.</li>
+    <li>CMIP6 model 값보다 관측값인 EN4가 수온약층 깊이가 훨씬 깊음. 하지만 미래 기후에서 ENSO 강도가 강하게 나타나는 CMIP6 model은 일부 약하게 나타나는 model에 비하여 관측값과 가깝지 않게 나타남.</li>
+    <li>이는 CMIP6가 오히려 미래 기후를 잘못 모의하고 있을 가능성을 제시함. 그러나 CMIP6 model 중 일부만 분석하였기 때문에 더 면밀한 분석이 필요함.</li>
+  </ul>
+</div>
+
+<div class="subsec" id="enso-atmfeedback">
+  <h4>대기 되먹임(Atmosphere Feedback) 분석</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img11.png" alt="CMIP 및 ScenarioMIP ENSO metrics에 대한 Atmosphere feedbacks"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 11</span><span class=\'fig-name\'>ENSO 기간 동안 Atmosphere feedbacks</span></div><div class=\'fig-caption\'>CMIP 및 ScenarioMIP 그리고 ENSO metrics에 대한 ENSO 기간 동안 Atmosphere feedbacks(검은색 점 : 관측값, 붉은색 점 : historical run, 파란색 점: SSP5-8.5)</div>'">
+  <div class="fig-caption">CMIP 및 ScenarioMIP 그리고 ENSO metrics에 대한 ENSO 기간 동안 Atmosphere feedbacks(검은색 점 : 관측값, 붉은색 점 : historical run, 파란색 점: SSP5-8.5)</div>
+</div>
+<div class="prose">
+  <ul>
+    <li>ENSO에 영향을 미치는 것으로 알려진 feedback들을 분석해본 결과, 전체 heat flux feedback이 미래기후로 갈수록 더 큰 음의 값을 가지는 것을 알 수 있음.</li>
+    <li>이에 영향이 크다고 알려진 shortwave feedback 역시 같은 방향성을 가짐.</li>
+    <li>ENSO 강도가 증가하는 model group에서는 windstress feedback이 historical run에 비해 SSP5-8.5에서 증가하고 있었으며, ENSO 강도가 감소하는 model group에서는 반대의 양상이 나타남.</li>
+  </ul>
+</div>
+
+<div class="subsec" id="enso-bjerknes-ts">
+  <h4>Bjerknes feedback 강도 시계열</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img12.png" alt="Bjerknes feedback 강도에 대한 시계열 분석"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 12</span><span class=\'fig-name\'>Bjerknes feedback 강도에 대한 시계열 분석</span></div><div class=\'fig-caption\'>Bjerknes feedback 강도에 대한 시계열 분석(i.e., All the wind response to the zonal SST gradient)</div>'">
+  <div class="fig-caption">Bjerknes feedback 강도에 대한 시계열 분석(i.e., All the wind response to the zonal SST gradient)</div>
+</div>
+<div class="prose">
+  <ul>
+    <li>Bjerknes feedback을 확인하였을 때, ENSO 강도 세기에 따른 두 model group에서 큰 차이를 보임. 미래기후에서 ENSO 강도가 증가하는 group에서는 historical run에 비해 SSP5-8.5에서 Bjerknes feedback이 증가했으며, ENSO 강도가 증가하는 group에서는 과거와 미래 기후 비교시 큰 차이를 보이지 않음.</li>
+    <li>그러나 CMIP6 model 내에서 Bjerknes feedback의 변동성이 크기 때문에 ENSO 예측에 불확실성이 생기는 것으로 파악됨.</li>
+  </ul>
+</div>
+
+<div class="subsec" id="enso-slpa">
+  <h4>SLPA–Nino3.4 회귀 분석</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img13.png" alt="Sea level pressure anomaly(SLPA)-Nino3.4 index regression map"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 13</span><span class=\'fig-name\'>SLPA-Nino3.4 index regression map</span></div><div class=\'fig-caption\'>Sea level pressure anomaly(SLPA)-Nino3.4 index regression map</div>'">
+  <div class="fig-caption">Sea level pressure anomaly(SLPA)-Nino3.4 index regression map</div>
+</div>
+<div class="prose">
+  <ul>
+    <li>미래 기후에서 ENSO 강도가 커지는 (a), (b)에서는 Aleutian Low (AL) mode가 강화되고 있는 반면, 미래 기후에서 ENSO 강도가 약해지는 (c), (d)에서는 Aleutian Low(AL) mode가 약화됨</li>
+    <li>ENSO 강도는 북태평양 SLPA의 10년 주기 기후 변화에 기인할 수 있음. ENSO 강도에 따라 구분한 model group에서는 AL mode 강도가 미래 기후에 따라 변화는 것을 확인함.</li>
+    <li>이는 북태평양의 기후 변동성에 영향을 미치는 역동적 과정에 대한 실마리를 제공함</li>
+  </ul>
+</div>
+
+<div class="subsec" id="enso-spectrum">
+  <h4>Nino3.4 지수 파워 스펙트럼 분석</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img14.png" alt="Nino 3.4 index Power spectrum analysis"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 14</span><span class=\'fig-name\'>Nino 3.4 index Power spectrum analysis</span></div><div class=\'fig-caption\'>Nino 3.4 index Power spectrum analysis</div>'">
+  <div class="fig-caption">Nino 3.4 index Power spectrum analysis</div>
+</div>
+<div class="prose">
+  <ul>
+    <li>단주기 signal은 미래 기후에서 ENSO 강도가 증가하는 (a), (b)에서 증가하는 반면, 장기 signal은 미래 기후에서 ENSO 강도가 감소하는 (c), (d)에서 증가함 (그림 14).</li>
+    <li>이와 같이 ENSO 강도와 주기성은 미래 기후에서의 ENSO 강도 변화에 따라 두 가지 측면으로 명확히 구분되어 ENSO 예측에 영향을 미친다고 볼 수 있음.</li>
+  </ul>
+</div>
+
+<div class="subsec" id="enso-bjerknes-components">
+  <h4>Bjerknes feedback 구성 요소별 분석</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img15.png" alt="Bjerknes feedback을 구성하는 feedbacks"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 15</span><span class=\'fig-name\'>Bjerknes feedback을 구성하는 feedbacks</span></div><div class=\'fig-caption\'>Bjerknes feedback을 구성하는 feedbacks (1,2: CMCC historical run, SSP5-8.5; 3,4: CNRM-ESM2.1 historical run, SSP5-8.5; 5,6 : CNRM-CM6.1 historical run, SSP5-8.5; 7,8 : KIOST-ESM historical run, SSP5-8.5; 9,10 : HadGEM3 )</div>'">
+  <div class="fig-caption">Bjerknes feedback을 구성하는 feedbacks (1,2: CMCC historical run, SSP5-8.5; 3,4: CNRM-ESM2.1 historical run, SSP5-8.5; 5,6 : CNRM-CM6.1 historical run, SSP5-8.5; 7,8 : KIOST-ESM historical run, SSP5-8.5; 9,10 : HadGEM3 )</div>
+</div>
+<div class="prose">
+  <ul>
+    <li>빨간색 점은 미래 기후에서 ENSO 강도가 강해지는 model을 뜻하고, 파란색 점은 미래 기후에서 ENSO 강도가 약해지는 model을 뜻함.</li>
+    <li>Bjerknes feedback을 구성하는 positive feedback 3가지를 ENSO 강도에 따라 분류되는 model group에서 historical run과 SSP5-8.5에서 분석함. Zonal advection feedback 및 Ekman feedback은 CMIP6 model에서 과거와 미래 기후 사이 차이가 거의 없음을 알 수 있음. Thermocline feedback은 model마다 큰 차이를 보이는 것을 확인함.</li>
+  </ul>
+</div>
+
+<div class="subsec" id="enso-thermaldamping">
+  <h4>Thermal damping term 분석</h4>
+</div>
+<div class="fig">
+  <img src="evaluation/img16.png" alt="thermal damping term"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 16</span><span class=\'fig-name\'>thermal damping term</span></div><div class=\'fig-caption\'>thermal damping term(1,2: CMCC historical run, SSP5-8.5; 3,4: CNRM-ESM2.1 historical run, SSP5-8.5; 5,6 : CNRM-CM6.1 historical run, SSP5-8.5; 7,8 : KIOST-ESM historical run, SSP5-8.5; 9,10 : HadGEM3 )</div>'">
+  <div class="fig-caption">thermal damping term(1,2: CMCC historical run, SSP5-8.5; 3,4: CNRM-ESM2.1 historical run, SSP5-8.5; 5,6 : CNRM-CM6.1 historical run, SSP5-8.5; 7,8 : KIOST-ESM historical run, SSP5-8.5; 9,10 : HadGEM3 )</div>
+</div>
+<div class="prose">
+  <ul>
+    <li>빨간색 점은 미래 기후에서 ENSO 강도가 증가하는 model을 의미하고, 파란색 점은 미래 기후에서 ENSO 강도가 감소하는 model을 의미함.</li>
+    <li>Bjerknes feedback을 구성하는 negative damping term 중 가장 크게 영향을 준다고 알려진 thermal damping을 분석함. 과거에서 미래 기후로 갈수록 thermal damping term이 크게 감소하는 것으로 나타남.</li>
+    <li>이는 Bjerknes feedback의 약화와 관련이 있음.</li>
+  </ul>
+</div>
+
+<!-- ══ 전구 기후모델 모의 수준 평가 ══ -->
+<div class="ch-header" id="ch3-eval">
+  <div class="ch-num">CMIP6 참여 전구모델 평가</div>
+  <div class="ch-title">CMIP6 전구 기후모델의 모의 수준 평가 및 지역모델 경계값 산정</div>
+</div>
+
+<div class="sec-head" id="eval-physical"><h3>물리량에 대한 CMIP6 전구기후모델들의 모의수준 상호비교</h3></div>
+<div class="prose">
+  <ul>
+    <li>RMSD와 TSS 평가측도와 이들의 각 중앙값들을 활용하여 북태평양과 북서태평양 지역에서의 CMIP6 모델들이 모의한 해양(수온, 열용량) 및 대기 변수들(기온, 강수, 10m 바람 등)의 상대적인 모의수준을 비교함</li>
+    <li>전반적으로 CNRM과 EC-Earth 계열의 모델들이 상대적으로 우수한 성능을 보임.</li>
+  </ul>
+</div>
+<div class="fig">
+  <img src="evaluation/img17.png" alt="RMSD를 활용한 17개의 CMIP6 전구기후모델들의 모의수준 상호비교"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 17</span><span class=\'fig-name\'>RMSD를 활용한 17개 CMIP6 전구기후모델의 모의수준 상호비교</span></div><div class=\'fig-caption\'>RMSD를 활용한 17개의 CMIP6 전구기후모델들의 모의수준 상호비교. 파란색 칼라일수록 좋은 성능을 나타나는 것을 의미함.</div>'">
+  <div class="fig-caption">RMSD를 활용한 17개의 CMIP6 전구기후모델들의 모의수준 상호비교. 파란색 칼라일수록 좋은 성능을 나타나는 것을 의미함.</div>
+</div>
+<div class="fig">
+  <img src="evaluation/img18.png" alt="RMSD와 TSS 평가측도를 조합한 성능 비교"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 18</span><span class=\'fig-name\'>RMSD와 TSS 평가측도를 조합한 성능 비교</span></div><div class=\'fig-caption\'>RMSD와 TSS 평가측도를 조합한 성능 비교 - 표식들이 우측상단으로 가까울수록 좋은 성능을 나타내는 것을 의미함.</div>'">
+  <div class="fig-caption">RMSD와 TSS 평가측도를 조합한 성능 비교 - 표식들이 우측상단으로 가까울수록 좋은 성능을 나타내는 것을 의미함.</div>
+</div>
+
+<div class="sec-head" id="eval-trend"><h3>변동 경향에 대한 CMIP6 전구기후모델들의 모의 수준 상호 비교</h3></div>
+<div class="prose">
+  <ul>
+    <li>북태평양 및 북서 태평양에서의 해면 2m 기온, 수온, 그리고 해양열용량의 36년간 (1979~2014)의 시계열 분석을 수행함. 전반적으로 CMIP6 앙상블 (짙은 보라색선)은 관측(짙은 검은색 선)에서 나타나는 warming trend를 현실적으로 재현함. 그러나 상대적으로 관측보다 약 1.5~2배 정도 더 강한 warming trend를 모의함 (북태평양에서의 해양열용량 제외).</li>
+    <li>상대적으로 북태평양보다 북서태평양에서 모델 간의 스프레드가 더 크게 나타나며, 특히 해양 열용량에서 더 큰 차이가 나타남.</li>
+    <li>전반적으로 MRI-ESM2-0과 MPI-ESM-2-HR 모델이 관측에서 나타나는 warming trend와 더 유사한 warming trend를 모의함</li>
+  </ul>
+</div>
+<div class="fig">
+  <img src="evaluation/img19.png" alt="북태평양과 북서 태평양에서의 해면 2m 기온, 수온, 그리고 해양열용량의 시계열"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 19</span><span class=\'fig-name\'>북태평양·북서태평양 해면 2m 기온·수온·해양열용량 시계열</span></div><div class=\'fig-caption\'>북태평양과 북서 태평양에서의 해면 2m 기온, 수온, 그리고 해양열용량의 시계열</div>'">
+  <div class="fig-caption">북태평양과 북서 태평양에서의 해면 2m 기온, 수온, 그리고 해양열용량의 시계열</div>
+</div>
+<div class="fig">
+  <img src="evaluation/img20.png" alt="관측대비 각 모델들의 변동 경향에 대한 상대오차"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 20</span><span class=\'fig-name\'>관측 대비 변동 경향 상대오차</span></div><div class=\'fig-caption\'>북태평양과 북서 태평양에서의 해면 2m 기온, 수온, 그리고 해양열용량의 관측대비 각 모델들의 변동 경향에 대한 상대오차. 상대오차에서 파란색은 관측보다 warming이 더 적은 것을 의미함.</div>'">
+  <div class="fig-caption">북태평양과 북서 태평양에서의 해면 2m 기온, 수온, 그리고 해양열용량의 관측대비 각 모델들의 변동 경향에 대한 상대오차. 상대오차에서 파란색은 관측보다 warming이 더 적은 것을 의미함.</div>
+</div>
+
+<!-- ══ 지역모델 경계값 선정 방법 ══ -->
+<div class="ch-header" id="ch4-boundary">
+  <div class="ch-num">CMIP6 참여 전구모델 평가</div>
+  <div class="ch-title">지역모델 경계값 선정 방법</div>
+</div>
+
+<div class="prose">
+  <p>북태평양 및 북서 태평양 지역에서의 지역모델 경계값을 선정하기 위해 1차적으로 Min-Max 정규화 기법을 이용하여 CMIP6 모델들의 해양 및 대기변수들의 각 RMSD와 TSS 값을 0~1사이의 값으로 정규화를 시킴. 이후 각 변수들에 대해 동일한 가중치를 적용하여 계산된 성능지수(Performance Score: PS)를 바탕으로 북태평양 및 북서태평양에서 각 CMIP6 모델들의 순위를 정량화함. 이때, PS 값은 0~100 사이의 값을 가지며 100에 가까울수록 우수한 성능을 의미함.</p>
+</div>
+<div class="fig">
+  <img src="evaluation/img21.png" alt="성능지수(PS) 산정 방법"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 21</span><span class=\'fig-name\'>성능지수(PS) 산정 방법</span></div>'">
+</div>
+
+<div class="prose">
+  <ul>
+    <li>다양한 기후변화 시나리오의 산출과 앙상블 및 스프레드 분석를 통한 산출 정보의 신뢰성을 확보하기 위해서는 최대한 독립적인 조건에서 생산된 CMIP6 모델들의 모의자료를 지역해양모델의 경계자료로 활용할 필요가 있음.</li>
+    <li>따라서, 만일 동일 계열의 모델이 연속해서 좋은 순위로 배정이 될 경우 차순위로 좋은 다른 계열의 모델을 최종 경계값으로 선정하는 것을 고려 중에 있음. 현재 고려 중인 모델들은 굵게 표시함</li>
+  </ul>
+</div>
+<div class="fig">
+  <img src="evaluation/img22.png" alt="CMIP6 모델 성능지수 순위표"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 22</span><span class=\'fig-name\'>CMIP6 모델 성능지수(PS) 순위표</span></div>'">
+</div>
+
+<div class="sec-head" id="boundary-sensitivity"><h3>지역모델 경계값의 민감도 평가</h3></div>
+<div class="prose">
+  <ul>
+    <li>성능지수(Performance Score: PS)를 계산하는데 이용되는 변수들의 차이에 따른 CMIP6 모델들의 모의수준에 대한 민감도 평가를 수행함</li>
+    <li>예로, CMCC 계열의 모델들은 온도와 관련된 변수들만을 활용하여 성능지수를 계산할 경우 가장 우수한 모의수준을 보이지만, 바람 또는 강수와 같은 다른 변수들을 추가적으로 고려하게 되면 모의수준이 급격히 낮아짐</li>
+    <li>전반적으로, EC-Earth3 계열의 모델들이 상대적으로 민감도가 적고 높은 성능지수를 보임.</li>
+    <li>북태평양의 경우, EC-Earth3-Veg과 UKESM1-0-LL 모델이 PS 계산시 이용되는 변수들에 대한 민감도가 적고 비교적 높은 수준의 PS 점수를 보여 이 지역에 대한 지역해양모델의 경계값으로 활용가능할 것으로 판단됨.</li>
+    <li>북서태평양의 경우, MRI-ESM2-0와 EC-Earth3-Veg 모델이 상대적으로 민감도가 적고 비교적 우수한 PS 점수를 보이기 때문에 이 지역에 대한 지역해양모델의 경계값으로 활용가능 할 것으로 판단됨.</li>
+  </ul>
+</div>
+<div class="fig">
+  <img src="evaluation/img23.png" alt="성능지수 계산에 이용되는 변수들에 따른 CMIP6 모델들의 모의수준에 대한 민감도 평가"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 23</span><span class=\'fig-name\'>PS 계산 변수 조합에 따른 민감도 평가</span></div><div class=\'fig-caption\'>성능지수 계산에 이용되는 변수들에 따른 CMIP6 모델들의 모의수준에 대한 민감도 평가</div>'">
+  <div class="fig-caption">성능지수 계산에 이용되는 변수들에 따른 CMIP6 모델들의 모의수준에 대한 민감도 평가</div>
+</div>
+<div class="fig">
+  <img src="evaluation/img24.png" alt="지역모델 경계값 민감도 평가 결과 (2024 보고서)"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 24</span><span class=\'fig-name\'>지역모델 경계값 민감도 평가 결과</span></div><div class=\'fig-caption\'>2024 보고서</div>'">
+  <div class="fig-caption">2024 보고서</div>
+</div>
+
+<!-- ══ 참고 ══ -->
+<div class="ch-header" id="ch5-ref">
+  <div class="ch-num">CMIP6 참여 전구모델 평가</div>
+  <div class="ch-title">참고</div>
+</div>
+
+<div class="fig">
+  <img src="evaluation/img25.png" alt="CMIP6 참여 전구 모델 목록"
+       onerror="this.parentElement.innerHTML='<div class=\'fig-placeholder\'><svg class=\'ic\' width=\'32\' height=\'32\'><use href=\'#i-image\'/></svg><span class=\'fig-id\'>그림 25</span><span class=\'fig-name\'>CMIP6 참여 전구 모델 목록</span></div><div class=\'fig-caption\'>CMIP6 참여 전구 모델, 2023 연차실적보고서</div>'">
+  <div class="fig-caption">CMIP6 참여 전구 모델, 2023 연차실적보고서</div>
+</div>
+
+<div class="prose">
+  <ul>
+    <li><strong>모형 재분석 자료 기반 통계</strong>
+      <ul>
+        <li>한반도 해역 상세 재현 시나리오</li>
+        <li>GlorysfreeBio</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="ref-section">
+  <h3>자료 출처</h3>
+  <div class="ref-list">
+    <div class="ref-item">해양기후예측센터 2023년 연차실적보고서 — 해양열함량(OHC) 평가, 해양열함량 추세의 수평 분포, CMIP6 ENSO 특성 분석</div>
+    <div class="ref-item">해양기후예측센터 2024년 보고서 — CMIP6 전구 기후모델 모의수준 평가 및 지역모델 경계값 산정</div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<button class="scroll-top" id="scrollTop" aria-label="맨 위로">
+  <svg class="ic" width="20" height="20"><use href="#i-arrow-up"/></svg>
+</button>
+
+<footer class="doc-footer">© KIOST 해양기후예측센터 · 자료: 2023~2024년 연차(실적)보고서 · 연구사업 기반 시험 운영 자료</footer>
+
+<!-- 라이트박스 -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기">
+  <button class="lb-close" id="lbClose" aria-label="닫기">✕</button>
+  <div class="lb-inner">
+    <img id="lbImg" src="" alt="">
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<script>
+/* ── 라이트박스 ── */
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lbImg');
+const lbCaption = document.getElementById('lbCaption');
+const lbClose   = document.getElementById('lbClose');
+
+function openLb(src, caption) {
+  lbImg.src = src;
+  lbCaption.textContent = caption;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  lbImg.src = '';
+}
+
+document.querySelectorAll('.fig img').forEach(img => {
+  img.addEventListener('click', () => {
+    const caption = img.closest('.fig')?.querySelector('.fig-caption')?.textContent || '';
+    openLb(img.src, caption);
+  });
+});
+
+lbClose.addEventListener('click', closeLb);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+/* ── 목차 스크롤 스파이 ── */
+const allLinks = document.querySelectorAll('.toc-link[href^="#"], .toc-ch[href^="#"]');
+const targets = [];
+allLinks.forEach(link => {
+  const id = link.getAttribute('href').slice(1);
+  const el = document.getElementById(id);
+  if (el) targets.push({ link, el });
+});
+function updateToc() {
+  let active = null;
+  for (const { link, el } of targets) {
+    if (el.getBoundingClientRect().top <= 80) active = link;
+  }
+  allLinks.forEach(l => l.classList.remove('active'));
+  if (active) active.classList.add('active');
+}
+window.addEventListener('scroll', updateToc, { passive: true });
+updateToc();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const toggle  = document.getElementById('tocToggle');
+const openSidebar  = () => { sidebar.classList.add('open');  overlay.classList.add('open');  };
+const closeSidebar = () => { sidebar.classList.remove('open'); overlay.classList.remove('open'); };
+toggle.addEventListener('click', () => sidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+overlay.addEventListener('click', closeSidebar);
+sidebar.addEventListener('click', e => { if (e.target.closest('.toc-link') || e.target.closest('.toc-ch')) closeSidebar(); });
+
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 400); }, { passive: true });
+scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
