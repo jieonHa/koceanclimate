@@ -25,6 +25,12 @@ a{text-decoration:none;color:inherit}
 svg.ic{display:inline-block;vertical-align:middle;flex-shrink:0}
 
 .top-nav{background:#0a2540;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.06)}
+.notice-bar{background:#fffbeb;border-bottom:1px solid #fde68a;color:#92400e;position:relative;z-index:190}
+.notice-bar-inner{max-width:1400px;margin:0 auto;padding:10px 48px 10px 24px;display:flex;align-items:center;gap:9px;font-size:13px;line-height:1.55}
+.notice-bar-inner svg{flex-shrink:0;color:#d97706}
+.notice-bar-close{position:absolute;top:50%;right:16px;transform:translateY(-50%);width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:6px;color:#b45309;cursor:pointer;background:transparent;border:none}
+.notice-bar-close:hover{background:rgba(180,83,9,.1)}
+.notice-bar.hidden{display:none}
 .top-nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:54px;gap:16px}
 .tn-back{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.5);padding:6px 12px;border-radius:6px;transition:all .15s}
 .tn-back:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
@@ -131,6 +137,14 @@ svg.ic{display:inline-block;vertical-align:middle;flex-shrink:0}
   </div>
 </nav>
 
+<div class="notice-bar" id="noticeBar">
+  <div class="notice-bar-inner">
+    <svg class="ic" width="16" height="16"><use href="#i-alert"/></svg>
+    <span>🚧 이 가이드라인은 현재 보완 중입니다. 내용이 변경될 수 있는 점 양해 부탁드립니다.</span>
+    <button class="notice-bar-close" id="noticeClose" aria-label="공지 닫기"><svg class="ic" width="14" height="14"><use href="#i-x"/></svg></button>
+  </div>
+</div>
+  
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <div class="layout">
