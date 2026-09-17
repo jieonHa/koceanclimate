@@ -1084,10 +1084,6 @@ document.addEventListener('keydown', (e) => {
         댓글 바다
       </div>
       <div class="form-head-actions">
-        <button class="form-newtab" onclick="openFeedbackNewTab()">
-          <svg class="ic" width="13" height="13"><use href="#i-external"/></svg>
-          <span>새 창에서 열기</span>
-        </button>
         <button class="survey-close" onclick="closeFeedbackModal()" aria-label="닫기">✕</button>
       </div>
     </div>
@@ -1196,9 +1192,6 @@ function closeFeedbackModal() {
   }
 }
 
-function openFeedbackNewTab() {
-  window.open(FEEDBACK_URL, '_blank', 'noopener,noreferrer');
-}
 
 feedbackFormOverlay.addEventListener('click', (e) => {
   if (e.target === feedbackFormOverlay) closeFeedbackModal();
