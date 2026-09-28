@@ -190,12 +190,40 @@ svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 .outcome-section h3 { font-size:15px; font-weight:700; color:#0f172a; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
 .outcome-section h3 svg { color:#0284c7; }
 
-.paper-list { display:flex; flex-direction:column; gap:12px; }
-.paper-item { display:flex; gap:14px; padding:14px 16px; border-radius:10px; border:1px solid #f1f5f9; background:#fafbfd; }
+.paper-list { display:flex; flex-direction:column; gap:10px; }
+
+.paper-year-heading {
+  font-size: 13px; font-weight: 700; color: #475569;
+  margin: 18px 0 2px; padding-left: 2px;
+  display: flex; align-items: baseline; gap: 6px;
+}
+.paper-year-heading:first-child { margin-top: 0; }
+.paper-year-count { font-size: 11.5px; font-weight: 500; color: #94a3b8; }
+
+.paper-item {
+  display:flex; gap:14px; padding:14px 16px; border-radius:10px;
+  border:1px solid #f1f5f9; background:#fafbfd;
+  text-decoration: none; color: inherit; cursor: pointer;
+  transition: all .15s;
+}
+.paper-item:hover { box-shadow: 0 3px 10px rgba(15,23,42,.08); transform: translateY(-1px); }
 .paper-num  { font-size:12px; font-weight:700; color:#0284c7; background:#e0f2fe; border-radius:6px; padding:3px 10px; height:fit-content; flex-shrink:0; margin-top:1px; white-space:nowrap; }
-.paper-body {}
+.paper-body { min-width: 0; }
 .paper-title { font-size:13.5px; font-weight:600; color:#0f172a; margin-bottom:4px; line-height:1.45; }
-.paper-meta  { font-size:12px; color:#64748b; }
+.paper-meta  { font-size:12px; color:#64748b; line-height:1.5; }
+.paper-meta em { font-style: italic; }
+
+.paper-item.y2022 { background:#f0fdfa; border-color:#99f6e4; }
+.paper-item.y2022 .paper-num { background:#ccfbf1; color:#0f766e; }
+.paper-item.y2023 { background:#f0f9ff; border-color:#bae6fd; }
+.paper-item.y2023 .paper-num { background:#e0f2fe; color:#0369a1; }
+.paper-item.y2024 { background:#f0fdf4; border-color:#bbf7d0; }
+.paper-item.y2024 .paper-num { background:#dcfce7; color:#15803d; }
+.paper-item.y2025 { background:#fff7ed; border-color:#fed7aa; }
+.paper-item.y2025 .paper-num { background:#ffedd5; color:#c2410c; }
+.paper-item.y2026 { background:#faf5ff; border-color:#ddd6fe; }
+.paper-item.y2026 .paper-num { background:#ede9fe; color:#6d28d9; }
+
 .paper-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:32px; background:#f8fafc; border-radius:10px; border:1.5px dashed #cbd5e1; color:#94a3b8; font-size:13px; text-align:center; }
 
 .milestone-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
@@ -660,11 +688,256 @@ footer .wrap { display:flex; justify-content:space-between; align-items:flex-sta
       <div class="outcome-section">
         <h3><svg class="ic" width="16" height="16"><use href="#i-file-text"/></svg> SCIE 게재 논문</h3>
         <div class="paper-list">
-          <div class="paper-placeholder">
-            <svg class="ic" width="30" height="30"><use href="#i-file-text"/></svg>
-            논문 목록을 제공해 주시면 여기에 표시됩니다.<br>
-            <span style="font-size:12px">(제목·저자·저널명·연도·DOI)</span>
-          </div>
+          <div class="paper-year-heading">2022년 <span class="paper-year-count">· 2편</span></div>
+          <a class="paper-item y2022" href="https://doi.org/10.1016/j.ecss.2022.107987" target="_blank" rel="noopener">
+            <div class="paper-num">01</div>
+            <div class="paper-body">
+              <div class="paper-title">Modeling surface low-salinity pools formed by heavy precipitation in the Yellow Sea</div>
+              <div class="paper-meta">Young-Joo Jung, Choi, B.J., Kwon, K., Lee, S.H. <em>Estuarine, Coastal and Shelf Science</em> 275, 107987 (2022). DOI: 10.1016/j.ecss.2022.107987</div>
+            </div>
+          </a>
+          <a class="paper-item y2022" href="https://doi.org/10.3389/fmars.2022.1061189" target="_blank" rel="noopener">
+            <div class="paper-num">02</div>
+            <div class="paper-body">
+              <div class="paper-title">Impact of Dynamic Factors on the Exchange Flow between Two Neighboring Bays with Contrasting Topography during Summer: A Numerical Study</div>
+              <div class="paper-meta">Myeong-Taek Kwak, Cho, Y.K. <em>Frontiers in Marine Science</em> 9, 1061189 (2022). DOI: 10.3389/fmars.2022.1061189</div>
+            </div>
+          </a>
+          <div class="paper-year-heading">2023년 <span class="paper-year-count">· 8편</span></div>
+          <a class="paper-item y2023" href="https://doi.org/10.3389/fmars.2023.1118969" target="_blank" rel="noopener">
+            <div class="paper-num">03</div>
+            <div class="paper-body">
+              <div class="paper-title">The local stratification preconditions the marine heatwaves in the Yellow Sea</div>
+              <div class="paper-meta">Dong Eun Lee, Lee, E.Y., Park, Y.G., Kang, H., Ba, H. <em>Frontiers in Marine Science</em> 10, 1118969 (2023). DOI: 10.3389/fmars.2023.1118969</div>
+            </div>
+          </a>
+          <a class="paper-item y2023" href="https://doi.org/10.1029/2022JC018795" target="_blank" rel="noopener">
+            <div class="paper-num">04</div>
+            <div class="paper-body">
+              <div class="paper-title">Effects of Surface Heating on Coastal Upwelling Intensity</div>
+              <div class="paper-meta">Jihun Jung, Cho, Y.K. <em>Journal of Geophysical Research: Oceans</em> 128, e2022JC018795 (2023). DOI: 10.1029/2022JC018795</div>
+            </div>
+          </a>
+          <a class="paper-item y2023" href="https://doi.org/10.3389/fmars.2023.1104786" target="_blank" rel="noopener">
+            <div class="paper-num">05</div>
+            <div class="paper-body">
+              <div class="paper-title">Subsurface dispersion path and travel time of radiocesium from Fukushima by Mode Water</div>
+              <div class="paper-meta">Seung-Tae Lee, Jung, J., Kim, G., Tak, Y.J., Cho, Y.K. <em>Frontiers in Marine Science</em> 10, 1104786 (2023). DOI: 10.3389/fmars.2023.1104786</div>
+            </div>
+          </a>
+          <a class="paper-item y2023" href="https://doi.org/10.1007/s13143-023-00320-w" target="_blank" rel="noopener">
+            <div class="paper-num">06</div>
+            <div class="paper-body">
+              <div class="paper-title">Quantification of the performance of CMIP6 models for dynamic downscaling in the North Pacific and Northwest Pacific oceans</div>
+              <div class="paper-meta">Seok-Geun Oh, Kim, B.G., Cho, Y.K., Son, S.W. <em>Asia-Pacific Journal of Atmospheric Sciences</em> 59, 367 (2023). DOI: 10.1007/s13143-023-00320-w</div>
+            </div>
+          </a>
+          <a class="paper-item y2023" href="https://doi.org/10.3389/fmars.2023.1150305" target="_blank" rel="noopener">
+            <div class="paper-num">07</div>
+            <div class="paper-body">
+              <div class="paper-title">Overcoming tide-related challenges to successful regional and coastal ocean modeling</div>
+              <div class="paper-meta">Do-Seong Byun, Choi, B.J., Hart, D.E. <em>Frontiers in Marine Science</em> 10, 1150305 (2023). DOI: 10.3389/fmars.2023.1150305</div>
+            </div>
+          </a>
+          <a class="paper-item y2023" href="https://doi.org/10.3389/fmars.2023.1181650" target="_blank" rel="noopener">
+            <div class="paper-num">08</div>
+            <div class="paper-body">
+              <div class="paper-title">Potential impact of the sea-ice ecosystem to the polar seas biogeochemistry</div>
+              <div class="paper-meta">Young Shin Kwon, Rhee, T.S., Bolding, K. <em>Frontiers in Marine Science</em> 10, 1181650 (2023). DOI: 10.3389/fmars.2023.1181650</div>
+            </div>
+          </a>
+          <a class="paper-item y2023" href="https://doi.org/10.1016/j.atmosres.2023.106903" target="_blank" rel="noopener">
+            <div class="paper-num">09</div>
+            <div class="paper-body">
+              <div class="paper-title">The role of the Kuroshio Current on the diurnal cycle of Meiyu-Baiu rainband in mid-June</div>
+              <div class="paper-meta">Hyung-Ju Park, Kim, K.Y., Na, H. <em>Atmospheric Research</em> 293, 106903 (2023). DOI: 10.1016/j.atmosres.2023.106903</div>
+            </div>
+          </a>
+          <a class="paper-item y2023" href="https://doi.org/10.1088/1748-9326/acf729" target="_blank" rel="noopener">
+            <div class="paper-num">10</div>
+            <div class="paper-body">
+              <div class="paper-title">Effects of stepwise tidal flat reclamation on tidal evolution in the East China and Yellow Sea</div>
+              <div class="paper-meta">Byoung-Jun Lim, Chang, Y.S., Cho, Y.K. <em>Environmental Research Letters</em> 18, 104041 (2023). DOI: 10.1088/1748-9326/acf729</div>
+            </div>
+          </a>
+          <div class="paper-year-heading">2024년 <span class="paper-year-count">· 10편</span></div>
+          <a class="paper-item y2024" href="https://doi.org/10.1175/JTECH-D-23-0062.1" target="_blank" rel="noopener">
+            <div class="paper-num">11</div>
+            <div class="paper-body">
+              <div class="paper-title">Regional Comparison of Performance between EnKF and EnOI in the North Pacific</div>
+              <div class="paper-meta">Seung-Tae Lee, Cho, Y.K., Jung, J., Choi, B.J., Kim, Y.H., Kim, S. <em>Journal of Atmospheric and Oceanic Technology</em> 41, 113 (2024). DOI: 10.1175/JTECH-D-23-0062.1</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.1038/s41598-024-55328-7" target="_blank" rel="noopener">
+            <div class="paper-num">12</div>
+            <div class="paper-body">
+              <div class="paper-title">Surface and subsurface dispersal of radioactive materials from Fukushima by subpolar gyre and intermediate waters in the North Pacific.</div>
+              <div class="paper-meta">Seung-Tae Lee, Cho, Y.K., Jung, J., Chae, S. <em>Scientific Reports</em> 14, 5055 (2024). DOI: 10.1038/s41598-024-55328-7</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.1175/JPO-D-23-0030.1" target="_blank" rel="noopener">
+            <div class="paper-num">13</div>
+            <div class="paper-body">
+              <div class="paper-title">Intrinsic Low-Frequency Variability in  the Upper-Layer Circulation of  the East  Sea (Sea of Japan)</div>
+              <div class="paper-meta">Daehyuk Kim, Shin, H.R., Kim, C.H., Kim, J., Hirose, N. <em>Journal of Physical Oceanography</em> 54, 697 (2024). DOI: 10.1175/JPO-D-23-0030.1</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.1088/2515-7620/ad3267" target="_blank" rel="noopener">
+            <div class="paper-num">14</div>
+            <div class="paper-body">
+              <div class="paper-title">Severe reduction in spawning days and larval abundance of walleye pollock under future warming in the western East/Japan Sea</div>
+              <div class="paper-meta">Yong-Yub Kim, Lee, S.T., Kim, B.G., Cho, Y.K., Lee, C.I., Kim, S., Tak, Y.J. <em>Environmental Research Communications</em> 6, 031006 (2024). DOI: 10.1088/2515-7620/ad3267</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.1029/2024EF004420" target="_blank" rel="noopener">
+            <div class="paper-num">15</div>
+            <div class="paper-body">
+              <div class="paper-title">Significant reduction of potential exposure to extreme marine heatwaves by achieving carbon neutrality</div>
+              <div class="paper-meta">Seok-Geun Oh, Son, S.W., Jeong, S., Cho, Y.K. <em>Earth&#x27;s Future</em> 12, e2024EF004420 (2024). DOI: 10.1029/2024EF004420</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.1016/j.csr.2024.105226" target="_blank" rel="noopener">
+            <div class="paper-num">16</div>
+            <div class="paper-body">
+              <div class="paper-title">Influence of warm surface water originating from the East China Sea on surface water temperature off the south coast of Korea in summer</div>
+              <div class="paper-meta">Jong-Kyu Kim, Choi, B.J. <em>Continental Shelf Research</em> 276, 105226 (2024). DOI: 10.1016/j.csr.2024.105226</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.1007/s10236-024-01615-w" target="_blank" rel="noopener">
+            <div class="paper-num">17</div>
+            <div class="paper-body">
+              <div class="paper-title">Effects of open boundary bias correction and data assimilation in a regional ocean circulation model for the East Sea</div>
+              <div class="paper-meta">Jae-Sung Choi, Kwon, K., Choi, B.J. <em>Ocean Dynamics</em> 74, 495 (2024). DOI: 10.1007/s10236-024-01615-w</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.3389/fmars.2024.1383997" target="_blank" rel="noopener">
+            <div class="paper-num">18</div>
+            <div class="paper-body">
+              <div class="paper-title">Applications of the Fourier Neural Operator in a regional ocean modeling and prediction</div>
+              <div class="paper-meta">Byoung-Ju Choi, Jin, H.S., Lkhagvasuren, B. <em>Frontiers in Marine Science</em> 11, 1383997 (2024). DOI: 10.3389/fmars.2024.1383997</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.1007/s12601-024-00176-9" target="_blank" rel="noopener">
+            <div class="paper-num">19</div>
+            <div class="paper-body">
+              <div class="paper-title">Observation of the West Korea Coastal Current in the eastern  Yellow Sea during summer</div>
+              <div class="paper-meta">Jae Yeob Kim, Choi, B.J., Lee, S.H., Jeong, O. <em>Ocean Science Journal</em> 59, 51 (2024). DOI: 10.1007/s12601-024-00176-9</div>
+            </div>
+          </a>
+          <a class="paper-item y2024" href="https://doi.org/10.1016/j.pocean.2024.103359" target="_blank" rel="noopener">
+            <div class="paper-num">20</div>
+            <div class="paper-body">
+              <div class="paper-title">Assessment of high-resolution regional ocean reanalysis K-ORA22 for the Northwest Pacific</div>
+              <div class="paper-meta">Inseong Chang, Kim, Y.H., Park, Y.G., Jin, H., Pak, G., Kwon, J.I., Chang, Y.S. <em>Progress in Oceanography</em> 229, 103359 (2024). DOI: 10.1016/j.pocean.2024.103359</div>
+            </div>
+          </a>
+          <div class="paper-year-heading">2025년 <span class="paper-year-count">· 7편</span></div>
+          <a class="paper-item y2025" href="https://doi.org/10.1016/j.ecss.2025.109209" target="_blank" rel="noopener">
+            <div class="paper-num">21</div>
+            <div class="paper-body">
+              <div class="paper-title">Projected thermal stress and regional vulnerability of Manila clam production in Korean waters under climate change scenarios</div>
+              <div class="paper-meta">Yeajin Jung, Tae, S., Nam, J., Kim, Y.H. <em>Estuarine, Coastal and Shelf Science</em> 318, 109209 (2025). DOI: 10.1016/j.ecss.2025.109209</div>
+            </div>
+          </a>
+          <a class="paper-item y2025" href="https://doi.org/10.1038/s41597-025-04543-6" target="_blank" rel="noopener">
+            <div class="paper-num">22</div>
+            <div class="paper-body">
+              <div class="paper-title">Climatological Atlas of Temperature and Salinity for the Northeast Asian Seas</div>
+              <div class="paper-meta">Yong Sun Kim, Seok, S.H., Lee, J.H., Kim, S.D. <em>Scientific Data</em> 12, 206 (2025). DOI: 10.1038/s41597-025-04543-6</div>
+            </div>
+          </a>
+          <a class="paper-item y2025" href="https://doi.org/10.3389/fmars.2025.1571360" target="_blank" rel="noopener">
+            <div class="paper-num">23</div>
+            <div class="paper-body">
+              <div class="paper-title">Response of the thermohaline front and associated submesoscale features in the Korea Strait to wind variation during autumn</div>
+              <div class="paper-meta">Jong-Kyu Kim, Choi, B.J., Lee, S.H., Son, Y.T. <em>Frontiers in Marine Science</em> 12, 1571360 (2025). DOI: 10.3389/fmars.2025.1571360</div>
+            </div>
+          </a>
+          <a class="paper-item y2025" href="https://doi.org/10.1038/s41598-025-13861-z" target="_blank" rel="noopener">
+            <div class="paper-num">24</div>
+            <div class="paper-body">
+              <div class="paper-title">Seasonal and interannual variations in material transport in the Korea Strait originating from the Taiwan Strait</div>
+              <div class="paper-meta">Seung-Tae Lee, Kim, Y.Y., Tak, Y.J., Chae, S., Cho, Y.K. <em>Scientific Reports</em> 15, 28282 (2025). DOI: 10.1038/s41598-025-13861-z</div>
+            </div>
+          </a>
+          <a class="paper-item y2025" href="https://doi.org/10.1016/j.ocemod.2025.102605" target="_blank" rel="noopener">
+            <div class="paper-num">25</div>
+            <div class="paper-body">
+              <div class="paper-title">Assimilation effect of serial observation data in the East Asian Marginal Seas for long period</div>
+              <div class="paper-meta">Jae-Ho Lee, Chang, Y.S., Kim, Y.S., Cho, Y.K. <em>Ocean Modelling</em> 198, 102605 (2025). DOI: 10.1016/j.ocemod.2025.102605</div>
+            </div>
+          </a>
+          <a class="paper-item y2025" href="https://doi.org/10.1016/j.wace.2025.100823" target="_blank" rel="noopener">
+            <div class="paper-num">26</div>
+            <div class="paper-body">
+              <div class="paper-title">Improving Marine Heatwave Simulations Through Realistic Kuroshio Representation in a High-Resolution Dynamical Downscaling Ensemble</div>
+              <div class="paper-meta">Seok-Geun Oh, Lim, K.G., Son, S.W., Cho, Y.K. <em>Weather and Climate Extremes</em> 50, 100823 (2025). DOI: 10.1016/j.wace.2025.100823</div>
+            </div>
+          </a>
+          <a class="paper-item y2025" href="https://doi.org/10.1186/s40562-025-00421-6" target="_blank" rel="noopener">
+            <div class="paper-num">27</div>
+            <div class="paper-body">
+              <div class="paper-title">Impact of interannual variation in surface heat fux on the variability of the upper layer circulation in the East Sea (Sea of Japan)</div>
+              <div class="paper-meta">Daehyuk Kim, Shin, H.R., Kim, C.H., Moon, J.H. <em>Geoscience Letters</em> 12, 43 (2025). DOI: 10.1186/s40562-025-00421-6</div>
+            </div>
+          </a>
+          <div class="paper-year-heading">2026년 <span class="paper-year-count">· 8편</span></div>
+          <a class="paper-item y2026" href="https://doi.org/10.5194/gmd-19-187-2026" target="_blank" rel="noopener">
+            <div class="paper-num">28</div>
+            <div class="paper-body">
+              <div class="paper-title">Assessing Vertical Coordinate System Performance in the Regional Modular Ocean Model 6 Configuration for Northwest Pacific</div>
+              <div class="paper-meta">Inseong Chang, Kim, Y.H., Park, Y.G., Jin, H., Pak, G., Ross, A.C., Hallberg, R. <em>Geoscientific Model Development</em> 19, 187 (2026). DOI: 10.5194/gmd-19-187-2026</div>
+            </div>
+          </a>
+          <a class="paper-item y2026" href="https://doi.org/10.1016/j.acags.2026.100341" target="_blank" rel="noopener">
+            <div class="paper-num">29</div>
+            <div class="paper-body">
+              <div class="paper-title">Prediction of the temperature profiles using the generative model and the stacking ensemble method in a marginal sea</div>
+              <div class="paper-meta">Myeong-Taek Kwak, Jung, K., Cho, Y.K. <em>Applied Computing and Geosciences</em> 30, 100341 (2026). DOI: 10.1016/j.acags.2026.100341</div>
+            </div>
+          </a>
+          <a class="paper-item y2026" href="https://doi.org/10.1016/j.rsma.2026.104995" target="_blank" rel="noopener">
+            <div class="paper-num">30</div>
+            <div class="paper-body">
+              <div class="paper-title">Migration pathways estimated from statolith Sr/Ca analysis and particle tracking experiments in the spear squid Heterololigo bleekeri in the Tsushima/Korea Strait</div>
+              <div class="paper-meta">Hong-Ryeol Shin, Yamaguchi, T., Hirose, N., Takikawa, T. <em>Regional Studies in Marine Science</em> 97, 104995 (2026). DOI: 10.1016/j.rsma.2026.104995</div>
+            </div>
+          </a>
+          <a class="paper-item y2026" href="https://doi.org/10.1088/1748-9326/ae5e99" target="_blank" rel="noopener">
+            <div class="paper-num">31</div>
+            <div class="paper-body">
+              <div class="paper-title">Subtropical mode water intrusion into the South China Sea through the Luzon strait revealed by radioactive dispersion from Fukushima power plant</div>
+              <div class="paper-meta">Seung-Tae Lee, Cho, Y.K., Seo, S., Kim, K.O. <em>Environmental Research Letters</em> 21, 094010 (2026). DOI: 10.1088/1748-9326/ae5e99</div>
+            </div>
+          </a>
+          <a class="paper-item y2026" href="https://doi.org/10.1007/s10533-026-01346-8" target="_blank" rel="noopener">
+            <div class="paper-num">32</div>
+            <div class="paper-body">
+              <div class="paper-title">Winter and summer phytoplankton peaks in Gwangyang Bay, South Korea: a physicalbiogeochemical model study</div>
+              <div class="paper-meta">Seunghwa Chae, Cho, Y.K., Kim, B.G., Tak, Y.J., Kwak, M.T., Kang, Y. <em>Biogeochemistry</em> 169, 52 (2026). DOI: 10.1007/s10533-026-01346-8</div>
+            </div>
+          </a>
+          <a class="paper-item y2026" href="https://doi.org/10.1175/JCLI-D-25-0390.1" target="_blank" rel="noopener">
+            <div class="paper-num">33</div>
+            <div class="paper-body">
+              <div class="paper-title">Large-Scale Climate Drivers of the Interannual Variability of Marine Heat Waves in the Western North Pacific and Its Marginal Seas</div>
+              <div class="paper-meta">Hyung-Ju Park, Na, H. <em>Journal of Climate</em> 39, 3729 (2026). DOI: 10.1175/JCLI-D-25-0390.1</div>
+            </div>
+          </a>
+          <a class="paper-item y2026" href="https://doi.org/10.1016/j.jmarsys.2026.104256" target="_blank" rel="noopener">
+            <div class="paper-num">34</div>
+            <div class="paper-body">
+              <div class="paper-title">Coupled ocean model based three-dimensional ecological regions and phytoplankton biomass variations in the Yellow Sea</div>
+              <div class="paper-meta">Jae-Sung Choi, Choi, B.J., Kang, H.W., Seo, O.H., Yih, W. <em>Journal of Marine Systems</em> 256, 104256 (2026). DOI: 10.1016/j.jmarsys.2026.104256</div>
+            </div>
+          </a>
+          <a class="paper-item y2026" href="https://doi.org/10.1029/2025EF007760" target="_blank" rel="noopener">
+            <div class="paper-num">35</div>
+            <div class="paper-body">
+              <div class="paper-title">Revealing Enhanced Signals of Future Marine Heatwave Changes in the East/Japan Sea through a High-Resolution Dynamical Downscaling Ensemble</div>
+              <div class="paper-meta">Seok-Geun Oh, Lim, K.G., Kang, Y.K., Son, S.W., Cho, Y.K. <em>Earth&#x27;s Future</em> 14, e2025EF007760 (2026). DOI: 10.1029/2025EF007760</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
