@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한반도 주변해 모형 · 한반도 주변 상세 해양기후 정보 서비스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-target"    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-globe"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-arrow-r"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"   stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-list"      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></symbol>
+  <symbol id="i-database"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+  <symbol id="i-chart-bar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/><line x1="2" y1="20" x2="22" y2="20"/></symbol>
+  <symbol id="i-award"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></symbol>
+  <symbol id="i-file-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></symbol>
+  <symbol id="i-book-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  <symbol id="i-pin"       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-chevron-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"   stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-external"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-cpu"       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+</svg>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #f0f4f8; color: #334155; font-size: 14.5px; line-height: 1.65; min-width: 320px; }
+a { text-decoration: none; color: inherit; }
+svg.ic { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 36px; }
+
+/* ── 상단바 ── */
+.topbar { background: #0a2540; padding: 8px 0; font-size: 12px; color: rgba(255,255,255,.45); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+.topbar-links { display: flex; gap: 18px; }
+.topbar a { color: rgba(255,255,255,.6); } .topbar a:hover { color: #7dd3fc; }
+
+/* ── 네비게이션 ── */
+.navbar { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+.navbar .wrap { display: flex; align-items: center; height: 62px; }
+.logo { display: flex; align-items: center; gap: 12px; margin-right: 44px; flex-shrink: 0; }
+.logo-globe { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg,#0ea5e9,#0369a1); display: flex; align-items: center; justify-content: center; }
+.logo-name { font-size: 14.5px; font-weight: 700; color: #0a2540; line-height: 1.25; }
+.logo-sub  { font-size: 11px; color: #64748b; }
+.nav-links { display: flex; align-items: stretch; height: 62px; flex: 1; }
+.nav-a { padding: 0 18px; display: flex; align-items: center; font-size: 14px; color: #334155; white-space: nowrap; border-bottom: 2.5px solid transparent; transition: color .15s, border-color .15s; }
+.nav-a:hover { color: #0284c7; border-bottom-color: #bae6fd; }
+.nav-a.on    { color: #0284c7; border-bottom-color: #0284c7; font-weight: 600; }
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.btn-nav { padding: 6px 14px; border-radius: 8px; font-size: 13px; border: 1px solid #e2e8f0; background: #fff; color: #64748b; cursor: pointer; }
+.btn-nav:hover { background: #f8fafc; }
+.btn-nav.primary { background: #0284c7; color: #fff; border-color: #0284c7; font-weight: 500; }
+.btn-nav.primary:hover { background: #0369a1; }
+
+/* ── 페이지 히어로 ── */
+.page-hero { background: linear-gradient(160deg,#0a2540 0%,#0c4a6e 55%,#075985 100%); position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; opacity: .06; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+.page-hero .wrap { position: relative; z-index: 1; padding-top: 36px; }
+.breadcrumb { display: flex; align-items: center; gap: 7px; font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,.65); } .breadcrumb a:hover { color: #fff; }
+.breadcrumb .sep { color: rgba(255,255,255,.3); }
+.page-hero h1 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 9px; }
+.page-hero p  { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.75; max-width: 580px; }
+.page-tabs { display: flex; margin-top: 26px; border-bottom: 1px solid rgba(255,255,255,.15); }
+.page-tab { padding: 10px 22px; font-size: 14px; color: rgba(255,255,255,.5); border-bottom: 2.5px solid transparent; margin-bottom: -1px; cursor: pointer; transition: color .15s; user-select: none; }
+.page-tab:hover { color: rgba(255,255,255,.85); }
+.page-tab.on { color: #fff; border-bottom-color: #38bdf8; font-weight: 500; }
+
+/* ── 탭 콘텐츠 ── */
+.tab-panel { display: none; }
+.tab-panel.on { display: block; }
+
+/* ── 본문 공통 ── */
+.main { padding: 40px 0 52px; background: #f0f4f8; }
+.main .wrap { display: flex; flex-direction: column; gap: 36px; }
+.sec-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.sec-hd h2 { font-size: 16px; font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 10px; }
+.sec-bar { width: 3px; height: 20px; background: #0284c7; border-radius: 2px; flex-shrink: 0; }
+
+/* 카드 공통 */
+.card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; }
+.divider { border: none; border-top: 1px solid #e2e8f0; }
+
+/* ── 푸터 ── */
+footer { background:#0a2540; padding:30px 0 22px; margin-top:16px; }
+footer .wrap { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; }
+.f-logo { font-size:14px; font-weight:600; color:#fff; margin-bottom:5px; }
+.f-sub  { font-size:12.5px; color:rgba(255,255,255,.4); line-height:1.7; }
+.f-links { display:flex; gap:20px; }
+.f-links a { font-size:12.5px; color:rgba(255,255,255,.45); } .f-links a:hover { color:#7dd3fc; }
+.f-copy { font-size:12px; color:rgba(255,255,255,.25); margin-top:18px; padding-top:14px; border-top:1px solid rgba(255,255,255,.08); }
+/* ── 반응형 ── */
+@media (max-width:860px) {
+  .task-grid, .need-grid, .spec-grid, .milestone-grid { grid-template-columns:1fr; }
+  .paper-target { grid-template-columns:repeat(3,1fr); }
+  .model-flow { flex-direction:column; gap:6px; }
+  .marr { transform:rotate(90deg); width:100%; height:32px; }
+  .topbar-links { display:none; }
+}
+@media (max-width:600px) {
+  .wrap { padding:0 18px; }
+  .page-hero h1 { font-size:20px; }
+  .nav-links { display:none; }
+  .paper-target { grid-template-columns:1fr 1fr; }
+}
+/* ── 댓글 바다 폼 모달 ── */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.survey-close {
+  background: none; border: none; cursor: pointer; color: rgba(255,255,255,.7);
+  font-size: 15px; line-height: 1; padding: 4px;
+}
+.survey-close:hover { color: #fff; }
+.form-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(10,37,64,.6); backdrop-filter: blur(3px);
+  align-items: center; justify-content: center; padding: 20px;
+  animation: fadeIn .2s ease;
+}
+.form-overlay.open { display: flex; }
+.form-box {
+  position: relative; width: 100%; max-width: 620px; height: 92vh; max-height: 980px;
+  background: #fff; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,.3);
+  animation: modalSlideUp .25s ease;
+  display: flex; flex-direction: column;
+}
+.form-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 13px 18px; background: #0a2540; flex-shrink: 0;
+}
+.form-head-title { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: #fff; }
+.form-head-actions { display: flex; align-items: center; gap: 4px; }
+.form-iframe { flex: 1; width: 100%; border: none; }
+.feedback-note {
+  flex-shrink: 0; padding: 9px 18px; font-size: 12px; color: #64748b;
+  background: #f8fafc; border-bottom: 1px solid #e2e8f0; line-height: 1.5;
+}
+@media (max-width: 480px) {
+  .form-box { height: 94vh; border-radius: 12px; }
+}
+
+/* ══ 한반도 주변해 모형 상세 페이지 ══ */
+.page-hero .wrap { padding-bottom: 34px; }
+.hero-badge { display:inline-flex; align-items:center; font-size:10.5px; font-weight:700; letter-spacing:.6px; padding:3px 10px; border-radius:20px; background:rgba(167,139,250,.22); color:#ddd6fe; border:1px solid rgba(196,181,253,.35); margin-bottom:10px; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.hero-chip { font-size:12.5px; color:rgba(255,255,255,.85); background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14); border-radius:8px; padding:5px 12px; }
+.hero-chip b { color:#fff; font-weight:600; }
+.back-link { display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#5b21b6; font-weight:500; padding:7px 14px; border-radius:8px; background:#fff; border:1px solid #ddd6fe; transition:background .15s; width:fit-content; }
+.back-link:hover { background:#faf5ff; }
+.back-link svg { transform:rotate(180deg); }
+
+.sec-bar.violet { background:#7c3aed; }
+
+/* 핵심 수치 */
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.kpi { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:18px 20px; }
+.kpi-label { font-size:12px; color:#64748b; margin-bottom:6px; }
+.kpi-val { font-size:22px; font-weight:700; color:#5b21b6; line-height:1.2; }
+.kpi-sub { font-size:12px; color:#94a3b8; margin-top:4px; }
+
+/* 영역 그림 + 영역 정보 */
+.domain-grid { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:16px; align-items:start; }
+.fig-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:20px 22px; }
+.fig-card img { width:100%; display:block; border-radius:8px; cursor:zoom-in; }
+.fig-card .img-caption { margin-top:12px; }
+.zoom-hint { font-size:11.5px; color:#94a3b8; text-align:center; margin-top:6px; }
+.info-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:22px 24px; display:flex; flex-direction:column; gap:18px; }
+.info-card h3 { font-size:14.5px; font-weight:700; color:#0f172a; }
+.coord-box { background:#faf5ff; border:1px solid #ede9fe; border-radius:10px; padding:14px 16px; display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:13px; }
+.coord-box dt { color:#6d28d9; font-weight:600; }
+.coord-box dd { color:#0f172a; font-variant-numeric:tabular-nums; }
+.info-note { font-size:13px; color:#475569; line-height:1.7; }
+
+/* 사양 표 */
+.spec-table { width:100%; border-collapse:collapse; background:#fff; border:1px solid #e2e8f0; border-radius:14px; overflow:hidden; }
+.spec-table th.grp { background:#faf5ff; color:#5b21b6; font-size:12.5px; font-weight:700; text-align:left; padding:10px 20px; border-top:1px solid #ede9fe; border-bottom:1px solid #ede9fe; letter-spacing:.2px; }
+.spec-table tr:first-child th.grp { border-top:none; }
+.spec-table th.row { width:190px; text-align:left; font-size:13px; font-weight:500; color:#64748b; padding:12px 20px; border-bottom:1px solid #f1f5f9; vertical-align:top; }
+.spec-table td { font-size:13.5px; color:#0f172a; padding:12px 20px; border-bottom:1px solid #f1f5f9; line-height:1.6; }
+.spec-table td .en { color:#64748b; font-size:12.5px; }
+.spec-table td a { color:#6d28d9; }
+.spec-table td a:hover { text-decoration:underline; }
+
+/* 모의 기간 타임라인 */
+.timeline { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:22px 24px; }
+.tl-bar { display:flex; height:40px; border-radius:8px; overflow:hidden; font-size:12.5px; font-weight:600; }
+.tl-hist { flex:32; background:#e2e8f0; color:#334155; display:flex; align-items:center; justify-content:center; }
+.tl-proj { flex:86; background:linear-gradient(90deg,#c4b5fd,#7c3aed); color:#fff; display:flex; align-items:center; justify-content:center; }
+.tl-axis { display:flex; justify-content:space-between; font-size:12px; color:#64748b; margin-top:6px; position:relative; }
+.tl-axis span:nth-child(2) { position:absolute; left:calc(32 / 118 * 100%); transform:translateX(-50%); }
+.ssp-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; align-items:center; }
+.ssp-row .lbl { font-size:12.5px; color:#64748b; margin-right:4px; }
+.ssp { font-size:12.5px; font-weight:600; padding:4px 12px; border-radius:20px; border:1px solid; }
+.ssp1 { background:#ecfdf5; color:#047857; border-color:#a7f3d0; }
+.ssp2 { background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe; }
+.ssp3 { background:#fff7ed; color:#c2410c; border-color:#fed7aa; }
+.ssp5 { background:#fef2f2; color:#b91c1c; border-color:#fecaca; }
+
+/* 특이사항 */
+.feat-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.feat { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:18px 20px; display:flex; gap:14px; }
+.feat-icon { width:38px; height:38px; border-radius:10px; background:#ede9fe; color:#6d28d9; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.feat h4 { font-size:14px; font-weight:700; color:#0a2540; margin-bottom:4px; }
+.feat p { font-size:13px; color:#64748b; line-height:1.65; }
+
+/* 참고문헌 */
+.ref-card { background:#fff; border:1px solid #e2e8f0; border-radius:14px; padding:20px 24px; }
+.ref-card p { font-size:13px; color:#475569; line-height:1.7; padding-left:20px; text-indent:-20px; margin-bottom:8px; }
+.ref-card p:last-child { margin-bottom:0; }
+.ref-card em { font-style:italic; }
+.ref-card a { color:#6d28d9; word-break:break-all; }
+.ref-card a:hover { text-decoration:underline; }
+
+/* 이미지 확대 보기 */
+.lightbox { position:fixed; inset:0; z-index:9000; background:rgba(10,15,30,.88); display:none; flex-direction:column; align-items:center; overflow:auto; padding:56px 20px 24px; }
+.lightbox.open { display:flex; }
+.lb-stage { margin:auto; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.lb-img { max-width:min(1200px,94vw); max-height:80vh; background:#fff; border-radius:6px; box-shadow:0 10px 40px rgba(0,0,0,.4); cursor:zoom-in; }
+.lightbox.zoomed { align-items:flex-start; }
+.lightbox.zoomed .lb-img { max-width:none; max-height:none; cursor:zoom-out; }
+.lb-caption { font-size:13px; color:rgba(255,255,255,.85); text-align:center; }
+.lightbox.zoomed .lb-caption { display:none; }
+.lb-close { position:fixed; top:14px; right:16px; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(255,255,255,.08); color:#fff; font-size:22px; line-height:1; cursor:pointer; }
+.lb-close:hover { background:rgba(255,255,255,.2); }
+
+@media (max-width:860px) {
+  .kpi-grid { grid-template-columns:1fr 1fr; }
+  .domain-grid, .feat-grid { grid-template-columns:1fr; }
+  .spec-table th.row { width:120px; }
+}
+@media (max-width:600px) {
+  .spec-table th.row, .spec-table td { display:block; width:100%; }
+  .spec-table th.row { padding:10px 16px 0; border-bottom:none; }
+  .spec-table td { padding:2px 16px 10px; }
+  .spec-table th.grp { display:block; padding:10px 16px; }
+  .kpi-val { font-size:19px; }
+  .tl-en { display:none; }
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- 상단바 -->
+<div class="topbar">
+  <div class="wrap">
+    <div style="display:flex; gap:24px;">
+    <a href="https://www.kiost.ac.kr/kor.do" target="_blank" target="_blank">한국해양과학기술원 (KIOST)    </a>
+    <a href="https://www.ocpc.kr/" target="_blank"> 해양기후예측센터</a>
+    </div>
+  </div>
+</div>
+
+<!-- 네비게이션 -->
+<nav class="navbar">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <div class="logo-globe">
+        <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+          <circle cx="10" cy="10" r="8" stroke="white" stroke-width="1.2"/>
+          <ellipse cx="10" cy="10" rx="3.5" ry="8" stroke="white" stroke-width="1.2"/>
+          <line x1="2" y1="10" x2="18" y2="10" stroke="white" stroke-width="1.2"/>
+          <line x1="3.5" y1="6" x2="16.5" y2="6" stroke="white" stroke-width=".8"/>
+          <line x1="3.5" y1="14" x2="16.5" y2="14" stroke="white" stroke-width=".8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">한반도 해양기후 정보 서비스</div>
+        <div class="logo-sub">koceanclimate.kr</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a class="nav-a" href="index.html#sec-climate">과거 변화</a>
+      <a class="nav-a" href="index.html#sec-future">미래 전망</a>
+      <a class="nav-a" href="index.html#sec-edu">맞춤 정보</a>
+      <a class="nav-a on" href="research.html">연구사업 안내</a>
+    </div>
+    <div class="nav-right">
+      <button class="btn-nav" onclick="openFeedbackModal()" style="display:inline-flex;align-items:center;gap:5px"><svg class="ic" width="15" height="15"><use href="#i-message"/></svg> 댓글 바다</button>
+      <a class="btn-nav primary" href="https://nwpoclimate.kr" target="_blank">해양기후 데이터 포털↗</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 페이지 히어로 -->
+<div class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">홈</a><span class="sep">›</span>
+      <a href="research.html">연구사업 안내</a><span class="sep">›</span>
+      <a href="research.html#tab2">핵심 모형 소개</a><span class="sep">›</span>
+      <span style="color:rgba(255,255,255,.9)">한반도 주변해 모형</span>
+    </div>
+    <div class="hero-badge">LOCAL</div>
+    <h1>한반도 주변해 모형</h1>
+    <p>북서태평양 1/20도 물리-생지화학 모델 — ROMS 기반 고해상도 지역 해양모델로, 한반도 주변 해역의 과거 재현과 SSP 시나리오별 미래 전망 자료를 생산합니다.</p>
+    <div class="hero-meta">
+      <span class="hero-chip"><b>ROMS</b> + bio_Fennel</span>
+      <span class="hero-chip">수행 기관 <b>전남대학교 해양학과 해양수치모델연구실</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="wrap">
+
+    <a class="back-link" href="research.html#tab2"><svg class="ic" width="14" height="14"><use href="#i-arrow-r"/></svg> 핵심 모형 소개로 돌아가기</a>
+
+    <!-- 핵심 수치 -->
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">수평 해상도</div><div class="kpi-val">1/20°</div><div class="kpi-sub">약 5.5 km 격자</div></div>
+      <div class="kpi"><div class="kpi-label">수직 층</div><div class="kpi-val">30층</div><div class="kpi-sub">sigma 좌표계</div></div>
+      <div class="kpi"><div class="kpi-label">모의 기간</div><div class="kpi-val">1983–2100</div><div class="kpi-sub">과거 재현 + 미래 전망</div></div>
+      <div class="kpi"><div class="kpi-label">미래 시나리오</div><div class="kpi-val">SSP 4종</div><div class="kpi-sub">1-2.6 · 2-4.5 · 3-7.0 · 5-8.5</div></div>
+    </div>
+
+    <!-- 모델 영역 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar violet"></span>
+          <svg class="ic" width="18" height="18" style="color:#7c3aed"><use href="#i-pin"/></svg>
+          모델 영역 및 수심
+        </h2>
+      </div>
+      <div class="domain-grid">
+        <div class="fig-card">
+          <img id="domainImg" src="Research/model_korea_domain.jpg" alt="북서태평양 1/20도 모델 영역 및 수심 분포도" loading="lazy">
+          <div class="img-caption">북서태평양 1/20도 모델 영역 및 수심 (단위: m)</div>
+          <div class="zoom-hint">그림을 클릭하면 크게 볼 수 있습니다.</div>
+        </div>
+        <div class="info-card">
+          <div>
+            <h3 style="margin-bottom:12px">모델 영역</h3>
+            <dl class="coord-box">
+              <dt>경도</dt><dd>113.0310 – 164.9690 °E</dd>
+              <dt>위도</dt><dd>15.0230 – 57.9768 °N</dd>
+            </dl>
+          </div>
+          <p class="info-note">황해·동중국해·동해를 포함한 한반도 주변 해역과 오호츠크해, 쿠로시오 해류역을 포함하는 북서태평양 일부를 1/20° 격자로 모의합니다.</p>
+          <div>
+            <h3 style="margin-bottom:10px">지형 자료</h3>
+            <p class="info-note">GEBCO2021, BADA2019</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 모의 기간 및 시나리오 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar violet"></span>
+          <svg class="ic" width="18" height="18" style="color:#7c3aed"><use href="#i-chart-bar"/></svg>
+          모의 기간 및 미래 전망 시나리오
+        </h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-bar">
+          <div class="tl-hist">과거 재현<span class="tl-en"> (historical)</span></div>
+          <div class="tl-proj">미래 전망<span class="tl-en"> (projection)</span></div>
+        </div>
+        <div class="tl-axis"><span>1983</span><span>2014 | 2015</span><span>2100</span></div>
+        <div class="ssp-row">
+          <span class="lbl">미래 전망 시나리오</span>
+          <span class="ssp ssp1">SSP1-2.6</span>
+          <span class="ssp ssp2">SSP2-4.5</span>
+          <span class="ssp ssp3">SSP3-7.0</span>
+          <span class="ssp ssp5">SSP5-8.5</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 상세 사양 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar violet"></span>
+          <svg class="ic" width="18" height="18" style="color:#7c3aed"><use href="#i-cpu"/></svg>
+          모델 상세 사양
+        </h2>
+      </div>
+      <table class="spec-table">
+        <tbody>
+          <tr><th class="grp" colspan="2">모델 구성</th></tr>
+          <tr><th class="row" scope="row">수치 모델</th><td>Regional Ocean Modeling System (ROMS)</td></tr>
+          <tr><th class="row" scope="row">생지화학 모듈</th><td>bio_Fennel <span class="en">(Fennel et al., 2006; Fennel et al., 2008)</span></td></tr>
+          <tr><th class="row" scope="row">수행 기관</th><td>전남대학교 해양학과 해양수치모델연구실</td></tr>
+          <tr><th class="row" scope="row">모델 영역</th><td>113.0310–164.9690 °E, 15.0230–57.9768 °N</td></tr>
+          <tr><th class="row" scope="row">수평 해상도</th><td>1/20°</td></tr>
+          <tr><th class="row" scope="row">수직 층 개수</th><td>sigma 층 30개</td></tr>
+          <tr><th class="row" scope="row">수직 혼합 기법</th><td>K-profile parameterization scheme (KPP)</td></tr>
+
+          <tr><th class="grp" colspan="2">모의 설정</th></tr>
+          <tr><th class="row" scope="row">모의 기간</th><td>historical: 1983년–2014년<br>projection: 2015년–2100년</td></tr>
+          <tr><th class="row" scope="row">미래 전망 시나리오</th><td>SSP1-2.6, SSP2-4.5, SSP3-7.0, SSP5-8.5</td></tr>
+
+          <tr><th class="grp" colspan="2">입력 자료</th></tr>
+          <tr><th class="row" scope="row">지형 자료</th><td>GEBCO2021, BADA2019</td></tr>
+          <tr><th class="row" scope="row">해양 초기 조건</th><td>IPSL-CM6A-LR 1월 평균 자료</td></tr>
+          <tr><th class="row" scope="row">해양 경계 조건</th><td>IPSL-CM6A-LR 월평균 자료</td></tr>
+          <tr><th class="row" scope="row">대기 경계 조건</th><td>IPSL-CM6A-LR 일평균 자료</td></tr>
+          <tr><th class="row" scope="row">담수 유입</th><td>동북아시아 25개 강물 자료</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 특이사항 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar violet"></span>
+          <svg class="ic" width="18" height="18" style="color:#7c3aed"><use href="#i-info"/></svg>
+          특이사항
+        </h2>
+      </div>
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="feat-icon"><svg class="ic" width="18" height="18"><use href="#i-globe"/></svg></div>
+          <div><h4>조석 강제력 적용</h4><p>해양 측면 경계에서 조석 강제력을 적용합니다.</p></div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon"><svg class="ic" width="18" height="18"><use href="#i-database"/></svg></div>
+          <div><h4>편향 보정 적용</h4><p>해양 초기 조건과 경계 조건에 편향 보정을 적용합니다.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 참고문헌 -->
+    <div>
+      <div class="sec-hd">
+        <h2><span class="sec-bar violet"></span>
+          <svg class="ic" width="18" height="18" style="color:#7c3aed"><use href="#i-book-open"/></svg>
+          참고문헌
+        </h2>
+      </div>
+      <div class="ref-card">
+        <p>Fennel, K., Wilkin, J., Levin, J., Moisan, J., O'Reilly, J., &amp; Haidvogel, D. (2006). Nitrogen cycling in the Middle Atlantic Bight: Results from a three‐dimensional model and implications for the North Atlantic nitrogen budget. <em>Global Biogeochemical Cycles</em>, 20(3).</p>
+        <p>Fennel, K., Wilkin, J., Previdi, M., &amp; Najjar, R. (2008). Denitrification effects on air‐sea CO<sub>2</sub> flux in the coastal ocean: Simulations for the northwest North Atlantic. <em>Geophysical Research Letters</em>, 35(24).</p>
+      </div>
+    </div>
+
+    <a class="back-link" href="research.html#tab2"><svg class="ic" width="14" height="14"><use href="#i-arrow-r"/></svg> 핵심 모형 소개로 돌아가기</a>
+
+  </div>
+</div>
+
+<!-- 이미지 확대 보기 -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기">
+  <button class="lb-close" id="lbClose" aria-label="닫기">&times;</button>
+  <div class="lb-stage">
+    <img class="lb-img" id="lbImg" alt="">
+    <div class="lb-caption">북서태평양 1/20도 모델 영역 및 수심 (단위: m) · 그림을 클릭하면 원본 크기</div>
+  </div>
+</div>
+
+
+<!-- 푸터 -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-logo">한반도 주변 상세 해양기후 정보 서비스</div>
+      <div class="f-sub">한국해양과학기술원 (KIOST) · 해양기후예측센터<br>문의: ocpc@kiost.ac.kr</div>
+    </div>
+  </div>
+  <div class="wrap"><div class="f-copy">© KIOST 해양기후예측센터 · 연구사업 기반 시험 운영 사이트</div></div>
+
+<!-- 댓글 바다 -->
+<div class="form-overlay" id="feedbackFormOverlay">
+  <div class="form-box">
+    <div class="form-head">
+      <div class="form-head-title">
+        <svg class="ic" width="15" height="15" style="color:#7dd3fc"><use href="#i-message"/></svg>
+        댓글 바다
+      </div>
+      <div class="form-head-actions">
+        <button class="survey-close" onclick="closeFeedbackModal()" aria-label="닫기">✕</button>
+      </div>
+    </div>
+    <div class="feedback-note">
+      <svg class="ic" width="12" height="12" style="color:#94a3b8"><use href="#i-info"/></svg>
+      최근 남겨주신 댓글을 보여드려요 · 작성해주신 모든 댓글은 운영팀이 빠짐없이 확인하고 있습니다.
+    </div>
+    <iframe class="form-iframe" id="feedbackFormIframe" title="댓글 바다"></iframe>
+  </div>
+</div>
+
+<script>
+/* ── 댓글 바다 팝업 로직 ── */
+const FEEDBACK_URL = 'https://www.joey.team/b/AqXK7b8iLvAkAIY8mb2c';
+const feedbackFormOverlay = document.getElementById('feedbackFormOverlay');
+const feedbackFormIframe = document.getElementById('feedbackFormIframe');
+
+function openFeedbackModal() {
+  feedbackFormIframe.src = FEEDBACK_URL;
+  feedbackFormOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFeedbackModal() {
+  feedbackFormOverlay.classList.remove('open');
+  feedbackFormIframe.src = '';
+  document.body.style.overflow = '';
+}
+
+
+feedbackFormOverlay.addEventListener('click', (e) => {
+  if (e.target === feedbackFormOverlay) closeFeedbackModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && feedbackFormOverlay.classList.contains('open')) closeFeedbackModal();
+});
+</script>
+
+
+<script>
+/* ── 이미지 확대 보기 ── */
+(function(){
+  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),
+        lbClose=document.getElementById('lbClose'),src=document.getElementById('domainImg');
+  function openLb(){ lbImg.src=src.currentSrc||src.src; lbImg.alt=src.alt; lb.classList.remove('zoomed'); lb.classList.add('open'); document.body.style.overflow='hidden'; lbClose.focus(); }
+  function closeLb(){ lb.classList.remove('open','zoomed'); document.body.style.overflow=''; }
+  src.addEventListener('click',openLb);
+  lbImg.addEventListener('click',e=>{ e.stopPropagation(); lb.classList.toggle('zoomed'); });
+  lb.addEventListener('click',e=>{ if(e.target===lb||e.target.classList.contains('lb-stage')) closeLb(); });
+  lbClose.addEventListener('click',closeLb);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&lb.classList.contains('open')) closeLb(); });
+})();
+</script>
+
+</body>
+</html>
